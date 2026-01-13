@@ -1,0 +1,93 @@
+/* ==UserStyle==
+@name           Spotweaks 
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Him
+==/UserStyle== */
+
+@-moz-document url-prefix("https://open.spotify.com/") {
+    /* Insert code here... */
+    .ojrThQm1wxR2gZ6GntJB {
+        -webkit-margin-start: calc(min(var(--ylx-folder-depth, 0),5)*16px);
+        grid-template-rows: 48px!important;
+        margin-inline-start: calc(min(var(--ylx-folder-depth, 0),5)*16px);
+        height: 1px;
+    }
+    .ljvfQS {
+        grid-column: 1;
+        gap: 16px;
+        display: none
+    }
+    .LSrBzBljgLeDhcm3Soye {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        gap: 8px;
+        min-width: 0;
+        display: none
+    }
+    .qEiVyQ28VnOKb0LeijqL {
+        contain: content;
+        gap: unset;
+        column-gap: unset;
+        height: 41.5px;
+    }
+
+    .fkzPZy {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        align-items: flex-start;
+        font-size: 19px;
+        font-family: 
+    }
+    .ylr6LvLf5L8yLiqErDES{
+        display: none
+    }
+    .jgTSDy {
+        font-size: 0.875rem;
+        display: none;
+    }
+    .kzxKsG {
+        font-size: 0.875rem;
+        display: none;
+    }
+    .main-view-container__mh-footer-container {
+        background-color: var(--background-base);
+        padding-top: 40px;
+        display: none;
+    }
+    .T1xI1RTSFU7Wu94UuvE6 {
+        background-color: #0202023d;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        bottom: 0;
+        left: 0;
+        opacity: var(--top-bar-opacity,1);
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        -webkit-transition: background-color .25s,ease-out;
+        transition: background-color .25s,ease-out;
+        z-index: -1;
+        backdrop-filter: blur(10px);
+    }
+    .facDIsOQo9q7kiWc4jSg.coBkWVskipFo8KxLKief:before {
+        -webkit-backdrop-filter: blur(1px);
+        backdrop-filter: blur(1px);
+        bottom: 0;
+        content: "";
+        left: 8px;
+        position: absolute;
+        right: 8px;
+        top: 0;
+        background-color: #1010103b;
+    }
+
+}
