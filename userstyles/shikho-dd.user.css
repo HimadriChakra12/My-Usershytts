@@ -1,0 +1,14 @@
+/* ==UserStyle==
+@name           Shikho Material Downloader
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("app.shikho.com") {
+    /* Insert code here... */
+    .rpv-toolbar__right .rpv-core__display--hidden.rpv-core__display--block-medium:nth-child(4){
+        display: block
+    }
+}
