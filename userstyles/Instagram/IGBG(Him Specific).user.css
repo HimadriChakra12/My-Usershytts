@@ -6,7 +6,6 @@
 @version        1.0
 @license        Salman Farsi
 
-@advanced text bg-custom "Wallpaper (Custom)" "https://example.com/image.png"
 @advanced color col-custom "Texts" "#ffffff"
 @advanced color col-2-custom "Border" "#202520"
 
@@ -127,6 +126,18 @@
     .x1eb86dx,
     .x1eb86dx {
         background: #006571 !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+    }
+}
+
+@-moz-document url("https://www.instagram.com/direct/t/17848657521425015/") {
+    .xcrg951,
+    .x1eb86dx,
+    .x1eb86dx {
+        background: linear-gradient(135deg, #070, #037603, #046304, #004700) !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
