@@ -32,3 +32,13 @@
         height: 14pc
     }
 }
+@-moz-document regexp("^https:\\/\\/www\\.youtube\\.com\\/@[\\w.-]+\\/?$") {
+    #thumbnail{
+        visibility: hidden;
+    }
+    ytd-thumbnail[class="style-scope ytd-grid-video-renderer"]{
+        height: 0px
+    }
+
+}
+
