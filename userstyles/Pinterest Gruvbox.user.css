@@ -1,0 +1,87 @@
+/* ==UserStyle==
+@name           Pinterest Black Squared
+@namespace      github.com/EndlessVoidDev
+@author         EndlessVoidDev
+@description    `Black Pinterest with squared images.`
+@version        0.0.2
+@license        MIT
+@preprocessor   stylus
+==/UserStyle== */
+
+@-moz-document domain("pinterest.com") {
+    .OVX  {
+          border-radius: 0px !important;
+    }
+    
+    .OVX > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) {
+          border-radius: 0px 0 0 0px !important;
+    }
+    
+    .OVX > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+          border-radius: 0px !important;
+    }
+    
+    .OVX > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) >         div:nth-child(1) > div:nth-child(1) {
+          border-radius: 0px 0 0 0px !important;
+    }
+    
+    .OVX > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+          border-radius: 0px 0 0 0px !important;
+    }
+    
+    .OVX > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) >         div:nth-child(2) {
+          border-radius: 0px 0px 0px 0px !important;
+    }
+
+    div.Jea.XiG.mQ8.zI7.iyn.Hsu {
+          border-radius: 0px 0 0 0px !important;
+    }
+    
+    div.XiG.zI7.iyn.Hsu {
+          border-radius: 0px 0 0 0px !important;
+    }
+    
+    div.Jea.mQ8.zI7.iyn.Hsu {
+          border-radius: 0px 0 0 0px !important;
+    }
+    
+    div.Jea.KS5.mQ8.zI7.iyn.Hsu {
+        filter: invert(1) important;
+    }
+
+    div[data-test-id="drawer-image-group-first-image-container"]:after {
+        filter: invert(1);
+    }
+    
+    div[data-test-id="aggregated-reactions-container"] > div:nth-child(1) * {
+        filter: invert(1);
+    }
+    
+    div[data-test-id="emoji-selector"]{
+        filter: invert(1);
+    }
+    
+    div.Ah0.Jea.KS5.l7T.zI7.iyn.Hsu * {
+        filter: invert(1);
+    }
+    
+    img, video {
+        filter: invert(1);
+    }
+    
+    body {
+        filter: invert(0.84);
+        background-color: #282828;
+        --color-background-button-primary-active: #282828;
+        --color-background-box-primary: #282828;
+        --color-text-icon-brand-primaryy: #282828;
+        --color-background-button-primary-default: #282828;
+        --color-background-button-primary-hover: #282828;
+        --color-icon-brand-primary: #282828;
+        --g-colorRed0: #282828;
+        --g-colorRed100: #282828;
+        --g-colorRed100Active: #282828;
+        --g-colorRed100Hovered: #282828;
+        --color-background-primary-base: #282828;
+    }
+}
