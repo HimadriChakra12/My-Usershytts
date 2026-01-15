@@ -1,34 +1,56 @@
-/* Change heading text */
-#tools-header h2 {
-  position: relative;
-  color: transparent !important;
-}
+/* ==UserStyle==
+@name           BentoPDF
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
 
-#tools-header h2::before {
-  content: "BENTOPDF";
-  position: absolute;
-  inset: 0;
-  color: white;
-  font-size: inherit;
-  font-weight: 700;
-  text-align: center;
-}
+@-moz-document url-prefix("http://localhost:3000/") {
+    /* Insert code here... */
+    html, body{
+        padding: 50px;
+        background: #1d2021
+    }
+    section[class="py-10 hide-section"], section[id="hero-section"], section[id="features-section"], div[id="donation-ribbon"], section[id="security-compliance-section"], div[class="section-divider hide-section"], section[id="faq-accordion"], section[id="testimonials-section"]{
+        display: none
+    }
+    nav, footer, .section-divider{
+        display: none
+    }
 
-/* Hide original span content */
-#tools-header h2 span {
-  display: none;
-}
+    /* Change heading text */
+    #tools-header h2 {
+        position: relative;
+        color: transparent !important;
+    }
 
-/* Change paragraph text */
-#tools-header p {
-  position: relative;
-  color: transparent !important;
-}
+    #tools-header h2::before {
+        content: "BENTOPDF  |  HIMADRI";
+        position: absolute;
+        inset: 0;
+        color: white;
+        font-size: inherit;
+        font-weight: 700;
+        text-align: center;
+    }
 
-#tools-header p::before {
-  content: "Self Hosted";
-  position: absolute;
-  inset: 0;
-  color: #9ca3af; /* matches text-gray-400 */
-  text-align: center;
+    /* Hide original span content */
+    #tools-header h2 span {
+        display: none;
+    }
+
+    /* Change paragraph text */
+    #tools-header p {
+        position: relative;
+        color: transparent !important;
+    }
+
+    div[id="app"]{
+        background: #1d2021
+    }
+    a[class="tool-card block bg-gray-800 rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline hover:shadow-lg transition duration-200"], input[id="search-bar"]{
+        background: #282828;
+        border: 0
+    }
 }
