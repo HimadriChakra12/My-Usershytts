@@ -81,20 +81,3 @@
    
        }
    }
-
-   @-moz-document url-prefix("https://www.youtube.com/watch") {
-       /*Removes recommendation view after watching videos. Turn off autoplay too if you want. */
-       #secondary, #related {
-           display: none;
-       }
-   }
-   
-   @-moz-document regexp("^https:\\/\\/www\\.youtube\\.com\\/@[\\w.-]+\\/?$") {
-       #thumbnail{
-           visibility: hidden;
-       }
-       ytd-thumbnail[class="style-scope ytd-grid-video-renderer"]{
-           height: 0px
-       }
-   
-   }
