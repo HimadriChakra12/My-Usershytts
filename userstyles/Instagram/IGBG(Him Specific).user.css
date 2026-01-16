@@ -6,6 +6,7 @@
 @version        1.0
 @license        Salman Farsi
 
+@advanced text bg-custom "Wallpaper (Custom)" "https://example.com/image.png"
 @advanced color col-custom "Texts" "#ffffff"
 @advanced color col-2-custom "Border" "#202520"
 
@@ -26,6 +27,9 @@
         color: /*[[col-custom]]*/;
     }
 
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xyamay9 xv54qhq x1l90r2v xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x1bs97v6 x1q0q8m5 xso031l xh8yej3"], div[class="x1qjc9v5 x1yvgwvq xjd31um x1ixjvfu xwt6s21 x1ua1ujl xksyday xshg46c xlej2ay x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x178xt8z x1lun4ml xso031l xpilrb4 x78zum5 xdt5ytf xw7yly9 x1ys307a x1yztbdb xyqm7xq"]{
+        border: 0
+    }
     a.x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xa49m3k.xqeqjp1.x2hbi6w.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xdl72j9.x2lah0s.xe8uvvx.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1lliihq.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xg6hnt2.x18wri0h.x1l895ks.xbbxn1n.xxbr6pl.x1y1aw1k.xwib8y2:hover {
         background-color: #ffffff20;
     }
@@ -126,18 +130,6 @@
     .x1eb86dx,
     .x1eb86dx {
         background: #006571 !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
-    }
-}
-
-@-moz-document url("https://www.instagram.com/direct/t/17848657521425015/") {
-    .xcrg951,
-    .x1eb86dx,
-    .x1eb86dx {
-        background: linear-gradient(135deg, #070, #037603, #046304, #004700) !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
