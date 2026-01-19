@@ -1,0 +1,53 @@
+/* ==UserStyle==
+@name           Shikho
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document url-prefix("https://app.shikho.com/student/home") {
+    /* Insert code here... */
+    div[class="children-wrapper flex-1"]{
+        display: none
+    }
+    footer{
+        display: none
+    }
+}
+
+@-moz-document url-prefix("https://app.shikho.com/student/my-courses") {
+    div[class="flex gap-6xl md:gap-8xl flex-col-reverse"]{
+        display: none
+    }
+    footer{
+        display: none
+    }
+}
+
+@-moz-document url-prefix("https://app.shikho.com/") {
+    body{
+        background: #282828
+    }
+    div[id="__next"], nav[class="fixed top-0 z-[999] h-[54px] w-full bg-white shadow-elevation-e3 lg:h-[64px]"], div[class="NavLink_navLink__XN7eR border-secondary_special_outline flex h-10 cursor-pointer items-center gap-md rounded-lg py-md hover:bg-gray100 px-lg bg-white"], button[id="headlessui-menu-button-:ru:"], button[id="headlessui-menu-button-:rv:"], div[class="ChapterList_chapter_item__Vf74P "]{
+        background: #282828;
+        border: 0
+    }
+    h1,h2,h3,h4, span[class="text-gray950 !mb-0 text-ellipsis whitespace-nowrap overflow-hidden leading-[150%] font-noto    font-medium  text-[13px]    md:font-medium  md:text-[13px]    text-gray950"], div[class="flex flex-col gap-y-1"]{
+        filter: invert(0.9)
+    }
+    div[class="relative flex flex-col gap-4xl rounded-2xl md:flex-row md:p-md_2 md:shadow-elevation-e3 bg-white"], div[class="flex flex-col gap-y-8 bg-white py-5 md:rounded-lg md:py-6"], div[class=" px-4 py-3  SelectionGrid_selection_item__B2Kpo"] ,div[class="Chapters_container__FSdJI"]{
+        background: #1d2021;
+        border: 0
+        
+    }
+    .gap-4 {
+        gap: 1rem;
+    }
+    .grid-cols-12 {
+        flex-direction: column-reverse !important;
+    }
+    .grid {
+        display: flex !important;
+    }
+}
