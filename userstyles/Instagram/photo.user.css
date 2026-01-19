@@ -1,0 +1,43 @@
+/* ==UserStyle==
+@name           Photo
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("www.instagram.com") {
+    /* Insert code here... */
+    div.html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x78zum5.x15zctf7 {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+        border-color: white;
+        border-width: 2px;
+    }
+
+    div.html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x78zum5.x15zctf7 div:has(img) {
+        height:65px;          /* same as text height */
+        object-fit: cover;
+        border-radius: 2px;
+        opacity: 0;
+        flex-shrink: 0;
+        border-color: white
+    }
+
+
+    div.html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1h91t0o.xkh2ocl.x78zum5.xdt5ytf.x13a6bvl.x193iq5w.x1iyjqo2.x1eb86dx.x1o5r3ls.x15r0g6m {
+  display: flex;
+  gap: 6px;
+}
+
+/* Make the image inline & unobtrusive */
+    div.html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1h91t0o.xkh2ocl.x78zum5.xdt5ytf.x13a6bvl.x193iq5w.x1iyjqo2.x1eb86dx.x1o5r3ls.x15r0g6m div:has(img) {
+        height: 65px;
+        object-fit: cover;
+        border-radius: 2px;
+        opacity: 0;
+        flex-shrink: 0;
+    }
+}
