@@ -1,68 +1,50 @@
 // ==UserScript==
-// @name         Instagram Direct Name Redirect
-// @namespace    https://example.com/ig-direct-redirect
-// @version      1.1
-// @description  Redirect instagram.com/direct/t/name to instagram.com/direct/t/code
-// @match        https://www.instagram.com/*
-// @run-at       document-end
+// @name         Instagram Direct Instant Redirect
+// @namespace    https://example.com/ig-direct-instant
+// @version      2.0
+// @description  Redirect /direct/t/name BEFORE Instagram loads
+// @match        https://www.instagram.com/direct/t/*
+// @run-at       document-start
 // ==/UserScript==
 
 (function () {
     'use strict';
 
-    const redirects = [
-        { name: "Riya", code: "17843088840319857" },
-        { name: "Lokkhi", code: "17843088840319857" },
-        { name: "Basement", code: "9804712362974725" },
-        { name: "Barshon", code: "17849539664607285" },
-        { name: "Barushu", code: "17849539664607285" },
-        { name: "Shreya", code: "1421105996287938" },
-        { name: "Prionto", code: "17846226593822368" },
-        { name: "Prio", code: "17846226593822368" },
-        { name: "Darling", code: "17846226593822368" },
-        { name: "Ankan", code: "105870034142833" },
-        { name: "Anki", code: "105870034142833" },
-        { name: "Khalid", code: "17849224223494131" },
-        { name: "Khalu", code: "17849224223494131" },
-        { name: "Sujoy", code: "17844082992109595" },
-        { name: "Suji", code: "17844082992109595" },
-        { name: "Antar", code: "17845605576211591" },
-        { name: "AJ", code: "17845605576211591" },
-        { name: "Bishakha", code: "17846265992645472" },
-        { name: "20", code: "17846265992645472" },
-        { name: "Bish", code: "17846265992645472" },
-        { name: "Apurbo", code: "17848945131046879" },
-        { name: "Apurbo2", code: "17848945131046879" },
-        { name: "Riya2", code: "17842703340524797" },
-        { name: "Kitty", code: "17842703340524797" },
-        { name: "Khalid2", code: "17845325259431010" },
-        { name: "Shirsha", code: "17842103414112951" }
-    ];
+    const redirects = {
+        "Riya": "17843088840319857",
+        "Lokkhi": "17843088840319857",
+        "Basement": "9804712362974725",
+        "Barshon": "17849539664607285",
+        "Barushu": "17849539664607285",
+        "Shreya": "1421105996287938",
+        "Prionto": "17846226593822368",
+        "Prio": "17846226593822368",
+        "Darling": "17846226593822368",
+        "Ankan": "105870034142833",
+        "Anki": "105870034142833",
+        "Khalid": "17849224223494131",
+        "Khalu": "17849224223494131",
+        "Sujoy": "17844082992109595",
+        "Suji": "17844082992109595",
+        "Antar": "17845605576211591",
+        "AJ": "17845605576211591",
+        "Bishakha": "17846265992645472",
+        "20": "17846265992645472",
+        "Bish": "17846265992645472",
+        "Apurbo": "17848945131046879",
+        "Apurbo2": "17848945131046879",
+        "Riya2": "17842703340524797",
+        "Kitty": "17842703340524797",
+        "Khalid2": "17845325259431010",
+        "Shirsha": "17842103414112951"
+    };
 
-    function checkRedirect() {
-        const match = location.pathname.match(/^\/direct\/t\/([^/]+)/);
-        if (!match) return;
+    const parts = location.pathname.split("/");
+    const name = parts[3]; // /direct/t/NAME
 
-        const targetName = match[1];
-        const found = redirects.find(r => r.name === targetName);
-
-        if (found) {
-            const newUrl = `https://www.instagram.com/direct/t/${found.code}/`;
-            if (location.href !== newUrl) {
-                location.replace(newUrl);
-            }
-        }
+    if (name && redirects[name]) {
+        location.replace(
+            "https://www.instagram.com/direct/t/" + redirects[name] + "/"
+        );
     }
-
-    // Initial check
-    checkRedirect();
-
-    // Watch SPA navigation
-    let lastUrl = location.href;
-    setInterval(() => {
-        if (location.href !== lastUrl) {
-            lastUrl = location.href;
-            checkRedirect();
-        }
-    }, 500);
 })();
