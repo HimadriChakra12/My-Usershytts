@@ -1,0 +1,16 @@
+/* ==UserStyle==
+@name           All Sites — Source Code Pro
+@namespace      github.com/openstyles/stylus
+@description    Set Source Code Pro as the default font on every website
+@version        1.0
+@author         ChatGPT
+==/UserStyle== */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+    font-family: "JetBrains Mono" !important;
+}
+
