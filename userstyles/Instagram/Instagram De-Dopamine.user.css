@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Instagram De-Dopamine
 @namespace      https://github.com/HimadriChakra12/My-Userstyles/tree/main/userstyles
-@version        1.0.0
+@version        2.0.0
 @description    A new userstyle
 @author         Me
 ==/UserStyle== */
@@ -16,5 +16,11 @@
     }
     div[class="x1uvtmcs x4k7w5x x1h91t0o x1beo9mf xaigb6o x12ejxvf x3igimt xarpa2k xedcshv x1lytzrv x1t2pt76 x7ja8zs x1n2onr6 x1qrby5j x1jfb8zj"]{
         border: 0
+    }
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x6s0dn4 x1oa3qoh x1nhvcw1"]{
+        display: none
+    }
+    div[class="xmnaoh6"]{
+        width: 95%
     }
 }
