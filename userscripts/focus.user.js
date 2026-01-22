@@ -27,7 +27,6 @@
         'facebook.com',
         'twitter.com',
         'x.com',
-        'instagram.com',
         'reddit.com',
         'tiktok.com',
         'netflix.com',
@@ -118,7 +117,7 @@
         const currentUrl = window.location.href.toLowerCase();
 
         // ALWAYS allow YouTube search page
-        if (currentPath.includes('/results') || currentUrl.includes('search_query=')) {
+        if (currentPath.includes('/results') || currentUrl.includes('search_query=')) || currentUrl.includes('/watch')) {
             console.log('Focus Guardian: YouTube search allowed');
             return true;
         }
