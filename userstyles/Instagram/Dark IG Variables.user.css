@@ -412,6 +412,15 @@
         filter: invert(1) hue-rotate(180deg) !important;
     }
 
+    /*Mini Chat Bubble*/
+    .x13zqm9e, .x63ui4o, .x1yvgwvq, .xso031l, .xy80clv, .x1wzhzgj, .xh1n2d4, .xlauuyb {
+        border-color: #202520 !important;
+        background: #1d2021;
+    }
+    /*Mini Chatbox*/
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x16ye13r x5lhr3w x78zum5 x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x7r02ix x6nl9eh x1a5l9x9 x7vuprf x1mg3h75 x1y0lptx x1wp8tw6 x1ve1609 xtpu1e1 x6ikm8r x10wlt62 xixxii4 x1vjfegm"]{
+        background: #1d2021
+    }
 
     /* Removes Suggestions on main page */
     ._9-ta, .COOzN {
