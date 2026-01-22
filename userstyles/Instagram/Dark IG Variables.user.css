@@ -412,8 +412,8 @@
         filter: invert(1) hue-rotate(180deg) !important;
     }
 
-    /*Mini Chat Bubble*/
-    .x13zqm9e, .x63ui4o, .x1yvgwvq, .xso031l, .xy80clv, .x1wzhzgj, .xh1n2d4, .xlauuyb {
+    /*Mini Chatbox Bubble*/
+    .xso031l {
         border-color: #202520 !important;
         background: #1d2021;
     }
