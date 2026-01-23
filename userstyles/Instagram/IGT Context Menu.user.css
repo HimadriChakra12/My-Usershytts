@@ -39,15 +39,6 @@
 }
 }
 
-@-moz-document url-prefix("https://www.instagram.com/p/") {
-    /* Insert code here... */
-    div[class="x1i10hfl"]{
-        width: 150%;
-        position: relative;
-        right: 60%;
-    }
-}	
-
 @-moz-document domain("threads.net") {
     /* Insert code here... */
 	.x47corl {
