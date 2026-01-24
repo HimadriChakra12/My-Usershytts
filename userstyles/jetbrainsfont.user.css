@@ -1,9 +1,10 @@
 /* ==UserStyle==
 @name           All Sites — Source Code Pro
 @namespace      github.com/openstyles/stylus
-@description    Set Source Code Pro as the default font on every website
-@version        1.0
+@description    Set JetBrains Mono as the default font on every website
+@version        1.1
 @author         ChatGPT
+@exclude        https://calendar.google.com/*
 ==/UserStyle== */
 
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
@@ -14,3 +15,7 @@
     font-family: "JetBrains Mono" !important;
 }
 
+/*For Google Matrial Icons on the Google Apps*/
+i {
+    font-family:  "Google Material Icons" !important;
+}
