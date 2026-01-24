@@ -10,6 +10,7 @@
     {
         visibility: hidden !important;
     }
+    a[id="logo"],
     button[class="text showAlerts"],
     a[class="textButton view-about"]{
         display: none !important;
