@@ -4,14 +4,12 @@
 @namespace  ?
 ==/UserStyle== */
 
-@-moz-document url-prefix("https://monkeytype.com/") {
+@-moz-document url-prefix("https://monkeytype.com/"), url-prefix("http://localhost:8080/") {
     footer,
-    #testModesNotice,
     #bannerCenter
     {
         visibility: hidden !important;
     }
-    a[id="logo"],
     button[class="text showAlerts"],
     a[class="textButton view-about"]{
         display: none !important;
@@ -20,6 +18,7 @@
         opacity: 0;
         transition: .2s ease-in-out
     }
+    #testModesNotice,
     #testConfig{
         opacity: 20%;
         background: #0000;
@@ -34,5 +33,8 @@
     }
     div[id="liveStatsTextTop"]{
         opacity: 50%
+    }
+    div[class="fixed top-0 left-0 z-[1000] w-full"]{
+        display: none
     }
 }
