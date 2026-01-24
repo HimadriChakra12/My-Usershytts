@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Google Calendar Site Blocker with Timer
+// @name         Google Calendar Site Blocker with Timer + Emergency
 // @namespace    https://calendar-blocker.local
-// @version      1.1
+// @version      1.2
 // @match        *://*/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
@@ -16,6 +16,7 @@
   const BLOCK_KEYWORDS = ["Focus", "Study", "Work"];
   const BLOCKED_SITES = ["youtube.com", "reddit.com", "twitter.com", "instagram.com"];
   const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+  const EMERGENCY_DURATION = 30 * 1000; // 30 seconds
 
   function isBlockedSite() {
     return BLOCKED_SITES.some(site =>
@@ -62,6 +63,10 @@
     GM_setValue(getUnblockKey(), endTime.getTime());
   }
 
+  function unblockEmergency() {
+    GM_setValue(getUnblockKey(), Date.now() + EMERGENCY_DURATION);
+  }
+
   function blockPage(currentEvent) {
     const endTime = toDate(currentEvent.end);
 
@@ -79,7 +84,7 @@
           <h1>🚫 Focus Time</h1>
           <p>This site is blocked by your calendar.</p>
           <button id="unblockBtn" style="
-            margin-top:20px;
+            margin-top:10px;
             padding:10px 18px;
             font-size:16px;
             cursor:pointer;
@@ -87,6 +92,19 @@
             border-radius:6px;
           ">
             Unblock for this event
+          </button>
+          <button id="emergencyBtn" style="
+            margin-top:10px;
+            padding:10px 18px;
+            font-size:16px;
+            cursor:pointer;
+            border:none;
+            border-radius:6px;
+            margin-left:10px;
+            background:#f44336;
+            color:#fff;
+          ">
+            Emergency 30s
           </button>
         </div>
         <div id="timer" style="
@@ -119,6 +137,11 @@
       updateTimer();
     });
 
+    document.getElementById("emergencyBtn").addEventListener("click", () => {
+      unblockEmergency();
+      updateTimer();
+    });
+
     updateTimer();
     setInterval(updateTimer, 1000);
     window.stop();
@@ -130,7 +153,6 @@
     const events = parseEvents(ics);
     const now = new Date();
 
-    // Find the current event matching keywords
     const currentEvent = events.find(e => {
       const start = toDate(e.start);
       const end = toDate(e.end);
@@ -149,7 +171,6 @@
     blockPage(currentEvent);
   }
 
-  // Cache calendar to avoid too many requests
   const cached = GM_getValue("calendarCache");
   const cachedAt = GM_getValue("calendarCacheTime", 0);
 
