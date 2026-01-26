@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram Direct Instant Redirect
 // @namespace    https://example.com/ig-direct-instant
-// @version      2.1
+// @version      2.2
 // @description  Redirect /direct/t/name BEFORE Instagram loads (case-insensitive)
 // @match        https://www.instagram.com/direct/t/*
 // @run-at       document-start
