@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram Direct Instant Redirect
 // @namespace    https://example.com/ig-direct-instant
-// @version      2.2
+// @version      2.2.1
 // @description  Redirect /direct/t/name BEFORE Instagram loads (case-insensitive)
 // @match        https://www.instagram.com/direct/t/*
 // @run-at       document-start
@@ -37,7 +37,7 @@
         "kitty": "17842703340524797",
         "khalid2": "17845325259431010",
         "shirsha": "17842103414112951",
-        "rick": "17849831711501991"
+        "rick": "17849831711501991",
         "shrabonti": "17848657521425015"
     };
 
