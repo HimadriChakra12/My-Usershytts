@@ -3,7 +3,7 @@
 @name           Reduce Distractions [Instagram]
 @description    Strips away distracting elements on Instagram
 @namespace      https://userstyles.world/user/KryoBit
-@version        1.2.4
+@version        1.2.5
 @author         KryoBit
 @license        MIT
 
@@ -19,6 +19,7 @@
 @var checkbox messages          "└⟶ Hide Messages" 0
 @var checkbox notifs            "└⟶ Hide Notifications" 0
 @var checkbox create            "└⟶ Hide Create" 1
+@var checkbox dashboard         "└⟶ Hide Dashboard" 1
 @var checkbox fromMeta          "└⟶ Hide Also from Meta" 1
 
 ==/UserStyle== */
@@ -69,7 +70,7 @@
         }
 
         if messages {
-            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Messenger"]),
+        a[aria-label^="Direct messaging -"],
             .xlnp5zw.xmz0i5r.x5yr21d.x1iyjqo2.xnz67gz > .x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1n2onr6.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619,
             .xixxii4.x145d82y.x3h4tne.x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619 {
                 display: none !important;
@@ -87,6 +88,12 @@
                 display: none !important;
             }
         }
+        
+        if dashboard {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Professional dashboard"]) {
+                display: none;
+            }
+    }
 
         if fromMeta {
             div[class="xl5mz7h xhuyl8g"]:has(span.x1qrby5j.x7ja8zs.x1t2pt76.x1lytzrv.xedcshv.xarpa2k.x3igimt.x12ejxvf.xaigb6o.x1beo9mf.xv2umb2.x1jfb8zj.x1h9r5lt.x1h91t0o.x4k7w5x.x1vvkbs.x16tdsg8.x1hl2dhg.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-span:nth-of-type(2)) {
@@ -99,11 +106,12 @@
         .xvbhtw8.xf7dkkf.xv54qhq.x11njtxf.x1n2onr6.x18d9i69.xexx8yu.x1h3rv7z.x1lziwak.xat24cr.x14z9mp.xdj266r.xk390pu.x2lah0s.xdt5ytf.x78zum5.x9f619.x1qjc9v5 {
             display: none !important;
         }
-
+        
         .x1v4esvl.x1v4esvl,
         .x6osk4m.x6osk4m {
             max-width: 100% !important;
             width: 100% !important;
         }
     }
+
 }
