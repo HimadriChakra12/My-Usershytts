@@ -33,11 +33,20 @@
         background: #282828;
         border-radius: 15px !important;
     } 
-    div[class="title_c38106"]{
+    div[class="title_c38106"], .bar_c38106{
         background: var(--background);
-        padding: 15px;
+        display: none
     }
-    main[class="chatContent_f75fb0"]{
+    div[class="base__5e434"]{
+        background: var(--background);
+    }
+    div[class="defaultColor__4bd52 lineClamp1__4bd52 text-sm/medium_cf4812"]{ 
+       align-items: flex-start 
+    }
+    div[class="title_edbb22"], div[class="unreadMentionsIndicatorBottom_ef3116 unreadMentionsFixedFooter_ef3116"]{
+        display: none
+    }
+    main[class="chatContent_f75fb0"], div[class="sidebarList__5e434 sidebarListRounded__5e434"], section[class="panels__5e434"], div[aria-label="Resize Sidebar"]{
         background: var(--background);
     }
     ul>div[style="height: 84px;"]{
