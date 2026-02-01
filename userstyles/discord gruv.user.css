@@ -1,0 +1,60 @@
+/* ==UserStyle==
+@name           Discord Gruv
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("discord.com") {
+    /* Insert code here... */
+    :root{
+        --background: #282828;
+        --color: #fbf1c7
+    }
+    body, .container__2637a, section[class="panels__5e434"], div[class="stack_dbd263"], div[class="title_c38106"], div[class="itemsContainer_ef3116"], div[class="tabBody__133bf"], div[class="nowPlayingColumn__133bf"], section, ul, div[class="searchBar_e6b769"], section[aria-labelledby="uid_61"], div[data-list-id="members-1290306216098267203"], div[class="content_d125d2"]>div, div[class="chat_f75fb0 threadSidebarOpen_f75fb0"]>div[class="container_f369db"], div[class="page__5e434"], div[role="list"], div[class="resizeHandle__01ae2"]{
+        background: var(--background) !important;
+    }
+    a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, ul, var{
+        color: var(--color)
+        
+    }
+    .sidebar__5e434 div[class="content__5e434"]{
+        background: var(--background);
+        
+    }
+    div[class="sidebar__5e434 theme-dark theme-darker images-dark"]:after, div[class="sidebar__5e434 theme-dark theme-darker images-dark"]:before, div[class="sidebarList__5e434 sidebarListRounded__5e434"]{
+        background: var(--background);
+    }
+    div[class="page__5e434"]{
+        background: #282828;
+    }
+    div[class="chat_f75fb0"]{
+        background: #282828;
+        border-radius: 15px !important;
+    } 
+    div[class="title_c38106"]{
+        background: var(--background);
+        padding: 15px;
+    }
+    main[class="chatContent_f75fb0"]{
+        background: var(--background);
+    }
+    ul>div[style="height: 84px;"]{
+        display: none
+    }
+    div[id="channels"]{
+        background: var(--background);
+    }
+    
+    div[class="container_f37cb1 hasBanner_f37cb1 bannerVisible_f37cb1"]>div[class="animatedContainer_f37cb1"]{
+        display: none
+    }
+    header[class="header_f37cb1"]{
+        background: var(--background)
+    }
+    div[class="card_f369db"]{
+        background: #282828 !important;
+    }
+    
+}
