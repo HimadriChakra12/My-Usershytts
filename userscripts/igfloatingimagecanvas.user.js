@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Instagram DM Floating Image Canvas (Per Inbox)
+// @name         Instagram DM Floating Image Canvas (Final)
 // @namespace    https://example.com/ig-floating-canvas
-// @version      2.0
-// @description  Persistent floating images per Instagram DM inbox
+// @version      2.2
+// @description  Persistent floating images per Instagram DM inbox (SPA-safe, no file-open bug)
 // @match        https://www.instagram.com/*
 // @grant        none
 // ==/UserScript==
@@ -11,39 +11,37 @@
     'use strict';
 
     // ---------------- CONFIG ----------------
-    const INBOX_IDS = {
-        riya: "17843088840319857",
-        basement: "9804712362974725",
-        barshon: "17849539664607285",
-        shreya: "1421105996287938",
-        prionto: "17846226593822368",
-        ankan: "105870034142833",
-        khalid: "17849224223494131",
-        sujoy: "17844082992109595",
-        antar: "17845605576211591",
-        bishakha: "17846265992645472",
-        apurbo: "17848945131046879",
-        riya2: "17842703340524797",
-        khalid2: "17845325259431010",
-        shirsha: "17842103414112951",
-        rick: "17849831711501991",
-        shrabonti: "17848657521425015"
-    };
-
-    const VALID_THREAD_IDS = new Set(Object.values(INBOX_IDS));
+    const VALID_THREAD_IDS = new Set([
+        "17843088840319857",
+        "9804712362974725",
+        "17849539664607285",
+        "1421105996287938",
+        "17846226593822368",
+        "105870034142833",
+        "17849224223494131",
+        "17844082992109595",
+        "17845605576211591",
+        "17846265992645472",
+        "17848945131046879",
+        "17842703340524797",
+        "17845325259431010",
+        "17842103414112951",
+        "17849831711501991",
+        "17848657521425015"
+    ]);
 
     // ---------------- STATE ----------------
     let currentThreadId = null;
     let overlay = null;
 
     // ---------------- HELPERS ----------------
-    function getThreadIdFromURL() {
+    function getThreadId() {
         const match = location.pathname.match(/\/direct\/t\/(\d+)/);
         return match ? match[1] : null;
     }
 
     function storageKey() {
-        return `floating-image-overlay-state::${currentThreadId}`;
+        return `floating-canvas::instagram::${currentThreadId}`;
     }
 
     function loadState() {
@@ -75,9 +73,7 @@
 
     function restoreImages() {
         overlay.innerHTML = '';
-        loadState().forEach(img =>
-            createFloatingImage(img)
-        );
+        loadState().forEach(createFloatingImage);
     }
 
     // ---------------- IMAGE ----------------
@@ -101,6 +97,7 @@
 
         img.addEventListener('wheel', e => {
             e.preventDefault();
+            e.stopPropagation();
             img.width *= e.deltaY < 0 ? 1.1 : 0.9;
             updateImage(id, { width: img.width });
         });
@@ -132,6 +129,7 @@
             ox = e.clientX - el.getBoundingClientRect().left;
             oy = e.clientY - el.getBoundingClientRect().top;
             e.preventDefault();
+            e.stopPropagation();
         });
 
         document.addEventListener('mousemove', e => {
@@ -150,9 +148,17 @@
         });
     }
 
-    // ---------------- DROP ----------------
-    document.addEventListener('dragover', e => e.preventDefault());
+    // ---------------- DROP (HARD BLOCK) ----------------
+    function blockEvent(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+    }
+
+    document.addEventListener('dragover', blockEvent, true);
+
     document.addEventListener('drop', e => {
+        blockEvent(e);
         if (!currentThreadId) return;
 
         [...e.dataTransfer.files].forEach(file => {
@@ -175,11 +181,14 @@
             };
             reader.readAsDataURL(file);
         });
-    });
+    }, true);
 
-    // ---------------- URL / DOM WATCH ----------------
-    function checkInboxChange() {
-        const threadId = getThreadIdFromURL();
+    // Absolute safety net (prevents browser navigation)
+    window.addEventListener('drop', e => e.preventDefault(), true);
+
+    // ---------------- SPA WATCH ----------------
+    function checkThreadChange() {
+        const threadId = getThreadId();
 
         if (
             threadId &&
@@ -192,8 +201,19 @@
         }
     }
 
-    const observer = new MutationObserver(checkInboxChange);
+    ['pushState', 'replaceState'].forEach(fn => {
+        const original = history[fn];
+        history[fn] = function () {
+            original.apply(this, arguments);
+            checkThreadChange();
+        };
+    });
+
+    window.addEventListener('popstate', checkThreadChange);
+
+    const observer = new MutationObserver(checkThreadChange);
     observer.observe(document.body, { childList: true, subtree: true });
 
-    checkInboxChange();
+    // Init
+    checkThreadChange();
 })();
