@@ -1,87 +1,87 @@
 // ==UserScript==
-// @name         Floating Image Canvas Overlay (Persistent)
-// @namespace    https://example.com/floating-image-canvas
-// @version      1.1
-// @description  Drag & drop images onto any website and move them around like a canvas (with persistence)
-// @match        *://*/*
+// @name         Instagram DM Floating Image Canvas (Per Inbox)
+// @namespace    https://example.com/ig-floating-canvas
+// @version      2.0
+// @description  Persistent floating images per Instagram DM inbox
+// @match        https://www.instagram.com/*
 // @grant        none
 // ==/UserScript==
 
 (function () {
     'use strict';
 
-    const STORAGE_KEY = 'floating-image-overlay-state';
+    // ---------------- CONFIG ----------------
+    const INBOX_IDS = {
+        riya: "17843088840319857",
+        basement: "9804712362974725",
+        barshon: "17849539664607285",
+        shreya: "1421105996287938",
+        prionto: "17846226593822368",
+        ankan: "105870034142833",
+        khalid: "17849224223494131",
+        sujoy: "17844082992109595",
+        antar: "17845605576211591",
+        bishakha: "17846265992645472",
+        apurbo: "17848945131046879",
+        riya2: "17842703340524797",
+        khalid2: "17845325259431010",
+        shirsha: "17842103414112951",
+        rick: "17849831711501991",
+        shrabonti: "17848657521425015"
+    };
 
-    // ---------- Overlay ----------
-    const overlay = document.createElement('div');
-    overlay.id = 'floating-image-overlay';
-    Object.assign(overlay.style, {
-        position: 'fixed',
-        inset: '0',
-        zIndex: '999999',
-        pointerEvents: 'none'
-    });
-    document.body.appendChild(overlay);
+    const VALID_THREAD_IDS = new Set(Object.values(INBOX_IDS));
 
-    // ---------- Persistence ----------
+    // ---------------- STATE ----------------
+    let currentThreadId = null;
+    let overlay = null;
+
+    // ---------------- HELPERS ----------------
+    function getThreadIdFromURL() {
+        const match = location.pathname.match(/\/direct\/t\/(\d+)/);
+        return match ? match[1] : null;
+    }
+
+    function storageKey() {
+        return `floating-image-overlay-state::${currentThreadId}`;
+    }
+
     function loadState() {
         try {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            return JSON.parse(localStorage.getItem(storageKey())) || [];
         } catch {
             return [];
         }
     }
 
     function saveState(state) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        localStorage.setItem(storageKey(), JSON.stringify(state));
     }
 
-    function updateImageState(id, data) {
-        const state = loadState();
-        const img = state.find(i => i.id === id);
-        if (!img) return;
-        Object.assign(img, data);
-        saveState(state);
-    }
+    // ---------------- OVERLAY ----------------
+    function createOverlay() {
+        if (overlay) overlay.remove();
 
-    function removeImageState(id) {
-        const state = loadState().filter(i => i.id !== id);
-        saveState(state);
-    }
-
-    // ---------- Restore on load ----------
-    loadState().forEach(img =>
-        createFloatingImage(img.src, img.x, img.y, img.width, img.id)
-    );
-
-    // ---------- Drag & drop ----------
-    document.addEventListener('dragover', e => e.preventDefault());
-    document.addEventListener('drop', handleDrop);
-
-    function handleDrop(e) {
-        e.preventDefault();
-
-        [...e.dataTransfer.files].forEach(file => {
-            if (!file.type.startsWith('image/')) return;
-
-            const reader = new FileReader();
-            reader.onload = () => {
-                const id = crypto.randomUUID();
-                const x = e.clientX;
-                const y = e.clientY;
-
-                const state = loadState();
-                state.push({ id, src: reader.result, x, y, width: 300 });
-                saveState(state);
-
-                createFloatingImage(reader.result, x, y, 300, id);
-            };
-            reader.readAsDataURL(file);
+        overlay = document.createElement('div');
+        Object.assign(overlay.style, {
+            position: 'fixed',
+            inset: '0',
+            zIndex: '999999',
+            pointerEvents: 'none'
         });
+
+        document.body.appendChild(overlay);
     }
 
-    // ---------- Image ----------
-    function createFloatingImage(src, x, y, width = 300, id) {
+    function restoreImages() {
+        overlay.innerHTML = '';
+        loadState().forEach(img =>
+            createFloatingImage(img)
+        );
+    }
+
+    // ---------------- IMAGE ----------------
+    function createFloatingImage({ id, src, x, y, width }) {
         const img = document.createElement('img');
         img.src = src;
         img.dataset.id = id;
@@ -99,51 +99,101 @@
         overlay.appendChild(img);
         makeDraggable(img);
 
-        // Resize with wheel
         img.addEventListener('wheel', e => {
             e.preventDefault();
-            const scale = e.deltaY < 0 ? 1.1 : 0.9;
-            img.width *= scale;
-
-            updateImageState(id, { width: img.width });
+            img.width *= e.deltaY < 0 ? 1.1 : 0.9;
+            updateImage(id, { width: img.width });
         });
 
-        // Remove
         img.addEventListener('dblclick', () => {
-            removeImageState(id);
+            removeImage(id);
             img.remove();
         });
     }
 
-    // ---------- Dragging ----------
+    function updateImage(id, data) {
+        const state = loadState();
+        const img = state.find(i => i.id === id);
+        if (!img) return;
+        Object.assign(img, data);
+        saveState(state);
+    }
+
+    function removeImage(id) {
+        saveState(loadState().filter(i => i.id !== id));
+    }
+
+    // ---------------- DRAGGING ----------------
     function makeDraggable(el) {
-        let offsetX = 0;
-        let offsetY = 0;
-        let dragging = false;
+        let dragging = false, ox = 0, oy = 0;
 
         el.addEventListener('mousedown', e => {
             dragging = true;
-            el.style.cursor = 'grabbing';
-            offsetX = e.clientX - el.getBoundingClientRect().left;
-            offsetY = e.clientY - el.getBoundingClientRect().top;
+            ox = e.clientX - el.getBoundingClientRect().left;
+            oy = e.clientY - el.getBoundingClientRect().top;
             e.preventDefault();
         });
 
         document.addEventListener('mousemove', e => {
             if (!dragging) return;
-            el.style.left = e.clientX - offsetX + 'px';
-            el.style.top = e.clientY - offsetY + 'px';
+            el.style.left = e.clientX - ox + 'px';
+            el.style.top = e.clientY - oy + 'px';
         });
 
         document.addEventListener('mouseup', () => {
             if (!dragging) return;
             dragging = false;
-            el.style.cursor = 'grab';
-
-            updateImageState(el.dataset.id, {
+            updateImage(el.dataset.id, {
                 x: parseFloat(el.style.left),
                 y: parseFloat(el.style.top)
             });
         });
     }
+
+    // ---------------- DROP ----------------
+    document.addEventListener('dragover', e => e.preventDefault());
+    document.addEventListener('drop', e => {
+        if (!currentThreadId) return;
+
+        [...e.dataTransfer.files].forEach(file => {
+            if (!file.type.startsWith('image/')) return;
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                const img = {
+                    id: crypto.randomUUID(),
+                    src: reader.result,
+                    x: e.clientX,
+                    y: e.clientY,
+                    width: 300
+                };
+
+                const state = loadState();
+                state.push(img);
+                saveState(state);
+                createFloatingImage(img);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    // ---------------- URL / DOM WATCH ----------------
+    function checkInboxChange() {
+        const threadId = getThreadIdFromURL();
+
+        if (
+            threadId &&
+            threadId !== currentThreadId &&
+            VALID_THREAD_IDS.has(threadId)
+        ) {
+            currentThreadId = threadId;
+            createOverlay();
+            restoreImages();
+        }
+    }
+
+    const observer = new MutationObserver(checkInboxChange);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    checkInboxChange();
 })();
