@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Floating Image Canvas Overlay
+// @name         Floating Image Canvas Overlay (Persistent)
 // @namespace    https://example.com/floating-image-canvas
-// @version      1.0
-// @description  Drag & drop images onto any website and move them around like a canvas
+// @version      1.1
+// @description  Drag & drop images onto any website and move them around like a canvas (with persistence)
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
@@ -10,7 +10,9 @@
 (function () {
     'use strict';
 
-    // Create overlay
+    const STORAGE_KEY = 'floating-image-overlay-state';
+
+    // ---------- Overlay ----------
     const overlay = document.createElement('div');
     overlay.id = 'floating-image-overlay';
     Object.assign(overlay.style, {
@@ -21,54 +23,99 @@
     });
     document.body.appendChild(overlay);
 
-    // Enable drag-drop on document
+    // ---------- Persistence ----------
+    function loadState() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch {
+            return [];
+        }
+    }
+
+    function saveState(state) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function updateImageState(id, data) {
+        const state = loadState();
+        const img = state.find(i => i.id === id);
+        if (!img) return;
+        Object.assign(img, data);
+        saveState(state);
+    }
+
+    function removeImageState(id) {
+        const state = loadState().filter(i => i.id !== id);
+        saveState(state);
+    }
+
+    // ---------- Restore on load ----------
+    loadState().forEach(img =>
+        createFloatingImage(img.src, img.x, img.y, img.width, img.id)
+    );
+
+    // ---------- Drag & drop ----------
     document.addEventListener('dragover', e => e.preventDefault());
     document.addEventListener('drop', handleDrop);
 
     function handleDrop(e) {
         e.preventDefault();
 
-        const files = [...e.dataTransfer.files];
-        files.forEach(file => {
+        [...e.dataTransfer.files].forEach(file => {
             if (!file.type.startsWith('image/')) return;
 
             const reader = new FileReader();
             reader.onload = () => {
-                createFloatingImage(reader.result, e.clientX, e.clientY);
+                const id = crypto.randomUUID();
+                const x = e.clientX;
+                const y = e.clientY;
+
+                const state = loadState();
+                state.push({ id, src: reader.result, x, y, width: 300 });
+                saveState(state);
+
+                createFloatingImage(reader.result, x, y, 300, id);
             };
             reader.readAsDataURL(file);
         });
     }
 
-    function createFloatingImage(src, x, y) {
+    // ---------- Image ----------
+    function createFloatingImage(src, x, y, width = 300, id) {
         const img = document.createElement('img');
         img.src = src;
+        img.dataset.id = id;
+        img.width = width;
 
         Object.assign(img.style, {
             position: 'fixed',
             left: x + 'px',
             top: y + 'px',
-            maxWidth: '300px',
             cursor: 'grab',
             pointerEvents: 'auto',
             userSelect: 'none'
         });
 
         overlay.appendChild(img);
-
         makeDraggable(img);
 
-        // Resize with mouse wheel
+        // Resize with wheel
         img.addEventListener('wheel', e => {
             e.preventDefault();
             const scale = e.deltaY < 0 ? 1.1 : 0.9;
-            img.width = img.width * scale;
+            img.width *= scale;
+
+            updateImageState(id, { width: img.width });
         });
 
-        // Remove on double click
-        img.addEventListener('dblclick', () => img.remove());
+        // Remove
+        img.addEventListener('dblclick', () => {
+            removeImageState(id);
+            img.remove();
+        });
     }
 
+    // ---------- Dragging ----------
     function makeDraggable(el) {
         let offsetX = 0;
         let offsetY = 0;
@@ -89,9 +136,14 @@
         });
 
         document.addEventListener('mouseup', () => {
+            if (!dragging) return;
             dragging = false;
             el.style.cursor = 'grab';
+
+            updateImageState(el.dataset.id, {
+                x: parseFloat(el.style.left),
+                y: parseFloat(el.style.top)
+            });
         });
     }
 })();
-  
