@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Image Sidebar Asset Manager
 // @namespace    image-sidebar-assets
-// @version      1.4.2
+// @version      1.2
 // @description  Drag & drop image sidebar with persistent storage (IndexedDB)
 // @match        *://*/*
 // @grant        none
@@ -45,93 +45,88 @@
         tx.objectStore(STORE_NAME).delete(id);
     }
 
-    /* ------------------ Helpers ------------------ */
-    async function saveImageToDisk(dataUrl, filename) {
-        const a = document.createElement("a");
-        a.href = dataUrl;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-    }
-
-    async function fetchImageAsDataURL(url) {
-        const res = await fetch(url, { mode: "cors" });
-        const blob = await res.blob();
-        return new Promise(resolve => {
-            const r = new FileReader();
-            r.onload = () => resolve(r.result);
-            r.readAsDataURL(blob);
-        });
-    }
-
-    function showNotification(msg) {
-        const n = document.createElement("div");
-        n.textContent = msg;
-        n.style.cssText = `
-            position:fixed;top:20px;right:240px;
-            background:#2196f3;color:#fff;
-            padding:10px 16px;border-radius:6px;
-            z-index:1000000;
-        `;
-        document.body.appendChild(n);
-        setTimeout(() => n.remove(), 2500);
+    /* ------------------ Helper: Convert URL to Blob ------------------ */
+    async function urlToBlob(url) {
+        try {
+            const response = await fetch(url);
+            return await response.blob();
+        } catch (e) {
+            console.error("Failed to fetch image:", e);
+            return null;
+        }
     }
 
     /* ------------------ UI ------------------ */
     const sidebar = document.createElement("div");
     sidebar.id = "img-sidebar";
-    sidebar.classList.add("hidden"); // 👈 auto-hide on start
-    sidebar.innerHTML = `
-        <h3>📁 Images</h3>
-        <div style="font-size:10px;color:#888;text-align:center;margin-bottom:8px;">
-            💾 Click to save • 🖱️ Drag from web
-        </div>
-        <div id="img-list"></div>
-    `;
+    sidebar.innerHTML = `<h3>📁 Images</h3><div id="img-list"></div>`;
     document.body.appendChild(sidebar);
-
-    const toggleBtn = document.createElement("div");
-    toggleBtn.id = "img-sidebar-toggle";
-    toggleBtn.textContent = "🖼️";
-    document.body.appendChild(toggleBtn);
 
     const style = document.createElement("style");
     style.textContent = `
         #img-sidebar {
-            position:fixed;right:0;top:0;width:220px;height:100vh;
-            background:#111;color:#fff;z-index:999999;
-            padding:8px;font-family:sans-serif;
-            overflow-y:auto;transition:transform .3s;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 220px;
+            height: 100vh;
+            background: #111;
+            color: #fff;
+            z-index: 999999;
+            font-family: sans-serif;
+            padding: 8px;
+            overflow-y: auto;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.3);
         }
-        #img-sidebar.hidden { transform:translateX(100%); }
-        .img-item { margin-bottom:6px; cursor:pointer; position:relative; }
-        .img-item img { width:100%; border-radius:4px; }
+        #img-sidebar h3 {
+            margin: 0 0 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .img-item {
+            margin-bottom: 6px;
+            cursor: grab;
+            position: relative;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: border-color 0.2s;
+        }
+        .img-item:hover {
+            border-color: #4caf50;
+        }
+        .img-item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .img-item img {
+            width: 100%;
+            border-radius: 4px;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+        }
         .img-item button {
-            position:absolute;top:4px;right:4px;
-            background:red;color:white;border:none;
-            font-size:10px;padding:2px 6px;
-            cursor:pointer;opacity:0;
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            z-index: 10;
         }
-        .img-item:hover button { opacity:1; }
-        #img-sidebar-toggle {
-            position:fixed;right:-25px;top:20px;
-            width:42px;height:42px;border-radius:10px;
-            background:#0000002e;color:#fff;
-            display:flex;align-items:center;justify-content:center;
-            cursor:pointer;z-index:1000000;
+        .img-item button:hover {
+            background: #c00;
+        }
+        #img-sidebar.dragover {
+            outline: 3px dashed #4caf50;
+            background: #1a1a1a;
         }
     `;
     document.head.appendChild(style);
-
-    let sidebarVisible = false;
-    let autoOpenedByDrag = false; // 👈 track why it opened
-
-    toggleBtn.onclick = () => {
-        sidebarVisible = !sidebarVisible;
-        autoOpenedByDrag = false;
-        sidebar.classList.toggle("hidden", !sidebarVisible);
-    };
 
     const list = sidebar.querySelector("#img-list");
 
@@ -143,85 +138,166 @@
         images.forEach(img => {
             const wrap = document.createElement("div");
             wrap.className = "img-item";
+            wrap.draggable = true;
 
-            const im = document.createElement("img");
-            im.src = img.data;
+            const image = document.createElement("img");
+            image.src = img.data;
+            image.alt = "Draggable image";
 
-            wrap.onclick = e => {
-                if (e.target.tagName === "BUTTON") return;
-                saveImageToDisk(img.data, `image-${img.id}.png`);
-                showNotification("💾 Image saved");
-            };
+            // DRAG FROM SIDEBAR TO WEBSITE
+            wrap.addEventListener("dragstart", async (e) => {
+                wrap.classList.add("dragging");
+
+                e.dataTransfer.effectAllowed = "copy";
+
+                // Convert data URL to blob for file upload compatibility
+                let blob;
+                if (img.data.startsWith('data:')) {
+                    // Convert data URL to blob
+                    const response = await fetch(img.data);
+                    blob = await response.blob();
+                } else {
+                    // Try to fetch external URL
+                    blob = await urlToBlob(img.data);
+                }
+
+                if (blob) {
+                    // Create a File object (required for most file inputs)
+                    const file = new File([blob], `image-${img.id}.${blob.type.split('/')[1] || 'png'}`, {
+                        type: blob.type
+                    });
+
+                    // Set file data (for file inputs and upload areas)
+                    e.dataTransfer.items.add(file);
+                }
+
+                // Also set URL formats (for regular drag/drop)
+                e.dataTransfer.setData("text/uri-list", img.data);
+                e.dataTransfer.setData("text/html", `<img src="${img.data}" alt="Image">`);
+                e.dataTransfer.setData("text/plain", img.data);
+
+                // Create drag preview
+                const dragImage = image.cloneNode();
+                dragImage.style.width = "100px";
+                dragImage.style.height = "100px";
+                dragImage.style.objectFit = "cover";
+                dragImage.style.position = "absolute";
+                dragImage.style.top = "-9999px";
+                document.body.appendChild(dragImage);
+                e.dataTransfer.setDragImage(dragImage, 50, 50);
+                setTimeout(() => dragImage.remove(), 0);
+            });
+
+            wrap.addEventListener("dragend", () => {
+                wrap.classList.remove("dragging");
+            });
 
             const del = document.createElement("button");
             del.textContent = "✕";
-            del.onclick = async e => {
+            del.onclick = async (e) => {
                 e.stopPropagation();
                 await deleteImage(img.id);
                 render();
             };
 
-            wrap.append(im, del);
+            wrap.append(image, del);
             list.appendChild(wrap);
         });
     }
 
-    /* ------------------ AUTO OPEN ON EDGE DRAG ------------------ */
-    document.addEventListener("dragover", e => {
-        if (window.innerWidth - e.clientX < 40 && !sidebarVisible) {
-            sidebarVisible = true;
-            autoOpenedByDrag = true;
-            sidebar.classList.remove("hidden");
+    /* ------------------ DRAG FROM WEBSITE TO SIDEBAR ------------------ */
+
+    // Intercept all image drag starts on the page
+    document.addEventListener("dragstart", (e) => {
+        // Check if dragging an image element
+        if (e.target.tagName === "IMG") {
+            const imgSrc = e.target.src || e.target.currentSrc;
+            if (imgSrc) {
+                // Store the image source for later
+                e.dataTransfer.setData("text/uri-list", imgSrc);
+                e.dataTransfer.setData("text/html", e.target.outerHTML);
+                e.dataTransfer.effectAllowed = "copy";
+            }
+        }
+    }, true);
+
+    sidebar.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.dataTransfer.dropEffect = "copy";
+        sidebar.classList.add("dragover");
+    });
+
+    sidebar.addEventListener("dragleave", (e) => {
+        if (e.target === sidebar || !sidebar.contains(e.relatedTarget)) {
+            sidebar.classList.remove("dragover");
         }
     });
 
-    /* ------------------ DRAG FROM WEB → SIDEBAR ------------------ */
-    sidebar.addEventListener("dragover", e => {
+    sidebar.addEventListener("drop", async (e) => {
         e.preventDefault();
-        e.dataTransfer.dropEffect = "copy";
-    });
+        e.stopPropagation();
+        sidebar.classList.remove("dragover");
 
-    sidebar.addEventListener("drop", async e => {
-        e.preventDefault();
-
-        let didSave = false;
-
-        // FILES
-        if (e.dataTransfer.files.length) {
+        // Priority 1: Handle file drops (from file manager)
+        if (e.dataTransfer.files.length > 0) {
             for (const file of e.dataTransfer.files) {
                 if (!file.type.startsWith("image/")) continue;
-                const r = new FileReader();
-                r.onload = async () => {
-                    await saveImage({ id: crypto.randomUUID(), data: r.result });
+
+                const reader = new FileReader();
+                reader.onload = async () => {
+                    await saveImage({
+                        id: crypto.randomUUID(),
+                        data: reader.result
+                    });
                     render();
                 };
-                r.readAsDataURL(file);
-                didSave = true;
+                reader.readAsDataURL(file);
             }
-        } else {
-            // IMAGE FROM WEB
-            const url =
-                e.dataTransfer.getData("text/uri-list") ||
-                e.dataTransfer.getData("text/plain") ||
-                e.dataTransfer.getData("text/html")?.match(/src=["']([^"']+)/)?.[1];
-
-            if (url) {
-                try {
-                    const dataUrl = await fetchImageAsDataURL(url);
-                    await saveImage({ id: crypto.randomUUID(), data: dataUrl });
-                    render();
-                    didSave = true;
-                } catch {}
-            }
+            return;
         }
 
-        // 👈 auto-hide again ONLY if it auto-opened
-        if (didSave && autoOpenedByDrag) {
-            setTimeout(() => {
-                sidebarVisible = false;
-                autoOpenedByDrag = false;
-                sidebar.classList.add("hidden");
-            }, 800); // 👈 CHANGE THIS NUMBER (milliseconds)
+        // Priority 2: Handle image URL drops (from websites)
+        const imageUrl = e.dataTransfer.getData("text/uri-list") ||
+                        e.dataTransfer.getData("text/html")?.match(/src=["']([^"']+)["']/)?.[1] ||
+                        e.dataTransfer.getData("text/plain");
+
+        if (imageUrl) {
+            try {
+                // Check if it's already a data URL
+                if (imageUrl.startsWith('data:image/')) {
+                    await saveImage({
+                        id: crypto.randomUUID(),
+                        data: imageUrl
+                    });
+                    render();
+                    return;
+                }
+
+                // Try to fetch and convert to data URL for storage
+                const response = await fetch(imageUrl);
+                const blob = await response.blob();
+
+                if (blob.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = async () => {
+                        await saveImage({
+                            id: crypto.randomUUID(),
+                            data: reader.result
+                        });
+                        render();
+                    };
+                    reader.readAsDataURL(blob);
+                }
+            } catch (error) {
+                // If fetch fails (CORS, etc), store the URL directly
+                console.warn("Could not fetch image, storing URL:", error);
+                await saveImage({
+                    id: crypto.randomUUID(),
+                    data: imageUrl
+                });
+                render();
+            }
         }
     });
 
