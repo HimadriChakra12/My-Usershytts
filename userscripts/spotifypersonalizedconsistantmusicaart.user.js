@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Spotify Custom Cover Art
 // @namespace    https://yoursite.com/
-// @version      1.0.0
+// @version      1.0.0.1
 // @description  Replace Spotify cover art with a custom image for all songs
 // @match        https://open.spotify.com/*
 // @grant        none
@@ -10,7 +10,7 @@
 (() => {
   'use strict';
 
-  const MY_IMAGE = 'https://github.com/HimadriChakra12/.dotfiles/blob/master/i3/Wallpaper/Riya%20hands.png?raw=true'; // 👈 change this
+  const MY_IMAGE = 'https://github.com/HimadriChakra12/.dotfiles/blob/master/i3/Wallpaper/Himadri/Riya%20hands.png?raw=true'; // 👈 change this
 
   function replaceCoverArt() {
     document
