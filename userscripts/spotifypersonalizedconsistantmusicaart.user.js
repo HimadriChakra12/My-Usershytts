@@ -10,7 +10,8 @@
 (() => {
   'use strict';
 
-  const MY_IMAGE = 'https://github.com/HimadriChakra12/.dotfiles/blob/master/i3/Wallpaper/Himadri/Riya%20Hands.jpg?raw=true'; // 👈 change this
+//  const MY_IMAGE = 'https://github.com/HimadriChakra12/.dotfiles/blob/master/i3/Wallpaper/Himadri/Riya%20Hands.jpg?raw=true'; // 👈 change this
+  const MY_IMAGE = 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000d72c28d83d5e6b524f35f151993f';
 
   function replaceCoverArt() {
     document
