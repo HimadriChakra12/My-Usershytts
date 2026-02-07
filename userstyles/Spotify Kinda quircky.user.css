@@ -7,6 +7,11 @@
 @version        2.0.2
 ==/UserStyle== */
 @-moz-document domain("open.spotify.com") {
+    
+    .encore-dark-theme, .encore-dark-theme .encore-base-set {
+        --essential-bright-accent: #ffd1dc;
+    }
+    
     [data-testid="upgrade-button"] {
         opacity: 0
     }
