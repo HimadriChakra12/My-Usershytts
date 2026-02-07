@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Him-bread tweak
 @namespace      github.com/openstyles/stylus
-@version        1.0.0
+@version        2.0.0
 @description    A new userstyle
 @author         Me
 ==/UserStyle== */
@@ -13,13 +13,14 @@
 
 
     /* hide recs */
-    #secondary {
-        /*display: non !important;*/
+    #secondary:has(ytd-playlist-panel-renderer:not([hidden])) #related {
+        display: none !important;
     }
-       #related {
-           display: none;
-           margin-left: 50px !important;
-       }
+
+    #secondary:not(:has(ytd-playlist-panel-renderer:not([hidden]))) {
+        display: none !important;
+    }
+
     /* make video fill the remaining space */
     #primary {
         width: 100% !important;
