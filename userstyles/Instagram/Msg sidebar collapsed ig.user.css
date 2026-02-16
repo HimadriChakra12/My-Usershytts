@@ -1,19 +1,18 @@
 /* ==UserStyle==
 @name           Instagram Collapsed Sidebar
 @namespace      github.com/openstyles/stylus
-@version        2.0.0
+@version        2.0.1
 @description    A new userstyle
 @author         Me
 ==/UserStyle== */
 
 @-moz-document domain("www.instagram.com") {
     /* Insert code here... */
-    div[aria-label="Thread list"]{
+    div[class="xvbhtw8 x6usi7g x18b5jzi x1lun4ml x9f619 x78zum5 xdt5ytf x1t2pt76 x1n2onr6 x13vifvy x1p0ryx0 x1p5gv8h xoa9owu xcoz2nd xgfcpv x1es02x0 x13tiff3 x196w2dt"]{
         width: 92px;
         transition: 1s ease-in-out
     }
-    div[aria-label="Thread list"]:hover{
+    div[class="xvbhtw8 x6usi7g x18b5jzi x1lun4ml x9f619 x78zum5 xdt5ytf x1t2pt76 x1n2onr6 x13vifvy x1p0ryx0 x1p5gv8h xoa9owu xcoz2nd xgfcpv x1es02x0 x13tiff3 x196w2dt"]:hover{
         width: 400px;
-        transition: 1s ease-in-out
     }
 }
