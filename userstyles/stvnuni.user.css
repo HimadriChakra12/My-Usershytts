@@ -1,0 +1,14 @@
+/* ==UserStyle==
+@name           stevenuniverse.best
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("stevenuniverse.best") {
+    /* Insert code here... */
+    div[class="fjjnjgwuj"]{
+        display: none
+    }
+}
