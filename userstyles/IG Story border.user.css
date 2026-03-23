@@ -1,0 +1,31 @@
+/* ==UserStyle==
+@name           Instagram Story Border
+@namespace      github.com/openstyles/stylus
+@version        2.0.1
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("www.instagram.com") {
+    div[class="x6s0dn4 xamitd3 x1lliihq xl56j7k x1n2onr6 x1ypdohk"] > .xnz67gz {
+        border: 2px solid;
+        padding: 2px; 
+        border-radius: 50%;
+
+        border-image: 
+        conic-gradient(
+            #feda75,
+            #fa7e1e,
+            #d62976,
+            #962fbf,
+            #4f5bd5,
+            #feda75
+        ) 1;
+    }
+    canvas[class="x1upo8f9 xpdipgo x87ps6o"]{
+        opacity: 0
+    }
+    .xnz67gz{
+        background-color: #0000
+    }
+}
