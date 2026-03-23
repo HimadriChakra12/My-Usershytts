@@ -1,0 +1,11 @@
+/* ==UserStyle==
+@name           Universal Border-radius
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+*, body, html, section, span, button, div {
+    border-radius: 0px !important
+}
