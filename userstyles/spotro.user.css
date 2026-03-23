@@ -1,0 +1,101 @@
+/* ==UserStyle==
+@name           open.spotify.com
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("open.spotify.com") {
+
+:root {
+    --bg: #282828;
+    --panel: #efe4c9;
+    --border: 2px solid #ffff;
+    --gap: 12px;
+}
+
+/* GLOBAL BACKGROUND */
+body {
+    background: var(--bg) !important;
+}
+
+    * {
+        color: #ffff !important
+    }
+/* MAIN LAYOUT WRAPPER */
+.Root__top-container {
+    padding: var(--gap) !important;
+    gap: var(--gap) !important;
+    background: var(--bg) !important;
+}
+
+/* NAV BAR */
+#global-nav-bar {
+    border: var(--border) !important;
+    border-radius: 0px !important;
+    margin-bottom: var(--gap) !important;
+    background: var(--bg) !important;
+}
+
+/* LEFT SIDEBAR */
+nav[aria-label="Your Library"] {
+    border: var(--border) !important;
+    border-radius: 0px !important;
+    padding: 10px !important;
+    background: var(--bg) !important;
+}
+
+/* MAIN CONTENT */
+#main-view,
+div[class*="B0fBZOXNHNc2YVYO"] {
+    border: var(--border) !important;
+    border-radius: 0px !important;
+    padding: 16px !important;
+    background: var(--panel) !important;
+}
+
+/* RIGHT SIDEBAR (Now Playing) */
+aside,
+div[class*="LtqMCWXd5Nkemkym"] {
+    border: var(--border) !important;
+    border-radius: 0px !important;
+    padding: 10px !important;
+    background: var(--bg) !important;
+}
+
+/* PLAYER BAR */
+div[class*="YdGOYWQYr6kqh7KU"] {
+    border-top: var(--border) !important;
+    margin-top: var(--gap) !important;
+    padding: 8px 16px !important;
+    background: var(--bg) !important;
+}
+
+/* CARDS */
+div[class*="Card"],
+div[class*="card"] {
+    border: 1px solid #000 !important;
+    border-radius: 0px !important;
+    background: #f5ecd6 !important;
+}
+
+/* REMOVE GRADIENTS */
+[style*="background"] {
+    background-image: none !important;
+}
+
+/* TEXT */
+* {
+    color: #000 !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #000;
+}
+
+}
