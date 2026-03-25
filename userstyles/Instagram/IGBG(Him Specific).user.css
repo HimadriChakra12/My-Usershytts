@@ -1,10 +1,10 @@
 /* ==UserStyle==
 @name           Custom Inbox For Instagram (Him Specific)
-@namespace      userstyles.world/user/siam395
-@author         Salman Farsi
+@namespace      userstyles.world/user/him
+@author         Himadri Chakraborty
 @description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
 @version        1.0
-@license        Salman Farsi
+@license        Himadri Chakraborty
 
 @advanced text bg-custom "Wallpaper (Custom)" "https://example.com/image.png"
 @advanced color col-custom "Texts" "#ffffff"
@@ -23,6 +23,9 @@
         background-size: cover !important;
     }
 
+    .x1yvgwvq, .xso031l{
+        border: 0
+    }
     .x12scifz {
         color: /*[[col-custom]]*/;
     }
@@ -84,7 +87,25 @@
     }
 }
 
+@-moz-document url("https://www.instagram.com/direct/t/17846265992645472/") {
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
+    .xcrg951,
+    .x1eb86dx,
+    .x1eb86dx {
+        background: linear-gradient(135deg, #5c0b27, #9c266a, #b11d30, #3a0a45) !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+    }
+}
+
 @-moz-document url("https://www.instagram.com/direct/t/17843088840319857/") {
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
     .xcrg951,
     .x1eb86dx,
     .x1eb86dx {
@@ -107,24 +128,14 @@
         display: none
     }
 }
-
-@-moz-document url("https://www.instagram.com/direct/t/17846265992645472/") {
+@-moz-document url("https://www.instagram.com/direct/t/17849539664607285/") {
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
     .xcrg951,
     .x1eb86dx,
     .x1eb86dx {
-        background: linear-gradient(135deg, #5c0b27, #9c266a, #b11d30, #3a0a45) !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
-    }
-}
-
-@-moz-document url("https://www.instagram.com/direct/t/9804712362974725/") {
-    .xcrg951,
-    .x1eb86dx,
-    .x1eb86dx {
-        background: #397e9f !important;
+        background: #88A34B !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
@@ -135,6 +146,9 @@
 
 
 @-moz-document url("https://www.instagram.com/direct/t/1421105996287938/") {
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
     .xcrg951,
     .x1eb86dx,
     .x1eb86dx {
