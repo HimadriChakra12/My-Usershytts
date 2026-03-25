@@ -28,6 +28,9 @@
         max-width: none !important;
     }
 
+    #playlist.ytd-watch-flexy{
+        max-height: 95vh;
+    }
     /* hide yt sidebar */
     /*ytd-mini-guide-renderer, 
     ytd-guide-renderer {
