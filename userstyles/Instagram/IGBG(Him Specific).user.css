@@ -1,10 +1,10 @@
 /* ==UserStyle==
 @name           Custom Inbox For Instagram (Him Specific)
-@namespace      userstyles.world/user/him
-@author         Himadri Chakraborty
+@namespace      userstyles.world/user/siam395
+@author         Salman Farsi
 @description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
 @version        1.0
-@license        Himadri Chakraborty
+@license        Salman Farsi
 
 @advanced text bg-custom "Wallpaper (Custom)" "https://example.com/image.png"
 @advanced color col-custom "Texts" "#ffffff"
@@ -127,8 +127,20 @@
     div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
         display: none
     }
+    
+    /* text bg */
+    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
+        background: #d51d57;
+    }
+    
+    /* text */
+    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+        color: #fff;
+    }
 }
 @-moz-document url("https://www.instagram.com/direct/t/17849539664607285/") {
+    
+    /* Barshon */ 
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
     div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
     div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
@@ -140,6 +152,16 @@
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
         background-size: cover !important;
+    }
+    
+    /* text bg */
+    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
+        background: #fff;
+    }
+    
+    /* text */
+    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+        color: #000;
     }
 }
 
