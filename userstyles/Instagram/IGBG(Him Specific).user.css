@@ -1,4 +1,4 @@
-/* ==UserStyle==
+/* ==userstyle==
 @name           Custom Inbox For Instagram (Him Specific)
 @namespace      github.com/HimadriChakra12/My-usershytts
 @author         Himadri Chakraborty
@@ -18,6 +18,14 @@
     }
 }
 @-moz-document url-prefix("https://www.instagram.com/direct/t") {
+    
+    .universal{display: none}
+    
+    /* textbar - back */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    /* textbar */
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
     .xcrg951,
     .xg8j3zb,
     .x1eb86dx,
@@ -29,6 +37,13 @@
         background-size: cover !important;
     }
 
+    span[title="Riya ๑ᵕ̈ ᵕ̈๑"]{
+        display: none
+    }
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{
+        content: "The shiniest start who just poped into my life and made it a better place";
+        margin-bottom: 20px !important;
+    }
     .x1yvgwvq, .xso031l{
         border: 0
     }
