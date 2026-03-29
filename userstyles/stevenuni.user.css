@@ -1,0 +1,18 @@
+/* ==UserStyle==
+@name           stevenuniverse.best fullvid
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("stevenuniverse.best") {
+    /* Insert code here... */
+            .container1 {
+            padding: 20px;
+            width: 100%;
+            max-width: 85vw;
+            margin: 0 auto;
+            text-align: center;
+        }
+}
