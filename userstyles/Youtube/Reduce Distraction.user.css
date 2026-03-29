@@ -1,0 +1,182 @@
+/* ==UserStyle==
+@name           Reduce Distractions [YouTube]
+@description    Strips away distracting elements on YouTube — sidebar, Shorts, recommendations, and more
+@namespace      https://userstyles.world/
+@version        1.1.0
+@author         KryoBit (fixed & extended)
+@license        MIT
+
+@preprocessor stylus
+
+@var checkbox hideShorts            "⦿ Hide Shorts"                        1
+@var checkbox hideShortsTab         "└⟶ Hide Shorts Tab (sidebar)"         1
+@var checkbox hideShortsHomeFeed    "└⟶ Hide Shorts in Home Feed"          1
+@var checkbox hideShortsSearchFeed  "└⟶ Hide Shorts in Search Results"     1
+
+@var checkbox hideSearchBar         "⦿ Auto-hide Search Bar"               0
+
+@var checkbox hideSidebar           "⦿ Collapse Left Sidebar"              1
+@var checkbox hideExplore           "└⟶ Hide Explore"                      1
+@var checkbox hideShortsLink        "└⟶ Hide Shorts Link"                  1
+@var checkbox hideSubscriptions     "└⟶ Hide Subscriptions List"           0
+
+@var checkbox hideEndCards          "⦿ Hide End Cards & Info Cards"        1
+@var checkbox hideMerch             "⦿ Hide Merch / Paid Promos"           1
+@var checkbox hideChatReplay        "⦿ Hide Live Chat / Chat Replay"       0
+@var checkbox hideComments          "⦿ Hide Comments Section"              0
+
+==/UserStyle== */
+
+@-moz-document domain("www.youtube.com") {
+
+    /* ─────────────────────────────────────────────
+       SHORTS
+    ───────────────────────────────────────────── */
+
+    if hideShorts {
+        if hideShortsTab {
+            ytd-guide-entry-renderer a[title="Shorts"],
+            ytd-mini-guide-entry-renderer a[title="Shorts"] {
+                display: none !important;
+            }
+        }
+
+        if hideShortsHomeFeed {
+            ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+            ytd-reel-shelf-renderer {
+                display: none !important;
+            }
+        }
+
+        if hideShortsSearchFeed {
+            ytd-video-renderer[is-short],
+            ytd-video-renderer:has(a[href*="/shorts/"]),
+            ytd-reel-shelf-renderer {
+                display: none !important;
+            }
+        }
+
+        ytd-shorts {
+            display: none !important;
+        }
+    }
+
+    /* ─────────────────────────────────────────────
+       SEARCH BAR — auto-hide
+    ───────────────────────────────────────────── */
+
+    if hideSearchBar {
+        #masthead-container {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity 0.2s ease !important;
+        }
+
+        #masthead-container:focus-within,
+        #masthead-container:hover {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        ytd-page-manager {
+            margin-top: 8px !important;
+        }
+    }
+
+    /* ─────────────────────────────────────────────
+       LEFT SIDEBAR
+    ───────────────────────────────────────────── */
+
+    if hideSidebar {
+        if hideExplore {
+            ytd-guide-section-renderer:has(
+                ytd-guide-entry-renderer a[title="Trending"],
+                ytd-guide-entry-renderer a[title="Music"],
+                ytd-guide-entry-renderer a[title="Films"],
+                ytd-guide-entry-renderer a[title="Gaming"],
+                ytd-guide-entry-renderer a[title="News"],
+                ytd-guide-entry-renderer a[title="Sports"],
+                ytd-guide-entry-renderer a[title="Learning"],
+                ytd-guide-entry-renderer a[title="Fashion & Beauty"],
+                ytd-guide-entry-renderer a[title="Podcasts"]
+            ) {
+                display: none !important;
+            }
+        }
+
+        if hideShortsLink {
+            ytd-guide-entry-renderer a[title="Shorts"],
+            ytd-mini-guide-entry-renderer a[title="Shorts"] {
+                display: none !important;
+            }
+        }
+
+        if hideSubscriptions {
+            ytd-guide-section-renderer:has(ytd-guide-subscriptions-section-renderer) {
+                display: none !important;
+            }
+        }
+    }
+
+    /* ─────────────────────────────────────────────
+       END CARDS & INFO CARDS
+    ───────────────────────────────────────────── */
+
+    if hideEndCards {
+        .ytp-ce-element,
+        .ytp-cards-teaser,
+        .ytp-cards-button,
+        .ytp-cards-header,
+        .ytp-endscreen-element,
+        .html5-endscreen {
+            display: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+    }
+
+    /* ─────────────────────────────────────────────
+       MERCH & PAID PROMOS
+    ───────────────────────────────────────────── */
+
+    if hideMerch {
+        ytd-merch-shelf-renderer,
+        ytd-product-item-renderer,
+        ytd-buy-now-button,
+        #offer-module,
+        ytd-ticketing-shelf-renderer,
+        ytd-paid-content-overlay-renderer {
+            display: none !important;
+        }
+    }
+
+    /* ─────────────────────────────────────────────
+       LIVE CHAT / CHAT REPLAY
+    ───────────────────────────────────────────── */
+
+    if hideChatReplay {
+        ytd-live-chat-frame,
+        #chat {
+            display: none !important;
+        }
+    }
+
+    /* ─────────────────────────────────────────────
+       COMMENTS
+    ───────────────────────────────────────────── */
+
+    if hideComments {
+        ytd-comments#comments {
+            display: none !important;
+        }
+    }
+
+    /* ─────────────────────────────────────────────
+       GLOBAL
+    ───────────────────────────────────────────── */
+
+    #playlist.ytd-watch-flexy {
+        max-height: 95vh;
+    }
+
+}
