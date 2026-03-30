@@ -1,0 +1,46 @@
+/* ==UserStyle==
+@name           Collapsing sidebar - Stylus Editor
+@namespace      github.com/openstyles/stylus
+@homepageURL    https://userstyles.world/style/11534/collapsing-sidebar-stylus-editor
+@version        2024.11.07.1940
+@description    Hover the left edge of the screen to open the sidebar. Compatible with "Complete themes - Stylus editor" ( install here: https://userstyles.world/style/9548 ).
+@author         Joe's Mamma  ——  https://userstyles.world/user/JoesMamma  ——  feedback.joesmamma@gmail.com
+==/UserStyle== */
+@-moz-document regexp("^((moz|chrome)-)?extension:\\/\\/[a-z0-9-]+\\/edit\\.html(\\?id=[0-9]+)?$") {
+/* Insert code here...
+*/
+html:not(.compact-layout) #sections,
+html:not(.compact-layout) #sections * {
+	--header-width: 0px !important;
+}
+
+html:not(.compact-layout) #header {
+	position: fixed;
+	transition: margin .6s cubic-bezier(.3, 1.3, .5, 1);
+}
+
+html:not(.compact-layout) #header::before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 8px;
+	height: inherit;
+	background-color: inherit;
+	z-index: -1;
+}
+
+html:not(.compact-layout) #header:not(:hover):not(:active):not(:focus-within) {
+	box-shadow: none;
+	margin-left: calc(var(--header-width) * -1 + 8px);
+	transition: margin .7s cubic-bezier(.4, 1.4, .5, 1), box-shadow 2s linear;
+}
+
+html:not(.compact-layout) #header:not(:hover):not(:active):not(:focus-within)::before {
+	background-color: transparent;
+}
+
+/*
+End
+*/
+}
