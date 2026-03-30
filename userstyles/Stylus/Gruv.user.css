@@ -1,0 +1,193 @@
+/* ==UserStyle==
+@name Stylus Gruvbox Dark Hard
+@namespace github.com/gruvbox/userstyles/styles/stylus
+@version 2025.10.16
+@description Gruvbox Dark Hard theme for Stylus
+@author Modified
+@license MIT
+==/UserStyle== */
+
+@-moz-document url-prefix("moz-extension://"),
+    url-prefix("chrome-extension://") {
+        :root {
+            --bg: #282828;          /* background hard */
+            --bg-alt: #32302f;
+            --fg: #ebdbb2;          /* main text */
+            --fg-muted: #d5c4a1;
+            --c30: #a89984;
+            --c40: #928374;
+            --c45: #7c6f64;
+            --c50: #665c54;
+            --c60: #504945;
+            --c65: #3c3836;
+            --c75: #282828;
+            --c80: #1d2021;
+            --c85: #1b1b1b;
+            --c90: #1d2021;
+            --c95: #1a1a1a;
+            --c97: #1a1a1a;
+            --c98: #1d2021;
+            --c99: #1d2021;
+            --c100: #1d2021;
+
+            /* Gruvbox palette */
+            --red1: #ea6962;
+            --green: #a9b665;
+            --yellow: #d8a657;
+            --blue: #7daea3;
+            --purple: #d3869b;
+            --aqua: #89b482;
+            --orange: #a9b665
+                ;
+            --gray: #7c6f64;
+
+            --accent-1: var(--orange);
+            --accent-2: var(--orange);
+            --accent-3: rgba(254, 128, 25, 0.25);
+
+            .slider {
+                --color-on: rgba(254, 128, 25, 0.25);
+                --color-off: #3c3836;
+            }
+
+            :focus {
+                --focus-color1: var(--accent-1) !important;
+                --focus-color2: rgba(254, 128, 25, 0.25) !important;
+            }
+
+            .active #filters-stats,
+            .dirty #save-button,
+            .dirty #save-button + button {
+                background-color: var(--accent-1);
+                border-color: var(--accent-1);
+                color: var(--bg);
+            }
+
+            #header-resizer {
+                color: var(--c40);
+            }
+
+            #message-box-title {
+                color: var(--fg);
+                background: var(--bg-soft);
+            }
+
+            /* Syntax highlighting (Gruvbox) */
+            .CodeMirror-activeline-background {
+                background: #32302f;
+            }
+            .CodeMirror-linenumber {
+                color: var(--gray);
+            }
+            div.CodeMirror span.CodeMirror-matchingbracket {
+                color: var(--green);
+            }
+            .cm-s-default {
+                .cm-string { color: var(--green); }
+                .cm-qualifier { color: var(--yellow); }
+                .cm-variable-2 { color: var(--purple); }
+                .cm-keyword { color: var(--purple); }
+                .cm-atom { color: var(--red1); }
+                .cm-number { color: var(--orange); }
+                .cm-def { color: var(--purple); }
+                .cm-tag { color: var(--blue); }
+                .cm-builtin { color: var(--red1); }
+                .cm-variable-3 { color: var(--aqua); }
+                .cm-comment { color: var(--gray); }
+                .cm-operator { color: var(--yellow); }
+                .cm-variable { color: var(--blue); }
+                .cm-property { color: var(--blue); }
+            }
+
+            button:disabled,
+            select:disabled,
+            option:disabled,
+            select[disabled] > option {
+                color: var(--gray);
+            }
+
+            .applies-to input,
+            .applies-to select {
+                background: var(--bg);
+                border-color: var(--bg-alt);
+                color: var(--gray);
+            }
+
+            button {
+                color: var(--fg) !important;
+                background: var(--bg-alt) !important;
+                border-color: var(--c50);
+                &:hover {
+                    border-color: var(--fg);
+                }
+            }
+
+            #save-button[disabled] {
+                background: var(--bg-alt) !important;
+            }
+
+            .svg-icon {
+                fill: var(--gray);
+                &:hover {
+                    fill: var(--fg-muted);
+                }
+            }
+
+            .onoffswitch input:checked + span {
+                background-color: rgba(254, 128, 25, 0.25);
+                &::before {
+                    background-color: var(--accent-1);
+                }
+            }
+
+            h2 {
+                color: var(--accent-1) !important;
+            }
+
+            .installed .configure-usercss i {
+                color: var(--accent-1);
+            }
+
+            .entry.odd {
+                background-color: rgba(60, 56, 54, 0.25);
+            }
+
+            #live-reload-install-hint {
+                color: var(--aqua);
+            }
+
+            #menu.delete header {
+                background: rgba(251, 73, 52, 0.25);
+            }
+
+            [data-cmd="delete"] {
+                border-color: var(--red1);
+            }
+
+            input:invalid {
+                background: rgba(251, 73, 52, 0.1);
+                color: var(--red1);
+            }
+            #header-resizer{
+                width: 0px
+            }
+            #basic-info-enabled{
+                display: flex;
+                flex-direction: column;
+                column-gap: 2px;
+                margin-top: 10px;
+            }
+            h1[id="heading"]{
+                padding-bottom: 10px
+            }
+            section.aligned input[type="number"],
+            section.aligned select[id="editor.keyMap"],
+            section.aligned select[id="editor.theme"],
+            section.aligned select[id="editor.matchHighlight"],
+            section.aligned select[id="editor.linter"],
+            section.aligned > * > :not(.icon){
+                background: #0000;
+                border: 0
+            }
+        }
+}
