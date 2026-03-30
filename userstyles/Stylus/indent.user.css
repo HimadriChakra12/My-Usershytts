@@ -1,0 +1,34 @@
+/* ==UserStyle==
+@name         Indent Guides For Stylus Editor
+@namespace    https://github.com/pabli24
+@version      1.1.0
+@description  Indent Guides for CodeMirror5 in Stylus Editor
+@author       Pabli
+@license      MIT
+@preprocessor stylus
+
+@var color    _color   "Color" rgba(255, 255, 255, .2)
+@var number   _width   "Width (px)" [1, 0, null, "px"]
+@var checkbox _isArrow "Arrow" 0
+@var text     _arrow   "" "'→'"
+
+==/UserStyle== */
+
+@-moz-document regexp("(chrome|moz)-extension:\/\/.*(install-usercss|edit)\.html.*") {
+	rgbaC(a) {
+		s("rgba(%s, %s, %s, %s)", red(a), green(a), blue(a), alpha(a))
+	}
+	.cm-tab {
+		if _width != 0 {
+			background: url("data:image/svg+xml,%3Csvg width='1' height='1' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='"+ rgbaC(_color) +"' /%3E%3C/svg%3E") left repeat-y
+			background-size: _width
+		}
+		if _isArrow {
+			&::before {
+				content: _arrow
+				color: _color
+				position: absolute
+			}
+		}
+	}
+}
