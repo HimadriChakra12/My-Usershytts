@@ -135,3 +135,15 @@
         display: none;
     }
 }
+@-moz-document url-prefix("https://open.spotify.com/playlist/5FafrkFZFxnYtDs1H7e7yz") {
+    
+    div[class="LUXUp8VNfbIoaJCl"]{
+        background-image: url(https://github.com/HimadriChakra12/.dotfiles/blob/master/i3/Wallpaper/Lock/Untitled.jpg?raw=true);
+        background-attachment: local;
+        background-size: cover;
+        background-blend-mode: color;
+        background-color: rgba(130, 13, 61, .64);
+        background-position-x: center;
+        backdrop-filter: blur(1000px);
+    }
+}
