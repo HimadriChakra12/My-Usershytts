@@ -12,6 +12,9 @@
 @var checkbox posts             "⦿ Reels / Posts" 1
 @var checkbox comments          "└⟶ Hide comments" 0
 @var checkbox suggestPosts      "└⟶ Hide suggested posts from user" 1
+
+@var checkbox suggestFollow      "⦿ Remove Follow Suggestions" 1
+
 @var checkbox sidebar           "⦿ Sidebar" 1
 @var checkbox search            "└⟶ Hide Search" 0
 @var checkbox explore           "└⟶ Hide Explore" 1
@@ -25,6 +28,11 @@
 ==/UserStyle== */
 @-moz-document domain("www.instagram.com") {
 
+    if suggestfollow{
+        div[class="x1dr59a3 x13vifvy x7vhb2i x6bx242"] {
+            display: none;
+        }
+    }
 
     if posts {
         if comments {
