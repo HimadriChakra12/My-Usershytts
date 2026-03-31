@@ -1,32 +1,63 @@
-/* ==UserStyle==
-@name           Custom Inbox For Instagram
-@namespace      userstyles.world/user/siam395
-@author         Salman Farsi
+/* ==userstyle==
+@name           Custom Inbox For Instagram (Him Specific)
+@namespace      github.com/HimadriChakra12/My-usershytts
+@author         Himadri Chakraborty
 @description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
-@version        1.0
-@license        Salman Farsi
+@version        2.0
+@license        Himadri Chakraborty
 
 @advanced text bg-custom "Wallpaper (Custom)" "https://example.com/image.png"
 @advanced color col-custom "Texts" "#ffffff"
 @advanced color col-2-custom "Border" "#202520"
 
 ==/UserStyle== */
+@-moz-document url-prefix("https://www.instagram.com/") {
+    div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
+        border: 0 !important;
+        border-color: #000 !important;
+    }
+}
 @-moz-document url-prefix("https://www.instagram.com/direct/t") {
+    
+    .universal{display: none}
+    
+    /* textbar - back */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    /* textbar */
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
     .xcrg951,
     .xg8j3zb,
     .x1eb86dx,
     .x1eb86dx {
-        background: #1d2021 !important;
+        background: #0000 !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
         background-size: cover !important;
     }
 
+    span[title="Riya ๑ᵕ̈ ᵕ̈๑"]{
+        display: none
+    }
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{
+        content: "The shiniest start who just poped into my life and made it a better place";
+        margin-bottom: 20px !important;
+    }
+    .x1yvgwvq, .xso031l{
+        border: 0
+    }
     .x12scifz {
         color: /*[[col-custom]]*/;
     }
 
+    /* reply bar */
+    div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
+        background: #0000 !important;
+    }
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xyamay9 xv54qhq x1l90r2v xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x1bs97v6 x1q0q8m5 xso031l xh8yej3"], div[class="x1qjc9v5 x1yvgwvq xjd31um x1ixjvfu xwt6s21 x1ua1ujl xksyday xshg46c xlej2ay x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x178xt8z x1lun4ml xso031l xpilrb4 x78zum5 xdt5ytf xw7yly9 x1ys307a x1yztbdb xyqm7xq"]{
+        border: 0
+    }
     a.x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xa49m3k.xqeqjp1.x2hbi6w.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xdl72j9.x2lah0s.xe8uvvx.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1lliihq.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xg6hnt2.x18wri0h.x1l895ks.xbbxn1n.xxbr6pl.x1y1aw1k.xwib8y2:hover {
         background-color: #ffffff20;
     }
@@ -78,5 +109,182 @@
     ::-webkit-scrollbar-thumb:active,
     ::-webkit-scrollbar-thumb:hover:active {
         display: none !important;
+    }
+}
+
+@-moz-document url("https://www.instagram.com/direct/t/17846265992645472/") {
+    
+    .bishakha{display: flex}
+    
+    /* textbar - back */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    /* textbar */
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
+    .xcrg951,
+    .x1eb86dx,
+    .x1eb86dx {
+        background: linear-gradient(135deg, #5c0b27, #9c266a, #b11d30, #3a0a45) !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+        border: 0;
+    }
+    
+    /* text bg */
+    div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
+    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
+        background: pink;
+    }
+    /* Instagram: Turn Send icon pink */
+    svg[aria-label="Send"] path {
+        fill: black !important;
+    }
+    /* text */
+    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+        color: #000;
+    }
+   
+}
+
+@-moz-document url("https://www.instagram.com/direct/t/17843088840319857/") {
+    
+    .riya{display: flex}
+    
+    /* textbar - back */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    /* textbar */
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
+    .xcrg951,
+    .x1eb86dx,
+    .x1eb86dx {
+        background: #a6516e !important;
+        /*background: linear-gradient(135deg, #4e192b, #c54890, #c34152, #3a0a45) !important;
+        background: linear-gradient(135deg, #4e192b, #87235d, #b21e31, #3a0a45) !important;*/
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+    }
+    span[title="Riya ๑ᵕ̈ ᵕ̈๑"]{
+        display: none
+    }
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{
+        content: "The shiniest start who just poped into my life and made it a better place";
+        margin-bottom: 20px !important;
+    }
+    div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
+        display: none
+    }
+    
+    
+    /* text bg */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x9f619 x16it46q xh8yej3 x5slmwz xpmdkuv xrmkrer x12z03op x9wyiwl x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x12lizq0 x1nrdd72 x1ybe9c6 xx487zo xaymx6s x1t39747 x16uus16 xbiv7yw"],
+    div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
+    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
+        background: #d51d57;
+    }
+    /* Instagram: Turn Send icon pink */
+    svg[aria-label="Send"] path {
+        fill: #f8cad2 !important;
+    }   
+    /* text */
+    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"], a[class="x1i10hfl xjbqb8w x1ejq31n x18oe1m7 x1sy0etr xstzfhl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xt0psk2 x3ct3a4 xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x16tdsg8 xggy1nq x1a2a7pz xkrqix3 x1sur9pj x1s688f x7l2uk3 x1bvjpef x17kgsl5"]{
+        color: #f8cad2;
+    }
+}
+@-moz-document url("https://www.instagram.com/direct/t/17849539664607285/") {
+    
+    .barshon{display: flex}
+    
+    /* textbar - back */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    /* textbar */
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
+    .xcrg951,
+    .x1eb86dx,
+    .x1eb86dx {
+        background: #88A34B !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+    }
+    
+    /* reply bar */
+    div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
+        background: #0000 !important;
+    }
+    /* text bg */
+    div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
+    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
+        background: #fff;
+    }
+    /* Instagram: Turn Send icon pink */
+    svg[aria-label="Send"] path {
+        fill: black !important;
+    }
+    /* text */
+    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+        color: #000;
+    }
+}
+
+
+@-moz-document url("https://www.instagram.com/direct/t/17843648601085441/") {
+    
+    .hiya{display: flex}
+    
+    /* textbar - back */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    /* textbar */
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
+    .xcrg951,
+    .x1eb86dx,
+    .x1eb86dx {
+        background: linear-gradient(135deg, #4e192b, #000) !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+    }
+    
+    /* reply bar */
+    div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
+        background: #0000 !important;
+    }
+    /* text bg */
+    div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
+    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
+        background: #fff;
+    }
+    /* Instagram: Turn Send icon pink */
+    svg[aria-label="Send"] path {
+        fill: black !important;
+    }
+    /* text */
+    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+        color: #000;
+    }
+}
+@-moz-document url("https://www.instagram.com/direct/t/1421105996287938/") {
+    
+    .shreya{display: flex}
+    
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
+    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
+    .xcrg951,
+    .x1eb86dx,
+    .x1eb86dx {
+        background: #006571 !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
     }
 }
