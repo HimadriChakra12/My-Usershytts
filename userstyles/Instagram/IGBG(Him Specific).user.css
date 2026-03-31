@@ -105,6 +105,16 @@
     ::-webkit-scrollbar-thumb:hover:active {
         display: none !important;
     }
+    
+    /* chatlist margin for note align */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k xeuugli xwib8y2 x13jy36j x64bnmy x1y1aw1k"]{
+        margin-inline: 8px
+    }
+    
+    /* chat pane border radius */    
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1iyjqo2 x2lwn1j xeuugli x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 xcrg951 x6prxxf x6ikm8r x10wlt62 x1n2onr6 xh8yej3"]{
+        border-radius: 10px
+    }
 }
 
 @-moz-document url("https://www.instagram.com/direct/t/17846265992645472/") {
@@ -209,6 +219,19 @@
         background-size: cover !important;
     }
     
+    /* nickname */
+    span[title="Barshon"]{
+        display: none
+    }
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Barshon"]):after{
+        content: "Barshon";
+        margin-bottom: 20px !important;
+    }
+    
+    /* username */
+    div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
+        display: block;
+    }
     /* reply bar */
     div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
         background: #0000 !important;
@@ -218,7 +241,8 @@
     .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
         background: #fff;
     }
-    /* Instagram: Turn Send icon pink */
+    
+    /* Instagram: Turn Send icon black */
     svg[aria-label="Send"] path {
         fill: black !important;
     }
