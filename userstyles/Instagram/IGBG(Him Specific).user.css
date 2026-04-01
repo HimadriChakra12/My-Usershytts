@@ -14,6 +14,13 @@
 @var checkbox shreya "Shreya" 1
 ==/UserStyle== */
 
+
+/* Nicknames */
+:root {
+    --riya: "Roshogolla"
+    --prionto: "Vecna Darling"
+}
+
 @-moz-document url-prefix("https://www.instagram.com/") {
     div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
         border: 0 !important;
@@ -47,14 +54,21 @@
         background-attachment: fixed !important;
         background-size: cover !important;
     }
-
-    span[title="Riya ๑ᵕ̈ ᵕ̈๑"]{
-        display: none
-    }
-    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{
-        content: "The shiniest start who just poped into my life and made it a better place";
+    /* nickname placement fixing*/
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title]):after{
         margin-bottom: 20px !important;
     }
+    
+    /* Default nickname Remover */
+    span[title="Riya ๑ᵕ̈ ᵕ̈๑"],
+    span[title="প্রিয়ন্ত 🕷️"]{
+        display: none
+    }
+    
+    /* Nicknaming */
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{content: var(--riya);}
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="প্রিয়ন্ত 🕷️"]):after{content: var(--prionto);}
+    
     .x1yvgwvq, .xso031l{
         border: 0
     }
@@ -192,15 +206,10 @@
         background-attachment: fixed !important;
         background-size: cover !important;
     }
-    span[title="Riya ๑ᵕ̈ ᵕ̈๑"]{
-        display: none
-    }
-    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{
-        content: "The shiniest start who just poped into my life and made it a better place";
-        margin-bottom: 20px !important;
-    }
+    
+    /* username */
     div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
-        display: none
+        display: block
     }
     
     
@@ -238,15 +247,6 @@
             background-repeat: no-repeat !important;
             background-attachment: fixed !important;
             background-size: cover !important;
-        }
-        
-        /* nickname */
-        span[title="Barshon"]{
-            display: none
-        }
-        span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Barshon"]):after{
-            content: "Barshon";
-            margin-bottom: 20px !important;
         }
         
         /* username */
