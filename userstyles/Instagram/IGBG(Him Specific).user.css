@@ -1,10 +1,9 @@
 /* ==UserStyle==
-@name           Custom Inbox For Instagram (Him Specific)
-@namespace      github.com/HimadriChakra12/My-usershytts
-@author         Himadri Chakraborty
-@description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
-@version        2.0
-@license        Himadri Chakraborty
+@name           www.instagram.com
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
 
 @preprocessor stylus
 
@@ -19,6 +18,14 @@
     div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
         border: 0 !important;
         border-color: #000 !important;
+    }
+    /* search and catgory */
+    @media (min-width: 900px) {
+      .xgfcpv.xgfcpv {
+          min-height: 100%;
+          display: flex !important;
+          flex-direction: column-reverse !important;
+      }
     }
 }
 @-moz-document url-prefix("https://www.instagram.com/direct/t") {
@@ -124,6 +131,7 @@
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1iyjqo2 x2lwn1j xeuugli x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 xcrg951 x6prxxf x6ikm8r x10wlt62 x1n2onr6 xh8yej3"]{
         border-radius: 10px
     }
+    
 }
 
 @-moz-document url("https://www.instagram.com/direct/t/17846265992645472/") {
