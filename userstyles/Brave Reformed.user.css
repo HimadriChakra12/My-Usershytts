@@ -1,0 +1,1194 @@
+/* ==UserStyle==
+@name         Brave: Styled
+@version      20260221.19.10
+@namespace    https://userstyles.world/user/misspent
+@description  A Brave Search Engine Theme
+@author       misspent
+@license      MIT
+==/UserStyle== */
+
+@-moz-document domain("search.brave.com") {
+/* |=========> 🔧 Variables <=========| */
+
+*, ::after, ::before, button {
+	border-radius: 0px !important;
+	text-shadow: none !important;
+	box-shadow: none !important;
+}
+
+
+/* My personal ones */
+:root {
+	/* Removals */
+	--Sidebar-Bloat-Remover: none;
+	--Reddit-Top-Answer: none;
+	--People-also-ask: initial;
+	--People-also-ask-Half-Screen: none;
+	/* Ai */
+	--New-AI-Snippet: grid;                   /* grid */
+	--Answer-with-AI-Dropdown: flex;          /* flex */
+	/* Colors */
+	--Other-Backgrounds: #191919;
+	--hovering-links: #ffb86c;
+	/* Mine / Other */
+	--All-Results-SNIPPETS-Video-News-etc: none;              /* Removes videos, news & other "Clusters" from main search */
+	--Ask-a-follow-up-question-chat: initial;                 /* none / initial */
+  
+	/* Animations */
+	--tap-animation-duration-short: 0 !important;
+  --tap-animation-duration-long: .1s !important;
+}
+
+/* Padding, Width, Spcaing, Etc */
+div, :root {
+  --main-column-width: 100%;              /* Changed - Whole page */
+  --sidebar-width: 370px;
+  --main-gap: 16px;                       /* Changed - Main gaps OCD approves */
+  --header-height: 58px;
+  --max-content-width: calc(var(--main-column-width) + var(--sidebar-width) + var(--main-gap));
+  --search-form-width: 712px;
+  --search-form-height: 48px;
+  --search-form-logo-gap: var(--spacing-4xl);
+  --normal-snippet-width: 672px;
+  --snippet-padding-top: 1.2rem;
+  --snippet-padding-side: 22px;
+  --snippet-padding-bottom: 1.7rem;
+  --main-content-padding: 166px;
+  --base-padding: 16px;
+  --spacing-xs: .1rem;
+  --spacing-s: .1rem;
+  --spacing-m: 8px;
+  --spacing-m-2: .5rem;
+  --spacing-l: 8px;
+  --spacing-xl: 8px;
+  --spacing-2xl: 8px;
+  --spacing-3xl: 1.6rem;
+  --spacing-4xl: 8px;
+  --spacing-6xl: 2.4rem;
+  --border-radius-2xs: 0px;
+  --border-radius-xs: 0px;
+  --border-radius-s: 0px;
+  --border-radius-m: 0px;
+  --border-radius-l: 0px;
+  --border-radius-xl: 0px;
+  --border-radius-full: 0px;
+  --icon-2xs: 14px;
+  --icon-xs: 16px;
+  --icon-s: 18px;
+  --icon-m: 20px;
+  --icon-l: 24px;
+  --icon-xl: 32px;
+  --elevation-01: none;
+  --elevation-02: none;
+  --elevation-03: none;
+  --elevation-04: none;
+  --elevation-05: none;
+  --focus-visible: none;
+  --blur: blur(0px);
+  --blur-modal: blur(0px);
+  --blur-regular: blur(0px);
+  --text-2xs: .4rem;
+  --text-xs-2: .5rem;
+  --text-xs: .55rem;
+  --text-sm-2: .6rem;
+  --text-sm: .65rem;
+  --text-md-2: .7rem;
+  --text-md: .75rem;
+  --text-h4: .8rem;
+  --text-l: .9rem;
+  --text-xl-2: .95rem;
+	--snippet-max-height: 100% !important;  /* Snippet AI Chat height (without having to click more/expand button) */
+}
+/* Left-side only */
+main.main-column {
+	--color-link-default: #fff;
+	--color-search-links-link: #fff;
+	--icon-s: 20px;
+}
+
+
+/* Colours */
+:root:not(.light), :root:not(.light) ::after, :root.dark, :root.dark ::after, .btn {
+  --color-primitive-black: #000000;
+  --color-primitive-gray-01: #f3f5f7;
+  --color-primitive-gray-10: #ebeef0;
+  --color-primitive-gray-60: #546771;
+  --color-primitive-primary-40: #7c91ff;
+  --color-primitive-primary-60: #3f39e8;
+  --color-primitive-primary-70: #3b08c2;
+  --color-primitive-white: #ffffff;
+  --color-blue-20: #0b355d;
+  --color-gray-10: #21272a;
+  --color-gray-20: #262626;                                  /* Highlight/:hover - Hover over pagination button */
+  --color-gray-30: #546771;
+  --color-gray-40: #62757e;
+  --color-gray-50: #a1b2ba;
+  --color-gray-60: #becad0;
+  --color-gray-70: #ebeef0;
+  --color-green-10: #092c09;
+  --color-green-20: #123f13;
+  --color-green-30: #19721e;
+  --color-green-40: #3c823c;
+  --color-pink-40: #c24580;
+  --color-primary-10: #1c0d64;
+  --color-primary-20: #2a118e;
+  --color-primary-30: #3f39e8;
+  --color-primary-40: #545ff8;
+  --color-primary-50: #00A8FC;                                           /* Changed - buttons? */
+  --color-primary-60: #b7c6ff;
+  --color-primary-70: #e9eeff;
+  --color-purple-40: #7064d3;
+  --color-red-20: #620f18;
+  --color-red-40: #e11f3d;
+  --color-secondary-40: #cd4400;
+  --color-teal-40: #077f8d;
+  --gradient-panel-background: linear-gradient( 96.98deg, #3b08c2 0%, #3f39e8 100% );
+  --gradient-hero: linear-gradient(174deg, #ff4000 2.32%, #ff1f01 93.33%);
+  --gradient-llm: transparent;                                           /* Changed - New AI Gradient */
+  --color-button-background: #3f39e8;
+  --color-button-disabled: #687b854d;
+  --color-container-background: var(--color-serp-snippet-background) !important;    /* Changed - Search settings containers */
+  --color-container-disabled: #c3c9d32e;
+  --color-container-highlight: #101010 !important;                       /* Changed - Search settings */
+  --color-container-interactive: #1c0d64;
+  --color-dialogs-scrim-background: #21272ab2;
+  --color-divider-interactive: #00A8FC66;                                /* Changed - Button separators? */
+  --color-divider-strong: #a1b2ba66;
+  --color-divider-subtle: #202020 !important;                            /* Changed - Borders */
+  --color-icon-default: #a1b2ba;
+  --color-icon-disabled: #687b8580;
+  --color-icon-interactive: #00A8FC;                                     /* Changed - Interative button icons */
+  --color-link-default: #00A8FC !important;                              /* Changed - Sidebar links */
+  --color-link-visited: #9d70ff;
+  --color-page-background: #101010 !important;                           /* Changed - Main Background */
+	--color-search-background-page: #101010;                               /* Changed - Main Background #2 */
+  --color-systemfeedback-error-background: #460a10;
+  --color-systemfeedback-error-text: #ffb1b0;
+  --color-systemfeedback-info-text: #a0cdff;
+  --color-systemfeedback-success-text: #94df91;
+  --color-tabs-search-text-default: #ff6022;
+  --color-text-disabled: #ebeef080;
+  --color-text-interactive: #678deb;                                     /* Changed - Interactive buttons? */
+  --color-text-primary: #f3f5f7;
+  --color-text-secondary: #dadfe1;
+  --color-text-tertiary: #aaaaaa;                                        /* Changed - Other lower/grey text (sub) */
+  --color-serp-bar-bg: #101010 !important;                               /* Changed - Searchbar */
+	--color-search-background-search-bar: #101010 !important;              /* Changed - Searchbar */
+  --color-serp-breadcrumbs: #00A8FCd6;                                   /* Changed - Breadcrumbs ulr in snippets */
+  --color-serp-divider-subtle-container: var(--Other-Backgrounds) !important;         /* Changed - Searchbar border */
+  --color-serp-header-background: #151515;                               /* Changed - header background */
+  --color-serp-snippet-background: #151515 !important;                   /* Changed - Snippets */
+  --color-code-01: #525964;
+  --color-code-02: #acbbd5;
+  --color-code-03: #7fa569;
+  --color-code-04: #5198d4;
+  --color-code-05: #b26ac7;
+  --color-code-border: #22232a;
+  --elevation-primary: rgba(255, 255, 255, .15);
+  --elevation-secondary: rgba(0, 0, 0, .8);
+	--in-content-box-background: #151515 !important;                        /* Top part */
+	--btn-background: var(--color-serp-snippet-background);                  /* Changed - Next * Prev button */
+	/* Added 06/07/2025 + 17/11/2025 */
+	--color-primitive-neutral-25: #202020 !important;
+	--color-search-background-container:  #00000045;
+	--color-search-background-enrichment-cards: #151515 !important;
+	--color-search-background-highlight: rgba(0,0,0,.4) !important;
+}
+
+
+/* ==========================================> Variable classes <========================================== */
+/* Removes top question answers dropdown */
+.inline-qa,
+.inline-qa--top-answer {display: var(--Reddit-Top-Answer) !important;}
+/*
+.snippet:has(:is([href*="https://stackoverflow.com/questions/"], [href*="https://superuser.com/questions/"], [href*="https://webapps.stackexchange.com/questions/"], [href*="https://community.wemod.com/"], [href*="https://forums.tomshardware.com/"], [href*="https://dietpi.com/forum/"], [href*="https://unix.stackexchange.com/questions/"], [href*="https://ell.stackexchange.com/questions/"], [href*="https://hinative.com/questions/"], [href*="https://www.slant.co/topics/"], [href*="https://english.stackexchange.com/questions/"], [href*="https://gaming.stackexchange.com/questions/"], [href*="https://discussion.fedoraproject.org/"], [href*="https://ask.fedoraproject.org/"], [href*="https://discuss.privacyguides.net/"], [href*="https://askubuntu.com/questions/"], [href*="https://serverfault.com/questions/"], [href*="https://community.sophos.com/"], [href*="https://wordpress.stackexchange.com/questions/"], [href*="https://webmasters.stackexchange.com/questions/"], [href*="https://community.letsencrypt.org/"], [href*="https://github.community/"], [href*="https://forum.freecodecamp.org/"], [href*="https://security.stackexchange.com/questions/"], [href*="https://meta.stackexchange.com/questions/"])) .inline-qa--top-answer {display: none;}
+*/
+/* Remove videos, news & maybe others from "ALL" results */
+.snippet.standalone:has(.enrichment-card-item),
+.snippet.standalone[data-type="cluster"] {display: var(--All-Results-SNIPPETS-Video-News-etc);}
+/* Ask a follow-up question */
+#llm-snippet #chatllm-conversation,
+#rh #chatllm-conversation {display: var(--Ask-a-follow-up-question-chat); margin: 0;}
+}
+
+@-moz-document domain("search.brave.com") {
+/* Testing stuff */
+
+/* ===> Show live updates / tags on snippets <=== */
+.snippet:not(.standalone) .url .site-wrapper .site .desktop-default-regular {
+    display: flex !important;
+    flex-direction: row-reverse;
+}
+.snippet:not(.standalone) .url .site-wrapper .site { /* Block the Site (uBlacklist) */
+    display: grid !important;
+    grid-template-columns: 90% 1fr;
+}
+@media (max-width: 1600px) {
+.snippet:not(.standalone) .url .site-wrapper .site {grid-template-columns: 85% 1fr;}
+}
+
+
+.snippet:not(.standalone) .url .site-wrapper .site .sitename-container {grid-column: 2; grid-row: 1;}
+.snippet:not(.standalone) .url .site-wrapper .site .snippet-url {grid-column: 1; grid-row: 1;}
+/* Removals */
+.snippet:not(.standalone) .url .site-wrapper .site .desktop-default-regular .sitename {display: none;}
+}
+
+@-moz-document domain("search.brave.com") {
+/* 🖥️ More Results + Main Layout */
+
+
+/* Removes sidebar if sidebar has no contents or isn't relevant (Improves loading + layout?) */
+.column-layout.noscrollbar.has-sidebar aside {display: none !important;}
+.column-layout.noscrollbar.has-sidebar aside:has(#infobox-snippet) {
+	display: flex !important;
+	flex-direction: column;
+	gap: 8px;
+    padding: var(--spacing-2xl) 0;
+}
+aside #infobox-snippet #codebox:has(#codebox-answer) {padding: var(--spacing-2xl);}
+#codebox-header {padding-bottom: 0px !important;}
+
+
+/* Search: https://search.brave.com/search?q=New+York+restaurant */
+.column-layout.noscrollbar:has(#info-banners) {align-items: center;}
+.column-layout.noscrollbar:has(#info-banners) #altered-query {margin: 0;}
+
+
+/* ====> More Results <=== */
+#search-page main.main-column #results {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill,minmax(760px,1fr));   /* Higher than 800 = half-screen sidebar offset */
+  gap: 8px;
+  overflow: hidden;
+  min-height: auto !important;
+}
+#search-page .column-layout { /* Whole page? */
+    max-width: var(--main-column-width);
+    padding: 0;
+	}
+#results.section:first-child {margin-right: 0vw;}
+/* Top Stories */
+#rh.snippet.standalone:has(#news-content) :is(#news-content, #news-content-extra) {padding: 0 6px;}
+/* => Next & Previous Page container <= */
+#pagination-snippet {
+  grid-column-start: auto;
+  grid-column-end: -1;
+  height: fit-content;
+  background: transparent;
+}
+/* ==> Tweaks / Fixes <== */
+.snippet:not(.standalone) + .snippet:not(.standalone) { /* Stupid attached snippet */
+  margin-top: calc(0 * var(--spacing-2xl)) !important;
+	outline: 1px solid var(--color-divider-subtle);
+  border-width: 0px;
+}
+#calculator,
+#rh.snippet.standalone,
+#timer.snippet.standalone,
+.snippet:not(.standalone), #featured-snippet {padding: calc(var(--spacing-2xl) - 5px) var(--spacing-2xl) var(--spacing-2xl) var(--spacing-2xl) !important;}
+.snippet.standalone {margin: 0 !important;}
+/* Sidebar */
+#infobox > section {padding: 0 0 !important;}
+/* Discussion header + Other header */
+#codellm {padding-top: var(--spacing-2xl);}
+.rich-snippet-content {padding: 0 var(--spacing-2xl) var(--spacing-l) !important;}
+.header-container {padding: 0 !important;}
+/* Removals */
+#search-elsewhere, #related-queries {display: none;}
+
+
+
+/* ===========> Videos, News & Other standalone snippet fixes | Update with autofill <=========== */
+/* In the news */
+#results .snippet.standalone:has([data-type="news"]) {grid-row: 10 / span 2; grid-column: 1 / span 1;}
+/* Videos */
+#results .snippet.standalone:has([data-type="video"]) {grid-row: 10 / span 3; grid-column: 2 / span 1;}
+/* Top Stories */
+#rh.snippet.standalone:has(#news-content) {grid-row: 1 / span 5; grid-column: 1 / span 1;}
+
+
+/* Films/Series Snippets | https://search.brave.com/search?q=Resident+Evil+movies+in+order */
+#pe {grid-row: 5 / span 2; grid-column: 2 / span 1;}
+/* Maps on All page */
+.snippet.standalone:has(#map-view) {grid-row: 1 / span 3; grid-column: 2 / span 1;}
+/* Code snippet */
+#llm-snippet {grid-row: 1 / span 9; grid-column: 1 / span 1;}
+#codellm {grid-row: 1 / span 8; grid-column: 1 / span 1;}
+
+
+#results > #rh.snippet.standalone {grid-row: 1 / span 3; grid-column: 1 / span 1;}
+
+
+/* ======> Videos, In news, standalone snippets <====== */
+.carousel-container .carousel {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+  --card-gutter: 0px !important;
+  max-height: 239px;
+  overflow-x: hidden !important;
+  border-right: 1px solid var(--color-divider-subtle);
+  border-left: 1px solid var(--color-divider-subtle);
+}
+.carousel-container .carousel:has([data-type="video"]) {max-height: 235px;}
+.carousel-container .carousel .card {
+  width: auto !important;
+  max-width: 230px;
+  border-right-width: 0px;
+  background: var(--color-serp-snippet-background);
+}
+.carousel-container .carousel .card:nth-of-type(1) {border-left-width: 0px;}
+.carousel-container .slide-button {display: none !important;}
+#results .snippet.standalone:has([data-type="news"]) .carousel-container .carousel {max-height: 228px;}
+.snippet[data-type="web"]:not(.standalone) .carousel-container {display: none;} /* Shopping section + */
+/* Map View */
+
+button#map-view {grid-column-start: 1; grid-column-end: -1;}
+/* Padding fix */
+.snippet.standalone .carousel .framed {padding: 0 !important;}
+.snippet.standalone .carousel .framed :is(.card-body, .card-footer) {padding-inline: var(--spacing-m) !important;}
+
+/* ======> Discussions snippet <====== */
+#discussions {
+  order: 2 !important;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  padding: 0px !important;
+}
+/* More results */
+#discussions {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill,minmax(795px,1fr));
+  gap: 8px;
+  padding: 0 var(--spacing-2xl) !important;
+  background: #ff910014 !important;
+}
+#discussions .snippet-fullwidth {grid-column-start: 1; grid-column-end: -1; display: none;}
+/* Fixes / OCD stuff */
+#discussions details {
+  border-color: transparent;
+  padding: calc(var(--spacing-xl) - 4px) 0;
+}
+.fq-item.transitioning {background: transparent;}
+.discussions-item > .accordion-item,
+#discussions summary .question {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(360px,1fr));
+  gap: 6px;
+  overflow: hidden;
+  max-width: 100% !important;
+}
+#discussions summary > button,
+.button.size--tiny.type--outlined.theme--default.icon-only.icon-end.type {border-color: transparent;}
+#discussions :is(header.desktop-heading-h4, hr.snippet-divider, button.icon-only.icon-end.tooltip--bottom) {display: none;}
+
+/* Removals */
+#discussions .question .desktop-small-regular.meta :is(div.item:nth-of-type(n+2), span.dot:nth-of-type(n+2)) {display: none;}
+#search-page .snippet > .video-snippet, .snippet.standalone:has(.video-item.flex) {display: none;}
+#search-page #results > .snippet:has(.image-cluster),
+#results .snippet[data-type="videos"] {display: none;}
+}
+
+@-moz-document domain("search.brave.com") {
+/* 🥂 Main Content | Everything */
+
+#search-page {margin: auto var(--main-gap);}
+
+
+
+
+/* ==========> Header - Top part <========== */
+header#site-header {padding: var(--spacing-2xl) var(--spacing-2xl) 0;}
+#header-content, .nav-tabs-content, .header-content-wrapper .header-content {
+  max-width: var(--normal-snippet-width) !important;
+  transform: none !important;
+}
+#searchform #autocomplete {width: calc(-15px + var(--normal-snippet-width));}
+#clear-query-divider, .nav-logo, #autocomplete .suggestions::before {display: none !important;}
+/* Cross icon */
+#clear-query-button {border-color: transparent !important;}
+#clear-query-button:hover svg {fill: red !important;}
+/* Search dropdown icon, AI highlight & Padding fix */
+.searchform-container .icon-wrapper, #autocomplete .press-up-to-highlight {display: none;}
+/* Compact/OCD | Dropdown & Search padding */
+.suggestion {padding-top: 0px !important; height: 32px !important;}
+#autocomplete .suggestions {
+	padding: 0px !important;
+	border-color: var(--in-content-box-background);
+}
+.searchform-container:not(.suggestions-showing, .searchform-focused) #searchbox {padding-left: var(--base-padding) !important;}
+header .searchform-container {margin-left: 0px !important;}
+.searchform-container.llm-enabled.embed-logo {margin-left: 5px; padding-left: 0px;}
+.ai-generate.icon-wrapper.fill-gradient {background: transparent !important;}
+/* Answer with AI from dropdown */
+#autocomplete .suggestions button.llm {
+	display: var(--Answer-with-AI-Dropdown);
+	background: none;
+	margin: 0;
+	padding: var(--spacing-s) var(--spacing-m);
+	width: 100%;
+}
+#autocomplete .suggestions button.llm:hover {background: var(--suggestion-highlight);}
+#autocomplete .suggestions {padding-bottom: 0px;}
+/* Hover and focus for search button & dropdown */
+#submit-button:hover:not(:disabled), #submit-buttonq:focus-visible,
+.suggestion:hover, .suggestion.active {background: var(--box-border-color) !important;}
+/* Filters */
+#filters-container > .filters-content {align-items: center;}
+
+
+/* =======> New AI | 18/04/2024 <======= */
+main#search-page > div#llm-container, #searchform-actions .subutton-wrapper {display: var(--New-AI-Snippet) !important;}
+#llm-container .wrapper {
+	outline: 1px solid var(--color-divider-subtle);
+	border-width: 0px;
+	padding: 0;
+}
+/* Color fixes */
+#llm-container :is(header.desktop-heading-h4, #llm-container) {background: transparent !important; justify-content: start !important;}
+#llm-container #chatllm {background: var(--color-serp-snippet-background) !important;}
+h1#query-intent-snippet {
+	background: var(--color-serp-snippet-background);
+	margin-bottom: 0 !important;
+	padding-bottom: var(--content-padding);
+}
+/* Centering */
+#llm-container #chatllm-title {
+	text-align: center;
+	margin-right: var(--sidebar-width);
+}
+#llm-container .content-wrapper {
+  justify-content: center;
+  align-items: center;
+}
+.content.streaming-or-complete:has(.llm-output) {max-width: 70%;}
+/* Main content sidebar heigh fix */
+#search-page:has(#llm-container) aside :is(section#infobox, #codebox) {max-height: 70rem !important; overflow: auto;}
+/* Removals */
+#llm-snippet #chatllm-actions,
+#chatllm-actions:has(.chatllm-disclaimer),
+#llm-container .content-wrapper-footer .content-wrapper-footer-divider, 
+#llm-container .fade-wrapper, .snippet-fade-wrapper {display: none !important;}
+#llm-container .content-wrapper-footer {transform: none;}
+aside.sidebar:has(#llm-side-snippet) {display: none;} /* Removes sidebar when it's only an llm | #chatllm-images */
+
+/* ==========> Results - Left side <========== */
+/* ===> Top Answer dropdown thing <== */
+.snippet .tabs, .snippet .inline-qa--top-answer, .snippet .inline-qa--top-answer .tabs, .snippet .is-overflowing {border-color: #432e24 !important;}
+.snippet .tabs .tab.tab--active {background: #3b2921 !important;}
+.snippet .inline-qa--top-answer .tabs .tab:hover {background: #4a3126;}
+.inline-qa code, #codebox code {background: var(--Other-Backgrounds) !important}
+/* Show more button */
+.action-container button {
+	outline: 1px solid var(--color-divider-subtle);
+	border-width: 0px !important;
+}
+.inline-qa--top-answer .action-container {--action-button-height: 28px !important;}
+/* Reddit Answer box quote */
+blockquote {
+  background: var(--color-serp-snippet-background);
+  margin-left: 0 !important;
+  color: lightgreen;
+}
+.inline-qa-answer blockquote::before {background: #43b582 !important;}
+/* Date / Time snippet */
+#rh.snippet.standalone:has(h6 .label) {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+	outline: 1px solid var(--color-divider-subtle);
+  border-width: 0px;
+}
+/* ==> Spelling check <== */
+body:not(.is-mobile) #altered-query {
+  margin-top: 0rem;
+  margin-bottom: var(--spacing-2xl);
+  border: none;
+  text-align: center;
+  padding: 0px;
+}
+#info-banners {padding: 0px !important;}
+#altered-query .desktop-default-semibold {color: #09e909;}
+#altered-query :nth-child(2) a[href*="spellcheck"] {color: red !important; text-decoration: line-through;}
+/* ==> Generate answers footer fix */
+#codellm footer.has-action {margin: var(--spacing-s) 0;}
+
+
+
+/* ==========> Sidebar <========== */
+aside #infobox-snippet, aside #codebox {
+  background: var(--color-serp-snippet-background) !important;
+	outline: 1px solid var(--color-divider-subtle);
+  border-width: 0px;
+}
+aside #codebox {border-width: 0px !important;}
+.desktop-heading-h4, .wrapper-desktop > header {
+	background: var(--Other-Backgrounds) !important;
+	margin-bottom: 0px !important;
+	justify-content: center;
+}
+#infobox > section h6 {justify-content: center;}
+#infobox > section > :is(div, button) {padding: 0;}
+#infobox .wrapper-desktop > :is(.infobox-attr, button) {padding: 0 var(--spacing-2xl);}
+#infobox header:has(.infobox-header) {padding: var(--spacing-2xl); padding-bottom: 0;}
+#infobox section:not(:last-of-type) {border-width: 0px !important;}
+/* ==> Right-Sidebar in order of usefullness (imo) <== */
+#infobox {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+#infobox > header {order: -4}
+#infobox > section.infobox-profiles-body {order: -3}
+#infobox > section:has(.profiles) {order: -2;}
+#infobox > section:has(.rating) {order: 1;}
+#infobox > section:has(.infobox-profiles-body) {order: -2 !important;}
+#infobox > section:has(.infobox-attr) {order: 0;}
+aside #infobox > section:has(.rating) {display: var(--Sidebar-Bloat-Remover);}
+/* Profiles section */
+aside .infobox-profiles-body {
+  display: grid !important;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: calc(var(--spacing-m) - 5px) !important;
+  padding: var(--spacing-2xl) !important;
+	margin-top: 0px !important;
+}
+aside .infobox-profiles-body a.desktop-small-regular {padding: 4px; justify-content: center;}
+
+
+
+/* ==========> Fixes <========== */
+/* GitHub icon color */
+.snippet :is([href*="github.com"], [href*="tailscale.com"], [href*="github.community"], [href*="linuxhint.com"], [href*="cbsnews.com/"], [href*="nytimes.com/"], [href*="washingtonpost.com/"], [href*="fosshub.com/"], [href*="pendulum.com/"], [href*="support.spotify.com/"], [href*="grapheneos.org/"], [href*="androidpolice.com/"], [href*="community.spotify.com/"]) .favicon {
+  filter: invert(1);
+}
+a:hover .title,
+.h:hover .title {
+	text-decoration: none !important;
+	color: var(--hovering-links) !important;
+} /* Remove underline when hovering over links */
+/* Snippet description amount of lines changes */
+#results [class*="line-clamp"],
+.inline-qa-question,
+.snippet-description {-webkit-line-clamp: 1 !important;}
+.inline-qa-question ol,
+.inline-qa-question > table,
+.inline-qa-question > p {display: none;}
+/* Definition */
+section.svelte-oe6hwk.svelte-oe6hwk:not(:last-of-type) {margin-bottom: 0;}
+#definition .attribution {display: none;}
+
+
+
+/* ==========> Removals <========== */
+footer:not(#codellm .has-action), footer > :nth-child(2), .snippet:has(#bad-results-info-banner) {display: none !important;}
+.flex:has(.rating) {display: none;} /* Snippet ratings */
+.column-layout.noscrollbar:has(#advanced-keywords) {display: none;} /* Removes "Ignore operators" div */
+#searchform-actions::before, .promo-tooltip, #submit-llm-button::before {display: none !important;}
+/* Removes product/image/shopping type stuff in descriptions */
+.product-review > strong.line-clamp-1,
+.snippet:not(.standalone) .product-cluster,
+.snippet :is(.snippet-fullwidth.noscrollbar:has([data-type="product"]), .item-attributes, .attributes, .result-cluster, .video-thumb, .product, .deep-links, .snippet-content .thumb),
+.snippet:not(.standalone) .zoom.general.thumbnail {display: none;}
+/* Removes chat ai footer + Survey */
+.wrapper-desktop:has(#chatllm-actions .chatllm-disclaimer) {display: none;}
+.survey-wrapper {display: none;}
+}
+
+@-moz-document domain("search.brave.com") {
+/* ❗ 1440p+ Only */
+
+@media (min-width: 2000px) {
+
+
+  /* ==> Snippet | People also ask position <== */
+  #faq {
+	  display: var(--People-also-ask);
+    position: fixed;
+    top: var(--spacing-2xl);
+    left: var(--main-gap);
+    z-index: 1000;
+    width: var(--normal-snippet-width);
+  }
+  #faq:not(:hover) details {display: none; border-bottom-width: 0px !important;}
+  #faq:not(:hover) .rich-snippet-content, #faq:not(:hover) {padding-bottom: 0px !important; border-bottom-width: 0px;}
+	
+	
+  /* Sidebar */
+  aside :is(section#infobox, #codebox) {
+    max-height: 88.8vh;                 /* This is the same as pagination below + margin of whole page | Was 76.8vh */
+    overflow: auto;
+  }
+
+  /* Pagination */
+  #pagination-snippet {
+    position: fixed;
+    right: var(--main-gap);
+    bottom: var(--main-gap);
+  }
+ 
+}
+}
+
+@-moz-document domain("search.brave.com") {
+/* 🫗 Half-Screen only */
+
+
+/* 
+|==================================================================================================================| 
+|=                             EVERYTHING BELOW ONLY WORKS WHEN Half-Screen DISPLAYS!                             =|
+|==================================================================================================================| 
+*/
+
+
+
+@media (max-width: 1980px) { /* Only half-screen */
+
+	
+	:root {
+		--main-content-padding: 60px;
+	}
+
+	#faq {display: var(--People-also-ask-Half-Screen)}
+  #search-page {margin: auto 6px;}
+	header .header-controls {margin-left: 0px !important;}
+	
+  /* ====> Header fix (searchbar), Navbar + Filters container | Center top-part <==== */
+	.header-content-wrapper, #nav-tabs {
+		display: flex;
+		justify-content: center !important;
+	}
+	#site-header, #nav-tabs-container, #filters-container {
+		justify-content: center;
+    display: flex;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	#header-content, .nav-tabs-content, .header-content-wrapper .header-content {width: var(--normal-snippet-width) !important;}
+	#searchform #autocomplete {width: calc(-8px + var(--normal-snippet-width));}
+	#nav-tabs {padding-left: 0 !important;}
+	
+	/* ====> Whole page + More results + Discussions + Carousel container (videos, news, etc) <==== */
+	#search-page main.main-column #results {grid-template-columns: repeat(auto-fill,minmax(480px,1fr));}
+	#discussions {grid-template-columns: repeat(auto-fill,minmax(560px,1fr));}
+	#discussions .rich-snippet-content {grid-template-columns: repeat(auto-fill,minmax(550px,1fr));}
+  .carousel-container .carousel {grid-template-columns: repeat(auto-fill,minmax(180px,1fr));}
+	.carousel-container .carousel .card {min-width: auto !important;}
+	details > summary > .question > .meta {margin-top: 0px !important;}
+  details > summary > .question > .meta .forum-name {display: none;}
+	.discussions-item > .accordion-item,
+  #discussions summary .question {grid-template-columns: 70% 40%;}
+  /* Fixes */
+	main#search-page .column-layout.noscrollbar.has-sidebar .cols:has(.sidebar #infobox-snippet) {
+      grid-template-columns: 75% 25%;
+      display: grid !important;
+   }
+  main#search-page .column-layout.noscrollbar.has-sidebar .cols:has(.sidebar) {
+      grid-template-columns: 100% auto;
+      display: grid !important;
+   }
+  main#search-page .column-layout.noscrollbar.has-sidebar .cols:has(.sidebar) #results {grid-template-columns: repeat(auto-fill,minmax(550px,1fr));}
+
+
+	/* 15/10/2024 updates / tweaks | COMPACT + better looking? */
+  #llm-snippet {
+		grid-row: 1 / span 10;
+		grid-column: 1 / span 1;
+		max-height: 100%;
+	}
+  #llm-snippet :is(.wrapper-desktop, .context-results) {display: none;}
+
+	
+	  /* Sidebar */
+  aside :is(section#infobox, #codebox) {
+    max-height: 88.8vh;                 /* This is the same as pagination below + margin of whole page | Was 76.8vh */
+    overflow: auto;
+  }
+	
+	/* ===========> Videos, News & Other standalone snippet fixes | Update with autofill <=========== */
+	/* News | Top Stories */
+	#rh.snippet.standalone:has(#news-content) {grid-row: 1 / span 4; grid-column: 1 span;}
+	/* In the news */
+	#results .snippet.standalone:has([data-type="news"]) {grid-row: 14 / span 2; grid-column: 2 / span 1;}
+	/* Videos */
+	#results .snippet.standalone:has([data-type="video"]) {grid-row: 14 / span 2; grid-column: 1 / span 1;}
+
+}
+
+
+}
+
+@-moz-document url-prefix("https://search.brave.com/images?"), url-prefix("https://search.brave.com/news?"), url-prefix("https://search.brave.com/videos?") {
+/* 📰 Images, News & Videos */
+
+
+
+@media (min-width: 1600px) { /* Everything but half-screen */
+
+
+	/* ========> Images <======== */
+	.images-layout {
+		width: var(--main-column-width) !important;
+		display: grid !important;
+		grid-template-columns: 85% 15%;
+	}
+	.images-layout main {
+ 	max-width: 100%;
+	 min-width: 100%;
+	}
+	.images-layout #results {
+		grid-auto-columns: minmax(0,1fr);
+		grid-template-columns:  minmax(0,1fr);
+	}
+	/* Find elsewhere */
+	.images-layout #search-elsewhere-result-wrapper {
+		position: fixed;
+		right: 35px;
+		bottom: 35px;
+		width: 463px;
+	}
+
+
+	/* ========> News & Videos <======== */
+	.column-layout {padding: 0 var(--main-gap) !important;}
+	/* More results */
+	.column-layout main.main-column .results {
+		display: grid !important;
+		grid-template-columns: repeat(auto-fill,minmax(770px,1fr));
+		gap: 8px;
+		width: 100%;
+	}
+	.snippet:not(.standalone)[data-type="videos"] {padding-left: 0 !important; padding-right: 0 !important;}
+
+
+}
+
+
+.snippet :is(.snippet-fullwidth.noscrollbar:has([data-type="product"]), .item-attributes, .result-cluster, .video-thumb, .product, .deep-links, .snippet-content .thumb) {display: block;}
+
+
+@media (max-width: 1700px) { /* Only half-screen? */
+
+	div:is(.images-layout) main, .column-layout {
+		padding-left: var(--main-gap) !important;
+		max-width: var(--main-column-width) !important;
+	}
+
+	.images-layout #results {grid-template-columns: repeat(3, minmax(0, 1fr));} /* Fixes layout... Brave moment */
+	/* More results */
+	.column-layout main.main-column .results {
+ 	 display: grid !important;
+ 	 grid-template-columns: repeat(auto-fill,minmax(600px,1fr));
+ 	 gap: 8px;
+ 	 overflow: hidden;
+ 	 min-height: auto;
+	}
+
+}
+}
+
+@-moz-document url-prefix("https://search.brave.com/ask?q=") {
+/* 🗨️ Ask section (AI) */
+
+.tap-content > .tap-round {
+	width: 672px !important;
+	margin: auto !important;
+}
+#main.tap .llm-output .table-wrapper, #tap-history-modal .llm-output .table-wrapper {max-width: 100%;}
+
+}
+
+@-moz-document domain("search.brave.com") {
+/* 🎨 Colour fixes */
+
+/* Sippets Only */
+.snippet[data-type="web"] .url-path {color: #afb3c1 !important;}
+.snippet .favicon-wrapper {background: transparent !important;}
+
+.snippet-url {color: #00A8FC !important;}
+
+header#site-header, #nav-tabs {background: var(--in-content-box-background);}
+}
+
+@-moz-document domain("search.brave.com") {
+/* ☕ My Personal Taste */   /* ===> Add/remove an "M" at the end of the "search.brave.com(m)" below for this snippet to work/not */
+/* ========> Custom Background Colours for sites I use, like, need or want <======== */
+
+
+/* Steam */
+.snippet[data-type="web"]:has([href*="https://store.steampowered.com/app"]),
+.snippet[data-type="web"]:has([href*="https://store.steampowered.com/agecheck/app/"]) {
+  background: #13629630 !important;
+	outline: 1px solid #13629660 !important;
+	border-width: 0px !important;
+}
+/* Reddit */
+.snippet[data-type="web"]:has([href*="https://www.reddit.com/r"]) {
+  background: #4c251042 !important;
+	outline: 1px solid #4c251060 !important;
+	border-width: 0px !important;
+}
+/* Nexus Mods */
+.snippet[data-type="web"]:has([href*="https://www.nexusmods.com/games/"]) {
+  background: #4c341054 !important;
+	border-width: 0px !important;
+}
+/* IMDb */
+.snippet[data-type="web"]:has([href*="https://www.imdb.com/title/"]) {
+  background: #4c411029 !important;
+	outline: 1px solid #4c411060 !important;
+	border-width: 0px !important;
+}
+/* Cheat Happens */
+.snippet[data-type="web"]:has([href*="https://www.cheathappens.com/"]) {
+  background: #f2a22f1c !important;
+	outline: 1px solid #f2a22f60 !important;
+	border-width: 0px !important;
+}
+/* Twitter */
+.snippet[data-type="web"]:has([href*="https://x.com/"]),
+.snippet[data-type="web"]:has([href*="https://twitter.com/"]) {
+  background: #1da1f217 !important;
+	outline: 1px solid #1da1f260 !important;
+	border-width: 0px !important;
+}
+/* PSN Trophies */
+.snippet[data-type="web"]:has([href*="https://psnprofiles.com/trophies"]) {
+  background: #2e6db421 !important;
+	outline: 1px solid #2e6db460 !important;
+	border-width: 0px !important;
+}
+/* Wemod */
+.snippet[data-type="web"]:has([href*="https://www.wemod.com/cheats"]) {
+  background: #6a3dfc21 !important;
+	outline: 1px solid #6a3dfc60 !important;
+	border-width: 0px !important;
+}
+/* ModDB */
+.snippet[data-type="web"]:has([href*="https://www.moddb.com/mods/stalker-anomaly/addons/"]) {
+  background: #900c0c21 !important;
+	outline: 1px solid #900c0c60 !important;
+	border-width: 0px !important;
+}
+
+/* XDAForums (android) */
+.snippet[data-type="web"]:has([href*="https://xdaforums.com/"]) {
+  background: #0086f912 !important;
+	outline: 1px solid #0086f960 !important;
+	border-width: 0px !important;
+}
+
+/* ALL url's with word "wiki", Forums, Discussions & Fandom are color coded */
+.snippet[data-type="web"]:has([href*="https://www.privacyguides.org/"]),
+.snippet[data-type="web"]:has([href*="https://en.wikipedia.org/wiki/"]),
+.snippet[data-type="web"]:has([href*="/wiki"]:not([href*="wikipedia.org"])),
+.snippet[data-type="web"]:has([href*="forums"]:not([href*="bleepingcomputer.com"])) {
+  background:	#0d20527d !important;
+	outline: 1px solid #0d2052 !important;
+	border-width: 0px !important;
+}
+
+/* Others */
+.snippet[data-type="web"]:has([href*="https://game8.co/games/"]) {
+  background: #2e6db421 !important;
+	outline: 1px solid #2e6db460 !important;
+}
+.snippet[data-type="web"]:has([href*="https://dictionary.cambridge.org/"]),
+.snippet[data-type="web"]:has([href*="https://www.merriam-webster.com/"]) { /* Definition & Meaning */
+  background: #690c1021 !important;
+	outline: 1px solid #690c1060 !important;
+}
+/* IMDb */
+.snippet[data-type="web"]:has([href*="https://www.imdb.com/title/"]) .snippet-description.snippet-attributes {background: #26241a;}
+
+
+
+div.snippet, div.snippet.fdb {z-index: 1;}
+.container-80, #results, .snippet {position: relative;}
+
+/* ===> Orders Sites I use, like or want to the top of the results page/bottom <=== */
+.snippet:has([href*="https://store.steampowered.com/app"]) {order: -5 !important;} /* Steam Games */
+.snippet:has([href*="https://www.allkeyshop.com/"]) {order: -4;} /* Steam Games */
+.snippet:has([href*="https://www.nexusmods.com/"]) {order: -3;} /* Nexus Mods */
+.snippet:has([href*="https://www.allkeyshop.com/"]) {order: -2;} /* AllKeys */
+.snippet:has([href*="https://www.reddit.com/r/"]):not([data-type="cluster"]) {order: 1 !important;} /* Reddit | Moves them to the bottom */
+.snippet:has([href*="https://www.imdb.com/title"]) {order: -1 !important;} /* Reddit | Moves them to the bottom */
+
+.snippet:has([href*="https://psnprofiles.com/trophies"]) {order: -4 !important;} /* Trophy */
+
+
+#definition {order: -100;}
+
+
+
+
+/* ===================> Navbar section buttons under searchbar (filters) <=================== */
+.tab-item [href*="/images?"] svg,
+.tab-item [href*="&iax=images&ia=images"] svg {color: #00A8FC !important;} /* Images Icon */
+.tab-item [href*="/videos?"] svg,
+.snippet:has([data-type="video"]) svg,
+.tab-item [href*="&iax=videos&ia=videos"] svg {color: #f00 !important;} /* Videos Icon */
+.tab-item [href*="/news?"] svg,
+.snippet:has([data-type="news"]) svg {color: #6dec50 !important;} /* Recent News Icon */
+.tab-item [href*="/goggles?"] svg {color: #9250ec !important;} /* Maps Icon */
+.tab-item [href*="/search?"] svg,
+.tab-item [href*="https://www.reddit.com/search/"] svg {color: #769DFF !important;} /* All Icon */
+/* All */
+.tab-item.active:has([href*="/search?"]) a {color: #769DFF !important;}
+.tab-item.active:has([href*="/search?"]) a::after {background: #769DFF !important;}
+/* Images */
+.tab-item.active:has([href*="/images?"]) a {color: #00A8FC !important;}
+.tab-item.active:has([href*="/images?"]) a::after {background: #00A8FC !important;}
+/* News */
+.tab-item.active:has([href*="/news?"]) a {color: #6dec50 !important;}
+.tab-item.active:has([href*="/news?"]) a::after {background: #6dec50 !important;}
+/* Videos */
+.tab-item.active:has([href*="/videos?"]) a {color: #f00 !important;}
+.tab-item.active:has([href*="/videos?"]) a::after {background: #f00 !important;}
+/* Removes Goggles */
+.tab-item [href*="/goggles?"] {display: none !important;}
+
+
+
+/* Timer */
+#timer {order: -99}
+#timer, #timer :is(.header, .btn.btn--icon) {
+	background: #21263b !important;
+	border-color: #2a2f48 !important;
+}
+#timer .rich-snippet-content {padding: 10px 15px 10px 10px !important;}
+
+
+/* Nav button script I made... Tis not the best tbh */
+.tab-item:has([href*="&iax=images&ia=images"]) {order: 1;}
+
+
+}
+
+@-moz-document domain("search.brave.com") {
+/* 🪓 Filters/URL Removals */
+
+
+/* Removes empty videos, broken video, no thumbnail video only? */
+.results .snippet[data-type="videos"]:has(.noDisplay[data-macro="videos"]) {display: none;}
+}
+
+@-moz-document domain("search.brave.com") {
+/* 📜 Scrollbar */
+
+html, .snippet .noscrollbar, aside section#infobox, #codebox {
+	scrollbar-width: thin !important;
+}
+
+:root {
+	--scrollbarThumbColor: #565656;
+	--scrollbarTrackColor: #1a1a1a;
+	scrollbar-color: var(--scrollbarThumbColor) var(--scrollbarTrackColor) !important;
+}
+html {overflow-x: hidden;}
+
+
+/* ===> Hide scrollbar but keep functionality <=== */
+aside :is(section#infobox, #codebox)::-webkit-scrollbar {display: none !important;}  /* Hide scrollbar for Chrome, Safari and Opera */
+aside :is(section#infobox, #codebox) {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+    scrollbar-width: none !important;  /* Firefox */
+}
+}
+
+@-moz-document url-prefix("https://example.com/") {
+/* |=========== Separator ===========| */
+}
+
+@-moz-document domain("search.brave.com") {
+/* 🔌 Extension / Script supprt */
+
+
+/* uBlacklist Extension | :has(.ub-button) */
+#filters-wrapper {
+	position: absolute !important;
+	top: 0px;
+	right: 525px;
+	z-index: 10000;
+	display: flex !important;
+}
+
+@media (max-width: 1900px) { /* Half-screen */
+
+  #filters-wrapper {
+		right: 75px !important;
+		width: 340px;
+		--fade-width: 0px !important;
+		height: auto !important;
+	}
+	#filters-wrapper .filters-content {
+		padding: 0px !important;
+    display: grid !important;
+		grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+		gap: 8px;
+    width: 420px;
+    height: 70px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	}
+	.filter {
+	  align-items: center;
+    display: flex;
+	}
+
+}
+
+
+/* ====> EZ_Search - https://greasyfork.org/en/scripts/502156-ez-search <==== 
+@media (min-width: 1800px) {
+
+	#engine-icons {
+    top: 8px;
+	  transform: none;
+	  display: grid !important;
+	  grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
+		gap: 8px;
+		width: 39%;
+		height: 70px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background: transparent;
+	}
+	#engine-icons a {
+ 	 width: auto;
+	  height: 24px;
+	}
+
+}
+
+@media (max-width: 1900px) {
+	#engine-icons {
+    top: 8px;
+	  transform: none;
+	  display: grid !important;
+	  grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
+		gap: 8px;
+		width: 440px;
+		height: 70px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background: transparent;
+	}
+	
+}
+*/
+/* Hide scrollbar 
+#engine-icons::-webkit-scrollbar {display: none !important;}  
+#engine-icons {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+*/
+
+}
+
+@-moz-document domain("search.brave.com") {
+/* 🔄 Update: 11/11/2024 */
+
+
+/* Main snippets fixes */
+.snippet {margin: 0px !important;}
+#llm-snippet,
+#rh.snippet.standalone,
+.snippet[data-type="news"]:not(.standalone),
+.snippet[data-type="web"]:not(.standalone) {
+	background: var(--color-serp-snippet-background);
+	outline: 1px solid var(--color-divider-subtle);
+	border-width: 0px;
+}
+.snippet:not(.standalone) .site cite .netloc {color: #00A8FC;}
+
+
+/* FIX :visit color! Fucking finally */
+span:visited, a:visited {color: var(--color-link-visited) !important;}
+.snippet-title {color: inherit !important;}
+
+
+/* ==========> THIS IS A CLONE! --> Results - Left side <========== */
+/* ==> Top part of snippet (title, url and icon fix) <== */
+.snippet[data-type="web"]:not(.standalone) a.heading-serpresult,
+.snippet[data-type="web"]:not(.standalone) a.heading-serpresult > .h > .url {
+	display: flex;
+	flex-direction: column;
+}
+/*
+.snippet[data-type="web"]:not(.standalone) a.heading-serpresult > .h > .url > .title,
+.snippet[data-type="web"]:not(.standalone) a.heading-serpresult > .title {margin-top: 0;}
+*/
+.snippet[data-type="web"]:not(.standalone) a.heading-serpresult > .h > .url > .site-wrapper {
+	--wrapper-size: 22px;
+	align-items: center;
+	padding-top: 2px;
+}
+.snippet:not(.standalone) .url .site-wrapper .site {height: var(--wrapper-size);}
+.thumbnail-wrapper {display: none;}
+
+
+
+/* AI result snippet */
+#llm-snippet {
+	outline: 1px solid var(--color-divider-subtle);
+  border-width: 0px;
+  padding: var(--spacing-m);
+}
+.llm-output ol, .llm-output ul {margin-bottom: 0;}
+.llm-output h2 {margin-top: calc(var(--spacing-m) + 4px);}
+#llm-snippet .qa-highlight {background: #fdff323d;}
+#llm-snippet button.qa-inline-entity {background: #000;}
+/* #llm-snippet .snippet-content :is(.wrapper-desktop, .main-answer-context-wrapper) {display: none;} */
+#llm-snippet .rich-llm-snippet:has(.chatllm-answer-list) {border-width: 0px;}
+
+
+
+/* =====> Other "Fixes" <===== */
+.column-layout .cols {
+	column-gap: 0px !important;
+	width: 100%;
+}
+}
+
+@-moz-document domain("search.brave.com") {
+/* [TEST] New AI Snippet less obtrusive */
+
+
+@media (min-width: 1700px) { /* Everything but half-screen | NOT TESTED ON 1080p */
+
+  /* Main compact Stuff */
+  main#search-page > div#llm-container {
+    position: absolute;
+    top: -102px;
+    right: 46px;
+    z-index: 1001;
+    width: 1200px;
+	  margin: 0;
+  	max-height: 1544px;
+  	overflow: auto;
+  }
+  main#search-page > div#llm-container:hover {width: 1600px !important;}
+  main#search-page > div#llm-container:not(:hover) {
+  	height: 48px !important;
+  	overflow: hidden;
+  	max-width: 30% !important;
+  }
+  /* OCD Fixes */
+  #llm-container .wrapper {border: 1px solid transparent;}
+  main#search-page > div#llm-container #llm-container .wrapper {border-color: transparent;}
+  /* Duplicate fixes that'll only apply here */
+  .content.streaming-or-complete:has(.llm-output) {max-width: 95%;}
+  /* Centering */
+  #llm-container #chatllm-title {
+  	text-align: center;
+  	margin-right: 0;
+  }
+  #llm-container .content-wrapper {
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+}
