@@ -29,7 +29,7 @@
 	--Answer-with-AI-Dropdown: flex;          /* flex */
 	/* Colors */
 	--Other-Backgrounds: #191919;
-	--hovering-links: #ffb86c;
+	--hovering-links: #ebdbb2;
 	/* Mine / Other */
 	--All-Results-SNIPPETS-Video-News-etc: none;              /* Removes videos, news & other "Clusters" from main search */
 	--Ask-a-follow-up-question-chat: initial;                 /* none / initial */
@@ -101,98 +101,128 @@ div, :root {
 }
 /* Left-side only */
 main.main-column {
-	--color-link-default: #fff;
-	--color-search-links-link: #fff;
+	--color-link-default: #fbf1c7;
+	--color-search-links-link: #fbf1c7;
 	--icon-s: 20px;
 }
 
 
 /* Colours */
 :root:not(.light), :root:not(.light) ::after, :root.dark, :root.dark ::after, .btn {
-  --color-primitive-black: #000000;
-  --color-primitive-gray-01: #f3f5f7;
-  --color-primitive-gray-10: #ebeef0;
-  --color-primitive-gray-60: #546771;
-  --color-primitive-primary-40: #7c91ff;
-  --color-primitive-primary-60: #3f39e8;
-  --color-primitive-primary-70: #3b08c2;
-  --color-primitive-white: #ffffff;
-  --color-blue-20: #0b355d;
-  --color-gray-10: #21272a;
-  --color-gray-20: #262626;                                  /* Highlight/:hover - Hover over pagination button */
-  --color-gray-30: #546771;
-  --color-gray-40: #62757e;
-  --color-gray-50: #a1b2ba;
-  --color-gray-60: #becad0;
-  --color-gray-70: #ebeef0;
-  --color-green-10: #092c09;
-  --color-green-20: #123f13;
-  --color-green-30: #19721e;
-  --color-green-40: #3c823c;
-  --color-pink-40: #c24580;
-  --color-primary-10: #1c0d64;
-  --color-primary-20: #2a118e;
-  --color-primary-30: #3f39e8;
-  --color-primary-40: #545ff8;
-  --color-primary-50: #00A8FC;                                           /* Changed - buttons? */
-  --color-primary-60: #b7c6ff;
-  --color-primary-70: #e9eeff;
-  --color-purple-40: #7064d3;
-  --color-red-20: #620f18;
-  --color-red-40: #e11f3d;
-  --color-secondary-40: #cd4400;
-  --color-teal-40: #077f8d;
-  --gradient-panel-background: linear-gradient( 96.98deg, #3b08c2 0%, #3f39e8 100% );
-  --gradient-hero: linear-gradient(174deg, #ff4000 2.32%, #ff1f01 93.33%);
-  --gradient-llm: transparent;                                           /* Changed - New AI Gradient */
-  --color-button-background: #3f39e8;
-  --color-button-disabled: #687b854d;
-  --color-container-background: var(--color-serp-snippet-background) !important;    /* Changed - Search settings containers */
-  --color-container-disabled: #c3c9d32e;
-  --color-container-highlight: #101010 !important;                       /* Changed - Search settings */
-  --color-container-interactive: #1c0d64;
-  --color-dialogs-scrim-background: #21272ab2;
-  --color-divider-interactive: #00A8FC66;                                /* Changed - Button separators? */
-  --color-divider-strong: #a1b2ba66;
-  --color-divider-subtle: #202020 !important;                            /* Changed - Borders */
-  --color-icon-default: #a1b2ba;
-  --color-icon-disabled: #687b8580;
-  --color-icon-interactive: #00A8FC;                                     /* Changed - Interative button icons */
-  --color-link-default: #00A8FC !important;                              /* Changed - Sidebar links */
-  --color-link-visited: #9d70ff;
-  --color-page-background: #101010 !important;                           /* Changed - Main Background */
-	--color-search-background-page: #101010;                               /* Changed - Main Background #2 */
-  --color-systemfeedback-error-background: #460a10;
-  --color-systemfeedback-error-text: #ffb1b0;
-  --color-systemfeedback-info-text: #a0cdff;
-  --color-systemfeedback-success-text: #94df91;
-  --color-tabs-search-text-default: #ff6022;
-  --color-text-disabled: #ebeef080;
-  --color-text-interactive: #678deb;                                     /* Changed - Interactive buttons? */
-  --color-text-primary: #f3f5f7;
-  --color-text-secondary: #dadfe1;
-  --color-text-tertiary: #aaaaaa;                                        /* Changed - Other lower/grey text (sub) */
-  --color-serp-bar-bg: #101010 !important;                               /* Changed - Searchbar */
-	--color-search-background-search-bar: #101010 !important;              /* Changed - Searchbar */
-  --color-serp-breadcrumbs: #00A8FCd6;                                   /* Changed - Breadcrumbs ulr in snippets */
-  --color-serp-divider-subtle-container: var(--Other-Backgrounds) !important;         /* Changed - Searchbar border */
-  --color-serp-header-background: #151515;                               /* Changed - header background */
-  --color-serp-snippet-background: #151515 !important;                   /* Changed - Snippets */
-  --color-code-01: #525964;
-  --color-code-02: #acbbd5;
-  --color-code-03: #7fa569;
-  --color-code-04: #5198d4;
-  --color-code-05: #b26ac7;
-  --color-code-border: #22232a;
-  --elevation-primary: rgba(255, 255, 255, .15);
-  --elevation-secondary: rgba(0, 0, 0, .8);
-	--in-content-box-background: #151515 !important;                        /* Top part */
-	--btn-background: var(--color-serp-snippet-background);                  /* Changed - Next * Prev button */
-	/* Added 06/07/2025 + 17/11/2025 */
-	--color-primitive-neutral-25: #202020 !important;
-	--color-search-background-container:  #00000045;
-	--color-search-background-enrichment-cards: #151515 !important;
-	--color-search-background-highlight: rgba(0,0,0,.4) !important;
+    --color-primitive-black: #1d2021;
+--color-primitive-white: #fbf1c7;
+
+--color-primitive-gray-01: #32302f;
+--color-primitive-gray-10: #3c3836;
+--color-primitive-gray-60: #a89984;
+
+--color-primitive-primary-40: #fabd2f;
+--color-primitive-primary-60: #fe8019;
+--color-primitive-primary-70: #d65d0e;
+
+--color-blue-20: #458588;
+
+--color-gray-10: #1d2021;
+--color-gray-20: #282828; /* hover */
+--color-gray-30: #665c54;
+--color-gray-40: #7c6f64;
+--color-gray-50: #928374;
+--color-gray-60: #a89984;
+--color-gray-70: #ebdbb2;
+
+--color-green-10: #1b2b1b;
+--color-green-20: #3c6e3c;
+--color-green-30: #689d6a;
+--color-green-40: #8ec07c;
+
+--color-pink-40: #d3869b;
+
+--color-primary-10: #3c3836;
+--color-primary-20: #504945;
+--color-primary-30: #b8bb26;
+--color-primary-40: #fabd2f;
+--color-primary-50: #fe8019;
+--color-primary-60: #d5c4a1;
+--color-primary-70: #fbf1c7;
+
+--color-purple-40: #b16286;
+
+--color-red-20: #5a1a1a;
+--color-red-40: #fb4934;
+
+--color-secondary-40: #fe8019;
+
+--color-teal-40: #83a598;
+
+--gradient-panel-background: linear-gradient(96.98deg, #3c3836 0%, #504945 100%);
+--gradient-hero: linear-gradient(174deg, #fe8019 2.32%, #fb4934 93.33%);
+--gradient-llm: transparent;
+
+--color-button-background: #fabd2f;
+--color-button-disabled: #7c6f64;
+
+--color-container-background: #282828 !important;
+--color-container-disabled: #3c3836;
+--color-container-highlight: #1d2021 !important;
+--color-container-interactive: #3c3836;
+
+--color-dialogs-scrim-background: #1d2021cc;
+
+--color-divider-interactive: #111;
+--color-divider-strong: #92837466;
+--color-divider-subtle: #282828 !important;
+
+--color-icon-default: #a89984;
+--color-icon-disabled: #7c6f6480;
+--color-icon-interactive: #fe8019;
+
+--color-link-default: #fe8019 !important;
+--color-link-visited: #d5c4a1;
+
+--color-page-background: #1d2021 !important;
+--color-search-background-page: #282828;
+
+--color-systemfeedback-error-background: #3c1f1e;
+--color-systemfeedback-error-text: #fb4934;
+--color-systemfeedback-info-text: #83a598;
+--color-systemfeedback-success-text: #b8bb26;
+
+--color-tabs-search-text-default: #fe8019;
+
+--color-text-disabled: #a8998480;
+--color-text-interactive: #d5c4a1;
+--color-text-primary: #ebdbb2;
+--color-text-secondary: #d5c4a1;
+--color-text-tertiary: #a89984;
+
+--color-serp-bar-bg: #1d2021 !important;
+--color-search-background-search-bar: #1d2021 !important;
+
+--color-serp-breadcrumbs: #83a598;
+
+--color-serp-divider-subtle-container: #3c3836 !important;
+
+--color-serp-header-background: #282828;
+--color-serp-snippet-background: #282828 !important;
+
+--color-code-01: #928374;
+--color-code-02: #ebdbb2;
+--color-code-03: #b8bb26;
+--color-code-04: #83a598;
+--color-code-05: #d3869b;
+--color-code-border: #3c3836;
+
+--elevation-primary: rgba(251, 241, 199, 0.1);
+--elevation-secondary: rgba(0, 0, 0, 0.8);
+
+--in-content-box-background: #282828 !important;
+
+--btn-background: #282828;
+
+--color-primitive-neutral-25: #282828 !important;
+--color-search-background-container: #1d202180;
+--color-search-background-enrichment-cards: #282828 !important;
+--color-search-background-highlight: rgba(0,0,0,.4) !important;
 }
 
 
@@ -1139,7 +1169,7 @@ span:visited, a:visited {color: var(--color-link-visited) !important;}
 .llm-output ol, .llm-output ul {margin-bottom: 0;}
 .llm-output h2 {margin-top: calc(var(--spacing-m) + 4px);}
 #llm-snippet .qa-highlight {background: #fdff323d;}
-#llm-snippet button.qa-inline-entity {background: #000;}
+#llm-snippet button.qa-inline-entity {background: #1d1f20; padding: 2px}
 /* #llm-snippet .snippet-content :is(.wrapper-desktop, .main-answer-context-wrapper) {display: none;} */
 #llm-snippet .rich-llm-snippet:has(.chatllm-answer-list) {border-width: 0px;}
 
@@ -1153,9 +1183,21 @@ span:visited, a:visited {color: var(--color-link-visited) !important;}
 }
 
 @-moz-document domain("search.brave.com") {
-/* [TEST] New AI Snippet less obtrusive */
+    /* [TEST] New AI Snippet less obtrusive */
+    .snippet[data-type="web"]:has([href*="https://www.privacyguides.org/"]), .snippet[data-type="web"]:has([href*="https://en.wikipedia.org/wiki/"]), .snippet[data-type="web"]:has([href*="/wiki"]:not([href*="wikipedia.org"])), .snippet[data-type="web"]:has([href*="forums"]:not([href*="bleepingcomputer.com"])) {
+        background: #2e2d2c !important;
+        outline: 0px solid #0d2052 !important;
+        border-width: 0px !important;
+        padding: 20px !important
+    }
+    .snippet:not(.standalone) + .snippet:not(.standalone){
+        padding: 20px !important
+    }
 
-
+    .snippet[data-type="web"]:not(.standalone){
+        padding: 20px !important
+    }
+    
 @media (min-width: 1700px) { /* Everything but half-screen | NOT TESTED ON 1080p */
 
   /* Main compact Stuff */
