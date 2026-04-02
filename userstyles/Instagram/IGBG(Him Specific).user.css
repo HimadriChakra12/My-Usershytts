@@ -212,7 +212,7 @@
         }
 
         /* emoji svg */
-        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[aria-label="Choose an emoji"]){
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
             filter: invert(0%)
         }
     }
@@ -279,7 +279,7 @@
         }
 
         /* emoji svg */
-        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[aria-label="Choose an emoji"]){
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
             filter: invert(0%)
         }
     }
@@ -347,7 +347,7 @@
         }
 
         /* emoji svg */
-        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[aria-label="Choose an emoji"]){
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
             filter: invert(100%)
         }
     }
@@ -467,7 +467,7 @@
         }
 
         /* emoji svg */
-        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[aria-label="Choose an emoji"]){
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
             filter: invert(100%)
         }
     }
