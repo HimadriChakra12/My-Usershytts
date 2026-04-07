@@ -22,6 +22,7 @@
 :root {
     --riya: "Roshogolla"
     --prionto: "@raincorerat"
+    --rupa: "Bou er Mommy"
 }
 
 @-moz-document url-prefix("https://www.instagram.com/") {
@@ -64,12 +65,14 @@
 
     /* Default nickname Remover */
     span[title="Riya ๑ᵕ̈ ᵕ̈๑"],
+    span[title="Rupa Saha"],
     span[title="প্রিয়ন্ত 🕷️"]{
         display: none
     }
 
     /* Nicknaming */
     span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{content: var(--riya);}
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Rupa Saha"]):after{content: var(--rupa);}
     span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="প্রিয়ন্ত 🕷️"]):after{content: var(--prionto);}
 
     .x1yvgwvq, .xso031l{
