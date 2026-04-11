@@ -3,7 +3,7 @@
 @namespace      github.com/HimadriChakra12/My-usershytts
 @author         Himadri Chakraborty
 @description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
-@version        2.0
+@version        2.1
 @license        Himadri Chakraborty
 
 @preprocessor stylus
@@ -30,12 +30,16 @@
         border: 0 !important;
         border-color: #000 !important;
     }
+    :root{
+        --bottom: column-reverse;
+        --top: column;
+    }
     /* search and catgory */
     @media (min-width: 900px) {
       .xgfcpv.xgfcpv {
           min-height: 100%;
           display: flex !important;
-          flex-direction: column-reverse !important;
+          flex-direction: var(--top)  !important;
       }
   }
 }
@@ -253,7 +257,7 @@
 
         /* text chatbg */
     .x88qbow{
-            background: #ac174a; ;
+            background: #ac174a !important;
         }
         /* text chatbg [auther] */
         div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
