@@ -14,6 +14,152 @@
 @var checkbox suggestPosts      "└⟶ Hide suggested posts from user" 1
 
 @var checkbox suggestFollow      "⦿ Remove Follow Suggestions" 1
+@var checkbox notes      "⦿ Remove Notes" 1
+
+@var checkbox sidebar           "⦿ Sidebar" 1
+@var checkbox search            "└⟶ Hide Search" 0
+@var checkbox explore           "└⟶ Hide Explore" 1
+@var checkbox reels             "└⟶ Hide Reels" 1
+@var checkbox messages          "└⟶ Hide Messages" 0
+@var checkbox notifs            "└⟶ Hide Notifications" 0
+@var checkbox create            "└⟶ Hide Create" 1
+@var checkbox dashboard         "└⟶ Hide Dashboard" 1
+@var checkbox fromMeta          "Hide Also from Meta" 1
+@var checkbox settings            "└⟶ Hide Settings" 1
+@var checkbox meta         "└⟶ Hide Meta" 1
+
+==/UserStyle== */
+@-moz-document domain("www.instagram.com") {
+
+    if suggestfollow{
+        div[class="x1dr59a3 x13vifvy x7vhb2i x6bx242"] {
+            display: none;
+        }
+    }
+    
+    if notes{
+        div[data-pagelet="IGDInboxThreadListScrollableAreaPagelet"] > div[class="x1c4vz4f x2lah0s xhjk10j"]{
+            display: none;
+        }
+    }
+
+    if posts {
+        if comments {
+            ._a9za._a9z6 > div.x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619 > .x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619 > .x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1uhb9sk.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619,
+            .xh8yej3.x10l6tqk.xf7dkkf.x1l90r2v.xv54qhq.xexx8yu.x5yr21d.xdt5ytf.x78zum5.x9f619 > .x1iyjqo2.xdt5ytf.x78zum5 {
+                display: none !important;
+            }
+        }
+
+        if suggestPosts {
+            .x11njtxf.x1n2onr6.x24vp2c.x1c1uobl.x18d9i69.xyri2b.x1lziwak.xat24cr.x14z9mp.xdj266r.xk390pu.xln7xf2.x2lah0s.xdt5ytf.x1lliihq.x9f619.x14e42zd.x1qhh985.x10w94by.x972fbf.x1qjc9v5 {
+                display: none !important;
+            }
+        }
+    }
+    else {
+        .x1n2onr6.xippug5.xg6iff7.xdt5ytf.x78zum5 > .x1jfb8zj.x1qrby5j.x1n2onr6.x7ja8zs.x1t2pt76.x1lytzrv.xedcshv.xarpa2k.x3igimt.x12ejxvf.xaigb6o.x1beo9mf.x1h91t0o.x4k7w5x.x1uvtmcs,
+        .x1yj74s3.xul9lc3.x1m1r3dp.xzakr58.xt0jiz3.x19sv2k2.x106a9eq.x18d9i69.x1xnnf8n.xs9x0gt.x1ykew4q.x1yztbdb.xvc5jky.x11t971q.xdj266r.x1iyjqo2 {
+            display: none !important;
+        }
+    }
+
+    if sidebar {
+        if search {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Search"]) {
+                display: none !important;
+            }
+        }
+
+        if explore {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Explore"]),
+            .xgzdhx4.x1oqrbt2.x1ugxg0y.x57odl9.x1e49onv.xlph30v.xmjrnx3.xhae0no.x19b80pe.xh8yej3.x1ykew4q.xvc5jky.x4n8cb0.x11t971q.xdj266r.x1iyjqo2.xdt5ytf.x78zum5,
+            .xvbhtw8.xf7dkkf.xv54qhq.x11njtxf.x1n2onr6.x18d9i69.xexx8yu.x1h3rv7z.x1lziwak.xat24cr.x14z9mp.xdj266r.xk390pu.x2lah0s.xdt5ytf.x78zum5.x9f619.x1qjc9v5 {
+                display: none !important;
+            }
+        }
+
+        if reels {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Reels"]),
+            div.xl56j7k.xh8yej3.xgv127d.x1bhewko.xsfy40s.x1mfogq2.xg7h5cd.x78zum5.x9f619.x1qjc9v5 {
+                display: none !important;
+            }
+        }
+
+        if messages {
+        a[aria-label^="Direct messaging -"],
+            .xlnp5zw.xmz0i5r.x5yr21d.x1iyjqo2.xnz67gz > .x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x1n2onr6.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619,
+            .xixxii4.x145d82y.x3h4tne.x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619 {
+                display: none !important;
+            }
+        }
+
+        if notifs {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Notifications"]) {
+                display: none !important;
+            }
+        }
+
+        if create {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="New post"]) {
+                display: none !important;
+            }
+        }
+        
+        if dashboard {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Professional dashboard"]) {
+                display: none;
+            }
+    }
+
+        if fromMeta {
+            div[class="xl5mz7h xhuyl8g"]:has(span.x1qrby5j.x7ja8zs.x1t2pt76.x1lytzrv.xedcshv.xarpa2k.x3igimt.x12ejxvf.xaigb6o.x1beo9mf.xv2umb2.x1jfb8zj.x1h9r5lt.x1h91t0o.x4k7w5x.x1vvkbs.x16tdsg8.x1hl2dhg.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-span:nth-of-type(2)) {
+                display: none !important;
+            }
+        }
+        else{
+            if meta{
+                span[class="html-span xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x1hl2dhg x16tdsg8 x1vvkbs x4k7w5x x1h91t0o x1h9r5lt x1jfb8zj xv2umb2 x1beo9mf xaigb6o x12ejxvf x3igimt xarpa2k xedcshv x1lytzrv x1t2pt76 x7ja8zs x1qrby5j"]:has(svg[aria-label="Also from Meta"]){
+                    display: none;
+                }
+            }
+            if settings{
+                div[class="x9f619 x3nfvp2 x1obq294 x5a5i1n xde0f50 x15x8krk xr9ek0c xjpr12u xo237n4 x6pnmvc x7nr27j x12dmmrz xz9dl7a xpdmqnj xsag5q8 x1g0dm76 x80pfx3 x159b3zp"]:has(line){
+                    display: none   
+                }
+            }
+        }
+    }
+    else {
+        .x1n327nk.xeq5yr9.x1dr59a3.x1nhvcw1.x1oa3qoh.x1qjc9v5.xqjyukv.xdt5ytf.x2lah0s.x1c4vz4f.xryxfnj.x1plvlek.x13vifvy.xixxii4.xbiv7yw.x16uus16.x1ga7v0g.x15mokao.x78zum5.xjbqb8w.x9f619,
+        .xvbhtw8.xf7dkkf.xv54qhq.x11njtxf.x1n2onr6.x18d9i69.xexx8yu.x1h3rv7z.x1lziwak.xat24cr.x14z9mp.xdj266r.xk390pu.x2lah0s.xdt5ytf.x78zum5.x9f619.x1qjc9v5 {
+            display: none !important;
+        }
+        
+        .x1v4esvl.x1v4esvl,
+        .x6osk4m.x6osk4m {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+    }
+
+}
+/* ==UserStyle==
+
+@name           Reduce Distractions [Instagram]
+@description    Strips away distracting elements on Instagram
+@namespace      https://userstyles.world/user/KryoBit
+@version        1.2.5
+@author         KryoBit
+@license        MIT
+
+@preprocessor stylus
+
+@var checkbox posts             "⦿ Reels / Posts" 1
+@var checkbox comments          "└⟶ Hide comments" 0
+@var checkbox suggestPosts      "└⟶ Hide suggested posts from user" 1
+
+@var checkbox suggestFollow      "⦿ Remove Follow Suggestions" 1
 
 @var checkbox sidebar           "⦿ Sidebar" 1
 @var checkbox search            "└⟶ Hide Search" 0
