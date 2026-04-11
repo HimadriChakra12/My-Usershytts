@@ -490,8 +490,8 @@ gray    #928374
     /* Outer post modal backdrop — the dark void around the media */
     [role="dialog"] > [style*="background-color: rgb(0, 0, 0)"],
     [role="dialog"] > [style*="background: rgb(0, 0, 0)"],
-    [role="presentation"] > [style*="background-color: rgb(0, 0, 0)"],
-    [role="presentation"] > [style*="background: rgb(0, 0, 0)"] {
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > [style*="background-color: rgb(0, 0, 0)"],
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > [style*="background: rgb(0, 0, 0)"] {
         background-color: #1d2021 !important;   /* bg0_h — deepest gruvbox */
     }
     
@@ -613,8 +613,8 @@ gray    #928374
         background-color: #83a598 !important;   /* bright blue */
     }
     
-    [role="presentation"] > div > div > div:last-child:hover,
-    [role="presentation"] > div > div > div:last-child {
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > div > div > div:last-child:hover,
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > div > div > div:last-child {
         background: #0000 !important;
     }
     
@@ -632,4 +632,8 @@ gray    #928374
     div[class="x1cy8zhl xvbhtw8 x5ur3kl x13fuv20 x178xt8z x78zum5 x1qughib xg8j3zb x1q3ajuy x1gx403c x889kno"]{
         background: #0000 !important;
     }
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]{
+        background: var(--ig-text-on-color)
+    }
 }
+
