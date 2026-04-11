@@ -1,17 +1,48 @@
 /* ==UserStyle==
-@name           Dark Instagram (variable recolor) - FORKED
-@namespace      github.com/blyad2137/dark-instagram--variable-recolor--forked
-@author         Daniel Perren (https://userstyles.world/user/grizzoch) blyad (https://github.com/blyad2137)
-@description    `Changes white to dark 8)`
-@version        1.0.7
+@name           Dark Instagram (Gruvbox)
+@namespace      github.com/improved/dark-instagram-gruvbox
+@author         Gruvbox edition — variable-only recolor, no filter cascade
+@description    Gruvbox dark theme for Instagram. No broad filter:invert() — post images and media are never affected.
+@version        4.0.0
 @license        CC BY-NC-SA 4.0
-@homepageURL    https://github.com/blyad2137/dark-instagram--variable-recolor--forked
-@supportURL     https://github.com/blyad2137/dark-instagram--variable-recolor--forked/issues
 @preprocessor   uso
-@advanced text feed "Size of the feed(0-50%)" 50%
-
+@advanced text feed "Feed width (0-50%)" 50%
 ==/UserStyle== */
+
+/*
+    GRUVBOX DARK PALETTE REFERENCE
+    ─────────────────────────────────────────────────────
+    bg0_h   #1d2021  (hard dark background)
+    bg0     #282828  (main background)
+    bg0_s   #32302f  (soft background)
+    bg1     #3c3836  (elevated background)
+    bg2     #504945  (highlight / selection)
+    bg3     #665c54  (comments / muted)
+    bg4     #7c6f64  (borders)
+
+    fg0     #fbf1c7  (brightest text)
+    fg1     #ebdbb2  (primary text)
+    fg2     #d5c4a1  (secondary text)
+    fg3     #bdae93  (tertiary text)
+    fg4     #a89984  (muted text / icons)
+
+    red     #cc241d  /  bright: #fb4934
+    green   #98971a  /  bright: #b8bb26
+    yellow  #d79921  /  bright: #fabd2f
+    blue    #458588  /  bright: #83a598
+    purple  #b16286  /  bright: #d3869b
+    aqua    #689d6a  /  bright: #8ec07c
+    orange  #d65d0e  /  bright: #fe8019
+    gray    #928374
+    ─────────────────────────────────────────────────────
+*/
+
 @-moz-document domain('instagram.com') {
+
+    /* ============================================================
+       SECTION 1: INSTAGRAM CORE DESIGN TOKENS — GRUVBOX DARK
+    ============================================================ */
+
     html,
     body,
     div,
@@ -19,567 +50,427 @@
     article,
     section {
 
-        --hscc-collapse-transition-duration: .3s;
-        --ig-badge: 220, 220, 220;
-        --ig-close-friends-refreshed: 28, 209, 79;
-        --ig-elevated-background: 15, 15, 15;
-		--ig-banner-background: var( --ig-primary-background);
-        --ig-elevated-separator: 100, 100, 100;
-        --ig-error-or-destructive: 237, 73, 86;
-        --ig-facebook-blue: 53, 121, 234;
-        --ig-focus-stroke: 168, 168, 168;
-        --ig-full-screen-background: 54, 54, 54;
-        --ig-highlight-background: 50, 50, 50;
-        --ig-link: 76, 168, 255;
-        --ig-live-badge: 255, 1, 105;
-        --ig-primary-background: 40, 40, 40;
-        --ig-primary-button: 76, 168, 255;
-        --ig-primary-text: 200, 200, 200;
-        --ig-secondary-background: 28, 28, 28;
-        --ig-secondary-button: 200, 200, 200;
-        --ig-secondary-text: 180, 180, 180;
-        --ig-separator: 61, 61, 61;
-        --ig-stroke: 61, 61, 61;
-        --ig-subscribers-only: 118, 56, 250;
-        --ig-success: 88, 195, 34;
-        --ig-temporary-highlight: 245, 251, 255;
-        --ig-tertiary-text: 111, 111, 111;
-        --ig-text-on-color: 255, 255, 255;
-        --modal-backdrop-dark: rgba(0, 0, 0, .85);
-        --modal-backdrop-default: rgba(0, 0, 0, .65);
+        /* Backgrounds */
+        --ig-primary-background:     40,  40,  40;   /* bg0     #282828 */
+        --ig-secondary-background:   29,  32,  33;   /* bg0_h   #1d2021 */
+        --ig-elevated-background:    60,  56,  54;   /* bg1     #3c3836 */
+        --ig-highlight-background:   80,  73,  69;   /* bg2     #504945 */
+        --ig-full-screen-background: 60,  56,  54;   /* bg1     #3c3836 */
+        --ig-banner-background:      40,  40,  40;   /* bg0     #282828 */
+
+        /* Text */
+        --ig-primary-text:   235, 219, 178;          /* fg1     #ebdbb2 */
+        --ig-secondary-text: 189, 174, 147;          /* fg3     #bdae93 */
+        --ig-tertiary-text:  168, 153, 132;          /* fg4     #a89984 */
+        --ig-text-on-color:  251, 241, 199;          /* fg0     #fbf1c7 */
+
+        /* Separators / Borders */
+        --ig-separator:          60,  56,  54;       /* bg1     #3c3836 */
+        --ig-elevated-separator: 80,  73,  69;       /* bg2     #504945 */
+        --ig-stroke:            102, 92,  84;        /* bg3     #665c54 */
+        --ig-focus-stroke:      124, 111, 100;       /* bg4     #7c6f64 */
+
+        /* Interactive / Accent — gruvbox blue */
+        --ig-primary-button:   131, 165, 152;        /* bright blue  #83a598 */
+        --ig-secondary-button: 189, 174, 147;        /* fg3          #bdae93 */
+        --ig-link:             131, 165, 152;        /* bright blue  #83a598 */
+
+        /* Status colours — gruvbox semantic colours */
+        --ig-badge:                    251,  73,  52; /* bright red    #fb4934 */
+        --ig-live-badge:               214,  93,  14; /* orange        #d65d0e */
+        --ig-close-friends-refreshed:  142, 192, 124; /* bright aqua   #8ec07c */
+        --ig-error-or-destructive:     251,  73,  52; /* bright red    #fb4934 */
+        --ig-success:                  184, 187,  38; /* bright green  #b8bb26 */
+        --ig-subscribers-only:         211, 134, 155; /* bright purple #d3869b */
+        --ig-temporary-highlight:      250, 189,  47; /* bright yellow #fabd2f */
+
+        /* Brand */
+        --ig-facebook-blue: 131, 165, 152;           /* bright blue  #83a598 */
+
+        /* Modals */
+        --modal-backdrop-dark:    rgba(29, 32, 33, .92);
+        --modal-backdrop-default: rgba(29, 32, 33, .75);
         --modal-border-radius: 12px;
-        --modal-padding: 16px;
-        --modal-z-index: 100;
-        --orange-5: #fd8d32;
+        --modal-padding:       16px;
+        --modal-z-index:       100;
+        --tos-box-shadow:      0, 0, 0;
+
+        /* Misc */
+        --web-always-black:       0,   0,   0;
+        --web-always-white:     251, 241, 199;       /* fg0 #fbf1c7 */
+        --web-overlay-on-media:  40,  40,  40;
+        --web-secondary-action: 131, 165, 152;
+        --post-separator:        60,  56,  54;
+        --post-step-indicator:  168, 153, 132;
         --photo: 600px;
-        --pink-5: #d10869;
-        --post-step-indicator: 168, 168, 168;
-        --post-separator: 100, 100, 100;
-        --purple-5: #a307ba;
-        --red-4: #ff6874;
-        --red-5: #ed4956;
-        --red-6: #c62330;
-        --red-7: #a70311;
-        --tos-box-shadow: 0, 0, 0;
-        --web-always-black: 0, 0, 0;
-        --web-always-white: 255, 255, 255;
-        --web-overlay-on-media: 38, 38, 38;
-        --web-secondary-action: 224, 241, 255;
-        --yellow-5: #fdcb5c;
-		--w1: 236, 244, 255;
 
+        /* Colour palette tokens — mapped to gruvbox equivalents */
+        --orange-5: #fe8019;   /* bright orange */
+        --pink-5:   #d3869b;   /* bright purple */
+        --purple-5: #b16286;   /* purple */
+        --red-4:    #fb4934;   /* bright red */
+        --red-5:    #cc241d;   /* red */
+        --red-6:    #9d0006;   /* dark red */
+        --red-7:    #79000a;
+        --yellow-5: #fabd2f;   /* bright yellow */
+        --w1:       235, 219, 178;                   /* fg1 */
 
-            /* Username links */
-    --fe0: 0, 155, 255 !important;
+        /* ------------------------------------------------------------------
+           INSTAGRAM RUNTIME OBFUSCATED VARIABLES — GRUVBOX MAPPED
+        ------------------------------------------------------------------ */
 
-    /* Follow Button */
-    --d69: 0, 149, 246 !important;
+        --fe0: 131, 165, 152 !important;     /* username links      → bright blue */
+        --d69: 131, 165, 152 !important;     /* follow button       → bright blue */
+        --f24: 131, 165, 152 !important;     /* primary action      → bright blue */
+        --b86: 184, 187,  38 !important;     /* success green       → bright green */
+        --i30: 251,  73,  52 !important;     /* error red           → bright red */
+        --c37: 251,  73,  52 !important;
+        --eac: 251,  73,  52 !important;
+        --fa7: 250, 189,  47 !important;     /* accent yellow       → bright yellow */
+        --e62: 250, 189,  47 !important;
+        --jbb: 131, 165, 152 !important;     /* facebook blue       → bright blue */
+        --b2f: 211, 134, 155 !important;     /* purple              → bright purple */
 
-    --b86: 88, 195, 34 !important;
+        --jb7:  60,  56,  54 !important;     /* DM bubble bg        → bg1 */
+        --jd9: 235, 219, 178 !important;     /* DM bubble text      → fg1 */
+        --cdd: 213, 196, 161 !important;     /* DM secondary text   → fg2 */
 
-    --i30: 237, 73, 86 !important;
-    --c37: 237, 73, 86 !important;
+        --i1d: 235, 219, 178 !important;     /* primary text        → fg1 */
+        --d20: 189, 174, 147 !important;     /* secondary text      → fg3 */
+        --eca:  50,  48,  47 !important;     /* inverse surface     → bg0_s */
 
-    --f24: 0, 149, 246 !important;
+        --f75: 189, 174, 147 !important;     /* username / likes    → fg3 */
+        --j64: 213, 196, 161 !important;     /* like count          → fg2 */
+        --f52: 168, 153, 132 !important;     /* time labels         → fg4 */
+        --ie3: 168, 153, 132 !important;
 
-    --fa7: 224, 241, 50 !important;
+        --ba8: 124, 111, 100 !important;     /* muted icons         → bg4 */
+        --c8c: 124, 111, 100 !important;
 
-    --jbb: 53, 121, 234 !important;
+        --e22:  80,  73,  69 !important;     /* mid bg              → bg2 */
+        --edc:  80,  73,  69 !important;
 
-    --eac: 237, 73, 86 !important;
+        --b38: 102,  92,  84 !important;     /* borders             → bg3 */
+        --b6a: 102,  92,  84 !important;
+        --ca6: 102,  92,  84 !important;
+        --ce3: 102,  92,  84 !important;     /* spacer              → bg3 */
 
-    --e62: 245, 251, 50 !important;
+        --bb2:  29,  32,  33 !important;     /* deepest bg          → bg0_h */
+        --a97:  20,  22,  23 !important;
 
-    --b2f: 168, 60, 221 !important;
+        --b3f:  40,  40,  40 !important;     /* main background     → bg0 */
+        --d62:  40,  40,  40 !important;
+        --a72:  40,  40,  40 !important;
+        --h1d:  40,  40,  40 !important;
+        --de5:  40,  40,  40 !important;
 
-    /* Message interaction DMs */
-    --jb7: 50, 50, 50 !important;
-    --jd9: 255, 255, 255 !important;
-    --cdd: 217, 217, 217 !important;
-
-    /* Text and Usernames */
-    --i1d: 255, 255, 255 !important;
-    --d20: 190, 190, 190 !important;
-    --eca: 30, 30, 30 !important;
-
-    /* Username and Like count */
-    --f75: 190, 190, 190 !important;
-    --j64: 201, 201, 201 !important;
-
-    /* Link Color and Time Labels */
-    --f52: 158, 158, 158 !important;
-    --ie3: 158, 158, 158 !important;
-
-    --ba8: 87, 87, 87 !important;
-    --c8c: 87, 87, 87 !important;
-
-    --e22: 46, 46, 46 !important;
-    --edc: 46, 46, 46 !important;
-
-    /* Borders */
-    --b38: 100, 100, 100 !important;
-    --b6a: 100, 100, 100 !important;
-    --ca6: 100, 100, 100 !important;
-
-    /* Spacerbar */
-    --ce3: 100, 100, 100 !important;
-
-    --bb2: 21, 21, 21 !important;
-    --a97: 7, 7, 7 !important;
-
-    /* Main Background */
-    --b3f: 25, 25, 25 !important;
-    --d62: 25, 25, 25 !important;
-    --a72: 25, 25, 25 !important;
-    --h1d: 25, 25, 25 !important;
-    --de5: 25, 25, 25 !important;
-
-    /* Header Backgrounds */
-    --d87: 25, 25, 25 !important;
-    --f23: 25, 25, 25 !important;
-    }
-	:root, .__fb-light-mode {
-		--fds-black: black;
-		--fds-black-alpha-05: rgba(0, 0, 0, 0.05);
-		--fds-black-alpha-10: rgba(0, 0, 0, 0.1);
-		--fds-black-alpha-15: rgba(0, 0, 0, 0.15);
-		--fds-black-alpha-20: rgba(0, 0, 0, 0.2);
-		--fds-black-alpha-30: rgba(0, 0, 0, 0.3);
-		--fds-black-alpha-40: rgba(0, 0, 0, 0.4);
-		--fds-black-alpha-50: rgba(0, 0, 0, 0.5);
-		--fds-black-alpha-60: rgba(0, 0, 0, 0.6);
-		--fds-black-alpha-80: rgba(0, 0, 0, 0.8);
-		--fds-blue-05: black;
-		--fds-blue-30: black;
-		--fds-blue-40: black;
-		--fds-blue-60: black;
-		--fds-blue-70: black;
-		--fds-blue-80: black;
-		--fds-button-text: black;
-		--fds-comment-background: black;
-		--fds-dark-mode-gray-35: black;
-		--fds-dark-mode-gray-50: black;
-		--fds-dark-mode-gray-70: black;
-		--fds-dark-mode-gray-80: black;
-		--fds-dark-mode-gray-90: black;
-		--fds-dark-mode-gray-100: black;
-		--fds-gray-00: black;
-		--fds-gray-05: black;
-		--fds-gray-10: black;
-		--fds-gray-20: black;
-		--fds-gray-25: black;
-		--fds-gray-30: black;
-		--fds-gray-45: black;
-		--fds-gray-70: black;
-		--fds-gray-80: black;
-		--fds-gray-90: black;
-		--fds-gray-100: black;
-		--fds-green-55: black;
-		--fds-highlight: black;
-		--fds-highlight-cell-background: black;
-		--fds-primary-icon: white;
-		--fds-primary-text: white;
-		--fds-red-55: black;
-		--fds-soft: cubic-bezier(.08,.52,.52,1);
-		--fds-spectrum-aluminum-tint-70: black;
-		--fds-spectrum-blue-gray-tint-70: black;
-		--fds-spectrum-cherry: black;
-		--fds-spectrum-cherry-tint-70: black;
-		--fds-spectrum-grape-tint-70: black;
-		--fds-spectrum-grape-tint-90: black;
-		--fds-spectrum-lemon-dark-1: black;
-		--fds-spectrum-lemon-tint-70: black;
-		--fds-spectrum-lime: black;
-		--fds-spectrum-lime-tint-70: black;
-		--fds-spectrum-orange-tint-70: black;
-		--fds-spectrum-orange-tint-90: black;
-		--fds-spectrum-seafoam-tint-70: black;
-		--fds-spectrum-slate-dark-2: black;
-		--fds-spectrum-slate-tint-70: black;
-		--fds-spectrum-teal: black;
-		--fds-spectrum-teal-dark-1: black;
-		--fds-spectrum-teal-dark-2: black;
-		--fds-spectrum-teal-tint-70: black;
-		--fds-spectrum-teal-tint-90: black;
-		--fds-spectrum-tomato: black;
-		--fds-spectrum-tomato-tint-30: black;
-		--fds-spectrum-tomato-tint-90: black;
-		--fds-strong: cubic-bezier(.12,.8,.32,1);
-		--fds-white: black;
-		--fds-white-alpha-05: rgba(255, 255, 255, 0.05);
-		--fds-white-alpha-10: rgba(255, 255, 255, 0.1);
-		--fds-white-alpha-20: rgba(255, 255, 255, 0.2);
-		--fds-white-alpha-30: rgba(255, 255, 255, 0.3);
-		--fds-white-alpha-40: rgba(255, 255, 255, 0.4);
-		--fds-white-alpha-50: rgba(255, 255, 255, 0.5);
-		--fds-white-alpha-60: rgba(255, 255, 255, 0.6);
-		--fds-white-alpha-80: rgba(255, 255, 255, 0.8);
-		--fds-yellow-20: black;
-		--accent: #0095F6;
-		--always-white: white;
-		--always-black: black;
-		--always-dark-gradient: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6));
-		--always-dark-overlay: rgba(0, 0, 0, 0.4);
-		--always-light-overlay: rgba(255, 255, 255, 0.4);
-		--always-gray-40: #65676B;
-		--always-gray-75: #BCC0C4;
-		--always-gray-95: #F0F2F5;
-		--attachment-footer-background: rgba(255,255,255,0.1);
-		--background-deemphasized: rgba(255,255,255,0.1);
-		--base-blue: #1877F2;
-		--base-cherry: #F3425F;
-		--base-grape: #9360F7;
-		--base-lemon: #F7B928;
-		--base-lime: #45BD62;
-		--base-pink: #FF66BF;
-		--base-seafoam: #54C7EC;
-		--base-teal: #2ABBA7;
-		--base-tomato: #FB724B;
-		--blue-link: rgba(76, 168, 255,1);
-		--card-background: #242526;
-		--card-background-flat: #323436;
-		--comment-background: #3A3B3C;
-		--comment-footer-background: #4E4F50;
-		--dataviz-primary-1: rgb(48,200,180);
-		--disabled-button-background: rgba(255, 255, 255, 0.2);
-		--disabled-button-text: rgba(255, 255, 255, 0.3);
-		--disabled-icon: rgba(255, 255, 255, 0.3);
-		--disabled-text: rgba(255, 255, 255, 0.3);
-		--divider: #3E4042;
-		--event-date: #F3425F;
-		--fb-wordmark: #FFFFFF;
-		--glimmer-spinner-icon: white;
-		--hero-banner-background: #E85D07;
-		--hosted-view-selected-state: rgba(45, 136, 255, 0.1);
-		--highlight-bg: rgba(24, 119, 242, .31);
-		--hover-overlay: rgba(255, 255, 255, 0.1);
-		--media-hover: rgba(68, 73, 80, 0.15);
-		--media-inner-border: rgba(255, 255, 255, 0.05);
-		--media-outer-border: #33363A;
-		--media-pressed: rgba(68, 73, 80, 0.35);
-		--messenger-card-background: #242526;
-		--messenger-reply-background: #18191A;
-		--overlay-alpha-80: rgba(0, 0, 0, 0.65);
-		--overlay-on-media: rgba(0, 0, 0, 0.6);
-		--nav-bar-background: #242526;
-		--nav-bar-background-gradient: linear-gradient(to top, #242526, rgba(36,37,38,.9), rgba(36,37,38,.7), rgba(36,37,38,.4), rgba(36,37,38,0));
-		--nav-bar-background-gradient-wash: linear-gradient(to top, #18191A, rgba(24,25,26,.9), rgba(24,25,26,.7), rgba(24,25,26,.4), rgba(24,25,26,0));
-		--negative: hsl(350, 87%, 55%);
-		--negative-background: hsl(350, 87%, 55%, 20%);
-		--new-notification-background: #E7F3FF;
-		--non-media-pressed: rgba(68, 73, 80, 0.15);
-		--non-media-pressed-on-dark: rgba(255, 255, 255, 0.3);
-		--notification-badge: #e41e3f;
-		--placeholder-icon: #8A8D91;
-		--placeholder-image: rgb(164, 167, 171);
-		--placeholder-text: #8A8D91;
-		--placeholder-text-on-media: rgba(255, 255, 255, 0.5);
-		--popover-background: #3E4042;
-		--positive: #31A24C;
-		--positive-background: #1F3520;
-		--press-overlay: rgba(255, 255, 255, 0.1);
-		--primary-button-background: #0095F6;
-		--primary-button-pressed: #77A7FF;
-		--primary-button-text: #FFFFFF;
-		--primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
-		--primary-deemphasized-button-pressed: rgba(24, 119, 242, 0.2);
-		--primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
-		--primary-deemphasized-button-text: #2D88FF;
-		--primary-icon: #E4E6EB;
-		--primary-text: #E4E6EB;
-		--primary-text-on-media: white;
-		--primary-web-focus-indicator: #D24294;
-		--progress-ring-neutral-background: rgba(255, 255, 255, 0.2);
-		--progress-ring-neutral-foreground: #ffffff;
-		--progress-ring-on-media-background: rgba(255, 255, 255, 0.2);
-		--progress-ring-on-media-foreground: #FFFFFF;
-		--progress-ring-blue-background: rgba(45, 136, 255, 0.2);
-		--progress-ring-blue-foreground: hsl(214, 100%, 59%);
-		--progress-ring-disabled-background: rgba(122,125,130, 0.2);
-		--progress-ring-disabled-foreground: #7A7D82;
-		--rating-star-active: #FF9831;
-		--scroll-thumb: rgba(255, 255, 255, 0.3);
-		--scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(255, 255, 255, 0.05) inset;
-		--secondary-button-background: rgba(255,255,255,.1);
-		--secondary-button-background-floating: #4B4C4F;
-		--secondary-button-background-on-dark: rgba(255, 255, 255, 0.4);
-		--secondary-button-pressed: rgba(0, 0, 0, 0.05);
-		--secondary-button-stroke: transparent;
-		--secondary-button-text: #E4E6EB;
-		--secondary-icon: #B0B3B8;
-		--secondary-text: #B0B3B8;
-		--secondary-text-on-media: rgba(255, 255, 255, 0.9);
-		--section-header-text: #BCC0C4;
-		--shadow-1: rgba(0, 0, 0, 0.1);
-		--shadow-2: rgba(0, 0, 0, 0.2);
-		--shadow-5: rgba(0, 0, 0, 0.5);
-		--shadow-8: rgba(0, 0, 0, 0.8);
-		--shadow-inset: rgba(255, 255, 255, 0.05);
-		--surface-background: #242526;
-		--text-highlight: rgba(24, 119, 242, 0.45);
-		--toggle-active-background: rgb(45, 136, 255);
-		--toggle-active-icon: #FFFFFF;
-		--toggle-active-text: #FFFFFF;
-		--toggle-button-active-background: #E6F2FF;
-		--wash: #3E4042;
-		--web-wash: #18191A;
-		--warning: hsl(40, 89%, 52%);
-		--fb-logo-color: #2D88FF;
-		--dataviz-primary-2: rgb(134,218,255);
-		--dataviz-primary-3: rgb(95,170,255);
-		--dataviz-secondary-1: rgb(129,77,231);
-		--dataviz-secondary-2: rgb(168,124,255);
-		--dataviz-secondary-3: rgb(219,26,139);
-		--dataviz-supplementary-1: rgb(255,122,105);
-		--dataviz-supplementary-2: rgb(241,168,23);
-		--dataviz-supplementary-3: rgb(49,162,76);
-		--dataviz-supplementary-4: rgb(228,230,235);
-		--blue-0: #f5fbff;
-		--blue-2: #b3dbff;
-		--blue-4: #47afff;
-		--blue-5: #0095f6;
-		--blue-6: #0074cc;
-		--blue-7: #0057a3;
-		--blue-8: #00376b;
-		--blue-9: #002952;
-		--challenge-link: 219,219,219;
-		--clr-separator: #efefef;
-		--clr_red_dark_30: #af2634;
-		--cyan-5: #27c4f5;
-		--docpen-lightgrey: 38,38,38;
-		--fb-connect-blue: #4f67b0;
-		--green-4: #78de45;
-		--green-5: #58c322;
-		--green-6: #37a600;
-		--grey-1: #efefef;
-		--grey-2: #dbdbdb;
-		--grey-4: #a8a8a8;
-		--grey-5: #8e8e8e;
-		--grey-6: #737373;
-		--grey-8: #363636;
-		--grey-9: #262626;
-		--ig-badge: 255, 48, 65;
-		--ig-elevated-background: 38,38,38;
-		--ig-elevated-separator: 54,54,54;
-		--ig-error-or-destructive: 237,73,86;
-		--ig-facebook-blue: 53,121,234;
-		--ig-focus-stroke: 85,85,85;
-		--ig-highlight-background: 38,38,38;
-		--ig-link: 224,241,255;
-		--ig-primary-background: 0,0,0;
-		--ig-primary-button: 0,149,246;
-		--ig-primary-text: 250,250,250;
-		--ig-secondary-background: 18,18,18;
-		--ig-secondary-button: 250,250,250;
-		--ig-secondary-text: 142,142,142;
-		--ig-separator: 38,38,38;
-		--ig-stroke: 54,54,54;
-		--ig-success: 88,195,34;
-		--ig-temporary-highlight: 0,149,246;
-		--ig-tertiary-text: 115,115,115;
-		--ig-text-on-color: 255,255,255;
-		--orange-5: #fd8d32;
-		--pink-5: #d10869;
-		--post-separator: 38,38,38;
-		--post-step-indicator: 168,168,168;
-		--purple-5: #a307ba;
-		--red-4: #ff6874;
-		--red-5: #ed4956;
-		--red-6: #c62330;
-		--red-7: #a70311;
-		--tos-box-shadow: 255,255,255;
-		--web-always-black: 0,0,0;
-		--web-always-white: 255,255,255;
-		--web-secondary-action: 224,241,255;
-		--yellow-5: #fdcb5c;
-	}
-
-    /* Color Correction Logos */
-    ._9zn7, .s4Iyt, svg:not(._ab8k._ab8v._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abam._abbk._ab9y._aba8 svg):not([fill="#ffffff"]):not([fill="#8e8e8e"]):not(a.sf--story-btn svg):not(._8ire svg):not([fill="currentColor"]):not([color="#ed4956"]), ._9zkj, ._a3ds, ._a3dt, ._a3du, ._a3dv, ._a3dw, ._9-b3, ._9znl, ._9z-6, ._a3dx, ._a3dy, ._a3dz, ._a3d-, ._a3d_, ._a3e0, ._9zm4, ._a3e1, ._a3e2, ._a3e3, ._a3e4, ._a3e5, ._a3e6, ._a3e7, ._a3e8, ._a3e9, ._a3ea, ._9_57, ._9_n5, ._9-y3, ._a3eb, ._a3ec, ._a3ed, ._a3ee, ._a04s, ._9zlu, ._9-yp:not(._aa7q), ._a3ef, ._a3eg, ._9_wm, ._a3eh, ._a3ei, ._a3ej, ._a3ek, ._9_ij, ._9_d_, ._9_e1, ._9-mm, ._9_cx, ._9zfi, ._9-ub, ._a3el, ._9-7-, ._9-1a, ._a3em, ._9zrp, ._a3en, ._9zz9, ._a3eo, ._9zmr, ._9-8d, ._9zhi, ._a3ep, ._a3eq, ._9zli, ._9_4y, ._9zfj, ._9zlg, ._a3er, ._9-lv, ._9_ug, ._9_sh, ._9_sj, ._9z-c, ._9_35, ._9_hh, ._a3es, ._a3et, ._a3eu, ._9-v-, ._9_4d, ._9zlh, ._a3ev, ._a3ew, ._a3ex, ._a3ey, ._9ys7, ._9ys8, ._9_7m, ._9_fv, ._a3ez, [src="https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/nppLrRDPwRh.png"], [src="https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/Ma96NGMpx3k.png"], [src="https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/hzSTybO4xnl.png"],[src="https://static.xx.fbcdn.net/rsrc.php/v3/yl/r/mRucGeWws8j.png"], ._9-zf, ._9-zg, ._9-ze, ._a9fa, ._9-zh, ._9-zi, ._9-zj, ._9-zk, ._9-zl, ._9-zm, ._9-zn, ._9-zo, ._9-zp, ._9-zq, ._9-zr, ._9-zs, ._9-zt, ._a3op, ._a3oq, ._9-zu, ._9-zv, ._9-zw, ._9-zx, ._9-zy, ._9-zz, ._9-z-, ._a3or, ._a3ot, ._a3os, ._9zs1, ._9zs2, ._9-z_, ._9--0, ._9--1, ._9--2, ._9--3, ._9--4, ._9--5, ._9--6, ._9--7, ._9--f, ._9--8, ._9--9, ._9--a, ._9--b, ._9--c, ._9--d, ._9--e, ._a3ou, ._9--g, ._9--h, ._9--i, ._9--j, ._9--l, ._9--k, ._9--m, ._9--n, ._9--o, ._9--p, ._9--q, ._a3ov, ._9--s, ._9--r, ._9--t, ._9--u, ._9--v, ._9--x, ._9--y, ._9--w, ._9--z, ._9--_, ._9-_0, ._9-_1, ._9-_2, ._9-_3, ._9---, ._9-_4, ._9-_5, ._9-_6, ._9-_7, ._a3wy, ._9-_8, ._9-_9, ._a3ow, ._9-_a, ._9-_b, ._9-_c, ._9-_d, ._9-_e, ._9-_f, ._9-_g, ._9-_h, ._9-_i, ._9-_j, ._9-_k, ._9-_l, ._9-_m, ._9-_n, ._9-_o, ._a3ox, ._9-_p, ._9-_q, ._a9fb, ._9-_t, ._9-_r, ._9-_s, ._a93g, ._9-_u, ._9-_v, ._a9fc, ._9-_w, ._9-_x, ._9-_y, ._9-_z, ._9-_-, ._9-__, ._9_00, ._a3oy, ._9_01, ._9_02, ._9_03, ._9_04, ._9_05, ._9_08, ._9_09, ._9_07, ._9_06, ._9_0a, ._9_0b, ._9_0c, ._9_0d, ._9_0e, ._9_0f, ._9_0g, ._a93h, ._9_0h, ._9_0i, ._9_0j, ._9_0k, ._aepo, ._9_0l, ._9_0m, ._9_0n, ._9_0o, ._9_0p, ._a3oz, ._a93l, ._9_0r, ._9_0s, ._a7tk, ._9_0q, ._a3o-, ._9_0t, ._9_0v, ._9_0u, ._a9ej, ._9_0w, ._9_0x, ._9_0y, ._9_0z, ._9_0_, ._9_0-, ._9_10, ._9_11, ._9_12, ._9_13, ._9_14, ._9_15, ._a3o_, ._9_18, ._9_19, ._9_1a, ._9_1e, ._9_1b, ._9_1c, ._9_1d, ._9_16, ._9_17, ._a3p0, ._9_1f, ._9_1g, ._9_1i, ._9_1h, ._9_1j, ._9_1k, ._9_1l, ._9_1m, ._a9pw, ._9r3q, .lzf7d6o1, .sp_TNg2CZYaF1T.sx_7d646c, ._afxx, ._afxy, ._abc5 i[aria-label="Instagram"] {
-        filter: invert(1) hue-rotate(180deg);
-    }
-    [src*="/qp_instagram_meta_badge-4x-light.png"], [src="https://static.xx.fbcdn.net/rsrc.php/v3/y0/r/I7oK-BX_VXn.png"] {
-		filter: invert(.835) hue-rotate(180deg);
-	}
-	[src="https://static.cdninstagram.com/rsrc.php/v3/y4/r/ShFi4iY4Fd9.gif"], ._9r3e:before {
-		filter: invert(.905) hue-rotate(180deg) saturate(3);
-	}
-	._a3gq ._aamt canvas, ._a3gq ._aarg canvas, ._a3gq ._aarf canvas, ._aams canvas {
-		filter: invert(.835) hue-rotate(180deg) saturate(2);
-	}
-
-    ._a3gq ._ac0f a.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl._a6hd:nth-of-type(1) {
-        filter: invert(1) hue-rotate(180deg) !important;
+        --d87:  40,  40,  40 !important;     /* header backgrounds  → bg0 */
+        --f23:  40,  40,  40 !important;
     }
 
 
-    /* Removes Suggestions on main page */
-    ._9-ta, .COOzN {
+    /* ============================================================
+       SECTION 2: FDS TOKENS — GRUVBOX MAPPED
+    ============================================================ */
+
+    :root,
+    .__fb-light-mode {
+        /* Alpha tokens — keep as-is, used for shadows/overlays */
+        --fds-black-alpha-05: rgba(0, 0, 0, 0.05);
+        --fds-black-alpha-10: rgba(0, 0, 0, 0.1);
+        --fds-black-alpha-15: rgba(0, 0, 0, 0.15);
+        --fds-black-alpha-20: rgba(0, 0, 0, 0.2);
+        --fds-black-alpha-30: rgba(0, 0, 0, 0.3);
+        --fds-black-alpha-40: rgba(0, 0, 0, 0.4);
+        --fds-black-alpha-50: rgba(0, 0, 0, 0.5);
+        --fds-black-alpha-60: rgba(0, 0, 0, 0.6);
+        --fds-black-alpha-80: rgba(0, 0, 0, 0.8);
+        --fds-white-alpha-05: rgba(235, 219, 178, 0.05);
+        --fds-white-alpha-10: rgba(235, 219, 178, 0.1);
+        --fds-white-alpha-20: rgba(235, 219, 178, 0.2);
+        --fds-white-alpha-30: rgba(235, 219, 178, 0.3);
+        --fds-white-alpha-40: rgba(235, 219, 178, 0.4);
+        --fds-white-alpha-50: rgba(235, 219, 178, 0.5);
+        --fds-white-alpha-60: rgba(235, 219, 178, 0.6);
+        --fds-white-alpha-80: rgba(235, 219, 178, 0.8);
+
+        /* Solid tokens → gruvbox bg/fg scale */
+        --fds-black:          #1d2021;   /* bg0_h */
+        --fds-white:          #282828;   /* bg0   */
+        --fds-primary-text:   #ebdbb2;   /* fg1   */
+        --fds-primary-icon:   #ebdbb2;
+        --fds-gray-00:        #1d2021;
+        --fds-gray-05:        #282828;
+        --fds-gray-10:        #32302f;
+        --fds-gray-20:        #3c3836;
+        --fds-gray-25:        #504945;
+        --fds-gray-30:        #665c54;
+        --fds-gray-45:        #7c6f64;
+        --fds-gray-70:        #928374;
+        --fds-gray-80:        #a89984;
+        --fds-gray-90:        #bdae93;
+        --fds-gray-100:       #d5c4a1;
+        --fds-dark-mode-gray-35:  #504945;
+        --fds-dark-mode-gray-50:  #665c54;
+        --fds-dark-mode-gray-70:  #7c6f64;
+        --fds-dark-mode-gray-80:  #928374;
+        --fds-dark-mode-gray-90:  #a89984;
+        --fds-dark-mode-gray-100: #bdae93;
+
+        --fds-blue-05:  #0d1a1b;
+        --fds-blue-30:  #2a4a4d;
+        --fds-blue-40:  #3d6b6f;
+        --fds-blue-60:  #83a598;
+        --fds-blue-70:  #a0bdb7;
+        --fds-blue-80:  #b8d0cb;
+        --fds-green-55: #b8bb26;
+        --fds-red-55:   #fb4934;
+        --fds-yellow-20: #3a2e00;
+
+        --fds-button-text:          #ebdbb2;
+        --fds-comment-background:   #3c3836;
+        --fds-highlight:            rgba(131, 165, 152, 0.25);
+        --fds-highlight-cell-background: rgba(131, 165, 152, 0.1);
+        --fds-soft:   cubic-bezier(.08,.52,.52,1);
+        --fds-strong: cubic-bezier(.12,.8,.32,1);
+
+        /* Core surface / interactive tokens */
+        --accent:         #83a598;
+        --always-white:   #fbf1c7;
+        --always-black:   #1d2021;
+        --always-dark-gradient: linear-gradient(rgba(29,32,33,0), rgba(29,32,33,0.7));
+        --always-dark-overlay:  rgba(29, 32, 33, 0.5);
+        --always-light-overlay: rgba(235, 219, 178, 0.3);
+        --blue-link:      #83a598;
+
+        --card-background:        #3c3836;   /* bg1 */
+        --card-background-flat:   #504945;   /* bg2 */
+        --comment-background:     #3c3836;
+        --comment-footer-background: #504945;
+        --surface-background:     #3c3836;
+        --popover-background:     #32302f;
+        --wash:                   #32302f;
+        --web-wash:               #1d2021;
+
+        --nav-bar-background: #282828;
+        --nav-bar-background-gradient: linear-gradient(to top, #282828, rgba(40,40,40,.9), rgba(40,40,40,.7), rgba(40,40,40,.4), rgba(40,40,40,0));
+        --nav-bar-background-gradient-wash: linear-gradient(to top, #1d2021, rgba(29,32,33,.9), rgba(29,32,33,.7), rgba(29,32,33,.4), rgba(29,32,33,0));
+
+        --divider:          #3c3836;
+        --hover-overlay:    rgba(235, 219, 178, 0.06);
+        --press-overlay:    rgba(235, 219, 178, 0.06);
+        --media-hover:      rgba(235, 219, 178, 0.06);
+        --media-pressed:    rgba(235, 219, 178, 0.15);
+        --media-inner-border: rgba(235, 219, 178, 0.04);
+        --media-outer-border: #3c3836;
+        --overlay-alpha-80: rgba(29, 32, 33, 0.80);
+        --overlay-on-media: rgba(29, 32, 33, 0.65);
+
+        --primary-text:         #ebdbb2;
+        --primary-icon:         #ebdbb2;
+        --secondary-text:       #bdae93;
+        --secondary-icon:       #a89984;
+        --section-header-text:  #d5c4a1;
+        --placeholder-text:     #7c6f64;
+        --placeholder-icon:     #7c6f64;
+        --placeholder-image:    #504945;
+
+        --primary-button-background:  #458588;   /* blue */
+        --primary-button-pressed:     #83a598;   /* bright blue */
+        --primary-button-text:        #fbf1c7;   /* fg0 */
+        --secondary-button-background: rgba(235, 219, 178, 0.07);
+        --secondary-button-text:       #ebdbb2;
+        --disabled-button-background:  rgba(235, 219, 178, 0.12);
+        --disabled-button-text:        rgba(235, 219, 178, 0.25);
+        --disabled-icon:               rgba(235, 219, 178, 0.25);
+
+        --toggle-active-background:  #458588;
+        --toggle-active-icon:        #fbf1c7;
+        --toggle-active-text:        #fbf1c7;
+
+        --notification-badge:         #fb4934;
+        --new-notification-background: #1d2021;
+        --highlight-bg:   rgba(131, 165, 152, 0.2);
+        --text-highlight: rgba(131, 165, 152, 0.35);
+
+        --negative:            #fb4934;
+        --negative-background: rgba(251, 73, 52, 0.15);
+        --positive:            #b8bb26;
+        --positive-background: rgba(184, 187, 38, 0.15);
+        --warning:             #fabd2f;
+
+        --scroll-thumb:  rgba(235, 219, 178, 0.2);
+        --shadow-1: rgba(29, 32, 33, 0.3);
+        --shadow-2: rgba(29, 32, 33, 0.5);
+        --shadow-5: rgba(29, 32, 33, 0.7);
+        --shadow-8: rgba(29, 32, 33, 0.9);
+        --shadow-inset: rgba(235, 219, 178, 0.04);
+
+        --grey-1: #3c3836;
+        --grey-2: #504945;
+        --grey-4: #665c54;
+        --grey-5: #7c6f64;
+        --grey-6: #928374;
+        --grey-8: #bdae93;
+        --grey-9: #d5c4a1;
+        --blue-5: #83a598;
+
+        /* Gruvbox data viz palette */
+        --dataviz-primary-1:       rgb(131, 165, 152);  /* bright blue  */
+        --dataviz-primary-2:       rgb(142, 192, 124);  /* bright aqua  */
+        --dataviz-primary-3:       rgb(184, 187,  38);  /* bright green */
+        --dataviz-secondary-1:     rgb(211, 134, 155);  /* bright purple */
+        --dataviz-secondary-2:     rgb(177, 98,  134);  /* purple       */
+        --dataviz-secondary-3:     rgb(251,  73,  52);  /* bright red   */
+        --dataviz-supplementary-1: rgb(254, 128,  25);  /* bright orange */
+        --dataviz-supplementary-2: rgb(250, 189,  47);  /* bright yellow */
+        --dataviz-supplementary-3: rgb(104, 157, 106);  /* aqua         */
+        --dataviz-supplementary-4: rgb(168, 153, 132);  /* fg4          */
+    }
+
+
+    /* ============================================================
+       SECTION 3: LOGO IMAGES ONLY
+       filter:invert() only on known leaf <img> elements.
+       Never on containers — no cascade into post images.
+    ============================================================ */
+
+    img[src*="rsrc.php"][src*="instagram"],
+    img[src*="nppLrRDPwRh"],
+    img[src*="Ma96NGMpx3k"],
+    img[src*="hzSTybO4xnl"],
+    img[src*="mRucGeWws8j"],
+    img[src*="I7oK-BX_VXn"] {
+        /* Invert then hue-rotate to land on gruvbox fg1 warm tone */
+        filter: invert(0.88) hue-rotate(180deg) sepia(0.15);
+    }
+
+    img[src*="ShFi4iY4Fd9.gif"] {
+        filter: invert(0.88) hue-rotate(180deg) sepia(0.2) saturate(2);
+    }
+
+
+    /* ============================================================
+       SECTION 4: BASE ELEMENT RESETS
+    ============================================================ */
+
+    body {
+        background-color: #282828 !important;   /* bg0 */
+        color: #ebdbb2 !important;               /* fg1 */
+    }
+
+    hr {
+        background-color: #3c3836;               /* bg1 */
+        border: none;
+    }
+
+    label {
+        color: #a89984;                          /* fg4 */
+    }
+
+    option {
+        background-color: #282828;
+        color: #ebdbb2 !important;
+    }
+
+    /* Scrollbar */
+    * {
+        scrollbar-color: #504945 #1d2021;        /* bg2 thumb, bg0_h track */
+        scrollbar-width: thin;
+    }
+
+
+    /* ============================================================
+       SECTION 5: BLOKS / INLINE-STYLE OVERRIDES
+    ============================================================ */
+
+    div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(255, 255, 255)"],
+    div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(250, 250, 250)"] {
+        background-color: #282828 !important;
+    }
+
+    div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(219, 219, 219)"] {
+        background-color: #3c3836 !important;
+    }
+
+    div[data-bloks-name="bk.components.Flexbox"][role="button"][style*="border: 1px solid rgb(219, 219, 219)"] {
+        background-color: #282828 !important;
+        border-color: #504945 !important;
+    }
+
+    [data-bloks-name="bk.components.Text"][style*="color: rgb(38, 38, 38)"],
+    [data-bloks-name="bk.components.TextSpan"][style*="color: rgb(38, 38, 38)"] {
+        color: #ebdbb2 !important;
+    }
+
+    [data-bloks-name="bk.components.TextSpan"][style*="color: rgb(0, 55, 107)"] {
+        color: #83a598 !important;
+    }
+
+    [style*="background: rgb(38, 38, 38)"] {
+        background-color: #3c3836 !important;
+    }
+
+    [style*="color: #999"] {
+        color: #928374 !important;
+    }
+
+
+    /* ============================================================
+       SECTION 6: MODAL / DIALOG
+    ============================================================ */
+
+    [role="dialog"] {
+        background: #32302f !important;          /* bg0_s */
+        border-radius: 12px;
+        border: 1px solid #504945;               /* bg2 */
+    }
+
+    [role="dialog"] [role="button"]:hover,
+    [role="dialog"] a:hover {
+        background: rgba(235, 219, 178, 0.06) !important;
+        border-radius: 12px;
+        transition: background 0.2s ease;
+    }
+
+
+    /* ============================================================
+       SECTION 7: STORY RING — GRUVBOX GRADIENT
+       Using gruvbox orange→yellow instead of the default blue/purple.
+    ============================================================ */
+
+    [class*="story"] > [class*="ring"]::before,
+    [class*="highlight"] > [class*="ring"]::before {
+        background-image: linear-gradient(45deg, #d65d0e, #fabd2f) !important;
+    }
+
+
+    /* ============================================================
+       SECTION 8: FEED LAYOUT
+    ============================================================ */
+
+    ._9-ta {
         display: none !important;
     }
 
-    /* Chat recolors */
-    ._ac1q {
-        background: rgb(var(--ig-fullscreen-background)) !important;
-        border: 1px solid rgb(var(--ig-highlight-background)) !important;
+    [class*="feed"] {
+        max-width: calc(470px + /*[[feed]]*/);
+        margin: 0 auto;
     }
 
-	/*Little Tweakin'*/
-	body, ._a3gq ._ac60:before, ._a3gq ._aaqh, img._aadp {
-    	background-color: rgb(var(--ig-primary-background),1);
-	}
-	._a3gq ._ac31 {
-		background-color: rgba(var(--ig-secondary-background),1);
-		border-color: rgba(var(--ig-secondary-background),1);
-	}
-	._a3gq ._aabn, ._a3gq ._abg6 {
-		border-color: rgba(var(--ig-secondary-background),1);
-	}
-	._a3gq ._ac34::after {
-		color: rgba(var(--ig-text-on-color),1);
-	}
-	._a3gq ._ackh {
-		position: relative;
-	}
-	._a3gq ._aatb ._aahh, ._a3gq ._aatb ._aahi {
-		padding: 0;
-		margin: 16px 8px;
-	}
-	._a3gq ._aahi:hover, ._a3gq ._aahh:hover, ._aaho._9zs0:hover {
-		filter: saturate(15) brightness(5);
-	}
-	._a3gq ._aahi:not(._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abcf._abcg._abch._abck._abcl._abcm ._aahi), ._a3gq ._aahh:not(._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abcf._abcg._abch._abck._abcl._abcm ._aahh) {
-		filter: drop-shadow(0 0 5px rgba(var(--i1d),1)) invert(1) hue-rotate(180deg) !important;
-	}
-	._a3gq ._aa5_ {
-		box-shadow: 0 0 5px 1px rgba(var(--ig-badge), .0975);
-		border: 1px solid rgba(var(--ig-badge),.4);
-	}
-	hr, ._a3gq ._aa1g {
-		background-color: rgba(var(--ig-separator),.5);
-	}
-	div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(255, 255, 255)"], div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(250, 250, 250)"] {
-		background-color: rgba(var(--d87),1) !important;
-	}
-	._8lb1, ._8hxx._8hxw, ._8hxy._8hxw, ._8_la._8hxw {
-		background-color: rgba(var(--jd9),1);
-	}
-	[style*="background: rgb(38, 38, 38)"] {
-		background-color: rgba(var(--jd9),.7) !important;
-	}
-	._a3gq ._acne ._acnb:not(._a3gq ._acne ._acnf) {
-		background-color: rgba(var(--jd9),.3);
-	}
-	._a3gq ._a9_a, ._a3gq ._aa-g, ._a3gq ._ab3_, ._a3gq ._ab44, ._a3gq ._ab3x, ._a3gq ._aahg, ._a3gq ._aag-, ._a3gq ._aaie, ._a3gq ._aavb, ._a3gq ._aav7, ._a3gq ._acat, a._acat, a._acat:visited, ._a3gq ._ac7h, ._a3gq ._aaj7, ._a3gq ._aaja, ._8z74 {
-		border-color: rgba(var(--jd9),.2);
-	}
-	[data-bloks-name="bk.components.Text"][style*="color: rgb(38, 38, 38)"], [data-bloks-name="bk.components.TextSpan"][style*="color: rgb(38, 38, 38)"] {
-		color: rgba(var(--jd9),.8) !important;
-	}
-	[data-bloks-name="bk.components.Flexbox"][role="button"][style*="border: 1px solid rgb(219, 219, 219); cursor: pointer; background: rgb(255, 255, 255)"] {
-		background-color: rgba(var(--d87),1) !important;
-		border-color: rgba(var(--jd9),.3) !important;
-	}
-	[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(219, 219, 219)"], ._aaqg._aaqh, ._aaqf._aaqh {
-		background-color: rgba(var(--eca),1) !important;
-	}
-	[data-bloks-name="bk.components.TextSpan"][style*="color: rgb(0, 55, 107)"] {
-		color: rgba(var(--ig-link),1) !important;
-	}
-	._8ifj, ._8ird, ._8giz, ._8gir, ._8gja, ._9r3o, ._9r3e, ._8ipi, ._8ipp, ._8-6o {
-		color: rgba(var(--jd9),1);
-	}
-	._7kTyW, ._7kTyW:visited {
-		color: rgba(var(--jd9),.7);
-	}
-	._a3gq ._ac60 {
-		background-color: rgba(var(--ig-separator),1);
-	}
-	option {
-		background-color: rgba(var(--ig-primary-background),1);
-		color: rgba(var(--jd9),1) !important;
-	}
-	._8iq4, ._8g86._8kjd+._8g86._8kjd, ._8iq6, ._8iq7, ._8g86+._8g86, body {
-		color: rgba(var(--w1),1);
-	}
-	[style*="color: #999"] {
-		color: rgba(var(--ig-focus-stroke),1) !important;
-	}
-	._8gis, ._8git {
-		color: rgba(var(--ig-focus-stroke),1);
-	}
-	._a3gq ._aak3, ._a3gq ._aa-m, ._a3gq ._ab8q, ._ab8q {
-		background-color: transparent;
-	}
-	._8iwl, ._9r3c, ._8hxh {
-		background-color: rgba(var(--ig-primary-background),1);
-	}
-	._8knn {
-		background-color: rgba(var(--ig-primary-background),.8);
-	}
-	._8g86+._8g86 a {
-		color: rgba(var(--ig-link),1);
-	}
-	._8jfc {
-		background-color: var(--yellow-5);
-		opacity: .3;
-	}
-	label {
-		color: #a7b1be;
-	}
 
+    /* ============================================================
+       SECTION 9: DM / CHAT
+    ============================================================ */
 
-	h1._8iq3._8g86._9g5x._8kjd._8iq4, p._8g86._9g5x._8kjd._8iq5._8ird, h1._8iq3._8g86._9g5x._8kjd._8iq6, p._8g86._9g5w._8iq8._8ipi {
-		text-shadow: 1px 1px 5px rgba(var(--ig-primary-background),1);
-	}
-	button._8ifx._8ify._5f0v, button._8ivq._5f0v._42ft, ._8hlz svg {
-		filter: drop-shadow(1px 1px 2px rgba(var(--ig-primary-background),1));
-	}
-	[src="https://scontent.fpoz5-1.fna.fbcdn.net/v/t39.8562-6/85197745_206316130499918_4546292096213975040_n.svg?_nc_cat=104&ccb=1-7&_nc_sid=6825c5&_nc_ohc=_YwFFF52vyYAX82-a6Z&_nc_ht=scontent.fpoz5-1.fna&oh=00_AT-e3QhPMnmfAB-F5h568z3qwmxjvffTrWHbtt8w6geikw&oe=62D4DF51"] {
-		border-radius: .5rem;
-	}
-	.x6osk4m.x6osk4m {
-		width: 100%;
-	}
-	._aak9, ._aak6 {
-		position: absolute;
-		margin-left: calc(470px + /*[[feed]]*/ + 15rem);
-		left: 0 !important;
-	}
-	._aam2 {
-		float: none;
-	}
-	._aam5, ._aalz {
-		max-width: calc(470px + /*[[feed]]*/);
-		margin: 0 auto;
-		position: relative;
-	}
-	._aalz {
-		display: block;
-	}
-	._ac7h {
-		margin-top: 8px;
-	}
-	.ixtmsaem.ixtmsaem {
-		width: 100%;
-		position: absolute;
-	}
-	._aa_y {
-		width: 100%;
-		margin: 0 auto;
-	}
-	.bdao358l.nu7423ey.alzwoclg.cmg2g80i.lk0hwhjd.nfcwbgbd.mivixfar.i54nktwv.z2vv26z9.c7y9u1f0.jez8cy9q.cqf1kptm.oq7qnk0t.o9w3sbdw.mx6umkf4.t5n4vrf6.jjot6st7.ff443qle.ekq1a7f9.km253p1d.afopkvs9 {
-		position: fixed;
-	}
-	._8kk1::before, ._8-vn._8-vl {
-		background-image: linear-gradient(45deg, #2FBAED, #327fff);
-	}
-	._acan._acao._acat ._aacl._aaco._aacw._aad6._aade, a.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl._aaai._a6hd  span._aaai, ._aacl._aacn._aacv._aacy._aad6 ._aaai {
-		background-image: linear-gradient(45deg, #9844d1, #FCAF45);
-		-webkit-background-clip: text;
-    	-webkit-text-fill-color: rgba(0, 0, 0, 0);
-		filter: saturate(2);
-	}
+    [placeholder="Message..."],
+    [aria-label="Message"] {
+        background-color: #3c3836 !important;
+        color: #ebdbb2 !important;
+        border-color: #504945 !important;
+    }
 
-
+    div[class="x1n2onr6"]:has(div[class="xuk3077 x78zum5 x2lah0s xjkvuk6 xmzvs34 x1nn3v0j"]){
+        background: #212328
+    }
 }
