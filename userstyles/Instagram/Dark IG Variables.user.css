@@ -3,44 +3,44 @@
 @namespace      github.com/improved/dark-instagram-gruvbox
 @author         Gruvbox edition — variable-only recolor, no filter cascade
 @description    Gruvbox dark theme for Instagram. No broad filter:invert() — post images and media are never affected.
-@version        4.0.0
+@version        4.1.0
 @license        CC BY-NC-SA 4.0
 @preprocessor   uso
 @advanced text feed "Feed width (0-50%)" 50%
 ==/UserStyle== */
 
 /*
-    GRUVBOX DARK PALETTE REFERENCE
-    ─────────────────────────────────────────────────────
-    bg0_h   #1d2021  (hard dark background)
-    bg0     #282828  (main background)
-    bg0_s   #32302f  (soft background)
-    bg1     #3c3836  (elevated background)
-    bg2     #504945  (highlight / selection)
-    bg3     #665c54  (comments / muted)
-    bg4     #7c6f64  (borders)
+GRUVBOX DARK PALETTE REFERENCE
+─────────────────────────────────────────────────────
+bg0_h   #1d2021  (hard dark background)
+bg0     #282828  (main background)
+bg0_s   #32302f  (soft background)
+bg1     #3c3836  (elevated background)
+bg2     #504945  (highlight / selection)
+bg3     #665c54  (comments / muted)
+bg4     #7c6f64  (borders)
 
-    fg0     #fbf1c7  (brightest text)
-    fg1     #ebdbb2  (primary text)
-    fg2     #d5c4a1  (secondary text)
-    fg3     #bdae93  (tertiary text)
-    fg4     #a89984  (muted text / icons)
+fg0     #fbf1c7  (brightest text)
+fg1     #ebdbb2  (primary text)
+fg2     #d5c4a1  (secondary text)
+fg3     #bdae93  (tertiary text)
+fg4     #a89984  (muted text / icons)
 
-    red     #cc241d  /  bright: #fb4934
-    green   #98971a  /  bright: #b8bb26
-    yellow  #d79921  /  bright: #fabd2f
-    blue    #458588  /  bright: #83a598
-    purple  #b16286  /  bright: #d3869b
-    aqua    #689d6a  /  bright: #8ec07c
-    orange  #d65d0e  /  bright: #fe8019
-    gray    #928374
-    ─────────────────────────────────────────────────────
+red     #cc241d  /  bright: #fb4934
+green   #98971a  /  bright: #b8bb26
+yellow  #d79921  /  bright: #fabd2f
+blue    #458588  /  bright: #83a598
+purple  #b16286  /  bright: #d3869b
+aqua    #689d6a  /  bright: #8ec07c
+orange  #d65d0e  /  bright: #fe8019
+gray    #928374
+─────────────────────────────────────────────────────
 */
 
 @-moz-document domain('instagram.com') {
 
     /* ============================================================
-       SECTION 1: INSTAGRAM CORE DESIGN TOKENS — GRUVBOX DARK
+    SECTION 1: INSTAGRAM CORE DESIGN TOKENS — GRUVBOX DARK
     ============================================================ */
 
     html,
@@ -50,127 +50,135 @@
     article,
     section {
 
+        /*
+        NOTE: All --ig-* variables MUST remain as bare "r, g, b" triplets.
+        Instagram's own CSS consumes them as: rgb(var(--ig-primary-background))
+        Converting them to hex would silently break all Instagram UI colours.
+        The hex equivalents are shown in comments for easy reference only.
+        */
+
         /* Backgrounds */
-        --ig-primary-background:     40,  40,  40;   /* bg0     #282828 */
-        --ig-secondary-background:   29,  32,  33;   /* bg0_h   #1d2021 */
-        --ig-elevated-background:    60,  56,  54;   /* bg1     #3c3836 */
-        --ig-highlight-background:   80,  73,  69;   /* bg2     #504945 */
-        --ig-full-screen-background: 60,  56,  54;   /* bg1     #3c3836 */
-        --ig-banner-background:      40,  40,  40;   /* bg0     #282828 */
+        --ig-primary-background:     40,  40,  40 !important;   /* #282828  bg0     */
+        --ig-secondary-background:   29,  32,  33 !important;   /* #1d2021  bg0_h   */
+        --ig-elevated-background:    60,  56,  54 !important;   /* #3c3836  bg1     */
+        --ig-highlight-background:   80,  73,  69 !important;   /* #504945  bg2     */
+        --ig-full-screen-background: 60,  56,  54 !important;   /* #3c3836  bg1     */
+        --ig-banner-background:      40,  40,  40 !important;   /* #282828  bg0     */
 
         /* Text */
-        --ig-primary-text:   235, 219, 178;          /* fg1     #ebdbb2 */
-        --ig-secondary-text: 189, 174, 147;          /* fg3     #bdae93 */
-        --ig-tertiary-text:  168, 153, 132;          /* fg4     #a89984 */
-        --ig-text-on-color:  251, 241, 199;          /* fg0     #fbf1c7 */
+        --ig-primary-text:   235, 219, 178 !important;          /* #ebdbb2  fg1     */
+        --ig-secondary-text: 189, 174, 147 !important;          /* #bdae93  fg3     */
+        --ig-tertiary-text:  168, 153, 132 !important;          /* #a89984  fg4     */
+        --ig-text-on-color:  251, 241, 199 !important;          /* #fbf1c7  fg0     */
 
         /* Separators / Borders */
-        --ig-separator:          60,  56,  54;       /* bg1     #3c3836 */
-        --ig-elevated-separator: 80,  73,  69;       /* bg2     #504945 */
-        --ig-stroke:            102, 92,  84;        /* bg3     #665c54 */
-        --ig-focus-stroke:      124, 111, 100;       /* bg4     #7c6f64 */
+        --ig-separator:          60,  56,  54 !important;       /* #3c3836  bg1     */
+        --ig-elevated-separator: 80,  73,  69 !important;       /* #504945  bg2     */
+        --ig-stroke:            102,  92,  84 !important;       /* #665c54  bg3     */
+        --ig-focus-stroke:      124, 111, 100 !important;       /* #7c6f64  bg4     */
 
-        /* Interactive / Accent — gruvbox blue */
-        --ig-primary-button:   131, 165, 152;        /* bright blue  #83a598 */
-        --ig-secondary-button: 189, 174, 147;        /* fg3          #bdae93 */
-        --ig-link:             131, 165, 152;        /* bright blue  #83a598 */
+        /* Interactive / Accent */
+        --ig-primary-button:   131, 165, 152 !important;        /* #83a598  bright blue   */
+        --ig-secondary-button: 189, 174, 147 !important;        /* #bdae93  fg3           */
+        --ig-link:             131, 165, 152 !important;        /* #83a598  bright blue   */
 
-        /* Status colours — gruvbox semantic colours */
-        --ig-badge:                    251,  73,  52; /* bright red    #fb4934 */
-        --ig-live-badge:               214,  93,  14; /* orange        #d65d0e */
-        --ig-close-friends-refreshed:  142, 192, 124; /* bright aqua   #8ec07c */
-        --ig-error-or-destructive:     251,  73,  52; /* bright red    #fb4934 */
-        --ig-success:                  184, 187,  38; /* bright green  #b8bb26 */
-        --ig-subscribers-only:         211, 134, 155; /* bright purple #d3869b */
-        --ig-temporary-highlight:      250, 189,  47; /* bright yellow #fabd2f */
+        /* Status */
+        --ig-badge:                    251,  73,  52 !important; /* #fb4934  bright red    */
+        --ig-live-badge:               214,  93,  14 !important; /* #d65d0e  orange        */
+        --ig-close-friends-refreshed:  142, 192, 124 !important; /* #8ec07c  bright aqua   */
+        --ig-error-or-destructive:     251,  73,  52 !important; /* #fb4934  bright red    */
+        --ig-success:                  184, 187,  38 !important; /* #b8bb26  bright green  */
+        --ig-subscribers-only:         211, 134, 155 !important; /* #d3869b  bright purple */
+        --ig-temporary-highlight:      250, 189,  47 !important; /* #fabd2f  bright yellow */
 
         /* Brand */
-        --ig-facebook-blue: 131, 165, 152;           /* bright blue  #83a598 */
+        --ig-facebook-blue: 131, 165, 152 !important;           /* #83a598  bright blue   */
 
         /* Modals */
-        --modal-backdrop-dark:    rgba(29, 32, 33, .92);
-        --modal-backdrop-default: rgba(29, 32, 33, .75);
-        --modal-border-radius: 12px;
-        --modal-padding:       16px;
-        --modal-z-index:       100;
-        --tos-box-shadow:      0, 0, 0;
+        --modal-backdrop-dark:    rgba(29, 32, 33, .92) !important;  /* #1d2021  bg0_h */
+        --modal-backdrop-default: rgba(29, 32, 33, .75) !important;  /* #1d2021  bg0_h */
+        --modal-border-radius: 12px !important;
+        --modal-padding:       16px !important;
+        --modal-z-index:       100 !important;
+        --tos-box-shadow:      0, 0, 0 !important;               /* #000000        */
 
         /* Misc */
-        --web-always-black:       0,   0,   0;
-        --web-always-white:     251, 241, 199;       /* fg0 #fbf1c7 */
-        --web-overlay-on-media:  40,  40,  40;
-        --web-secondary-action: 131, 165, 152;
-        --post-separator:        60,  56,  54;
-        --post-step-indicator:  168, 153, 132;
+        --web-always-black:       0,   0,   0 !important;        /* #000000        */
+        --web-always-white:     251, 241, 199 !important;        /* #fbf1c7  fg0   */
+        --web-overlay-on-media:  40,  40,  40 !important;        /* #282828  bg0   */
+        --web-secondary-action: 131, 165, 152 !important;        /* #83a598  bright blue */
+        --post-separator:        60,  56,  54 !important;        /* #3c3836  bg1   */
+        --post-step-indicator:  168, 153, 132 !important;        /* #a89984  fg4   */
         --photo: 600px;
 
-        /* Colour palette tokens — mapped to gruvbox equivalents */
+        /* Colour palette tokens */
         --orange-5: #fe8019;   /* bright orange */
         --pink-5:   #d3869b;   /* bright purple */
-        --purple-5: #b16286;   /* purple */
-        --red-4:    #fb4934;   /* bright red */
-        --red-5:    #cc241d;   /* red */
-        --red-6:    #9d0006;   /* dark red */
+        --purple-5: #b16286;   /* purple        */
+        --red-4:    #fb4934;   /* bright red    */
+        --red-5:    #cc241d;   /* red           */
+        --red-6:    #9d0006;   /* dark red      */
         --red-7:    #79000a;
         --yellow-5: #fabd2f;   /* bright yellow */
-        --w1:       235, 219, 178;                   /* fg1 */
+        --w1:       235, 219, 178;                    /* #ebdbb2  fg1   */
 
         /* ------------------------------------------------------------------
-           INSTAGRAM RUNTIME OBFUSCATED VARIABLES — GRUVBOX MAPPED
+        INSTAGRAM RUNTIME OBFUSCATED VARIABLES — GRUVBOX MAPPED
+        Same rule applies: must stay as r, g, b triplets with !important.
         ------------------------------------------------------------------ */
 
-        --fe0: 131, 165, 152 !important;     /* username links      → bright blue */
-        --d69: 131, 165, 152 !important;     /* follow button       → bright blue */
-        --f24: 131, 165, 152 !important;     /* primary action      → bright blue */
-        --b86: 184, 187,  38 !important;     /* success green       → bright green */
-        --i30: 251,  73,  52 !important;     /* error red           → bright red */
-        --c37: 251,  73,  52 !important;
-        --eac: 251,  73,  52 !important;
-        --fa7: 250, 189,  47 !important;     /* accent yellow       → bright yellow */
-        --e62: 250, 189,  47 !important;
-        --jbb: 131, 165, 152 !important;     /* facebook blue       → bright blue */
-        --b2f: 211, 134, 155 !important;     /* purple              → bright purple */
+        --fe0: 131, 165, 152 !important;     /* #83a598  username links      → bright blue   */
+        --d69: 131, 165, 152 !important;     /* #83a598  follow button       → bright blue   */
+        --f24: 131, 165, 152 !important;     /* #83a598  primary action      → bright blue   */
+        --b86: 184, 187,  38 !important;     /* #b8bb26  success green       → bright green  */
+        --i30: 251,  73,  52 !important;     /* #fb4934  error red           → bright red    */
+        --c37: 251,  73,  52 !important;     /* #fb4934                                      */
+        --eac: 251,  73,  52 !important;     /* #fb4934                                      */
+        --fa7: 250, 189,  47 !important;     /* #fabd2f  accent yellow       → bright yellow */
+        --e62: 250, 189,  47 !important;     /* #fabd2f                                      */
+        --jbb: 131, 165, 152 !important;     /* #83a598  facebook blue       → bright blue   */
+        --b2f: 211, 134, 155 !important;     /* #d3869b  purple              → bright purple */
 
-        --jb7:  60,  56,  54 !important;     /* DM bubble bg        → bg1 */
-        --jd9: 235, 219, 178 !important;     /* DM bubble text      → fg1 */
-        --cdd: 213, 196, 161 !important;     /* DM secondary text   → fg2 */
+        --jb7:  60,  56,  54 !important;     /* #3c3836  DM bubble bg        → bg1           */
+        --jd9: 235, 219, 178 !important;     /* #ebdbb2  DM bubble text      → fg1           */
+        --cdd: 213, 196, 161 !important;     /* #d5c4a1  DM secondary text   → fg2           */
 
-        --i1d: 235, 219, 178 !important;     /* primary text        → fg1 */
-        --d20: 189, 174, 147 !important;     /* secondary text      → fg3 */
-        --eca:  50,  48,  47 !important;     /* inverse surface     → bg0_s */
+        --i1d: 235, 219, 178 !important;     /* #ebdbb2  primary text        → fg1           */
+        --d20: 189, 174, 147 !important;     /* #bdae93  secondary text      → fg3           */
+        --eca:  50,  48,  47 !important;     /* #32302f  inverse surface     → bg0_s         */
 
-        --f75: 189, 174, 147 !important;     /* username / likes    → fg3 */
-        --j64: 213, 196, 161 !important;     /* like count          → fg2 */
-        --f52: 168, 153, 132 !important;     /* time labels         → fg4 */
-        --ie3: 168, 153, 132 !important;
+        --f75: 189, 174, 147 !important;     /* #bdae93  username / likes    → fg3           */
+        --j64: 213, 196, 161 !important;     /* #d5c4a1  like count          → fg2           */
+        --f52: 168, 153, 132 !important;     /* #a89984  time labels         → fg4           */
+        --ie3: 168, 153, 132 !important;     /* #a89984                                      */
 
-        --ba8: 124, 111, 100 !important;     /* muted icons         → bg4 */
-        --c8c: 124, 111, 100 !important;
+        --ba8: 124, 111, 100 !important;     /* #7c6f64  muted icons         → bg4           */
+        --c8c: 124, 111, 100 !important;     /* #7c6f64                                      */
 
-        --e22:  80,  73,  69 !important;     /* mid bg              → bg2 */
-        --edc:  80,  73,  69 !important;
+        --e22:  80,  73,  69 !important;     /* #504945  mid bg              → bg2           */
+        --edc:  80,  73,  69 !important;     /* #504945                                      */
 
-        --b38: 102,  92,  84 !important;     /* borders             → bg3 */
-        --b6a: 102,  92,  84 !important;
-        --ca6: 102,  92,  84 !important;
-        --ce3: 102,  92,  84 !important;     /* spacer              → bg3 */
+        --b38: 102,  92,  84 !important;     /* #665c54  borders             → bg3           */
+        --b6a: 102,  92,  84 !important;     /* #665c54                                      */
+        --ca6: 102,  92,  84 !important;     /* #665c54                                      */
+        --ce3: 102,  92,  84 !important;     /* #665c54  spacer              → bg3           */
 
-        --bb2:  29,  32,  33 !important;     /* deepest bg          → bg0_h */
-        --a97:  20,  22,  23 !important;
+        --bb2:  29,  32,  33 !important;     /* #1d2021  deepest bg          → bg0_h         */
+        --a97:  20,  22,  23 !important;     /* #141617                                      */
 
-        --b3f:  40,  40,  40 !important;     /* main background     → bg0 */
-        --d62:  40,  40,  40 !important;
-        --a72:  40,  40,  40 !important;
-        --h1d:  40,  40,  40 !important;
-        --de5:  40,  40,  40 !important;
+        --b3f:  40,  40,  40 !important;     /* #282828  main background     → bg0           */
+        --d62:  40,  40,  40 !important;     /* #282828                                      */
+        --a72:  40,  40,  40 !important;     /* #282828                                      */
+        --h1d:  40,  40,  40 !important;     /* #282828                                      */
+        --de5:  40,  40,  40 !important;     /* #282828                                      */
 
-        --d87:  40,  40,  40 !important;     /* header backgrounds  → bg0 */
-        --f23:  40,  40,  40 !important;
+        --d87:  40,  40,  40 !important;     /* #282828  header backgrounds  → bg0           */
+        --f23:  40,  40,  40 !important;     /* #282828                                      */
     }
 
 
     /* ============================================================
-       SECTION 2: FDS TOKENS — GRUVBOX MAPPED
+    SECTION 2: FDS TOKENS — GRUVBOX MAPPED
     ============================================================ */
 
     :root,
@@ -330,9 +338,9 @@
 
 
     /* ============================================================
-       SECTION 3: LOGO IMAGES ONLY
-       filter:invert() only on known leaf <img> elements.
-       Never on containers — no cascade into post images.
+    SECTION 3: LOGO IMAGES ONLY
+    filter:invert() only on known leaf <img> elements.
+    Never on containers — no cascade into post images.
     ============================================================ */
 
     img[src*="rsrc.php"][src*="instagram"],
@@ -351,7 +359,7 @@
 
 
     /* ============================================================
-       SECTION 4: BASE ELEMENT RESETS
+    SECTION 4: BASE ELEMENT RESETS
     ============================================================ */
 
     body {
@@ -381,7 +389,7 @@
 
 
     /* ============================================================
-       SECTION 5: BLOKS / INLINE-STYLE OVERRIDES
+    SECTION 5: BLOKS / INLINE-STYLE OVERRIDES
     ============================================================ */
 
     div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(255, 255, 255)"],
@@ -417,7 +425,7 @@
 
 
     /* ============================================================
-       SECTION 6: MODAL / DIALOG
+    SECTION 6: MODAL / DIALOG
     ============================================================ */
 
     [role="dialog"] {
@@ -435,8 +443,8 @@
 
 
     /* ============================================================
-       SECTION 7: STORY RING — GRUVBOX GRADIENT
-       Using gruvbox orange→yellow instead of the default blue/purple.
+    SECTION 7: STORY RING — GRUVBOX GRADIENT
+    Using gruvbox orange→yellow instead of the default blue/purple.
     ============================================================ */
 
     [class*="story"] > [class*="ring"]::before,
@@ -446,7 +454,7 @@
 
 
     /* ============================================================
-       SECTION 8: FEED LAYOUT
+    SECTION 8: FEED LAYOUT
     ============================================================ */
 
     ._9-ta {
@@ -460,7 +468,7 @@
 
 
     /* ============================================================
-       SECTION 9: DM / CHAT
+    SECTION 9: DM / CHAT
     ============================================================ */
 
     [placeholder="Message..."],
@@ -470,7 +478,151 @@
         border-color: #504945 !important;
     }
 
-    div[class="x1n2onr6"]:has(div[class="xuk3077 x78zum5 x2lah0s xjkvuk6 xmzvs34 x1nn3v0j"]){
-        background: #212328
+
+    /* ============================================================
+    SECTION 10: POST VIEWER — VOID / LETTERBOX AREAS
+    The black void left/right of portrait videos and the panel
+    background behind the comment sidebar both need explicit bg.
+    Instagram uses inline background-color: #000 on some wrappers
+    and a separate surface for the comments column.
+    ============================================================ */
+
+    /* Outer post modal backdrop — the dark void around the media */
+    [role="dialog"] > [style*="background-color: rgb(0, 0, 0)"],
+    [role="dialog"] > [style*="background: rgb(0, 0, 0)"],
+    [role="presentation"] > [style*="background-color: rgb(0, 0, 0)"],
+    [role="presentation"] > [style*="background: rgb(0, 0, 0)"] {
+        background-color: #1d2021 !important;   /* bg0_h — deepest gruvbox */
     }
+
+    /* Post viewer comment/info sidebar panel (right column) */
+    [role="dialog"] > div > div > div:last-child{
+        background-color: #282828 !important;   /* bg0 */
+    }
+
+    /* The horizontal band above and below a portrait video
+    (letterbox bars that Instagram renders as separate divs) */
+    [style*="background-color: rgb(0, 0, 0)"]:not(body):not(html):not(video):not(canvas):not(img) {
+        background-color: #1d2021 !important;   /* bg0_h */
+    }
+
+    /* Catch-all for any element with hardcoded white bg in post context */
+    [style*="background-color: rgb(255, 255, 255)"]:not(img):not(canvas):not(video) {
+        background-color: #282828 !important;
+    }
+    [style*="background-color: rgb(250, 250, 250)"]:not(img):not(canvas):not(video) {
+        background-color: #282828 !important;
+    }
+
+
+    /* ============================================================
+    SECTION 11: AVATAR / PROFILE PICTURE PLACEHOLDERS
+    Default grey SVG placeholder avatars should use gruvbox bg2
+    so they don't look like the default Instagram grey on dark bg.
+    ============================================================ */
+
+    /* SVG circle fill used in default avatar placeholder */
+    svg circle[fill="#DBDBDB"],
+    svg circle[fill="#dbdbdb"],
+    svg circle[fill="#efefef"],
+    svg circle[fill="#EFEFEF"] {
+        fill: #504945 !important;               /* bg2 */
+    }
+
+    /* SVG person silhouette fill in placeholder */
+    svg path[fill="#FFFFFF"],
+    svg path[fill="#ffffff"] {
+        fill: #a89984 !important;               /* fg4 — warm muted */
+    }
+
+    /* Placeholder avatar <img> with broken/default src */
+    img[src*="avatar_placeholder"],
+    img[src*="default_avatar"],
+    img[src*="placeholder"] {
+        filter: sepia(0.4) saturate(0.6) brightness(0.7);
+    }
+
+
+    /* ============================================================
+    SECTION 12: EMBEDDED VIDEO THUMBNAILS (YouTube / external)
+    The YouTube play button icon appears as an <img> or inline SVG
+    inside a video embed preview. We tint it gruvbox yellow.
+    We target only the play button overlay, NOT the thumbnail img.
+    ============================================================ */
+
+    /* YouTube play button rendered as an img leaf node */
+    img[src*="play"],
+    img[alt*="Play"],
+    img[aria-label*="Play"] {
+        filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1);
+        /* Result: warm gruvbox yellow #fabd2f tint */
+    }
+
+    /* Play button rendered as an inline SVG icon
+    (safe: SVG icons have no img children, no cascade risk) */
+    [aria-label="Play"] svg,
+    [aria-label="Play video"] svg,
+    button[aria-label*="Play"] svg {
+        color: #fabd2f !important;              /* bright yellow */
+        fill: #fabd2f !important;
+    }
+
+    /* DM panel — video embed container background */
+    [class*="DirectThread"] [class*="video"],
+    [class*="dm"] [class*="video-preview"],
+    [class*="message"] [class*="media-preview"] {
+        background-color: #1d2021 !important;   /* bg0_h */
+        border-radius: 8px;
+    }
+
+    /* DM panel outer shell */
+    [class*="DirectThread"],
+    [class*="DirectInbox"] {
+        background-color: #32302f !important;   /* bg0_s */
+    }
+
+    /* DM panel header */
+    [class*="DirectThread"] header,
+    [class*="DirectThread"] [role="banner"] {
+        background-color: #282828 !important;   /* bg0 */
+        border-bottom: 1px solid #3c3836 !important;   /* bg1 */
+    }
+
+    /* DM message bubbles — sent (own) messages */
+    [class*="DirectThread"] [class*="own"] [class*="bubble"],
+    [class*="DirectThread"] [class*="sent"] [class*="bubble"] {
+        background-color: #458588 !important;   /* gruvbox blue */
+        color: #fbf1c7 !important;              /* fg0 */
+    }
+
+    /* DM message bubbles — received messages */
+    [class*="DirectThread"] [class*="received"] [class*="bubble"],
+    [class*="DirectThread"] [class*="other"] [class*="bubble"] {
+        background-color: #3c3836 !important;   /* bg1 */
+        color: #ebdbb2 !important;              /* fg1 */
+    }
+
+    /* "X replied to themself" / thread reply label text */
+    [class*="DirectThread"] [class*="reply"] [class*="label"],
+    [class*="DirectThread"] [class*="thread"] > span {
+        color: #a89984 !important;              /* fg4 */
+    }
+
+    /* Reply quote bar (the vertical left border on quoted messages) */
+    [class*="DirectThread"] [class*="reply"]::before {
+        background-color: #83a598 !important;   /* bright blue */
+    }
+    
+    [role="presentation"] > div > div > div:last-child:hover,
+    [role="presentation"] > div > div > div:last-child {
+        background: #0000 !important;
+    }
+    
+    .x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xc5r6h4.xqeqjp1.x1phubyo.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x972fbf.x10w94by.x1qhh985.x14e42zd.x9f619.x1ypdohk.xdl72j9.x2lah0s.x3ct3a4.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x15mokao.x1ga7v0g.x16uus16.xbiv7yw.x1lliihq.xdj266r.x14z9mp.xat24cr.x1lziwak.xg6hnt2.x18wri0h.x1l895ks.x1y1aw1k.xwib8y2.xf7dkkf.xv54qhq:hover ,
+    .x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xc5r6h4.xqeqjp1.x1phubyo.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x972fbf.x10w94by.x1qhh985.x14e42zd.x9f619.x1ypdohk.xdl72j9.x2lah0s.x3ct3a4.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x15mokao.x1ga7v0g.x16uus16.xbiv7yw.x1lliihq.xdj266r.x14z9mp.xat24cr.x1lziwak.xg6hnt2.x18wri0h.x1l895ks.x1y1aw1k.xwib8y2.xf7dkkf.xv54qhq:focus ,
+    .x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xc5r6h4.xqeqjp1.x1phubyo.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x972fbf.x10w94by.x1qhh985.x14e42zd.x9f619.x1ypdohk.xdl72j9.x2lah0s.x3ct3a4.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x15mokao.x1ga7v0g.x16uus16.xbiv7yw.x1lliihq.xdj266r.x14z9mp.xat24cr.x1lziwak.xg6hnt2.x18wri0h.x1l895ks.x1y1aw1k.xwib8y2.xf7dkkf.xv54qhq:active {
+        background: #282828b3 !important;
+        border-radius: 0px;
+    }
+
 }
