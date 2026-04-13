@@ -1,0 +1,42 @@
+/* ==UserStyle==
+@name           www.facebook.com
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+@preprocessor         stylus
+@var checkbox hideHome "Hide Home" 1
+@var checkbox hideReels "Hide reels" 1
+@var checkbox hideMarketplace "Hide Marketplace" 1
+@var checkbox hideGroups "Hide Groups" 1
+@var checkbox hideGaming "Hide Gaming" 1
+@var checkbox sidebar "Hide Sidebar" 1
+@var checkbox hidefriends "Hide Friends" 1
+@var checkbox hideMeta "Hide Meta" 1
+@var checkbox hideMemories "Hide Memories" 1
+@var checkbox hideSaved "Hide Saved" 1
+==/UserStyle== */
+
+@-moz-document url-prefix("https://www.facebook.com/") {
+    /* Insert code here... */
+
+    if hideHome         {li:has(a[aria-label="Home"])       {display: none}}
+    if hideReels        {li:has(a[aria-label="Reels"])      {display: none}}
+    if hideMarketplace  {li:has(a[aria-label="Marketplace"]){display: none}}
+    if hideGroups       {li:has(a[aria-label="Groups"])     {display: none}}
+    if hideGaming       {li:has(a[aria-label="Gaming"])     {display: none}}
+    
+    [aria-label="Facebook menu"]{display:none}
+        
+        if sidebar{
+            if hidefriends      {li:has(a[href="https://www.facebook.com/friends/"])       {display: none}}
+            if hideMeta      {li:has(a[rel="nofollow noreferrer"])       {display: none}}
+            if hideMemories      {li:has(a[href="https://www.facebook.com/onthisday/?source=bookmark"])       {display: none}}
+            if hideSaved      {li:has(a[href="https://www.facebook.com/saved/?cref=28"])       {display: none}}
+            if hideGroups      {li:has(a[href="https://www.facebook.com/groups/?ref=bookmarks"])       {display: none}}
+            if hideReels      {li:has(a[href="https://www.facebook.com/reel/?s=tab"])       {display: none}}
+        } else {
+            
+        }
+        
+}
