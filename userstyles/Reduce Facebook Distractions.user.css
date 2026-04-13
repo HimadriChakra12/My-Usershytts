@@ -5,16 +5,33 @@
 @description    A new userstyle
 @author         Me
 @preprocessor         stylus
-@var checkbox hideHome "Hide Home" 1
-@var checkbox hideReels "Hide reels" 1
-@var checkbox hideMarketplace "Hide Marketplace" 1
-@var checkbox hideGroups "Hide Groups" 1
-@var checkbox hideGaming "Hide Gaming" 1
-@var checkbox sidebar "Hide Sidebar" 1
-@var checkbox hidefriends "Hide Friends" 1
-@var checkbox hideMeta "Hide Meta" 1
-@var checkbox hideMemories "Hide Memories" 1
-@var checkbox hideSaved "Hide Saved" 1
+
+@var checkbox hideHome              "[+] Hide Home" 0
+@var checkbox hideReels             "[+] Hide reels" 1
+@var checkbox hideMarketplace       "[+] Hide Marketplace" 1
+@var checkbox hideGroups            "[+] Hide Groups" 1
+@var checkbox hideGaming            "[+] Hide Gaming" 1
+
+@var checkbox hideStories           "[+] Hide Stories" 1
+@var checkbox hidePeopleyk          "[+] Hide People You Know" 1
+
+@var checkbox navbar                "==== Sidebar" 1
+@var checkbox hidefriends           "|- Hide Friends" 0
+@var checkbox hideMeta              "|- Hide Meta" 1
+@var checkbox hideMemories          "|- Hide Memories" 0
+@var checkbox hideSaved             "|- Hide Saved" 1
+@var checkbox hideFeeds             "|- Hide Feeds" 1
+@var checkbox hideEvents            "|- Hide Events" 1
+@var checkbox hideAdManager         "|- Hide Ad Manager" 1
+@var checkbox hideBirthdays         "|- Hide Birthdays" 0
+@var checkbox hideGamingVideo       "|- Hide Gaming Video" 1
+@var checkbox hideMessenger         "|- Hide Messenger" 0
+@var checkbox hideMessengerKids     "|- Hide Messenger kids" 1
+@var checkbox hidePay               "|- Hide Pay" 1
+@var checkbox hidePages             "|- Hide Pages" 1
+@var checkbox hidePlay              "|- Hide Play" 1
+@var checkbox hideAdAct             "|- Hide Ad Act" 1
+
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.facebook.com/") {
@@ -26,17 +43,34 @@
     if hideGroups       {li:has(a[aria-label="Groups"])     {display: none}}
     if hideGaming       {li:has(a[aria-label="Gaming"])     {display: none}}
     
+    if hideStories      {div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"])      {display: none}}
+    if hidePeopleyk      {div[class="x6ikm8r x10wlt62"]      {display: none}}
+    
     [aria-label="Facebook menu"]{display:none}
         
-        if sidebar{
+        if navbar{
             if hidefriends      {li:has(a[href="https://www.facebook.com/friends/"])       {display: none}}
             if hideMeta      {li:has(a[rel="nofollow noreferrer"])       {display: none}}
             if hideMemories      {li:has(a[href="https://www.facebook.com/onthisday/?source=bookmark"])       {display: none}}
             if hideSaved      {li:has(a[href="https://www.facebook.com/saved/?cref=28"])       {display: none}}
             if hideGroups      {li:has(a[href="https://www.facebook.com/groups/?ref=bookmarks"])       {display: none}}
             if hideReels      {li:has(a[href="https://www.facebook.com/reel/?s=tab"])       {display: none}}
+            if hideMarketplace      {li:has(a[href="https://www.facebook.com/marketplace/?ref=bookmark"])       {display: none}}
+            if hideFeeds      {li:has(a[href*="/?filter=all"])       {display: none}}
+            if hideEvents      {li:has(a[href*="/events?"])       {display: none}}
+            if hideAdManager      {li:has(a[href*="/ad_campaign/landing.php?"])       {display: none}}
+            if hideBirthdays      {li:has(a[href="https://www.facebook.com/events/birthdays/"])       {display: none}}
+            if hideGamingVideo      {li:has(a[href="https://www.facebook.com/gaming/?external_ref=games_video_bookmark"])       {display: none}}
+            if hideMessenger      {li:has(a[href="https://www.facebook.com/messages/t/"])       {display: none}}
+            if hideMessengerKids      {li:has(a[href="https://www.facebook.com/messenger_kids/?referrer=bookmark"])       {display: none}}
+            if hidePay      {li:has(a[href="https://secure.facebook.com/facebook_pay/?referrer=bookmark"])       {display: none}}
+            if hidePages      {li:has(a[href*="/?category=your_pages"])       {display: none}}
+            if hidePlay      {li:has(a[href*="/play/?"])       {display: none}}
+            if hideAdAct      {li:has(a[href="https://www.facebook.com/ads/activity/"])       {display: none}}
         } else {
-            
+            div[aria-label="Shortcuts"]{
+                display: none 
+            }
         }
         
 }
