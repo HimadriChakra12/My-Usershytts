@@ -13,9 +13,8 @@
 @var checkbox hideGaming            "[+] Hide Gaming" 1
 
 @var checkbox hideStories           "[+] Hide Stories" 1
-@var checkbox hidePeopleyk          "[+] Hide People You Know" 1
 
-@var checkbox navbar                "==== Sidebar" 1
+@var checkbox navbar                "==== Navbar" 1
 @var checkbox hidefriends           "|- Hide Friends" 0
 @var checkbox hideMeta              "|- Hide Meta" 1
 @var checkbox hideMemories          "|- Hide Memories" 0
@@ -32,6 +31,11 @@
 @var checkbox hidePlay              "|- Hide Play" 1
 @var checkbox hideAdAct             "|- Hide Ad Act" 1
 
+@var checkbox sidebar               "==== Sidebar" 0
+@var checkbox hidefriendsreq        "|- Hide Friends Request" 1
+@var checkbox hideContacts          "|- Hide Contacts" 0
+@var checkbox hideGroupsChats       "|- Hide Group Chats" 1
+
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.facebook.com/") {
@@ -44,7 +48,6 @@
     if hideGaming       {li:has(a[aria-label="Gaming"])     {display: none}}
     
     if hideStories      {div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"])      {display: none}}
-    if hidePeopleyk      {div[class="x6ikm8r x10wlt62"]      {display: none}}
     
     [aria-label="Facebook menu"]{display:none}
         
@@ -71,6 +74,16 @@
             div[aria-label="Shortcuts"]{
                 display: none 
             }
+        }
+        
+        if sidebar{
+            if hidefriendsreq {[class="x1y1aw1k"] > div:not([data-visualcompletion="ignore-dynamic"]) > div > [class*="x1n2onr6"] {display: none}} 
+            if hideContacts {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(2) {display: none}} 
+            if hideGroupsChats {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(3) {display: none}} 
+        }  else {
+           div[role="complementary"]{
+               display: none !important;
+           } 
         }
         
 }
