@@ -81,7 +81,7 @@
             if hideContacts {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(2) {display: none}} 
             if hideGroupsChats {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(3) {display: none}} 
         }  else {
-           div[role="complementary"]{
+           div[role="complementary"]:not(:has([class*="x2bj2ny"])){
                display: none !important;
            } 
         }
