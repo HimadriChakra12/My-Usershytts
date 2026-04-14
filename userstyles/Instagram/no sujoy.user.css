@@ -1,0 +1,17 @@
+/* ==UserStyle==
+@name           SujoyBlock
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document url-prefix("https://www.instagram.com/stories/") {
+    /* Insert code here... */
+    div > div[class="x6s0dn4 x78zum5 x1n2onr6"] >  div:has([href*="/stories/sagnik_om_"]),
+    div > div[class="x5yr21d x1n2onr6 xh8yej3"]:has(a[href*="/sagnik_om_/"]){
+        display: none 
+    }
+
+    /* add ||instagram.com/stories/sagnik_om_*  to your ublock origin filter to block sujoy websites */
+}
