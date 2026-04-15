@@ -1,10 +1,13 @@
 /* ==UserStyle==
-@name           www.facebook.com
-@namespace      github.com/openstyles/stylus
+@name           Reduce Facebook Distractions
+@namespace      https://github.com/HimadriChakra12/My-Usershytts/edit/main/userstyles/
 @version        1.0.0
-@description    A new userstyle
-@author         Me
-@preprocessor         stylus
+@description    A less noisier and controllable facebook.
+@author         HimadriChakra12
+@preprocessor   stylus
+
+@var checkbox animations            "No Animations" 1
+@var checkbox wide                  "Wide" 1
 
 @var checkbox hideHome              "[+] Hide Home" 0
 @var checkbox hideReels             "[+] Hide reels" 1
@@ -43,9 +46,11 @@
     /* Insert code here... */
 
     /* Disable animation */
-    * {
-      animation: none !important;
-      transition: none !important;
+    if animations {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
     }
     
     [class="AdBox Ad advert post-ads"],
@@ -53,25 +58,44 @@
     [id="has-finished-comet-page"]{
         display: none;
     }
+    
+    if wide{ 
+    	div[role="main"] > div:first-child,
+    	div[role="main"] > div:first-child > div:first-child > div:first-child > div,
+    	div[role="main"] > div:first-child > div:first-child > div:first-child > div > div:first-child {
+    		width: 100% !important;
+    		max-width: none !important;
+    	}
+        div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"]){                                   
+            position: fixed;                                    
+            top: 45%;                                   
+		    width: calc(72.5%) !important;
+		    max-width: none !important;
+        }                                   
+    }
+    
+    [aria-label="Facebook menu"]                                                                                                    {display:none}
 
     if hideHome         {li:has(a[aria-label="Home"])                                                                               {display: none}}
     if hideReels        {li:has(a[aria-label="Reels"])                                                                              {display: none}}
     if hideMarketplace  {li:has(a[aria-label="Marketplace"])                                                                        {display: none}}
     if hideGroups       {li:has(a[aria-label="Groups"])                                                                             {display: none}}
     if hideGaming       {li:has(a[aria-label="Gaming"])                                                                             {display: none}}
-    
+
     if hideStories      {div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"])                                           {display: none}}
     if hideFeed{                                    
         div[class="x1hc1fzr x1unhpq9 x6o7n8i"]                                                                                      {display: none}
         div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"]){                                   
             position: fixed;                                    
             top: 45%;                                   
-            width: 38.5vw;                                  
+		    width: 680px;
         }                                   
+        div[class="xdj266r x11t971q xat24cr xvc5jky xvue9z xo9bapn xkw1uh1 x65f84u x1knen1k x18vph2k xawyimb"]{
+            display: none;
+        }
     }                                   
-                                        
-    [aria-label="Facebook menu"]                                                                                                    {display:none}
-        
+
+
         if navbar{
             if hidefriends          {li:has(a[href="https://www.facebook.com/friends/"])                                            {display: none}}
             if hideMeta             {li:has(a[rel="nofollow noreferrer"])                                                           {display: none}}
@@ -93,14 +117,15 @@
             if hideAdAct            {li:has(a[href="https://www.facebook.com/ads/activity/"])                                       {display: none}}
         } else {        
             div[aria-label="Shortcuts"]                                                                                             {display: none}
-        }
-        
+            }
+
         if sidebar{
             if hidefriendsreq {[class="x1y1aw1k"] > div:not([data-visualcompletion="ignore-dynamic"]) > div > [class*="x1n2onr6"]   {display: none}} 
             if hideContacts {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(2)                          {display: none}} 
             if hideGroupsChats {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(3)                       {display: none}} 
         }  else {
            div[role="complementary"]:not(:has([class*="x2bj2ny"]))                                                                  {display: none} 
-        }
-        
-}
+           }
+
+
+       }
