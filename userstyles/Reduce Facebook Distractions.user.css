@@ -9,16 +9,16 @@
 @var checkbox animations            "No Animations" 1
 @var checkbox wide                  "Wide" 1
 
-@var checkbox hideHome              "[+] Hide Home" 0
+@var checkbox hideHome              "[+] Hide Home" 1
 @var checkbox hideReels             "[+] Hide reels" 1
 @var checkbox hideMarketplace       "[+] Hide Marketplace" 1
 @var checkbox hideGroups            "[+] Hide Groups" 1
 @var checkbox hideGaming            "[+] Hide Gaming" 1
 
 @var checkbox hideFeed              "/// Hide Feed" 1
-@var checkbox hideStories           "/// Hide Stories" 1
+@var checkbox hideStories           "/// Hide Stories" 0
 
-@var checkbox navbar                "==== Navbar" 1
+@var checkbox navbar                "==== Navbar" 0
 @var checkbox hidefriends           "|- Hide Friends" 0
 @var checkbox hideMeta              "|- Hide Meta" 1
 @var checkbox hideMemories          "|- Hide Memories" 0
