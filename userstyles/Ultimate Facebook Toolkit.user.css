@@ -8,7 +8,7 @@
 
 @var checkbox animations            "No Animations" 1
 @var checkbox wide                  "Wide" 1
-@var checkbox multi             "Multi Column" 1
+@var checkbox multi                 "Multi Column" 1
 
 @var checkbox hideHome              "[+] Hide Home" 1
 @var checkbox hideReels             "[+] Hide reels" 1
@@ -44,36 +44,43 @@
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.facebook.com/") {
-    /* Insert code here... */
 
     /* Disable animation */
     if animations {
         * {
-          animation: none !important;
-          transition: none !important;
+            animation: none !important;
+            transition: none !important;
         }
     }
-    
+
     [class="AdBox Ad advert post-ads"],
     [class="sponsorPost"],
     [id="has-finished-comet-page"]{
         display: none;
     }
-    
+
     if wide{ 
-    	div[role="main"] > div:first-child,
-    	div[role="main"] > div:first-child > div:first-child > div:first-child > div,
-    	div[role="main"] > div:first-child > div:first-child > div:first-child > div > div:first-child {
-    		width: 100% !important;
-    		max-width: none !important;
-    	}
-        div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"]){                                   
-            position: static !important;
-		    width: 205% !important;
-		    max-width: none !important;
-        }                                   
+        div[role="main"] > div:first-child,
+        div[role="main"] > div:first-child > div:first-child > div:first-child > div,
+        div[role="main"] > div:first-child > div:first-child > div:first-child > div > div:first-child {
+            width: 100% !important;
+            max-width: none !important;
+        }
+        if hidefeed {
+            div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"]){                                   
+                position: fixed;
+                top: 45%;
+                width: 96.3% !important;
+            }
+        } else {                                   
+            div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"]){                                   
+                position: static !important;
+                width: 205% !important;
+                max-width: none !important;
+            }            
+        }                       
     }
-    
+
     [aria-label="Facebook menu"]                                                                                                    {display:none}
 
     if hideHome         {li:has(a[aria-label="Home"])                                                                               {display: none}}
@@ -88,7 +95,7 @@
         div[class="x78zum5 xdt5ytf"]:has(div[aria-label="stories tray"]){                                   
             position: fixed;                                    
             top: 45%;                                   
-		    width: 680px;
+            width: 680px;
         }                                   
         div[class="xdj266r x11t971q xat24cr xvc5jky xvue9z xo9bapn xkw1uh1 x65f84u x1knen1k x18vph2k xawyimb"]{
             display: none;
@@ -96,172 +103,169 @@
     }                                   
 
 
-        if navbar{
-            if hidefriends          {li:has(a[href="https://www.facebook.com/friends/"])                                            {display: none}}
-            if hideMeta             {li:has(a[rel="nofollow noreferrer"])                                                           {display: none}}
-            if hideMemories         {li:has(a[href="https://www.facebook.com/onthisday/?source=bookmark"])                          {display: none}}
-            if hideSaved            {li:has(a[href="https://www.facebook.com/saved/?cref=28"])                                      {display: none}}
-            if hideGroups           {li:has(a[href="https://www.facebook.com/groups/?ref=bookmarks"])                               {display: none}}
-            if hideReels            {li:has(a[href="https://www.facebook.com/reel/?s=tab"])                                         {display: none}}
-            if hideMarketplace      {li:has(a[href="https://www.facebook.com/marketplace/?ref=bookmark"])                           {display: none}}
-            if hideFeeds            {li:has(a[href*="/?filter=all"])                                                                {display: none}}
-            if hideEvents           {li:has(a[href*="/events?"])                                                                    {display: none}}
-            if hideAdManager        {li:has(a[href*="/ad_campaign/landing.php?"])                                                   {display: none}}
-            if hideBirthdays        {li:has(a[href="https://www.facebook.com/events/birthdays/"])                                   {display: none}}
-            if hideGamingVideo      {li:has(a[href="https://www.facebook.com/gaming/?external_ref=games_video_bookmark"])           {display: none}}
-            if hideMessenger        {li:has(a[href="https://www.facebook.com/messages/t/"])                                         {display: none}}
-            if hideMessengerKids    {li:has(a[href="https://www.facebook.com/messenger_kids/?referrer=bookmark"])                   {display: none}}
-            if hidePay              {li:has(a[href="https://secure.facebook.com/facebook_pay/?referrer=bookmark"])                  {display: none}}
-            if hidePages            {li:has(a[href*="/?category=your_pages"])                                                       {display: none}}
-            if hidePlay             {li:has(a[href*="/play/?"])                                                                     {display: none}}
-            if hideAdAct            {li:has(a[href="https://www.facebook.com/ads/activity/"])                                       {display: none}}
-        } else {        
-            div[aria-label="Shortcuts"]                                                                                             {display: none}
+    if navbar{
+        if hidefriends          {li:has(a[href="https://www.facebook.com/friends/"])                                            {display: none}}
+        if hideMeta             {li:has(a[rel="nofollow noreferrer"])                                                           {display: none}}
+        if hideMemories         {li:has(a[href="https://www.facebook.com/onthisday/?source=bookmark"])                          {display: none}}
+        if hideSaved            {li:has(a[href="https://www.facebook.com/saved/?cref=28"])                                      {display: none}}
+        if hideGroups           {li:has(a[href="https://www.facebook.com/groups/?ref=bookmarks"])                               {display: none}}
+        if hideReels            {li:has(a[href="https://www.facebook.com/reel/?s=tab"])                                         {display: none}}
+        if hideMarketplace      {li:has(a[href="https://www.facebook.com/marketplace/?ref=bookmark"])                           {display: none}}
+        if hideFeeds            {li:has(a[href*="/?filter=all"])                                                                {display: none}}
+        if hideEvents           {li:has(a[href*="/events?"])                                                                    {display: none}}
+        if hideAdManager        {li:has(a[href*="/ad_campaign/landing.php?"])                                                   {display: none}}
+        if hideBirthdays        {li:has(a[href="https://www.facebook.com/events/birthdays/"])                                   {display: none}}
+        if hideGamingVideo      {li:has(a[href="https://www.facebook.com/gaming/?external_ref=games_video_bookmark"])           {display: none}}
+        if hideMessenger        {li:has(a[href="https://www.facebook.com/messages/t/"])                                         {display: none}}
+        if hideMessengerKids    {li:has(a[href="https://www.facebook.com/messenger_kids/?referrer=bookmark"])                   {display: none}}
+        if hidePay              {li:has(a[href="https://secure.facebook.com/facebook_pay/?referrer=bookmark"])                  {display: none}}
+        if hidePages            {li:has(a[href*="/?category=your_pages"])                                                       {display: none}}
+        if hidePlay             {li:has(a[href*="/play/?"])                                                                     {display: none}}
+        if hideAdAct            {li:has(a[href="https://www.facebook.com/ads/activity/"])                                       {display: none}}
+    } else {        
+        div[aria-label="Shortcuts"]                                                                                             {display: none}
+    }
+
+    if sidebar{
+        if hidefriendsreq {[class="x1y1aw1k"] > div:not([data-visualcompletion="ignore-dynamic"]) > div > [class*="x1n2onr6"]   {display: none}} 
+        if hideContacts {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(2)                          {display: none}} 
+        if hideGroupsChats {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(3)                       {display: none}} 
+    }  else {
+        div[role="complementary"]:not(:has([class*="x2bj2ny"]))                                                                  {display: none} 
+    }
+
+    if multi{
+        @-moz-document domain("facebook.com") {
+            /*--[Home Page]--*/
+            div[role="main"] > div:first-child,
+            div[role="main"] > div:first-child > div:first-child > div:first-child > div,
+            div[role="main"] > div:first-child > div:first-child > div:first-child > div > div:first-child {
+                width: 100% !important;
+                max-width: none !important;
             }
-
-        if sidebar{
-            if hidefriendsreq {[class="x1y1aw1k"] > div:not([data-visualcompletion="ignore-dynamic"]) > div > [class*="x1n2onr6"]   {display: none}} 
-            if hideContacts {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(2)                          {display: none}} 
-            if hideGroupsChats {[class="x1y1aw1k"] > div[data-visualcompletion="ignore-dynamic"]:nth-child(3)                       {display: none}} 
-        }  else {
-           div[role="complementary"]:not(:has([class*="x2bj2ny"]))                                                                  {display: none} 
-           }
-
-
-       }
-       
-       if multi{
-           @-moz-document domain("facebook.com") {
-	/*--[Home Page]--*/
-	div[role="main"] > div:first-child,
-	div[role="main"] > div:first-child > div:first-child > div:first-child > div,
-	div[role="main"] > div:first-child > div:first-child > div:first-child > div > div:first-child {
-		width: 100% !important;
-		max-width: none !important;
-	}
-	/*Home sidebar*/
-	[role="banner"] ~ div [role=navigation],
-	[role="banner"] ~ div [role=complementary] {
-		transition: flex-basis/*[[duration]]*/;
-		max-width: unset;
-		min-width: unset;
-	}
-
-	[role="banner"] ~ div [role=navigation]:not(:hover):not(:focus-within),
-	[role="banner"] ~ div [role=complementary]:not(:hover):not(:focus-within) {
-		transition: flex-basis/*[[duration]]*/
-		/*[[delay]]*/;
-		flex-basis: 60px;
-	}
-
-	[role="banner"] ~ div [role=navigation] span,
-	[role="banner"] ~ div [role=complementary] span {
-		white-space: nowrap;
-		transition: opacity/*[[duration]]*/;
-		opacity: 1;
-	}
-
-	[role="banner"] ~ div [role=navigation]:not(:hover):not(:focus-within) span,
-	[role="banner"] ~ div [role=complementary]:not(:hover):not(:focus-within) span:not(div[data-visualcompletion="ignore"] *) {
-		/*:not([data-visualcompletion="ignore"]) is used to prevent online-state identifier from being hidden*/
-		transition: opacity/*[[duration]]*/
-		/*[[delay]]*/;
-		opacity: 100.00;
-	}
-
-	/*HOME right sidebar sponsored (hidden) - Experimental*/
-	/*[[adBlock]]*/
-	/*HOME post creating section*/
-	/*.o0xt3n8b{
-    max-width:unset;
-}*/
-	/*main contain*/
-	.xgmub6v.xgmub6v.xgmub6v/*stories block*/
-	,
-	.xvue9z.xvue9z.xvue9z/*parent of new post composet, room and post flow*/
-	{
-		/*the classes are used three times to increase their priority to over the @media blocks*/
-		max-width: 98%;
-		width: /*[[mainWidth]]*/;
-	}
-
-	/*everything*/
-	.xylbxtu {
-		max-width: 100vw;
-	}
-  
-	/* Hide Sidebars */
-  html:not(._9t1d) [role='banner'] ~ div [role='navigation'],
-  html:not(._9t1d) [role='banner'] ~ div [role='complementary'] {
-    flex: 0 1 280px;
-    background-color: rgba(0, 0, 0, 0.1);
-    opacity: 0.08;
-    transition: opacity 120ms ease-in-out;
-    filter: blur(10px);
-  }
-
-  html:not(._9t1d) [role='banner'] ~ div [role='navigation']:hover,
-  html:not(._9t1d) [role='banner'] ~ div [role='complementary']:hover {
-    opacity: 1;
-    background-color: var(--nav-bar-background);
-    box-shadow: 0 12px 12px var(--shadow-2), inset 0 0 0 0 var(--shadow-inset);
-    filter: none;
-  }
-}
-.x9f619.x1n2onr6.x1ja2u2z.x78zum5.x2lah0s.xl56j7k.x1qjc9v5.xozqiw3.x1q0g3np.x1t2pt76.x17upfok > div,    
-.x9f619.x1n2onr6.x1ja2u2z.x78zum5.x1iyjqo2.xs83m0k.xeuugli.xl56j7k.x1qjc9v5.xozqiw3.x1q0g3np.x1iplk16.xqmdsaz.x1xfsgkm.x1w9j1nh.x1mtsufr > div,
-.x9f619.x1n2onr6.x1ja2u2z.x78zum5.x1iyjqo2.xs83m0k.xeuugli.xl56j7k.x1qjc9v5.xozqiw3.x1q0g3np.x1iplk16.xqmdsaz.x1xfsgkm.x1w9j1nh.x1mtsufr > div > div > div > div.x78zum5.x1q0g3np.xl56j7k > div,
-.j83agx80.btwxx1t3.taijpn5t > div,
-.rq0escxv.l9j0dhe7.du4w35lb.j83agx80.pfnyh3mw.taijpn5t.gs1a9yip.owycx6da.btwxx1t3.dp1hu0rb.p01isnhg > div,
-.rq0escxv.l9j0dhe7.du4w35lb.j83agx80.g5gj957u.pmt1y7k9.buofh1pr.hpfvmrgz.taijpn5t.gs1a9yip.owycx6da.btwxx1t3.f7vcsfb0.fjf4s8hc.b6rwyo50.oyrvap6t > div,
-.rq0escxv.l9j0dhe7.du4w35lb.j83agx80.g5gj957u.pmt1y7k9.buofh1pr.hpfvmrgz.taijpn5t.gs1a9yip.owycx6da.btwxx1t3.f7vcsfb0.fjf4s8hc.b6rwyo50.oyrvap6t > div > div > div:nth-child(3) > div,
-.bdao358l.om3e55n1.g4tp4svg.alzwoclg.jez8cy9q.jcxyg2ei.o9w3sbdw.sr926ui1.jl2a5g8c.fawcizw8.h93itd9g > div,
-.bdao358l.om3e55n1.g4tp4svg.alzwoclg.cgu29s5g.i15ihif8.aeinzg81.jcxyg2ei.o9w3sbdw.sr926ui1.jl2a5g8c.bdjfgm2q.dhod7fyx.ir39z7dx.gqe1mzv8.av1hlb45 > div,
-.alzwoclg.jl2a5g8c.jcxyg2ei > div,
-.pedkr2u6.tn0ko95a.pnx7fd3z    { max-width: 9999px !important; width: 100% !important; }
-
-.x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x1xzczws.x7wzq59.xxzkxad.x9e5oc1,
-.bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.sl4bvocy.km253p1d.cofpoq2j.h0j7qdxd,
-.rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.rek2kq2y.be9z9djy.bx45vsiw {
-    width: 49px !important;
-    min-width: 49px !important;
-    flex-basis: 49px !important;
-    overflow: hidden !important;
-}
-.x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x1xzczws.x7wzq59.xxzkxad.x9e5oc1:hover,
-.bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.sl4bvocy.km253p1d.cofpoq2j.h0j7qdxd:hover,
-.rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.rek2kq2y.be9z9djy.bx45vsiw:hover { flex-basis: 360px !important; }
-
-.x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x7wzq59.xxzkxad.x1daaz14,
-.bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.km253p1d.cofpoq2j.dbla2kx4,
-.rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.be9z9djy.hlyrhctz {
-    width: 29px !important;
-    min-width: 29px !important;
-    flex-basis: 29px !important;
-    overflow: hidden !important;
-}
-.x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x7wzq59.xxzkxad.x1daaz14:hover,
-.bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.km253p1d.cofpoq2j.dbla2kx4:hover,
-.rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.be9z9djy.hlyrhctz:hover { flex-basis: 360px !important; }    
+            /*Home sidebar*/
+            [role="banner"] ~ div [role=navigation],
+            [role="banner"] ~ div [role=complementary] {
+                transition: flex-basis/*[[duration]]*/;
+                max-width: unset;
+                min-width: unset;
+            }
     
-.x1hc1fzr.x1unhpq9.x6o7n8i > div > div > .x1lliihq,
-.x78zum5.x1q0g3np.xl56j7k > div > .x1hc1fzr.x1unhpq9.x6o7n8i > div > .x1lliihq,
-.pedkr2u6.tn0ko95a.pnx7fd3z > div > div,
-.pedkr2u6.tn0ko95a.pnx7fd3z > div > span,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > span > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > span > span > .b6ax4al1,
-.cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > span > span > span > .b6ax4al1 {
-    max-width: 680px !important;
-    min-width: 400px !important;
-    width: 47% !important;
-    display: inline-block !important;
-    margin-right: 9px;
+            [role="banner"] ~ div [role=navigation]:not(:hover):not(:focus-within),
+            [role="banner"] ~ div [role=complementary]:not(:hover):not(:focus-within) {
+                transition: flex-basis/*[[duration]]*/
+                    /*[[delay]]*/;
+                flex-basis: 60px;
+            }
+    
+            [role="banner"] ~ div [role=navigation] span,
+            [role="banner"] ~ div [role=complementary] span {
+                white-space: nowrap;
+                transition: opacity/*[[duration]]*/;
+                opacity: 1;
+            }
+    
+            [role="banner"] ~ div [role=navigation]:not(:hover):not(:focus-within) span,
+            [role="banner"] ~ div [role=complementary]:not(:hover):not(:focus-within) span:not(div[data-visualcompletion="ignore"] *) {
+                /*:not([data-visualcompletion="ignore"]) is used to prevent online-state identifier from being hidden*/
+                transition: opacity/*[[duration]]*/
+                    /*[[delay]]*/;
+                opacity: 100.00;
+            }
+    
+            /*HOME right sidebar sponsored (hidden) - Experimental*/
+            /*[[adBlock]]*/
+            /*HOME post creating section*/
+            /*.o0xt3n8b{
+            max-width:unset;
+        }*/
+            /*main contain*/
+            .xgmub6v.xgmub6v.xgmub6v/*stories block*/
+            ,
+            .xvue9z.xvue9z.xvue9z/*parent of new post composet, room and post flow*/
+            {
+                /*the classes are used three times to increase their priority to over the @media blocks*/
+                max-width: 98%;
+                width: /*[[mainWidth]]*/;
+            }
+    
+            /*everything*/
+            .xylbxtu {
+                max-width: 100vw;
+            }
+    
+            /* Hide Sidebars */
+            html:not(._9t1d) [role='banner'] ~ div [role='navigation'],
+            html:not(._9t1d) [role='banner'] ~ div [role='complementary'] {
+                flex: 0 1 280px;
+                background-color: rgba(0, 0, 0, 0.1);
+                opacity: 0.08;
+                transition: opacity 120ms ease-in-out;
+                filter: blur(10px);
+            }
+    
+            html:not(._9t1d) [role='banner'] ~ div [role='navigation']:hover,
+            html:not(._9t1d) [role='banner'] ~ div [role='complementary']:hover {
+                opacity: 1;
+                background-color: var(--nav-bar-background);
+                box-shadow: 0 12px 12px var(--shadow-2), inset 0 0 0 0 var(--shadow-inset);
+                filter: none;
+            }
+        }
+        .x9f619.x1n2onr6.x1ja2u2z.x78zum5.x2lah0s.xl56j7k.x1qjc9v5.xozqiw3.x1q0g3np.x1t2pt76.x17upfok > div,    
+        .x9f619.x1n2onr6.x1ja2u2z.x78zum5.x1iyjqo2.xs83m0k.xeuugli.xl56j7k.x1qjc9v5.xozqiw3.x1q0g3np.x1iplk16.xqmdsaz.x1xfsgkm.x1w9j1nh.x1mtsufr > div,
+        .x9f619.x1n2onr6.x1ja2u2z.x78zum5.x1iyjqo2.xs83m0k.xeuugli.xl56j7k.x1qjc9v5.xozqiw3.x1q0g3np.x1iplk16.xqmdsaz.x1xfsgkm.x1w9j1nh.x1mtsufr > div > div > div > div.x78zum5.x1q0g3np.xl56j7k > div,
+        .j83agx80.btwxx1t3.taijpn5t > div,
+        .rq0escxv.l9j0dhe7.du4w35lb.j83agx80.pfnyh3mw.taijpn5t.gs1a9yip.owycx6da.btwxx1t3.dp1hu0rb.p01isnhg > div,
+        .rq0escxv.l9j0dhe7.du4w35lb.j83agx80.g5gj957u.pmt1y7k9.buofh1pr.hpfvmrgz.taijpn5t.gs1a9yip.owycx6da.btwxx1t3.f7vcsfb0.fjf4s8hc.b6rwyo50.oyrvap6t > div,
+        .rq0escxv.l9j0dhe7.du4w35lb.j83agx80.g5gj957u.pmt1y7k9.buofh1pr.hpfvmrgz.taijpn5t.gs1a9yip.owycx6da.btwxx1t3.f7vcsfb0.fjf4s8hc.b6rwyo50.oyrvap6t > div > div > div:nth-child(3) > div,
+        .bdao358l.om3e55n1.g4tp4svg.alzwoclg.jez8cy9q.jcxyg2ei.o9w3sbdw.sr926ui1.jl2a5g8c.fawcizw8.h93itd9g > div,
+        .bdao358l.om3e55n1.g4tp4svg.alzwoclg.cgu29s5g.i15ihif8.aeinzg81.jcxyg2ei.o9w3sbdw.sr926ui1.jl2a5g8c.bdjfgm2q.dhod7fyx.ir39z7dx.gqe1mzv8.av1hlb45 > div,
+        .alzwoclg.jl2a5g8c.jcxyg2ei > div,
+        .pedkr2u6.tn0ko95a.pnx7fd3z    { max-width: 9999px !important; width: 100% !important; }
+    
+        .x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x1xzczws.x7wzq59.xxzkxad.x9e5oc1,
+        .bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.sl4bvocy.km253p1d.cofpoq2j.h0j7qdxd,
+        .rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.rek2kq2y.be9z9djy.bx45vsiw {
+            width: 49px !important;
+            min-width: 49px !important;
+            flex-basis: 49px !important;
+            overflow: hidden !important;
+        }
+        .x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x1xzczws.x7wzq59.xxzkxad.x9e5oc1:hover,
+        .bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.sl4bvocy.km253p1d.cofpoq2j.h0j7qdxd:hover,
+        .rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.rek2kq2y.be9z9djy.bx45vsiw:hover { flex-basis: 360px !important; }
+    
+        .x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x7wzq59.xxzkxad.x1daaz14,
+        .bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.km253p1d.cofpoq2j.dbla2kx4,
+        .rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.be9z9djy.hlyrhctz {
+            width: 29px !important;
+            min-width: 29px !important;
+            flex-basis: 29px !important;
+            overflow: hidden !important;
+        }
+        .x9f619.x1ja2u2z.xnp8db0.x112wk31.xnjgh8c.xxc7z9f.x1t2pt76.x1u2d2a2.x6ikm8r.x10wlt62.x7wzq59.xxzkxad.x1daaz14:hover,
+        .bdao358l.g4tp4svg.svm27lag.q75x5y04.gz8zixbs.gszy8xml.fawcizw8.rw9272rg.lq84ybu9.hf30pyar.km253p1d.cofpoq2j.dbla2kx4:hover,
+        .rq0escxv.lpgh02oy.du4w35lb.o387gat7.qbu88020.pad24vr5.rirtxc74.dp1hu0rb.fer614ym.ni8dbmo4.stjgntxs.be9z9djy.hlyrhctz:hover { flex-basis: 360px !important; }    
+    
+        .x1hc1fzr.x1unhpq9.x6o7n8i > div > div > .x1lliihq,
+        .x78zum5.x1q0g3np.xl56j7k > div > .x1hc1fzr.x1unhpq9.x6o7n8i > div > .x1lliihq,
+        .pedkr2u6.tn0ko95a.pnx7fd3z > div > div,
+        .pedkr2u6.tn0ko95a.pnx7fd3z > div > span,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > span > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > span > span > .b6ax4al1,
+        .cdum9rwi.pgra2bgq.ctyh02ob > div > span > span > span > span > span > span > span > span > .b6ax4al1 {
+            max-width: 680px !important;
+            min-width: 400px !important;
+            width: 47% !important;
+            display: inline-block !important;
+            margin-right: 9px;
+        }
+    }
 }
-
-       }
