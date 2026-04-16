@@ -8,24 +8,24 @@
 
 @preprocessor stylus
 
-@var checkbox hideHome            "⦿ Hide Home"                        1
-@var checkbox fixedHome         "└⟶ Fixed Home"         1
-@var checkbox hideShorts            "⦿ Hide Shorts"                        1
+@var checkbox hideHome              "⦿ Hide Home"                           0
+@var checkbox fixedHomerecommenation"└⟶ Fixed Recomandations"              1
+@var checkbox hideShorts            "⦿ Hide Shorts"                         1
 @var checkbox hideShortsTab         "└⟶ Hide Shorts Tab (sidebar)"         1
 @var checkbox hideShortsHomeFeed    "└⟶ Hide Shorts in Home Feed"          1
 @var checkbox hideShortsSearchFeed  "└⟶ Hide Shorts in Search Results"     1
 
-@var checkbox hideSearchBar         "⦿ Auto-hide Search Bar"               0
+@var checkbox hideSearchBar         "⦿ Auto-hide Search Bar"                0
 
-@var checkbox hideSidebar           "⦿ Collapse Left Sidebar"              1
+@var checkbox hideSidebar           "⦿ Collapse Left Sidebar"               1
 @var checkbox hideExplore           "└⟶ Hide Explore"                      1
 @var checkbox hideShortsLink        "└⟶ Hide Shorts Link"                  1
 @var checkbox hideSubscriptions     "└⟶ Hide Subscriptions List"           0
 
-@var checkbox hideEndCards          "⦿ Hide End Cards & Info Cards"        1
-@var checkbox hideMerch             "⦿ Hide Merch / Paid Promos"           1
-@var checkbox hideChatReplay        "⦿ Hide Live Chat / Chat Replay"       0
-@var checkbox hideComments          "⦿ Hide Comments Section"              0
+@var checkbox hideEndCards          "⦿ Hide End Cards & Info Cards"         1
+@var checkbox hideMerch             "⦿ Hide Merch / Paid Promos"            1
+@var checkbox hideChatReplay        "⦿ Hide Live Chat / Chat Replay"        0
+@var checkbox hideComments          "⦿ Hide Comments Section"               0
 
 ==/UserStyle== */
 
@@ -37,14 +37,21 @@
      }
      }
      else {
-         if fixedHome {
-                 div[id="contents"][class="style-scope ytd-rich-grid-renderer"]{
-                     overflow-y: hidden;
-                    position: fixed;
-                    top: 5vh;
-                }            
-            }
+         if fixedHomerecommenation {
+             ytd-rich-item-renderer[items-per-row="3"]:not(ytd-rich-item-renderer:nth-child(1)):not(ytd-rich-item-renderer:nth-child(2)):not(ytd-rich-item-renderer:nth-child(3)):not(ytd-rich-item-renderer:nth-child(4)):not(ytd-rich-item-renderer:nth-child(5)):not(ytd-rich-item-renderer:nth-child(6)):not(ytd-rich-item-renderer:nth-child(7))
+             {
+                 display: none;
+             }    
+             ytd-rich-section-renderer{
+                 display: none
+             }
+             yt-lockup-view-model{
+                 display: none;
+             }
+         }
         }
+        
+        
     /* ─────────────────────────────────────────────
        SHORTS
     ───────────────────────────────────────────── */
@@ -196,3 +203,4 @@
     }
 
 }
+
