@@ -78,8 +78,13 @@
                 --pane-width: 100% !important
                 --pane-max-width: 100% !important
                 --spacing: 10px !important;
-                padding-inline: 50px;
+                padding-inline: 14%;
                 padding-top: 10px;
+            }
+            if wide{
+                div[class="prc-PageLayout-PaneWrapper-pHPop pr-2"] > div[class="prc-PageLayout-Pane-AyzHK"]{
+                    padding-inline: 50px;
+                }
             }
             if fullheight{
                 div[class="prc-PageLayout-PaneWrapper-pHPop pr-2"]{
