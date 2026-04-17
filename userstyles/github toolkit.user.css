@@ -7,7 +7,11 @@
 
 @preprocessor   stylus
 @var checkbox   wide "Wide" 0
+
 @var checkbox   nochangelog "Hide Changelog" 0
+
+@var checkbox   releaserow  "Row Release" 1
+@var checkbox   fullheight  "Full height" 1
 ==/UserStyle== */
 
 @-moz-document regexp("^https?:\\/\\/(www\\.)?github\\.com\\/[^\\/]+\\/[^\\/]+.*$"), domain("github.com") {
@@ -32,33 +36,60 @@
         }
         if nochangelog{
             @media (min-width: 1400px) {
-              .feed-content .feed-main {
-                max-width: 90% !important;
-              }
+                .feed-content .feed-main {
+                    max-width: 90% !important;
+                }
             }
         } else {
             @media (min-width: 1400px) {
-              .feed-content .feed-main {
-                max-width: 70% !important;
-                padding-inline: 3% !important
-              }
+                .feed-content .feed-main {
+                    max-width: 70% !important;
+                    padding-inline: 3% !important
+                }
             }
         }
         @media (min-width: 1400px) {
-          .feed-content {
-            max-width: 100% !important;
-            gap: 0 !important;
-          }
+            .feed-content {
+                max-width: 100% !important;
+                gap: 0 !important;
+            }
         }
         @media (min-width: 768px) {
-          .feed-content {
-            max-width: 100% !important;
-          }
+            .feed-content {
+                max-width: 100% !important;
+            }
         }
     }
     if nochangelog{
         aside[aria-label="Explore"]{
             display: none;
+        }
+    }
+    if releaserow{
+        @layer primer-react {
+            .prc-PageLayout-PageLayoutContent-BneH9 {
+                flex-wrap: wrap;
+                flex: 100%;
+                max-width: 100%;
+                display: flex;
+            }
+            div[class="prc-PageLayout-PaneWrapper-pHPop pr-2"] > div[class="prc-PageLayout-Pane-AyzHK"]{
+                --pane-width-size: 100% !important;
+                --pane-width: 100% !important
+                --pane-max-width: 100% !important
+                --spacing: 10px !important;
+                padding-inline: 50px;
+                padding-top: 10px;
+            }
+            if fullheight{
+                div[class="prc-PageLayout-PaneWrapper-pHPop pr-2"]{
+                    height: auto;
+                } 
+            } else{
+                div[class="prc-PageLayout-PaneWrapper-pHPop pr-2"]{
+                    height: 30vh;
+                }
+            }
         }
     }
 }
