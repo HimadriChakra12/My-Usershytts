@@ -1,0 +1,64 @@
+/* ==UserStyle==
+@name           Github Tweakkit
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+
+@preprocessor   stylus
+@var checkbox   wide "Wide" 0
+@var checkbox   nochangelog "Hide Changelog" 0
+==/UserStyle== */
+
+@-moz-document regexp("^https?:\\/\\/(www\\.)?github\\.com\\/[^\\/]+\\/[^\\/]+.*$"), domain("github.com") {
+    /* Insert code here... */
+    *{border: 0px !important}
+    footer{display: none}
+    if wide{
+        @layer primer-react {
+            .prc-PageLayout-Content-xWL-A:where([data-width="large"]) {
+                max-width: 100vw;
+            }
+        }
+        .container-xl {
+            max-width: 100vw;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .container-lg {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        if nochangelog{
+            @media (min-width: 1400px) {
+              .feed-content .feed-main {
+                max-width: 90% !important;
+              }
+            }
+        } else {
+            @media (min-width: 1400px) {
+              .feed-content .feed-main {
+                max-width: 70% !important;
+                padding-inline: 3% !important
+              }
+            }
+        }
+        @media (min-width: 1400px) {
+          .feed-content {
+            max-width: 100% !important;
+            gap: 0 !important;
+          }
+        }
+        @media (min-width: 768px) {
+          .feed-content {
+            max-width: 100% !important;
+          }
+        }
+    }
+    if nochangelog{
+        aside[aria-label="Explore"]{
+            display: none;
+        }
+    }
+}
