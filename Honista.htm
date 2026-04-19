@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Instagram Cleaner Settings</title>
+</head>
+<body>
+<h2>Instagram Cleaner Settings</h2>
+<label><input type="checkbox" id="hideSponsored"> Hide Sponsored Posts</label><br>
+<label><input type="checkbox" id="hideSuggested"> Hide Suggested Posts</label><br><br>
+<button id="save">Save Settings</button>
+<button id="export">Export Settings</button>
+<button id="import">Import Settings</button>
+
+<script>
+const defaultSettings = { hideSponsored: true, hideSuggested: true };
+const settings = JSON.parse(localStorage.getItem('instaCleanerSettings')) || defaultSettings;
+
+document.getElementById('hideSponsored').checked = settings.hideSponsored;
+document.getElementById('hideSuggested').checked = settings.hideSuggested;
+
+document.getElementById('save').onclick = () => {
+    const newSettings = {
+        hideSponsored: document.getElementById('hideSponsored').checked,
+        hideSuggested: document.getElementById('hideSuggested').checked
+    };
+    localStorage.setItem('instaCleanerSettings', JSON.stringify(newSettings));
+    alert('Settings saved! Instagram page will update automatically.');
+};
+
+document.getElementById('export').onclick = () => {
+    prompt('Copy your settings JSON:', localStorage.getItem('instaCleanerSettings'));
+};
+
+document.getElementById('import').onclick = () => {
+    const json = prompt('Paste settings JSON here:');
+    try {
+        JSON.parse(json);
+        localStorage.setItem('instaCleanerSettings', json);
+        alert('Settings imported! Instagram page will update automatically.');
+    } catch {
+        alert('Invalid JSON!');
+    }
+};
+</script>
+</body>
+</html>
