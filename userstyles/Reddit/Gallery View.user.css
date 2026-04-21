@@ -1,0 +1,35 @@
+/* ==UserStyle==
+@name           Reddit Gallery Feed
+@namespace      anyone
+@version        1.0.0
+@description    gallery view for reddit
+@author         hdy
+==/UserStyle== */
+
+@-moz-document domain("reddit.com") {
+	.subgrid-container:has(shreddit-feed[reload-url^="/svc/shreddit/feeds/"]) {
+		min-width: 100% !important;
+	}
+	.main-container:has(shreddit-feed[reload-url^="/svc/shreddit/feeds/"]) {
+		grid-template-columns: minmax(0,1fr) minmax(0,316px) !important;
+	}
+	shreddit-feed {
+		--post-per-row: 3;
+		--post-width: calc(100% / var(--post-per-row));
+		
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+		& > article, & > .virtualized-placeholder {
+			width: var(--post-width) !important;
+		}
+		
+		& > hr, & > .virtualized-placeholder[style="height: 0px;"] {
+			display: none;
+		}
+		
+		& > faceplate-loader, & > faceplate-partial {
+			height: 0px !important;
+		}
+	}
+}
