@@ -1,0 +1,38 @@
+/* ==UserStyle==
+@name           All Sites — Iosevka Charon Mono (Auto GitHub)
+@namespace      github.com/openstyles/stylus
+@version        2.1
+==/UserStyle== */
+
+@font-face {
+    font-family: "Iosevka Charon Mono";
+    src: url("https://cdn.jsdelivr.net/gh/HimadriChakra12/My-Usershytts@main/Font/IosevkaCharonMono-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    font-family: "Iosevka Charon Mono" !important;
+}
+
+/* Keep icons working */
+i {
+    font-family: "Google Material Icons" !important;
+}
+
+.google-symbols {
+    font-family: "Google Symbols" !important;
+}
+
+@-moz-document url-prefix("moz-extension://"),
+    url-prefix("chrome-extension://") {
+        *,
+        *::before,
+        *::after {
+            font-family: "Iosevka Charon Mono" !important;
+        }
+}
+
