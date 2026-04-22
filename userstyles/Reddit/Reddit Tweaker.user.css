@@ -1,0 +1,90 @@
+/* ==UserStyle==
+@name           Reddit Tweaker
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+
+@preprocessor   stylus
+@var checkbox   recent      "Hide Recent"               1
+        
+@var checkbox   header      "----- Header"              1
+@var checkbox   logo        "Hide Logo"                 1
+@var checkbox   ad          "Hide ad"                   1
+@var checkbox   chat        "Hide chat"                 1
+@var checkbox   create      "Hide Logo"                 1
+@var checkbox   inbox       "Hide inbox"                1
+        
+@var checkbox   sidebar     "----- Sidebar"             1
+@var checkbox   popular     "Hide Popular"              1
+==/UserStyle== */
+
+@-moz-document url("www.reddit.com") {
+        main[id="main-content"]{
+            width: 95vw
+        }
+    }
+@-moz-document domain("www.reddit.com") {
+    /* Insert code here... */
+    div[class="legal-links justify-self-end flex mx-md mb-md"], div[class="legal-links !mx-0 flex mx-md mb-md"]{
+        display: none;
+    }
+    body{
+        scroll-behavior: smooth;
+    }
+    *, button, div. article, a { border-radius: 0px !important;}
+    if recent{
+        div[id="right-sidebar-container"]{
+            display:none !important;
+        }
+        main[id="main-content"]:has(article){
+            width: 100%;
+            min-width: 95vw;
+        }
+    }
+    if header{
+        if logo{
+            a[id="reddit-logo"]{
+                display: none;
+            }
+        } 
+        if ad{
+            advertise-button{
+                display: none;
+            }
+        }
+        if chat{
+            [data-part="chat"]{
+                display: none
+            }
+        }
+        if create{
+            [data-part="create"]{
+                display: none;
+            }
+        }
+        if inbox{
+            [data-part="inbox"]{
+                display: none;
+            }
+        }
+    } else{
+        reddit-header-large{
+            display: none !important;
+        }
+    }
+    if sidebar{
+        if popular{
+            li:has(a[href*="/r/popular"]) {
+                display: none !important;
+            }
+        }
+    } else{
+        div[id="flex-left-nav-container"]:has(reddit-sidebar-nav){
+            display: none !important;
+        }
+    }
+    faceplate-tracker[noun="popular"]{
+        visibility:none !important;
+    }
+}
