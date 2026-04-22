@@ -1,0 +1,483 @@
+// ==UserScript==
+// @name         Vim Motions for Inputs
+// @namespace    http://tampermonkey.net/
+// @version      5.0
+// @description  Vim motions in input/textarea/contenteditable. ; = NORMAL, i/a/A = INSERT.
+// @match        *://*/*
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    const NORMAL_MODE_KEY = ";";
+
+    let mode         = "insert";
+    let lastKey      = null;
+    let lastKeyTimer = null;
+
+    // ── HUD ───────────────────────────────────────────────────────────────────
+    const hud = document.createElement("div");
+    Object.assign(hud.style, {
+        position:"fixed", bottom:"18px", right:"18px", zIndex:"2147483647",
+        fontFamily:"monospace", fontSize:"13px", fontWeight:"700",
+        letterSpacing:"0.08em", padding:"4px 10px", borderRadius:"4px",
+        pointerEvents:"none", userSelect:"none", opacity:"0", transition:"opacity 0.15s",
+    });
+    document.documentElement.appendChild(hud);
+
+    function updateHUD() {
+        clearTimeout(hud._t);
+        if (mode === "normal") {
+            hud.textContent = "NORMAL";
+            Object.assign(hud.style, { background:"#e5c07b", color:"#1e1e1e", opacity:"1" });
+        } else {
+            hud.textContent = "INSERT";
+            Object.assign(hud.style, { background:"#98c379", color:"#1e1e1e", opacity:"1" });
+            hud._t = setTimeout(() => { hud.style.opacity = "0"; }, 1200);
+        }
+    }
+
+    // ── Block cursor ──────────────────────────────────────────────────────────
+    const caretStyle = document.createElement("style");
+    document.head.appendChild(caretStyle);
+
+    const block = document.createElement("div");
+    Object.assign(block.style, {
+        position:"fixed", pointerEvents:"none", zIndex:"2147483646",
+        display:"none", background:"rgba(229,192,123,0.9)", borderRadius:"1px", overflow:"hidden",
+    });
+    document.documentElement.appendChild(block);
+
+    const blockChar = document.createElement("span");
+    Object.assign(blockChar.style, {
+        position:"absolute", top:"0", left:"0",
+        color:"#1a1a1a", userSelect:"none", pointerEvents:"none", whiteSpace:"pre",
+    });
+    block.appendChild(blockChar);
+
+    let blinkTimer = null;
+    let rafId      = null;
+    let blinkOn    = true;
+    let cursorEl   = null;
+
+    const COPY_PROPS = [
+        "fontFamily","fontSize","fontWeight","fontStyle","fontVariant",
+        "letterSpacing","wordSpacing","textTransform","textIndent",
+        "lineHeight","whiteSpace","wordBreak","overflowWrap",
+        "paddingTop","paddingRight","paddingBottom","paddingLeft",
+        "borderTopWidth","borderRightWidth","borderBottomWidth","borderLeftWidth",
+        "boxSizing","tabSize",
+    ];
+
+    function getCaretCoords(el) {
+        const fieldRect = el.getBoundingClientRect();
+        const cs = window.getComputedStyle(el);
+        const mirror = document.createElement("div");
+        for (const p of COPY_PROPS) mirror.style[p] = cs[p];
+        Object.assign(mirror.style, {
+            position:"fixed",
+            top: fieldRect.top  + "px", left: fieldRect.left + "px",
+            width: fieldRect.width + "px", height: fieldRect.height + "px",
+            visibility:"hidden", overflow:"hidden", margin:"0",
+            whiteSpace: el.tagName === "TEXTAREA" ? "pre-wrap" : "pre",
+            pointerEvents:"none",
+        });
+        const val = getValue(el);
+        const pos = getCaret(el);
+        const ch  = val[pos];
+        mirror.appendChild(document.createTextNode(val.slice(0, pos)));
+        const marker = document.createElement("span");
+        marker.textContent = (ch !== undefined && ch !== "\n") ? ch : "\u00a0";
+        mirror.appendChild(marker);
+        if (ch !== undefined) mirror.appendChild(document.createTextNode(val.slice(pos + 1)));
+        document.documentElement.appendChild(mirror);
+        mirror.scrollTop  = el.scrollTop;
+        mirror.scrollLeft = el.scrollLeft;
+        const mr = marker.getBoundingClientRect();
+        document.documentElement.removeChild(mirror);
+        const fontSize = parseFloat(cs.fontSize);
+        return {
+            x: mr.left, y: mr.top,
+            w: mr.width  > 0.5 ? mr.width  : fontSize * 0.55,
+            h: mr.height > 0.5 ? mr.height : fontSize * 1.2,
+            ch: (ch !== undefined && ch !== "\n") ? ch : " ",
+            font: `${cs.fontWeight} ${cs.fontSize}/${cs.lineHeight} ${cs.fontFamily}`,
+            fx1: fieldRect.left, fy1: fieldRect.top,
+            fx2: fieldRect.right, fy2: fieldRect.bottom,
+        };
+    }
+
+    function renderBlock() {
+        const el = cursorEl;
+        if (!el || mode !== "normal" || getActiveEditable() !== el) { _hideBlock(); return; }
+        if (!blinkOn) { block.style.display = "none"; return; }
+        let c;
+        try { c = getCaretCoords(el); } catch (_) { _hideBlock(); return; }
+        if (c.x + c.w <= c.fx1 || c.x >= c.fx2 || c.y + c.h <= c.fy1 || c.y >= c.fy2) {
+            block.style.display = "none"; return;
+        }
+        const bx = Math.max(c.x, c.fx1);
+        const by = Math.max(c.y, c.fy1);
+        const bw = Math.min(c.x + c.w, c.fx2) - bx;
+        const bh = Math.min(c.y + c.h, c.fy2) - by;
+        Object.assign(block.style, { display:"block", left:bx+"px", top:by+"px", width:bw+"px", height:bh+"px" });
+        blockChar.textContent      = c.ch;
+        blockChar.style.font       = c.font;
+        blockChar.style.lineHeight = bh + "px";
+    }
+
+    function _hideBlock() {
+        block.style.display = "none";
+        cancelAnimationFrame(rafId); clearInterval(blinkTimer);
+        rafId = null; blinkTimer = null;
+    }
+
+    function startBlock(el) {
+        cursorEl = el;
+        cancelAnimationFrame(rafId); clearInterval(blinkTimer);
+        blinkOn = true;
+        blinkTimer = setInterval(() => { blinkOn = !blinkOn; renderBlock(); }, 530);
+        (function tick() { renderBlock(); rafId = requestAnimationFrame(tick); })();
+    }
+
+    function updateCursor(el) {
+        if (!el) el = getActiveEditable();
+        if (mode === "normal" && el && isEditable(el)) {
+            caretStyle.textContent =
+                "input:focus,textarea:focus,[contenteditable]:focus" +
+                "{caret-color:transparent!important;cursor:default!important}";
+            startBlock(el);
+        } else {
+            caretStyle.textContent =
+                "input:focus,textarea:focus,[contenteditable]:focus" +
+                "{caret-color:auto!important;cursor:text!important}";
+            _hideBlock();
+        }
+    }
+
+    // ── Element helpers ───────────────────────────────────────────────────────
+    function getActiveEditable() {
+        let el = document.activeElement;
+        while (el && el.shadowRoot && el.shadowRoot.activeElement) {
+            el = el.shadowRoot.activeElement;
+        }
+        return isEditable(el) ? el : null;
+    }
+
+    function isEditable(el) {
+        if (!el) return false;
+        if (el.isContentEditable) return true;
+        if (el.tagName === "TEXTAREA") return true;
+        if (el.tagName === "INPUT") {
+            const t = (el.type || "text").toLowerCase();
+            return ["text","search","url","email","password","tel"].includes(t);
+        }
+        return false;
+    }
+
+    // For textarea/input: use .value
+    // For contenteditable: extract plain text, treating block-level elements as newlines
+    function getValue(el) {
+        if (el.value !== undefined) return el.value;
+        // Walk the DOM and collect text, inserting \n at block boundaries
+        return getTextContent(el);
+    }
+
+    function getTextContent(el) {
+        let text = "";
+        const BLOCK_TAGS = new Set(["P","DIV","LI","BR","H1","H2","H3","H4","H5","H6","TR","BLOCKQUOTE"]);
+        function walk(node, isFirst) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                text += node.nodeValue;
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const tag = node.tagName.toUpperCase();
+                if (tag === "BR") { text += "\n"; return; }
+                const isBlock = BLOCK_TAGS.has(tag);
+                if (isBlock && !isFirst && text.length > 0 && text[text.length-1] !== "\n") {
+                    text += "\n";
+                }
+                let first = true;
+                for (const child of node.childNodes) { walk(child, first); first = false; }
+                if (isBlock && text.length > 0 && text[text.length-1] !== "\n") {
+                    text += "\n";
+                }
+            }
+        }
+        walk(el, true);
+        // Trim trailing newline added by the root block
+        return text.replace(/\n$/, "");
+    }
+
+    function setValue(el, val) {
+        if (el.value !== undefined) {
+            const desc =
+                Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,  "value") ||
+                Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,"value");
+            if (desc && desc.set) desc.set.call(el, val); else el.value = val;
+            el.dispatchEvent(new Event("input",  { bubbles:true }));
+            el.dispatchEvent(new Event("change", { bubbles:true }));
+        } else {
+            // contenteditable: set innerText so block structure is preserved
+            el.innerText = val;
+            el.dispatchEvent(new InputEvent("input", { bubbles:true }));
+        }
+    }
+
+    // ── Caret helpers (the critical fix) ─────────────────────────────────────
+    //
+    // For textarea/input: selectionStart is the absolute char offset. Simple.
+    //
+    // For contenteditable: the Selection API gives us a (node, offsetWithinNode) pair.
+    // We must walk all text nodes in document order to convert that into an
+    // absolute offset within getValue(el)'s string, and back again.
+
+    function getCaret(el) {
+        if (el.selectionStart !== undefined) return el.selectionStart;
+        // contentEditable path
+        const sel = window.getSelection();
+        if (!sel || sel.rangeCount === 0) return 0;
+        const range = sel.getRangeAt(0);
+        // Create a range from the start of the element to the caret
+        const preCaretRange = document.createRange();
+        preCaretRange.selectNodeContents(el);
+        preCaretRange.setEnd(range.endContainer, range.endOffset);
+        return preCaretRange.toString().length;
+    }
+
+    function moveCaret(el, pos) {
+        const len = getValue(el).length;
+        pos = Math.max(0, Math.min(pos, len));
+        if (el.setSelectionRange) {
+            try { el.setSelectionRange(pos, pos); } catch (_) {}
+            return;
+        }
+        // contentEditable: walk text nodes to find the node+offset for pos
+        const result = getNodeAtOffset(el, pos);
+        if (!result) return;
+        try {
+            const range = document.createRange();
+            range.setStart(result.node, result.offset);
+            range.collapse(true);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        } catch (_) {}
+    }
+
+    // Walk text nodes in document order, accumulating character count.
+    // Returns { node, offset } where node is the text node and offset is
+    // the position within it corresponding to absolute position `targetOffset`.
+    function getNodeAtOffset(root, targetOffset) {
+        let remaining = targetOffset;
+        const iter = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        while ((node = iter.nextNode())) {
+            const len = node.nodeValue.length;
+            if (remaining <= len) {
+                return { node, offset: remaining };
+            }
+            remaining -= len;
+        }
+        // Past end — return last text node at its end
+        if (node) return { node, offset: node.nodeValue.length };
+        return null;
+    }
+
+    function resetLastKey() { lastKey = null; clearTimeout(lastKeyTimer); }
+
+    // ── Word motions ──────────────────────────────────────────────────────────
+    function nextWordStart(val, pos) {
+        let i = pos;
+        if (/\w/.test(val[i] || "")) { while (i < val.length && /\w/.test(val[i])) i++; }
+        while (i < val.length && /\W/.test(val[i])) i++;
+        return i;
+    }
+    function prevWordStart(val, pos) {
+        let i = pos - 1;
+        while (i > 0 && /\W/.test(val[i])) i--;
+        while (i > 0 && /\w/.test(val[i - 1])) i--;
+        return Math.max(0, i);
+    }
+    function wordEnd(val, pos) {
+        let i = pos + 1;
+        while (i < val.length && /\W/.test(val[i])) i++;
+        while (i < val.length - 1 && /\w/.test(val[i + 1])) i++;
+        return Math.min(val.length - 1, i);
+    }
+
+    // ── Key handler ───────────────────────────────────────────────────────────
+    function handleKey(e) {
+        const el = getActiveEditable();
+        if (!el) return;
+
+        // Enter NORMAL
+        if (mode === "insert" && e.key === NORMAL_MODE_KEY) {
+            mode = "normal";
+            updateHUD(); updateCursor(el);
+            e.preventDefault(); return;
+        }
+
+        if (mode === "insert") return;
+
+        // NORMAL: suppress all default browser + site behaviour for our keys
+        if (e.ctrlKey || e.altKey || e.metaKey) return;
+        e.preventDefault();
+        e.stopPropagation();
+
+        const val = getValue(el);
+        const pos = getCaret(el);
+
+        if (lastKey === "d" && e.key !== "d") resetLastKey();
+
+        switch (e.key) {
+
+            case "i": { mode = "insert"; break; }
+
+            case "a": {
+                mode = "insert";
+                moveCaret(el, Math.min(val.length, pos + 1));
+                break;
+            }
+            case "A": {
+                mode = "insert";
+                const eolA = val.indexOf("\n", pos);
+                moveCaret(el, eolA === -1 ? val.length : eolA);
+                break;
+            }
+            case "I": {
+                mode = "insert";
+                const solI = val.lastIndexOf("\n", pos - 1) + 1;
+                moveCaret(el, solI);
+                break;
+            }
+            case "o": {
+                if (el.tagName === "TEXTAREA" || el.isContentEditable) {
+                    const eolO = val.indexOf("\n", pos);
+                    const atO  = eolO === -1 ? val.length : eolO;
+                    setValue(el, val.slice(0, atO) + "\n" + val.slice(atO));
+                    moveCaret(el, atO + 1);
+                    mode = "insert";
+                }
+                break;
+            }
+
+            case "h": { moveCaret(el, Math.max(0, pos - 1)); break; }
+            case "l": { moveCaret(el, Math.min(val.length, pos + 1)); break; }
+
+            case "0": {
+                const sol0 = val.lastIndexOf("\n", pos - 1) + 1;
+                moveCaret(el, sol0);
+                break;
+            }
+            case "$": {
+                const eolD = val.indexOf("\n", pos);
+                moveCaret(el, eolD === -1 ? val.length : eolD);
+                break;
+            }
+            case "^": {
+                const solH  = val.lastIndexOf("\n", pos - 1) + 1;
+                const eolH  = val.indexOf("\n", solH);
+                const lineH = val.slice(solH, eolH === -1 ? val.length : eolH);
+                const nbH   = lineH.search(/\S/);
+                moveCaret(el, solH + (nbH === -1 ? 0 : nbH));
+                break;
+            }
+
+            case "w": { moveCaret(el, nextWordStart(val, pos)); break; }
+            case "b": { moveCaret(el, prevWordStart(val, pos)); break; }
+            case "e": { moveCaret(el, wordEnd(val, pos)); break; }
+
+            case "j":
+            case "k": {
+                const linesJK = val.split("\n");
+                let ccJK = 0, clJK = 0, colJK = 0;
+                for (let i = 0; i < linesJK.length; i++) {
+                    if (pos <= ccJK + linesJK[i].length) { clJK = i; colJK = pos - ccJK; break; }
+                    ccJK += linesJK[i].length + 1;
+                }
+                const tlJK = e.key === "j"
+                    ? Math.min(linesJK.length - 1, clJK + 1)
+                    : Math.max(0, clJK - 1);
+                let npJK = 0;
+                for (let i = 0; i < tlJK; i++) npJK += linesJK[i].length + 1;
+                moveCaret(el, npJK + Math.min(colJK, linesJK[tlJK].length));
+                break;
+            }
+
+            case "G": { moveCaret(el, val.length); break; }
+            case "g": {
+                if (lastKey === "g") { moveCaret(el, 0); resetLastKey(); return; }
+                lastKey = "g";
+                lastKeyTimer = setTimeout(resetLastKey, 1000);
+                return;
+            }
+
+            case "x": {
+                if (pos < val.length) {
+                    setValue(el, val.slice(0, pos) + val.slice(pos + 1));
+                    moveCaret(el, Math.min(pos, getValue(el).length));
+                }
+                break;
+            }
+            case "X": {
+                if (pos > 0) {
+                    setValue(el, val.slice(0, pos - 1) + val.slice(pos));
+                    moveCaret(el, pos - 1);
+                }
+                break;
+            }
+            case "d": {
+                if (lastKey === "d") {
+                    if (el.tagName === "TEXTAREA" || el.isContentEditable) {
+                        const lsDD = val.split("\n");
+                        let ccDD = 0, clDD = 0;
+                        for (let i = 0; i < lsDD.length; i++) {
+                            if (pos <= ccDD + lsDD[i].length) { clDD = i; break; }
+                            ccDD += lsDD[i].length + 1;
+                        }
+                        lsDD.splice(clDD, 1);
+                        setValue(el, lsDD.join("\n"));
+                        let ncDD = 0;
+                        const tlDD = Math.min(clDD, lsDD.length - 1);
+                        if (lsDD.length > 0) for (let i = 0; i < tlDD; i++) ncDD += lsDD[i].length + 1;
+                        moveCaret(el, ncDD);
+                    } else {
+                        setValue(el, ""); moveCaret(el, 0);
+                    }
+                    resetLastKey(); return;
+                }
+                lastKey = "d";
+                lastKeyTimer = setTimeout(resetLastKey, 1000);
+                return;
+            }
+            case "p": {
+                navigator.clipboard.readText().then(text => {
+                    const v2 = getValue(el), p2 = getCaret(el);
+                    setValue(el, v2.slice(0, p2 + 1) + text + v2.slice(p2 + 1));
+                    moveCaret(el, p2 + 1 + text.length);
+                }).catch(() => {});
+                break;
+            }
+
+            default: { resetLastKey(); return; }
+        }
+
+        if (e.key !== "d" && e.key !== "g") resetLastKey();
+        updateHUD();
+        updateCursor(el);
+    }
+
+    // ── Events ────────────────────────────────────────────────────────────────
+    document.addEventListener("keydown", handleKey, true);
+
+    document.addEventListener("focusin", () => {
+        const el = getActiveEditable();
+        if (el) { updateHUD(); updateCursor(el); }
+    });
+    document.addEventListener("focusout", _hideBlock);
+
+    updateHUD();
+    updateCursor(null);
+
+})();
