@@ -1,9 +1,9 @@
 /* ==userstyle==
-@name           Custom Inbox For Instagram (Him Specific)
+@name           Custom Inbox For Instagram
 @namespace      github.com/HimadriChakra12/My-usershytts
 @author         Himadri Chakraborty
 @description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
-@version        3.0
+@version        2.1
 @license        Himadri Chakraborty
 
 @preprocessor stylus
@@ -160,66 +160,58 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
 @-moz-document url("https://www.instagram.com/direct/t/17846265992645472/") {
 
     if bishakha{    
-    .bishakha{display: flex}
-
         :root{
-            --chatbg:     linear-gradient(135deg, #5c0b27, #9c266a, #b11d30, #3a0a45) !important;
-            --accentcol: #000;
-            --flavour:#fff;
+            --chatbg:       linear-gradient(135deg, #5c0b27, #9c266a, #b11d30, #3a0a45) !important;
+            --flavour:      #000;
+            --friendtxtbg:  #fff;
+            --authertxtbg:  #262626;
+            --text:         #000; 
+            --autext:       #fff;  
         }
-    div[data-pagelet="IGDInboxHeaderOffMsys"],
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu x18d9i69 x9f619 x82snj4 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xv54qhq xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv xuk3077 x1oa3qoh xl56j7k"],
-    /* textbar - back */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-    /* textbar */
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-    .xcrg951,
-    .x1eb86dx,
-    .x1eb86dx,
-    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
-        background: var(--chatbg) !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
-    }
-
-        /* username */
-        div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
-            display: block;
+        
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Previous pinned message"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
         }
-
-        /* text chatbg */
-        div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
-        .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
-            background: var(--flavour) ;
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
         }
 
         /* username */
         div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
         div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
-        /* text */
-        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"],
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate"], 
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate focus-visible"], 
+        div[class*="notranslate"], 
         p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
-            color: var(--accentcol)
+            color: var(--flavour)!important;
         }
 
         /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path {
-            fill: var(--accentcol) !important;
-        }
+        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
-        span[dir="auto"]:contains("Seen") {
-            fill: var(--accentcol) !important;
-        }
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
 
         /* emoji svg */
         div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
@@ -235,6 +227,8 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             --flavour:          #f8cad2;
             --friendtxtbg:      #d51d57;
             --authertxtbg:      #d51d57;
+            --text:             #ffffff;
+            --autext:           #f8cad2;
         }
     
         /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
@@ -253,14 +247,19 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             border: 0 !important;
         }
         
-        .x5slmwz{ background: var(--authertxtbg) !important ; }
-        .x88qbow{ background: var(--friendtxtbg) !important; }
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
             
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
+        }
 
         /* username */
-        span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"],
-        /* text */
-        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"],
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
         div[class*="notranslate"], 
@@ -285,71 +284,61 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
 @-moz-document url("https://www.instagram.com/direct/t/17849539664607285/") {
 
     if barshon{
-        .barshon{display: flex}
-
-            :root{
-                --chatbg:#88A34B;
-                --accentcol: #000;
-                --flavour:#fff;
-            }
-
-    div[data-pagelet="IGDInboxHeaderOffMsys"],
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu x18d9i69 x9f619 x82snj4 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xv54qhq xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv xuk3077 x1oa3qoh xl56j7k"],
-    /* textbar - back */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-    /* textbar */
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-    .xcrg951,
-    .x1eb86dx,
-    .x1eb86dx,
-    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
-        background: var(--chatbg) !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
-    }
-
-        /* username */
-        div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
-            display: block;
+        :root{
+            --chatbg:#88A34B;
+            --flavour:#fff;
+            --friendtxtbg: #fff;
+            --authertxtbg: #262626;
+            --text: #000;
         }
 
-        /* text chatbg */
-        div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
-        .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
-            background: var(--flavour) ;
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Previous pinned message"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
         }
 
         /* username */
         div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
         div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
-        /* text */
-        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"],
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate"], 
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate focus-visible"], 
+        div[class*="notranslate"], 
         p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
-            color: var(--accentcol)
+            color: var(--flavour)!important;
         }
 
         /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path {
-            fill: var(--accentcol) !important;
-        }
+        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
-        span[dir="auto"]:contains("Seen") {
-            fill: var(--accentcol) !important;
-        }
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
 
         /* emoji svg */
         div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
-            filter: invert(100%)
+            filter: invert(0%)
         }
     }
 }
@@ -359,60 +348,63 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
 
     if hiya{
         .hiya{display: flex}
+            :root{
+                --chatbg: linear-gradient(135deg, #4e192b, #000);
+                --friendtxtbg: #fff;
+                --authertxtbg: #262626;
+                --text: #000;
+            }
 
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu x18d9i69 x9f619 x82snj4 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xv54qhq xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv xuk3077 x1oa3qoh xl56j7k"],
-        /* textbar - back */
-        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-        /* textbar */
-        div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-        div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-        .xcrg951,
-        .x1eb86dx,
-        .x1eb86dx,
-    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
-        background: linear-gradient(135deg, #4e192b, #000) !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
-    }
-
-        /* text chatbg */
-        div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
-        .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
-            background: #fff;
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Previous pinned message"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
         }
+        
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+
         /* Instagram: Turn Send icon pink */
         svg[aria-label="Send"] path {
-            fill: black !important;
-        }
-        /* text */
-        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
-            color: #000;
+            fill: var(--friendtxtbg) !important;
         }
     }
 }
 @-moz-document url("https://www.instagram.com/direct/t/1421105996287938/") {
 
     if shreya{
-        .shreya{display: flex}
 
-    div[data-pagelet="IGDInboxHeaderOffMsys"],
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu x18d9i69 x9f619 x82snj4 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xv54qhq xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv xuk3077 x1oa3qoh xl56j7k"],
-        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-        div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-        div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-        .xcrg951,
-        .x1eb86dx,
-        .x1eb86dx,
-    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
-        background: #006571 !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
-    }
+        :root{
+            --chatbg: #006571;
+        }
+        
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Previous pinned message"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
 }
 }
 @-moz-document url("https://www.instagram.com/direct/t/17846226593822368/") {
@@ -421,66 +413,58 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
 
         :root{
             --chatbg:#80ffcc;
-            --accentcol: #000;
             --flavour:#fff;
+            --friendtxtbg: #fff;
+            --authertxtbg: #262626;
         }
 
-    div[data-pagelet="IGDInboxHeaderOffMsys"],
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu x18d9i69 x9f619 x82snj4 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xv54qhq xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv xuk3077 x1oa3qoh xl56j7k"],
-    /* textbar - back */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-    /* textbar */
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
-        background: var(--chatbg) !important;
-    }
-
-        /* username */
-        div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
-            display: block;
+                /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Previous pinned message"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
         }
-
-        .x88qbow{
-            background: #232323 !important;
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
         }
-
-        /* text chatbg */
-    .x88qbow,
-        div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
-        .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
-            background: var(--flavour) ;
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
         }
 
         /* username */
         div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
         div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
-        /* text */
-        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"],
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate"], 
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate focus-visible"], 
+        div[class*="notranslate"], 
         p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
-            color: var(--accentcol)
+            color: var(--flavour)!important;
         }
 
         /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path {
-            fill: var(--accentcol) !important;
-        }
-
+        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
-        span[dir="auto"]:contains("Seen") {
-            fill: var(--accentcol) !important;
-        }
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
 
         /* emoji svg */
         div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
-            filter: invert(100%)
+            filter: invert(0%)
         }
     }
 }
@@ -489,73 +473,59 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
 @-moz-document url("https://www.instagram.com/direct/t/17846308089191980/") {
 
     if rupa{
-        .rupa{display: flex}
-
-            :root{
-                --chatbg:#481a0a;
-                --accentcol: #000;
-                --flavour:#94c6a8;
-            }
-    div[data-pagelet="IGDInboxHeaderOffMsys"],
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu x18d9i69 x9f619 x82snj4 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xv54qhq xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv xuk3077 x1oa3qoh xl56j7k"],
-    /* textbar - back */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-    /* textbar */
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-    .xcrg951,
-    .x1eb86dx,
-    .x1eb86dx,
-    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
-        background: var(--chatbg) !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
-    }
-
-        /* username */
-        div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
-            display: block;
+        :root{
+            --chatbg:#481a0a;
+            --flavour: #bcbcbc;
+            --friendtxtbg:#94c6a8;
+            --authertxtbg:#340202;
         }
-
-        /* text chatbg */
-        div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
-        .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
-            background: var(--flavour) ;
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Previous pinned message"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
         }
 
         /* username */
         div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
-        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *{
-            color: var(--flavour);
-        }
-        /* text */
-        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"],
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate"], 
-        div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate focus-visible"], 
+        div[class*="notranslate"], 
         p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
-            color: var(--accentcol)
+            color: var(--flavour)!important;
         }
 
         /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path {
-            fill: var(--accentcol) !important;
-        }
+        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
-        span[dir="auto"]:contains("Seen") {
-            fill: var(--accentcol) !important;
-        }
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
 
         /* emoji svg */
         div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
             filter: invert(0%)
-
         }
     }
 }
