@@ -31,9 +31,15 @@
     .html5-video-player, div[id="player-container-outer"]{
         height: 14pc
     }
+    a[class="ytLockupViewModelContentImage"]{
+        display: none
+    }
+    div[class="ytLockupViewModelMetadata"]{
+        margin: 20px;
+    }
 }
-@-moz-document regexp("^https:\\/\\/www\\.youtube\\.com\\/@[\\w.-]+\\/?$") {
-    #thumbnail{
+@-moz-document regexp("^https://www\\.youtube\\.com/channel.*$") {
+    [id="thumbnail"]{
         visibility: hidden;
     }
     ytd-thumbnail[class="style-scope ytd-grid-video-renderer"]{
