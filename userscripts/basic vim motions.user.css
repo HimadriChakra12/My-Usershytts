@@ -10,7 +10,7 @@
 (function () {
     'use strict';
 
-    const NORMAL_MODE_KEY = ";";
+    const NORMAL_MODE_KEY = "`";
 
     let mode         = "insert";
     let lastKey      = null;
