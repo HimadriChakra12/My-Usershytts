@@ -47,7 +47,7 @@
     #progress.yt-page-navigation-progress {
         background: linear-gradient(to right, #9ab 80%, #678 100%);
     }
-    ytd-menu-renderer.ytd-watch-metadata > div:nth-child(1) > yt-button-view-model:nth-child(2),
+    ytd-menu-renderer.ytd-watch-metadata > div:nth-child(2) > yt-button-view-model:nth-child(1),
     ytd-menu-renderer.ytd-watch-metadata > div:nth-child(2) > yt-button-view-model:nth-child(2),
     ytd-menu-renderer.ytd-watch-metadata > div:nth-child(2) > yt-button-view-model:nth-child(3) {
         display: none;
