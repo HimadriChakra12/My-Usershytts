@@ -167,6 +167,7 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             --authertxtbg:  #262626;
             --text:         #000; 
             --autext:       #fff;  
+            --send:         #fff;
         }
         
         /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
@@ -183,6 +184,21 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             background-attachment: fixed !important;
             background-size: cover !important;
             border: 0 !important;
+        }
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"]
+        svg[aria-label*="Reply"]
+        svg[aria-label*="See"]
+        {
+            filter: invert(90%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -206,9 +222,6 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
         }
-
-        /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
         div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
@@ -229,6 +242,7 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             --authertxtbg:      #d51d57;
             --text:             #ffffff;
             --autext:           #f8cad2;
+            --send:         #fff;
         }
     
         /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
@@ -245,6 +259,21 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             background-attachment: fixed !important;
             background-size: cover !important;
             border: 0 !important;
+        }
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"]
+        svg[aria-label*="Reply"]
+        svg[aria-label*="See"]
+        {
+            filter: invert(90%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -268,9 +297,6 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
         }
-
-        /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
         div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
@@ -290,6 +316,7 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             --friendtxtbg: #fff;
             --authertxtbg: #262626;
             --text: #000;
+            --send:         #fff;
         }
 
         /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
@@ -306,6 +333,21 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             background-attachment: fixed !important;
             background-size: cover !important;
             border: 0 !important;
+        }
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"]
+        svg[aria-label*="Reply"]
+        svg[aria-label*="See"]
+        {
+            filter: invert(90%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -329,9 +371,6 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
         }
-
-        /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
         div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
@@ -353,6 +392,7 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
                 --friendtxtbg: #fff;
                 --authertxtbg: #262626;
                 --text: #000;
+                --send: #fff;
             }
 
         div[data-pagelet="IGDComposerForCannes"], 
@@ -378,7 +418,7 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
 
         /* Instagram: Turn Send icon pink */
         svg[aria-label="Send"] path {
-            fill: var(--friendtxtbg) !important;
+            fill: var(--send) !important;
         }
     }
 }
@@ -413,12 +453,15 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
 
         :root{
             --chatbg:#80ffcc;
-            --flavour:#fff;
+            --flavour:#000;
+            --send:#fff;
             --friendtxtbg: #fff;
             --authertxtbg: #262626;
+            --text: #111;
+            --autext:#fff;
         }
 
-                /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
         div[data-pagelet="IGDInboxHeaderOffMsys"],
@@ -432,6 +475,22 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             background-attachment: fixed !important;
             background-size: cover !important;
             border: 0 !important;
+        }
+        
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"]
+        svg[aria-label*="Reply"]
+        svg[aria-label*="See"]
+        {
+            filter: invert(90%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -450,22 +509,14 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
         div[class*="notranslate"], 
-        p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
         }
 
-        /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
-
         /* seen */
         div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
 
-        /* emoji svg */
-        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
-            filter: invert(0%)
-        }
     }
 }
 
@@ -478,6 +529,7 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             --flavour: #bcbcbc;
             --friendtxtbg:#94c6a8;
             --authertxtbg:#340202;
+            --send:             #fff;
         }
         /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDComposerForCannes"], 
@@ -495,6 +547,21 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
             border: 0 !important;
         }
         
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"]
+        svg[aria-label*="Reply"]
+        svg[aria-label*="See"]
+        {
+            filter: invert(90%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
+        }
+        
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
         div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
             color: var(--text) !important
@@ -516,9 +583,6 @@ div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x1
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
         }
-
-        /* Instagram: Turn Send icon black */
-        svg[aria-label="Send"] path { fill: var(--flavour) !important; }
 
         /* seen */
         div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
