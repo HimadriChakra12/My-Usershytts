@@ -172,9 +172,9 @@
         svg[aria-label*="React"],
         svg[aria-label*="Reply"],
         svg[aria-label*="See"],
-        svg[aria-level*="Voice"],
-        svg[aria-level*="Add"],
-        svg[aria-level*="Choose"]
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"]
         {
             filter: invert(0%) !important; 
         }
@@ -250,9 +250,9 @@
         svg[aria-label*="React"],
         svg[aria-label*="Reply"],
         svg[aria-label*="See"],
-        svg[aria-level*="Voice"],
-        svg[aria-level*="Add"],
-        svg[aria-level*="Choose"]
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"]
         {
             filter: invert(0%) !important; 
         }
@@ -327,9 +327,9 @@
         svg[aria-label*="React"],
         svg[aria-label*="Reply"],
         svg[aria-label*="See"],
-        svg[aria-level*="Voice"],
-        svg[aria-level*="Add"],
-        svg[aria-level*="Choose"]
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"]
         {
             filter: invert(90%) !important; 
         }
@@ -468,9 +468,9 @@
         svg[aria-label*="React"],
         svg[aria-label*="Reply"],
         svg[aria-label*="See"],
-        svg[aria-level*="Voice"],
-        svg[aria-level*="Add"],
-        svg[aria-level*="Choose"]
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"]
         {
             filter: invert(90%) !important; 
         }
@@ -540,9 +540,9 @@
         svg[aria-label*="React"],
         svg[aria-label*="Reply"],
         svg[aria-label*="See"],
-        svg[aria-level*="Voice"],
-        svg[aria-level*="Add"],
-        svg[aria-level*="Choose"]
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"]
         {
             filter: invert(0%) !important; 
         }
