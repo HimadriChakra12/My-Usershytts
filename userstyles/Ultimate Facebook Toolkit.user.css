@@ -7,8 +7,8 @@
 @preprocessor   stylus
 
 @var checkbox animations            "No Animations" 1
-@var checkbox wide                  "Wide" 1
-@var checkbox multi                 "Multi Column" 1
+@var checkbox wide                  "Wide" 0
+@var checkbox multi                 "Multi Column" 0
 
 @var checkbox hideHome              "[+] Hide Home" 1
 @var checkbox hideReels             "[+] Hide reels" 1
@@ -83,7 +83,7 @@
 
     [aria-label="Facebook menu"]                                                                                                    {display:none}
 
-    if hideHome         {li:has(a[aria-label="Home"])                                                                               {display: none}}
+    if hideHome         {li:has(a[aria-label="Home"]), a[role="link"]:has([data-visualcompletion="ignore"])                         {display: none}}
     if hideReels        {li:has(a[aria-label="Reels"])                                                                              {display: none}}
     if hideMarketplace  {li:has(a[aria-label="Marketplace"])                                                                        {display: none}}
     if hideGroups       {li:has(a[aria-label="Groups"])                                                                             {display: none}}
@@ -133,9 +133,9 @@
     }  else {
         div[role="complementary"]:not(:has([class*="x2bj2ny"]))                                                                  {display: none} 
     }
-
+}
+@-moz-document domain("facebook.com") {
     if multi{
-        @-moz-document domain("facebook.com") {
             /*--[Home Page]--*/
             div[role="main"] > div:first-child,
             div[role="main"] > div:first-child > div:first-child > div:first-child > div,
@@ -268,4 +268,3 @@
             margin-right: 9px;
         }
     }
-}
