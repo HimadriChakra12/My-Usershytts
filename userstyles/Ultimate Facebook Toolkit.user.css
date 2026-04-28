@@ -83,7 +83,7 @@
 
     [aria-label="Facebook menu"]                                                                                                    {display:none}
 
-    if hideHome         {li:has(a[aria-label="Home"]), a[role="link"]:has([data-visualcompletion="ignore"])                         {display: none}}
+    if hideHome         {li:has(a[aria-label="Home"]), a[href*="/?should"]                                                          {display: none}}
     if hideReels        {li:has(a[aria-label="Reels"])                                                                              {display: none}}
     if hideMarketplace  {li:has(a[aria-label="Marketplace"])                                                                        {display: none}}
     if hideGroups       {li:has(a[aria-label="Groups"])                                                                             {display: none}}
