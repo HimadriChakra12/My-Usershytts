@@ -174,7 +174,8 @@
         svg[aria-label*="See"],
         svg[aria-label="Voice Clip"],
         svg[aria-label="Add Photo or Video"],
-        svg[aria-label="Choose a GIF or sticker"]
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Cancel reply"]
         {
             filter: invert(0%) !important; 
         }
@@ -252,7 +253,8 @@
         svg[aria-label*="See"],
         svg[aria-label="Voice Clip"],
         svg[aria-label="Add Photo or Video"],
-        svg[aria-label="Choose a GIF or sticker"]
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Cancel reply"]
         {
             filter: invert(0%) !important; 
         }
@@ -329,7 +331,10 @@
         svg[aria-label*="See"],
         svg[aria-label="Voice Clip"],
         svg[aria-label="Add Photo or Video"],
-        svg[aria-label="Choose a GIF or sticker"]
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Audio call"],
+        svg[aria-label="Video call"],
+        svg[aria-label="Cancel reply"]
         {
             filter: invert(90%) !important; 
         }
@@ -470,7 +475,9 @@
         svg[aria-label*="See"],
         svg[aria-label="Voice Clip"],
         svg[aria-label="Add Photo or Video"],
-        svg[aria-label="Choose a GIF or sticker"]
+        svg[aria-label="Choose a GIF or sticker"], svg[aria-label="Audio call"],
+        svg[aria-label="Video call"],
+        svg[aria-label="Cancel reply"]
         {
             filter: invert(90%) !important; 
         }
@@ -542,7 +549,10 @@
         svg[aria-label*="See"],
         svg[aria-label="Voice Clip"],
         svg[aria-label="Add Photo or Video"],
-        svg[aria-label="Choose a GIF or sticker"]
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Audio call"],
+        svg[aria-label="Video call"],
+        svg[aria-label="Cancel reply"]
         {
             filter: invert(0%) !important; 
         }
