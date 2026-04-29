@@ -1,14 +1,19 @@
 // ==UserScript==
-// @name         Instagram Video Controls + Clean UI (Fixed)
+// @name         Instagram Reels Controls
 // @namespace    ig-video-controls
-// @version      1.2
-// @description  Add controls & remove overlay reliably
+// @version      1.4
+// @description  Your original controls + overlay removal, but ONLY on Reels
 // @match        https://www.instagram.com/*
 // @run-at       document-start
 // ==/UserScript==
 
 (function () {
     'use strict';
+
+    // 🔥 Reels detection (same as second script)
+    function isReelVideo(video) {
+        return video.closest('div[class*="x5yr21d"][class*="x1uhb9sk"]');
+    }
 
     function addControls(video) {
         if (!video) return;
@@ -21,37 +26,17 @@
         video.muted = false;
     }
 
-    function removeOverlayFromVideo(video) {
-        // Walk up to a reasonable container
-        let container = video.closest('div');
+  function processVideo(video) {
+    if (!isReelVideo(video)) return;
 
-        if (!container) return;
-
-        // Look for overlay-like elements near video
-        const possibleOverlays = container.querySelectorAll('div');
-
-        possibleOverlays.forEach(el => {
-            // Heuristic: overlay = positioned + no video inside + small depth
-            if (
-                el !== video &&
-                !el.querySelector('video') &&
-                getComputedStyle(el).position === 'absolute'
-            ) {
-                el.remove(); // stronger than display:none
-            }
-        });
-    }
-
-    function processVideo(video) {
-        addControls(video);
-        removeOverlayFromVideo(video);
-    }
+    addControls(video);
+    controlAccess(video);
+  }
 
     function scan(root = document) {
         root.querySelectorAll("video").forEach(processVideo);
     }
 
-    // Mutation observer (main engine)
     const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
             for (const node of mutation.addedNodes) {
