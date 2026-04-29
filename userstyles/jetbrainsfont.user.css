@@ -1,5 +1,5 @@
 /* ==UserStyle==
-@name           All Sites — Source Code Pro
+@name           All Sites — Jetbrains Mono
 @namespace      github.com/openstyles/stylus
 @description    Set JetBrains Mono as the default font on every website
 @version        1.1
@@ -14,13 +14,16 @@
     font-family: "JetBrains Mono" !important;
 }
 
-/*For Google Matrial Icons on the Google Apps*/
-i {
-    font-family:  "Google Material Icons" !important;
-}
+@-moz-document regexp("^https?:\\/\\/([a-z0-9-]+\\.)*google\\.[a-z.]+\\/.*$") {
+    [class*="material-icons-extended"],
+    .dwlvNd .aAW7Jd::after,
+    i{
+        font-family: "Google Material Icons" !important;
+    }
 
-.google-symbols{
-    font-family: "Google Symbols" !important;
+    .google-symbols {
+        font-family: "Google Symbols" !important;
+    }
 }
 
 @-moz-document url-prefix("moz-extension://"),
@@ -31,3 +34,6 @@ i {
             font-family: "JetBrains Mono" !important;
         }
 }
+
+
+
