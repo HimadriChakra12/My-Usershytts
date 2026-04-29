@@ -18,6 +18,25 @@
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://www.instagram.com/") {
+    /* Nicknames */
+    :root {
+        --riya: "Roshogolla"
+        --prionto: "@raincorerat"
+        --rupa: "Bou er Mommy"
+    }
+    /* Default nickname Remover */
+    span[title="Riya ๑ᵕ̈ ᵕ̈๑"],
+    span[title="Rupa Saha"],
+    span[title="প্রিয়ন্ত 🕷️"]{
+        display: none
+    }
+
+    /* Nicknaming */
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{content: var(--riya);}
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Rupa Saha"]):after{content: var(--rupa);}
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="প্রিয়ন্ত 🕷️"]):after{content: var(--prionto);}
+}
+@-moz-document url-prefix("https://www.instagram.com/") {
     div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
         border: 0 !important;
         border-color: #000 !important;
@@ -36,19 +55,11 @@
       }
     }
     *{border: 0px !important}
-}
+    }
 @-moz-document url-prefix("https://www.instagram.com/direct/t") {
 
     .universal{display: none}
 
-    /* Nicknames */
-    :root {
-        --riya: "Roshogolla"
-        --prionto: "@raincorerat"
-        --rupa: "Bou er Mommy"
-    }
-    
-        
     div[data-pagelet="IGDComposerForCannes"], 
     div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
     div[data-pagelet="IGDInboxHeaderOffMsys"],
@@ -67,18 +78,6 @@
     span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title]):after{
         margin-bottom: 20px !important;
     }
-
-    /* Default nickname Remover */
-    span[title="Riya ๑ᵕ̈ ᵕ̈๑"],
-    span[title="Rupa Saha"],
-    span[title="প্রিয়ন্ত 🕷️"]{
-        display: none
-    }
-
-    /* Nicknaming */
-    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{content: var(--riya);}
-    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Rupa Saha"]):after{content: var(--rupa);}
-    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="প্রিয়ন্ত 🕷️"]):after{content: var(--prionto);}
 
     .x1yvgwvq, .xso031l{
         border: 0
