@@ -6,7 +6,7 @@
 @author         Me
 ==/UserStyle== */
 
-@-moz-document regexp("^https?://(www\\.)?instagram\\.com/p/.*$"), regexp("https?:\\/\\/(www\\.)?instagram\\.com\\/[^\\/]+\\/reel\\/[A-Za-z0-9_-]+\\/?") {
+@-moz-document regexp("^https?://(www\\.)?instagram\\.com/p/.*$"), regexp("https?:\\/\\/(www\\.)?instagram\\.com\\/[^\\/]+\\/reel\\/[A-Za-z0-9_-]+\\/?"), domain("www.instgram.com") {
     /* Insert code here... */
     div[data-instancekey^="id-vpuid"] > div[aria-label="Video player"]
     {
