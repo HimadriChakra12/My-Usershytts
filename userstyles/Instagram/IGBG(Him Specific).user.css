@@ -3,7 +3,7 @@
 @namespace      github.com/HimadriChakra12/My-usershytts
 @author         Himadri Chakraborty
 @description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
-@version        2.3
+@version        3.0
 @license        Himadri Chakraborty
 
 @preprocessor stylus
@@ -20,7 +20,7 @@
 @-moz-document url-prefix("https://www.instagram.com/") {
     /* Nicknames */
     :root {
-        --riya: "Roshogolla"
+        --riya: "Smoochie"
         --prionto: "@raincorerat"
         --rupa: "Bou er Mommy"
     }
@@ -229,6 +229,7 @@
             --autext:           #f8cad2;
             --send:             #fff;
         }
+        
     
         /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDComposerForCannes"], 
@@ -592,5 +593,27 @@
         div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
             filter: invert(0%)
         }
+    }
+}
+
+
+@-moz-document domain("www.instagram.com") {
+    if riya{
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned message icon"]) div[role="group"] div[role="none"] div[class^="html-div xdj266r x14z9mp xat24cr x1lziwak x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x5slmwz xpmdkuv xrmkrer x12z03op x9wyiwl x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x12lizq0 x1nrdd72 x1ybe9c6 xx487zo xd2w7dg xaymx6s"]{
+                background: #d51d57 !important;
+                border-radius: 0px !important;
+        }
+        
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned message icon"])  div[class*="x1kmbdvd"]:has([aria-label="Pinned message icon"]),
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned message icon"])  div[class="x78zum5 xdt5ytf x1iyjqo2 x193iq5w x2lwn1j x1n2onr6"],
+        div[class*="x1x0la19"]:has(a[aria-label*="__riya._.aaa__"]),
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned message icon"])  div[class*="xyamay9"],
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned message icon"])  div[class*="x1kukv79"],
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned message icon"])  div[class*="x11lfxj5"],
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"] div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: #a6516e;
+            border: 0px !important;
+        }
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned message icon"]) div[aria-label="Send"] { background:  #bf6363 !important; }
     }
 }
