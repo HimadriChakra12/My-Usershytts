@@ -11,6 +11,13 @@
 @var checkbox   collapseChatList     "Collapasing Chat List"       1
 ==/UserStyle== */
 
+@-moz-document url-prefix("https://www.instagram.com/") {
+    if nav{
+        div[class="x1cy8zhl x9f619 x78zum5 xdt5ytf x1gvbg2u x1qughib"]{
+            width: 72px !important;
+        }
+    }
+}
 @-moz-document url-prefix("https://www.instagram.com/direct/t") {
     /* Insert code here... */
     if nav{
