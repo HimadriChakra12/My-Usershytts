@@ -1,0 +1,41 @@
+/* ==UserStyle==
+@name           Instgram Visual Toolkit
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+
+@preprocessor   stylus
+@var checkbox   nav     "Fixed Navigation Height"       1
+@var checkbox   smallerChatList     "Smaller Chat List"       1
+@var checkbox   collapseChatList     "Collapasing Chat List"       1
+==/UserStyle== */
+
+@-moz-document url-prefix("https://www.instagram.com/direct/t") {
+    /* Insert code here... */
+    if nav{
+        div[class="x1cy8zhl x9f619 x78zum5 xdt5ytf x1gvbg2u x1qughib"]{
+            width: 72px !important;
+        }
+    }
+    if smallerChatList{
+        @media (min-width: 900px) {
+          .xfawcg2.xfawcg2 {
+            min-width: 100px;
+          }
+        }
+    }
+    if collapseChatList{
+        @media (min-width: 900px) {
+          .xfawcg2.xfawcg2 {
+            min-width: 100px;
+            transition: 1s ease-in-out
+          }
+          .xfawcg2.xfawcg2:hover {
+            min-width: 25%;
+            transition: 1s ease-in-out
+          }
+        }
+        
+    }
+}
