@@ -1,0 +1,656 @@
+/* ==UserStyle==
+@name           Him-Comb
+@namespace      github.com/improved/dark-instagram-gruvbox
+@author         Gruvbox edition — variable-only recolor, no filter cascade
+@description    Gruvbox dark theme for Instagram. No broad filter:invert() — post images and media are never affected.
+@version        4.1.0
+@license        CC BY-NC-SA 4.0
+@preprocessor   uso
+@advanced text feed "Feed width (0-50%)" 50%
+==/UserStyle== */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+@-moz-document domain('instagram.com') {
+
+    /* ============================================================
+    SECTION 1: INSTAGRAM CORE DESIGN TOKENS — GRUVBOX DARK
+    ============================================================ */
+
+    html,
+    body,
+    div,
+    nav,
+    article,
+    section {
+
+        /*
+        NOTE: All --ig-* variables MUST remain as bare "r, g, b" triplets.
+        Instagram's own CSS consumes them as: rgb(var(--ig-primary-background))
+        Converting them to hex would silently break all Instagram UI colours.
+        The hex equivalents are shown in comments for easy reference only.
+        */
+
+        /* Backgrounds */
+        --ig-primary-background:     40,  40,  40 !important;   /* #282828  bg0     */
+        --ig-secondary-background:   29,  32,  33 !important;   /* #1d2021  bg0_h   */
+        --ig-elevated-background:    60,  56,  54 !important;   /* #3c3836  bg1     */
+        --ig-highlight-background:   80,  73,  69 !important;   /* #504945  bg2     */
+        --ig-full-screen-background: 60,  56,  54 !important;   /* #3c3836  bg1     */
+        --ig-banner-background:      40,  40,  40 !important;   /* #282828  bg0     */
+
+        /* Text */
+        --ig-primary-text:   235, 219, 178 !important;          /* #ebdbb2  fg1     */
+        --ig-secondary-text: 189, 174, 147 !important;          /* #bdae93  fg3     */
+        --ig-tertiary-text:  168, 153, 132 !important;          /* #a89984  fg4     */
+        --ig-text-on-color:  251, 241, 199 !important;          /* #fbf1c7  fg0     */
+
+        /* Separators / Borders */
+        --ig-separator:          60,  56,  54 !important;       /* #3c3836  bg1     */
+        --ig-elevated-separator: 80,  73,  69 !important;       /* #504945  bg2     */
+        --ig-stroke:            102,  92,  84 !important;       /* #665c54  bg3     */
+        --ig-focus-stroke:      124, 111, 100 !important;       /* #7c6f64  bg4     */
+
+        /* Interactive / Accent */
+        --ig-primary-button:   131, 165, 152 !important;        /* #83a598  bright blue   */
+        --ig-secondary-button: 189, 174, 147 !important;        /* #bdae93  fg3           */
+        --ig-link:             131, 165, 152 !important;        /* #83a598  bright blue   */
+
+        /* Status */
+        --ig-badge:                    251,  73,  52 !important; /* #fb4934  bright red    */
+        --ig-live-badge:               214,  93,  14 !important; /* #d65d0e  orange        */
+        --ig-close-friends-refreshed:  142, 192, 124 !important; /* #8ec07c  bright aqua   */
+        --ig-error-or-destructive:     251,  73,  52 !important; /* #fb4934  bright red    */
+        --ig-success:                  184, 187,  38 !important; /* #b8bb26  bright green  */
+        --ig-subscribers-only:         211, 134, 155 !important; /* #d3869b  bright purple */
+        --ig-temporary-highlight:      250, 189,  47 !important; /* #fabd2f  bright yellow */
+
+        /* Brand */
+        --ig-facebook-blue: 131, 165, 152 !important;           /* #83a598  bright blue   */
+
+        /* Modals */
+        --modal-backdrop-dark:    rgba(29, 32, 33, .92) !important;  /* #1d2021  bg0_h */
+        --modal-backdrop-default: rgba(29, 32, 33, .75) !important;  /* #1d2021  bg0_h */
+        --modal-border-radius: 12px !important;
+        --modal-padding:       16px !important;
+        --modal-z-index:       100 !important;
+        --tos-box-shadow:      0, 0, 0 !important;               /* #000000        */
+
+        /* Misc */
+        --web-always-black:       0,   0,   0 !important;        /* #000000        */
+        --web-always-white:     251, 241, 199 !important;        /* #fbf1c7  fg0   */
+        --web-overlay-on-media:  40,  40,  40 !important;        /* #282828  bg0   */
+        --web-secondary-action: 131, 165, 152 !important;        /* #83a598  bright blue */
+        --post-separator:        60,  56,  54 !important;        /* #3c3836  bg1   */
+        --post-step-indicator:  168, 153, 132 !important;        /* #a89984  fg4   */
+        --photo: 600px;
+
+        /* Colour palette tokens */
+        --orange-5: #fe8019;   /* bright orange */
+        --pink-5:   #d3869b;   /* bright purple */
+        --purple-5: #b16286;   /* purple        */
+        --red-4:    #fb4934;   /* bright red    */
+        --red-5:    #cc241d;   /* red           */
+        --red-6:    #9d0006;   /* dark red      */
+        --red-7:    #79000a;
+        --yellow-5: #fabd2f;   /* bright yellow */
+        --w1:       235, 219, 178;                    /* #ebdbb2  fg1   */
+
+        /* ------------------------------------------------------------------
+        INSTAGRAM RUNTIME OBFUSCATED VARIABLES — GRUVBOX MAPPED
+        Same rule applies: must stay as r, g, b triplets with !important.
+        ------------------------------------------------------------------ */
+
+        --fe0: 131, 165, 152 !important;     /* #83a598  username links      → bright blue   */
+        --d69: 131, 165, 152 !important;     /* #83a598  follow button       → bright blue   */
+        --f24: 131, 165, 152 !important;     /* #83a598  primary action      → bright blue   */
+        --b86: 184, 187,  38 !important;     /* #b8bb26  success green       → bright green  */
+        --i30: 251,  73,  52 !important;     /* #fb4934  error red           → bright red    */
+        --c37: 251,  73,  52 !important;     /* #fb4934                                      */
+        --eac: 251,  73,  52 !important;     /* #fb4934                                      */
+        --fa7: 250, 189,  47 !important;     /* #fabd2f  accent yellow       → bright yellow */
+        --e62: 250, 189,  47 !important;     /* #fabd2f                                      */
+        --jbb: 131, 165, 152 !important;     /* #83a598  facebook blue       → bright blue   */
+        --b2f: 211, 134, 155 !important;     /* #d3869b  purple              → bright purple */
+
+        --jb7:  60,  56,  54 !important;     /* #3c3836  DM bubble bg        → bg1           */
+        --jd9: 235, 219, 178 !important;     /* #ebdbb2  DM bubble text      → fg1           */
+        --cdd: 213, 196, 161 !important;     /* #d5c4a1  DM secondary text   → fg2           */
+
+        --i1d: 235, 219, 178 !important;     /* #ebdbb2  primary text        → fg1           */
+        --d20: 189, 174, 147 !important;     /* #bdae93  secondary text      → fg3           */
+        --eca:  50,  48,  47 !important;     /* #32302f  inverse surface     → bg0_s         */
+
+        --f75: 189, 174, 147 !important;     /* #bdae93  username / likes    → fg3           */
+        --j64: 213, 196, 161 !important;     /* #d5c4a1  like count          → fg2           */
+        --f52: 168, 153, 132 !important;     /* #a89984  time labels         → fg4           */
+        --ie3: 168, 153, 132 !important;     /* #a89984                                      */
+
+        --ba8: 124, 111, 100 !important;     /* #7c6f64  muted icons         → bg4           */
+        --c8c: 124, 111, 100 !important;     /* #7c6f64                                      */
+
+        --e22:  80,  73,  69 !important;     /* #504945  mid bg              → bg2           */
+        --edc:  80,  73,  69 !important;     /* #504945                                      */
+
+        --b38: 102,  92,  84 !important;     /* #665c54  borders             → bg3           */
+        --b6a: 102,  92,  84 !important;     /* #665c54                                      */
+        --ca6: 102,  92,  84 !important;     /* #665c54                                      */
+        --ce3: 102,  92,  84 !important;     /* #665c54  spacer              → bg3           */
+
+        --bb2:  29,  32,  33 !important;     /* #1d2021  deepest bg          → bg0_h         */
+        --a97:  20,  22,  23 !important;     /* #141617                                      */
+
+        --b3f:  40,  40,  40 !important;     /* #282828  main background     → bg0           */
+        --d62:  40,  40,  40 !important;     /* #282828                                      */
+        --a72:  40,  40,  40 !important;     /* #282828                                      */
+        --h1d:  40,  40,  40 !important;     /* #282828                                      */
+        --de5:  40,  40,  40 !important;     /* #282828                                      */
+
+        --d87:  40,  40,  40 !important;     /* #282828  header backgrounds  → bg0           */
+        --f23:  40,  40,  40 !important;     /* #282828                                      */
+    }
+
+
+    /* ============================================================
+    SECTION 2: FDS TOKENS — GRUVBOX MAPPED
+    ============================================================ */
+
+    :root,
+    .__fb-light-mode {
+        /* Alpha tokens — keep as-is, used for shadows/overlays */
+        --fds-black-alpha-05: rgba(0, 0, 0, 0.05);
+        --fds-black-alpha-10: rgba(0, 0, 0, 0.1);
+        --fds-black-alpha-15: rgba(0, 0, 0, 0.15);
+        --fds-black-alpha-20: rgba(0, 0, 0, 0.2);
+        --fds-black-alpha-30: rgba(0, 0, 0, 0.3);
+        --fds-black-alpha-40: rgba(0, 0, 0, 0.4);
+        --fds-black-alpha-50: rgba(0, 0, 0, 0.5);
+        --fds-black-alpha-60: rgba(0, 0, 0, 0.6);
+        --fds-black-alpha-80: rgba(0, 0, 0, 0.8);
+        --fds-white-alpha-05: rgba(235, 219, 178, 0.05);
+        --fds-white-alpha-10: rgba(235, 219, 178, 0.1);
+        --fds-white-alpha-20: rgba(235, 219, 178, 0.2);
+        --fds-white-alpha-30: rgba(235, 219, 178, 0.3);
+        --fds-white-alpha-40: rgba(235, 219, 178, 0.4);
+        --fds-white-alpha-50: rgba(235, 219, 178, 0.5);
+        --fds-white-alpha-60: rgba(235, 219, 178, 0.6);
+        --fds-white-alpha-80: rgba(235, 219, 178, 0.8);
+
+        /* Solid tokens → gruvbox bg/fg scale */
+        --fds-black:          #1d2021;   /* bg0_h */
+        --fds-white:          #282828;   /* bg0   */
+        --fds-primary-text:   #ebdbb2;   /* fg1   */
+        --fds-primary-icon:   #ebdbb2;
+        --fds-gray-00:        #1d2021;
+        --fds-gray-05:        #282828;
+        --fds-gray-10:        #32302f;
+        --fds-gray-20:        #3c3836;
+        --fds-gray-25:        #504945;
+        --fds-gray-30:        #665c54;
+        --fds-gray-45:        #7c6f64;
+        --fds-gray-70:        #928374;
+        --fds-gray-80:        #a89984;
+        --fds-gray-90:        #bdae93;
+        --fds-gray-100:       #d5c4a1;
+        --fds-dark-mode-gray-35:  #504945;
+        --fds-dark-mode-gray-50:  #665c54;
+        --fds-dark-mode-gray-70:  #7c6f64;
+        --fds-dark-mode-gray-80:  #928374;
+        --fds-dark-mode-gray-90:  #a89984;
+        --fds-dark-mode-gray-100: #bdae93;
+
+        --fds-blue-05:  #0d1a1b;
+        --fds-blue-30:  #2a4a4d;
+        --fds-blue-40:  #3d6b6f;
+        --fds-blue-60:  #83a598;
+        --fds-blue-70:  #a0bdb7;
+        --fds-blue-80:  #b8d0cb;
+        --fds-green-55: #b8bb26;
+        --fds-red-55:   #fb4934;
+        --fds-yellow-20: #3a2e00;
+
+        --fds-button-text:          #ebdbb2;
+        --fds-comment-background:   #3c3836;
+        --fds-highlight:            rgba(131, 165, 152, 0.25);
+        --fds-highlight-cell-background: rgba(131, 165, 152, 0.1);
+        --fds-soft:   cubic-bezier(.08,.52,.52,1);
+        --fds-strong: cubic-bezier(.12,.8,.32,1);
+
+        /* Core surface / interactive tokens */
+        --accent:         #83a598;
+        --always-white:   #fbf1c7;
+        --always-black:   #1d2021;
+        --always-dark-gradient: linear-gradient(rgba(29,32,33,0), rgba(29,32,33,0.7));
+        --always-dark-overlay:  rgba(29, 32, 33, 0.5);
+        --always-light-overlay: rgba(235, 219, 178, 0.3);
+        --blue-link:      #83a598;
+
+        --card-background:        #3c3836;   /* bg1 */
+        --card-background-flat:   #504945;   /* bg2 */
+        --comment-background:     #3c3836;
+        --comment-footer-background: #504945;
+        --surface-background:     #3c3836;
+        --popover-background:     #32302f;
+        --wash:                   #32302f;
+        --web-wash:               #1d2021;
+
+        --nav-bar-background: #282828;
+        --nav-bar-background-gradient: linear-gradient(to top, #282828, rgba(40,40,40,.9), rgba(40,40,40,.7), rgba(40,40,40,.4), rgba(40,40,40,0));
+        --nav-bar-background-gradient-wash: linear-gradient(to top, #1d2021, rgba(29,32,33,.9), rgba(29,32,33,.7), rgba(29,32,33,.4), rgba(29,32,33,0));
+
+        --divider:          #3c3836;
+        --hover-overlay:    rgba(235, 219, 178, 0.06);
+        --press-overlay:    rgba(235, 219, 178, 0.06);
+        --media-hover:      rgba(235, 219, 178, 0.06);
+        --media-pressed:    rgba(235, 219, 178, 0.15);
+        --media-inner-border: rgba(235, 219, 178, 0.04);
+        --media-outer-border: #3c3836;
+        --overlay-alpha-80: rgba(29, 32, 33, 0.80);
+        --overlay-on-media: rgba(29, 32, 33, 0.65);
+
+        --primary-text:         #ebdbb2;
+        --primary-icon:         #ebdbb2;
+        --secondary-text:       #bdae93;
+        --secondary-icon:       #a89984;
+        --section-header-text:  #d5c4a1;
+        --placeholder-text:     #7c6f64;
+        --placeholder-icon:     #7c6f64;
+        --placeholder-image:    #504945;
+
+        --primary-button-background:  #458588;   /* blue */
+        --primary-button-pressed:     #83a598;   /* bright blue */
+        --primary-button-text:        #fbf1c7;   /* fg0 */
+        --secondary-button-background: rgba(235, 219, 178, 0.07);
+        --secondary-button-text:       #ebdbb2;
+        --disabled-button-background:  rgba(235, 219, 178, 0.12);
+        --disabled-button-text:        rgba(235, 219, 178, 0.25);
+        --disabled-icon:               rgba(235, 219, 178, 0.25);
+
+        --toggle-active-background:  #458588;
+        --toggle-active-icon:        #fbf1c7;
+        --toggle-active-text:        #fbf1c7;
+
+        --notification-badge:         #fb4934;
+        --new-notification-background: #1d2021;
+        --highlight-bg:   rgba(131, 165, 152, 0.2);
+        --text-highlight: rgba(131, 165, 152, 0.35);
+
+        --negative:            #fb4934;
+        --negative-background: rgba(251, 73, 52, 0.15);
+        --positive:            #b8bb26;
+        --positive-background: rgba(184, 187, 38, 0.15);
+        --warning:             #fabd2f;
+
+        --scroll-thumb:  rgba(235, 219, 178, 0.2);
+        --shadow-1: rgba(29, 32, 33, 0.3);
+        --shadow-2: rgba(29, 32, 33, 0.5);
+        --shadow-5: rgba(29, 32, 33, 0.7);
+        --shadow-8: rgba(29, 32, 33, 0.9);
+        --shadow-inset: rgba(235, 219, 178, 0.04);
+
+        --grey-1: #3c3836;
+        --grey-2: #504945;
+        --grey-4: #665c54;
+        --grey-5: #7c6f64;
+        --grey-6: #928374;
+        --grey-8: #bdae93;
+        --grey-9: #d5c4a1;
+        --blue-5: #83a598;
+
+        /* Gruvbox data viz palette */
+        --dataviz-primary-1:       rgb(131, 165, 152);  /* bright blue  */
+        --dataviz-primary-2:       rgb(142, 192, 124);  /* bright aqua  */
+        --dataviz-primary-3:       rgb(184, 187,  38);  /* bright green */
+        --dataviz-secondary-1:     rgb(211, 134, 155);  /* bright purple */
+        --dataviz-secondary-2:     rgb(177, 98,  134);  /* purple       */
+        --dataviz-secondary-3:     rgb(251,  73,  52);  /* bright red   */
+        --dataviz-supplementary-1: rgb(254, 128,  25);  /* bright orange */
+        --dataviz-supplementary-2: rgb(250, 189,  47);  /* bright yellow */
+        --dataviz-supplementary-3: rgb(104, 157, 106);  /* aqua         */
+        --dataviz-supplementary-4: rgb(168, 153, 132);  /* fg4          */
+    }
+
+
+    /* ============================================================
+    SECTION 3: LOGO IMAGES ONLY
+    filter:invert() only on known leaf <img> elements.
+    Never on containers — no cascade into post images.
+    ============================================================ */
+
+    img[src*="rsrc.php"][src*="instagram"],
+    img[src*="nppLrRDPwRh"],
+    img[src*="Ma96NGMpx3k"],
+    img[src*="hzSTybO4xnl"],
+    img[src*="mRucGeWws8j"],
+    img[src*="I7oK-BX_VXn"] {
+        /* Invert then hue-rotate to land on gruvbox fg1 warm tone */
+        filter: invert(0.88) hue-rotate(180deg) sepia(0.15);
+    }
+
+    img[src*="ShFi4iY4Fd9.gif"] {
+        filter: invert(0.88) hue-rotate(180deg) sepia(0.2) saturate(2);
+    }
+
+
+    /* ============================================================
+    SECTION 4: BASE ELEMENT RESETS
+    ============================================================ */
+
+    body {
+        background-color: #282828 !important;   /* bg0 */
+        color: #ebdbb2 !important;               /* fg1 */
+    }
+
+    hr {
+        background-color: #3c3836;               /* bg1 */
+        border: none;
+    }
+
+    label {
+        color: #a89984;                          /* fg4 */
+    }
+
+    option {
+        background-color: #282828;
+        color: #ebdbb2 !important;
+    }
+
+    /* Scrollbar */
+    * {
+        scrollbar-color: #504945 #1d2021;        /* bg2 thumb, bg0_h track */
+        scrollbar-width: thin;
+    }
+
+
+    /* ============================================================
+    SECTION 5: BLOKS / INLINE-STYLE OVERRIDES
+    ============================================================ */
+
+    div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(255, 255, 255)"],
+    div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(250, 250, 250)"] {
+        background-color: #282828 !important;
+    }
+
+    div[data-bloks-name="bk.components.Flexbox"][style*="background: rgb(219, 219, 219)"] {
+        background-color: #3c3836 !important;
+    }
+
+    div[data-bloks-name="bk.components.Flexbox"][role="button"][style*="border: 1px solid rgb(219, 219, 219)"] {
+        background-color: #282828 !important;
+        border-color: #504945 !important;
+    }
+
+    [data-bloks-name="bk.components.Text"][style*="color: rgb(38, 38, 38)"],
+    [data-bloks-name="bk.components.TextSpan"][style*="color: rgb(38, 38, 38)"] {
+        color: #ebdbb2 !important;
+    }
+
+    [data-bloks-name="bk.components.TextSpan"][style*="color: rgb(0, 55, 107)"] {
+        color: #83a598 !important;
+    }
+
+    [style*="background: rgb(38, 38, 38)"] {
+        background-color: #3c3836 !important;
+    }
+
+    [style*="color: #999"] {
+        color: #928374 !important;
+    }
+
+
+    /* ============================================================
+    SECTION 6: MODAL / DIALOG
+    ============================================================ */
+
+    [role="dialog"]:not(div[class="x5yr21d x1o0tod x10l6tqk x13vifvy xh8yej3"]):not(div[class="x1ja2u2z x1afcbsf x1a2a7pz x6ikm8r x10wlt62 xdt5ytf xl56j7k x1n2onr6 x6s0dn4 x78zum5 x5yr21d xdj266r x14z9mp xat24cr x1lziwak x47corl xh8yej3"]){
+        border-radius: 12px;
+        border: 1px solid #504945;               /* bg2 */
+    }
+
+    [role="dialog"] [role="button"]:hover,
+    [role="dialog"] a:hover {
+        background: rgba(235, 219, 178, 0.06) !important;
+        border-radius: 12px;
+        transition: background 0.2s ease;
+    }
+
+
+    /* ============================================================
+    SECTION 7: STORY RING — GRUVBOX GRADIENT
+    Using gruvbox orange→yellow instead of the default blue/purple.
+    ============================================================ */
+
+    [class*="story"] > [class*="ring"]::before,
+    [class*="highlight"] > [class*="ring"]::before {
+        background-image: linear-gradient(45deg, #d65d0e, #fabd2f) !important;
+    }
+
+
+    /* ============================================================
+    SECTION 8: FEED LAYOUT
+    ============================================================ */
+
+    ._9-ta {
+        display: none !important;
+    }
+
+    [class*="feed"] {
+        max-width: calc(470px + /*[[feed]]*/);
+        margin: 0 auto;
+    }
+
+
+    /* ============================================================
+    SECTION 9: DM / CHAT
+    ============================================================ */
+
+    [placeholder="Message..."],
+    [aria-label="Message"] {
+        background-color: #3c3836 !important;
+        color: #ebdbb2 !important;
+        border-color: #504945 !important;
+    }
+
+
+    /* ============================================================
+    SECTION 10: POST VIEWER — VOID / LETTERBOX AREAS
+    The black void left/right of portrait videos and the panel
+    background behind the comment sidebar both need explicit bg.
+    Instagram uses inline background-color: #000 on some wrappers
+    and a separate surface for the comments column.
+    ============================================================ */
+
+    /* Outer post modal backdrop — the dark void around the media */
+    [role="dialog"] > [style*="background-color: rgb(0, 0, 0)"],
+    [role="dialog"] > [style*="background: rgb(0, 0, 0)"],
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > [style*="background-color: rgb(0, 0, 0)"],
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > [style*="background: rgb(0, 0, 0)"] {
+        background-color: #1d2021 !important;   /* bg0_h — deepest gruvbox */
+    }
+    
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1n2onr6 x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x6s0dn4 x1oa3qoh x1qughib"],
+    div[class="x78zum5 xdt5ytf x1q2y9iw x1n2onr6 xh8yej3 x9f619 x1iyjqo2 x13lttk3 x1t7ytsu xpilrb4 xexx8yu xyri2b x18d9i69 x1c1uobl x1b5io7h"]{
+        background: #282828 !important;
+    }
+
+    /* The horizontal band above and below a portrait video
+    (letterbox bars that Instagram renders as separate divs) */
+    [style*="background-color: rgb(0, 0, 0)"]:not(body):not(html):not(video):not(canvas):not(img) {
+        background-color: #1d2021 !important;   /* bg0_h */
+    }
+
+    /* Catch-all for any element with hardcoded white bg in post context */
+    [style*="background-color: rgb(255, 255, 255)"]:not(img):not(canvas):not(video) {
+        background-color: #282828 !important;
+    }
+    [style*="background-color: rgb(250, 250, 250)"]:not(img):not(canvas):not(video) {
+        background-color: #282828 !important;
+    }
+
+
+    /* ============================================================
+    SECTION 11: AVATAR / PROFILE PICTURE PLACEHOLDERS
+    Default grey SVG placeholder avatars should use gruvbox bg2
+    so they don't look like the default Instagram grey on dark bg.
+    ============================================================ */
+
+    /* SVG circle fill used in default avatar placeholder */
+    svg circle[fill="#DBDBDB"],
+    svg circle[fill="#dbdbdb"],
+    svg circle[fill="#efefef"],
+    svg circle[fill="#EFEFEF"] {
+        fill: #504945 !important;               /* bg2 */
+    }
+
+    /* SVG person silhouette fill in placeholder */
+    svg path[fill="#FFFFFF"],
+    svg path[fill="#ffffff"] {
+        fill: #a89984 !important;               /* fg4 — warm muted */
+    }
+
+    /* Placeholder avatar <img> with broken/default src */
+    img[src*="avatar_placeholder"],
+    img[src*="default_avatar"],
+    img[src*="placeholder"] {
+        filter: sepia(0.4) saturate(0.6) brightness(0.7);
+    }
+
+
+    /* ============================================================
+    SECTION 12: EMBEDDED VIDEO THUMBNAILS (YouTube / external)
+    The YouTube play button icon appears as an <img> or inline SVG
+    inside a video embed preview. We tint it gruvbox yellow.
+    We target only the play button overlay, NOT the thumbnail img.
+    ============================================================ */
+
+    /* YouTube play button rendered as an img leaf node */
+    img[src*="play"],
+    img[alt*="Play"],
+    img[aria-label*="Play"] {
+        filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1);
+        /* Result: warm gruvbox yellow #fabd2f tint */
+    }
+
+    /* Play button rendered as an inline SVG icon
+    (safe: SVG icons have no img children, no cascade risk) */
+    [aria-label="Play"] svg,
+    [aria-label="Play video"] svg,
+    button[aria-label*="Play"] svg {
+        color: #fabd2f !important;              /* bright yellow */
+        fill: #fabd2f !important;
+    }
+
+    /* DM panel — video embed container background */
+    [class*="DirectThread"] [class*="video"],
+    [class*="dm"] [class*="video-preview"],
+    [class*="message"] [class*="media-preview"] {
+        background-color: #1d2021 !important;   /* bg0_h */
+        border-radius: 8px;
+    }
+
+    /* DM panel outer shell */
+    [class*="DirectThread"],
+    [class*="DirectInbox"] {
+        background-color: #32302f !important;   /* bg0_s */
+    }
+
+    /* DM panel header */
+    [class*="DirectThread"] header,
+    [class*="DirectThread"] [role="banner"] {
+        background-color: #282828 !important;   /* bg0 */
+        border-bottom: 1px solid #3c3836 !important;   /* bg1 */
+    }
+
+    /* DM message bubbles — sent (own) messages */
+    [class*="DirectThread"] [class*="own"] [class*="bubble"],
+    [class*="DirectThread"] [class*="sent"] [class*="bubble"] {
+        background-color: #458588 !important;   /* gruvbox blue */
+        color: #fbf1c7 !important;              /* fg0 */
+    }
+
+    /* DM message bubbles — received messages */
+    [class*="DirectThread"] [class*="received"] [class*="bubble"],
+    [class*="DirectThread"] [class*="other"] [class*="bubble"] {
+        background-color: #3c3836 !important;   /* bg1 */
+        color: #ebdbb2 !important;              /* fg1 */
+    }
+
+    /* "X replied to themself" / thread reply label text */
+    [class*="DirectThread"] [class*="reply"] [class*="label"],
+    [class*="DirectThread"] [class*="thread"] > span {
+        color: #a89984 !important;              /* fg4 */
+    }
+
+    /* Reply quote bar (the vertical left border on quoted messages) */
+    [class*="DirectThread"] [class*="reply"]::before {
+        background-color: #83a598 !important;   /* bright blue */
+    }
+    
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > div > div > div:last-child:hover,
+    [role="presentation"]:not(div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]) > div > div > div:last-child {
+        background: #0000 !important;
+    }
+    
+    .x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xc5r6h4.xqeqjp1.x1phubyo.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x972fbf.x10w94by.x1qhh985.x14e42zd.x9f619.x1ypdohk.xdl72j9.x2lah0s.x3ct3a4.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x15mokao.x1ga7v0g.x16uus16.xbiv7yw.x1lliihq.xdj266r.x14z9mp.xat24cr.x1lziwak.xg6hnt2.x18wri0h.x1l895ks.x1y1aw1k.xwib8y2.xf7dkkf.xv54qhq:hover ,
+    .x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xc5r6h4.xqeqjp1.x1phubyo.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x972fbf.x10w94by.x1qhh985.x14e42zd.x9f619.x1ypdohk.xdl72j9.x2lah0s.x3ct3a4.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x15mokao.x1ga7v0g.x16uus16.xbiv7yw.x1lliihq.xdj266r.x14z9mp.xat24cr.x1lziwak.xg6hnt2.x18wri0h.x1l895ks.x1y1aw1k.xwib8y2.xf7dkkf.xv54qhq:focus ,
+    .x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xc5r6h4.xqeqjp1.x1phubyo.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x972fbf.x10w94by.x1qhh985.x14e42zd.x9f619.x1ypdohk.xdl72j9.x2lah0s.x3ct3a4.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x15mokao.x1ga7v0g.x16uus16.xbiv7yw.x1lliihq.xdj266r.x14z9mp.xat24cr.x1lziwak.xg6hnt2.x18wri0h.x1l895ks.x1y1aw1k.xwib8y2.xf7dkkf.xv54qhq:active {
+        background: #282828b3 !important;
+        border-radius: 0px;
+    }
+
+    div[class="x1n2onr6"]:has(div[class="xuk3077 x78zum5 x2lah0s xjkvuk6 xmzvs34 x1nn3v0j"]){
+        background: #0000 !important;
+    }
+    
+    div[class="x1cy8zhl xvbhtw8 x5ur3kl x13fuv20 x178xt8z x78zum5 x1qughib xg8j3zb x1q3ajuy x1gx403c x889kno"]{
+        background: #0000 !important;
+    }
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]{
+        background: var(--ig-text-on-color)
+    }
+}
+
+*,
+*::before,
+*::after {
+    font-family: "JetBrains Mono" !important;
+}
+@-moz-document domain("www.instagram.com"), url-prefix("www.instagram.com/stories") {
+    /* Insert code here... */
+    .xseo6mj {
+        display: none;
+    }
+    ._ajdu {
+        margin-top: 0;
+        padding: 8px 0;
+        width: 1300px;
+    }
+    ._aagw{
+        display: none
+    }
+
+    .x1ey2m1c {
+        bottom: 0;
+
+    }
+    div[class="x1ey2m1c xtijo5x x1o0tod x10l6tqk x13vifvy"]{
+        display: none
+    }
+
+    .__web-inspector-hide-shortcut__, .__web-inspector-hide-shortcut__ *, .__web-inspector-hidebefore-shortcut__::before, .__web-inspector-hideafter-shortcut__::after {
+        visibility: hidden !important;
+    }
+}
+
+@-moz-document url-prefix("https://www.instagram.com/direct/") {
+    @media (min-width: 900px) {
+        .xfawcg2.xfawcg2 {
+            min-width: 140px;
+            transition: 1s ease-in-out
+        }
+        .xfawcg2.xfawcg2:hover {
+            min-width: 430px;
+            transition: 1s ease-in-out
+        }
+    }
+
+}
