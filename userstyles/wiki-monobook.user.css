@@ -1,0 +1,248 @@
+/* ==UserStyle==
+@name           Wiki-monobook
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("wikipedia.org") {
+    /* Insert code here... */
+	body, .column-content, html{
+		background-color: #0000;
+		font-size: 11px
+	}
+	#searchInput,.pure-button .pure-button-primary-progressive{
+      border-radius: 10px;
+      right: 5px
+    }
+    .pure-button .pure-button-primary-progressive, .sidebar-chunk, .thumbinner, .image, .toc, #mw-content-wrapper, #simpleSearch{
+          border-radius: 10px
+    }
+	#column-one{
+		position: fixed;
+        height: 100%;
+        overflow-y: scroll;
+		opacity: 0;
+		margin-left: 0px;
+		width: 150px;
+		z-index: 99;
+		background-color: #ffffff38;
+		transition: 1s ease-in-out;
+		backdrop-filter: blur(4px);
+		height: calc(100%)
+	}
+	#column-one:hover{
+		opacity: 1
+	}
+	#column-content{
+		padding-right: 80px;
+		border-radius: 10px
+	}
+	#content{
+		border-radius: 10px;
+		background-color: #eee;
+		box-shadow: 0px 12px 42px #84848473
+	}
+	.pBody{
+		border: none
+	}
+	.pbody > ul > li > a, .pbody > ul > li > a:hover{
+		color: #000;
+		text-decoration: none
+	}
+}
+@-moz-document domain("wikipedia.org") {
+    /* Insert code here... */
+	#toc{
+		position: absolute;
+        top: 0%;
+		left: 103%;
+		width: 600px;
+		margin: 10px;
+		transition: 1s ease-in-out;
+		box-shadow: 0px 20px 45px #575757a1;
+		border-radius: 10px;
+		border: 0
+	}
+	#toc:hover{
+		left: 75%;
+	}
+	
+    .mw-underline-always a {
+    text-decoration: none;
+		color: #969696;
+		font-weight: bold
+    }
+	
+	#p-personal{
+		position: absolute;
+		left: 30%;
+		
+	}
+	body, html{
+		 cursor: url(https://cdn-icons-png.flaticon.com/512/122/122932.png), auto;
+		
+	}
+	#ca-talk{
+		color: #000;
+		font-family: impact
+	}
+	.vector-menu-tabs-legacy .selected a, .vector-menu-tabs-legacy .selected a:visited{
+		width: 100px;
+		text-align: center;
+		box-shadow: 0px -9px 15px #5757571f;
+		margin-bottom: 10px;
+		border-radius: 10px;
+	}
+	.vector-legacy-sidebar .vector-menu-portal .vector-menu-content li a, .vector-legacy-sidebar .vector-menu-portal .vector-menu-content li a:visited{
+		color: #7b7b7b
+	}
+	#p-interaction-label, #p-coll-print_export-label, #p-lang-label{
+		font-family: impact;
+		font-size: 20px
+	}
+	
+	.vector-menu-tabs-legacy li a {
+        background-position: right bottom;
+        color: #646464;
+        box-sizing: border-box;
+        display: block;
+        float: left;
+        height: 3.07692308em;
+        position: relative;
+        font-size: 0.8125em;
+        cursor: pointer;
+        width: 100px;
+	    text-align: center;
+		border-radius: 10px ;
+		font-family: tahoma
+    }
+	.mw-interlanguage-selector{
+		border-radius: 10px;
+		text-align: center
+	}
+	/*#mw-head,body{
+		background: #dfdfdf
+	}*/
+	.mw-body{
+		border: none
+	}
+	
+	
+}
+@-moz-document domain("wikipedia.org") {
+    /* Insert code here... */
+	#siteNotice, #p-tb, #p-cactions, #p-wikibase-otherprojects, .vector-feature-zebra-design-disabled #vector-page-tools-pinned-container .vector-page-tools::after, .vector-feature-zebra-design-disabled #vector-toc-pinned-container .vector-toc::after {
+		display: none
+	}
+	#vector-toc{
+		background-color: #fff0;
+		backdrop-filter: grayscale(10px);
+		
+	}
+	.vector-feature-zebra-design-disabled .vector-toc .vector-toc-link{
+		color: gray;
+		text-decoration: none
+	}
+	#vector-sticky-header{
+        position: absolute;
+		background: #fff;
+		border-radius: 10px;
+		padding-left: 30px;
+		height: 5px;
+		width: calc(100% - 215px);
+		padding-right: 30px;
+		margin-top: 10px;
+		box-shadow: 0px 10px 42px #909090bf;
+		transition: 1s ease-in-out;
+	}
+	.mw-underline-always a {
+        text-decoration: none;
+    }
+	
+	.vector-main-menu{
+		display: none
+	}
+	#mw-panel-toc{
+		background-color: #eee;
+		padding: 10px;
+		border-radius: 10px;
+		
+	}
+	#content{
+		padding-right: 30px
+	}
+	.vector-column-end{
+		background-color: #eee;
+		padding-right: 70px;
+		border-radius: 10px;
+		padding-left: 15px
+	}
+	a{
+		color: gray;
+		
+	}
+	.vector-feature-zebra-design-disabled .vector-toc .vector-toc-list-item-active > .vector-toc-link, .vector-feature-zebra-design-disabled .vector-toc .vector-toc-level-1-active:not(.vector-toc-list-item-expanded) > .vector-toc-link, .vector-feature-zebra-design-disabled .vector-toc .vector-toc-list-item-active.vector-toc-level-1-active > .vector-toc-link {
+		color: #813838;
+		text-decoration: none
+	}
+	div > ul > li > a:hover{
+		color: #813838;
+		text-decoration: none
+	}
+	#vector-toc{
+		background: linear-gradient(to top, #fff0 5%,#eee 40%);
+		
+	}
+	.uls-dialog-sticky .uls-menu {
+		position: fixed;
+		align-content: center;
+		
+	}
+}
+@-moz-document domain("wikipedia.org") {
+	
+	.vector-main-menu-action{
+		display: none;
+	}
+    .vector-pinned-container{
+		background: linear-gradient(to top, #fff0 5%,#eee 40%);
+		
+	}
+	#search{
+		position: absolute
+	}
+	
+	.box-More_citations_needed{
+		position: fixed;
+		left: 0%;
+		bottom: 2%;
+		border-radius: 10px;
+		box-shadow: 12px 12px 29px #909090bf;;
+		
+		
+		
+	}
+	button > span{
+		display: none
+	}
+	.vector-typeahead-search-container{
+        width: 970px;
+		border-radius: 10px
+	}
+	.cdx-typeahead-search{
+		width: 870px
+	}
+	#pt-userpage-2{
+		width: 10px;
+		top: 30px;
+		position: absolute;
+		left: -55px
+	}
+	.cdx-button{
+		border-radius: -10px;
+		border: 0;
+		background-color: 
+	}
+}
