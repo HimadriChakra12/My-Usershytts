@@ -9,26 +9,28 @@
 
 @preprocessor stylus
 
-@var checkbox posts             "⦿ Reels / Posts" 1
-@var checkbox comments          "└⟶ Hide comments" 0
-@var checkbox suggestPosts      "└⟶ Hide suggested posts from user" 1
+@var checkbox posts                 "⦿ Reels / Posts" 1
+@var checkbox comments              "└⟶ Hide comments" 0
+@var checkbox suggestPosts          "└⟶ Hide suggested posts from user" 1
+@var checkbox supportsection        "└⟶ Hide suggested posts from user" 1
 
-@var checkbox suggestFollow      "⦿ Remove Follow Suggestions" 1
-@var checkbox chat      "Chat Debloat" 1
-@var checkbox notes      "└⟶ Remove Notes" 1
-@var checkbox chataccountNameplate      "└⟶ Remove Chat Account Nameplate" 1
+@var checkbox suggestFollow         "⦿ Remove Follow Suggestions" 1
+@var checkbox chat                  "Chat Debloat" 1
+@var checkbox notes                 "└⟶ Remove Notes" 1
+@var checkbox chataccountNameplate  "└⟶ Remove Chat Account Nameplate" 1
+@var checkbox hidechatreels         "└⟶ Hide recieved reels" 0
 
-@var checkbox sidebar           "⦿ Sidebar" 1
-@var checkbox search            "└⟶ Hide Search" 0
-@var checkbox explore           "└⟶ Hide Explore" 1
-@var checkbox reels             "└⟶ Hide Reels" 1
-@var checkbox messages          "└⟶ Hide Messages" 0
-@var checkbox notifs            "└⟶ Hide Notifications" 0
-@var checkbox create            "└⟶ Hide Create" 1
-@var checkbox dashboard         "└⟶ Hide Dashboard" 1
-@var checkbox fromMeta          "Hide Also from Meta" 1
-@var checkbox settings            "└⟶ Hide Settings" 1
-@var checkbox meta         "└⟶ Hide Meta" 1
+@var checkbox sidebar               "⦿ Sidebar" 1
+@var checkbox search                "└⟶ Hide Search" 0
+@var checkbox explore               "└⟶ Hide Explore" 1
+@var checkbox reels                 "└⟶ Hide Reels" 1
+@var checkbox messages              "└⟶ Hide Messages" 0
+@var checkbox notifs                "└⟶ Hide Notifications" 0
+@var checkbox create                "└⟶ Hide Create" 1
+@var checkbox dashboard             "└⟶ Hide Dashboard" 1
+@var checkbox fromMeta              "Hide Also from Meta" 1
+@var checkbox settings              "└⟶ Hide Settings" 1
+@var checkbox meta                  "└⟶ Hide Meta" 1
 
 ==/UserStyle== */
 @-moz-document domain("www.instagram.com") {
@@ -73,12 +75,40 @@
                 display: none !important;
             }
         }
+        if supportsection{
+            
+        }
+        else {
+            if supportsection{
+                div[class="x6s0dn4 x78zum5"] span[class="x1qfufaz"]:has([aria-label="Like"]){
+                    display: none;
+                }
+            }
+            if supportsection{
+                div[class="x6s0dn4 x78zum5"] span:has([aria-label="Like"]){
+                    display: none;
+                }
+            }
+            if supportsection{
+                div[class="x6s0dn4 x78zum5"] div:has([aria-label="Share"]){
+                    display: none;
+                }
+            }
+        }
     }
     else {
-        .x1n2onr6.xippug5.xg6iff7.xdt5ytf.x78zum5 > .x1jfb8zj.x1qrby5j.x1n2onr6.x7ja8zs.x1t2pt76.x1lytzrv.xedcshv.xarpa2k.x3igimt.x12ejxvf.xaigb6o.x1beo9mf.x1h91t0o.x4k7w5x.x1uvtmcs,
-        .x1yj74s3.xul9lc3.x1m1r3dp.xzakr58.xt0jiz3.x19sv2k2.x106a9eq.x18d9i69.x1xnnf8n.xs9x0gt.x1ykew4q.x1yztbdb.xvc5jky.x11t971q.xdj266r.x1iyjqo2 {
-            display: none !important;
+            div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x6s0dn4 x1oa3qoh x1nhvcw1"]{
+            display: none !important
         }
+    }
+    div[class="xw7yly9"]{
+        align-content: center;    
+    }
+    div[class="x1uvtmcs x4k7w5x x1h91t0o x1beo9mf xaigb6o x12ejxvf x3igimt xarpa2k xedcshv x1lytzrv x1t2pt76 x7ja8zs x1n2onr6 x1qrby5j x1jfb8zj"]{
+        border: 0
+    }
+    div[class="x1qjc9v5 x78zum5 x1q0g3np xl56j7k xh8yej3"] > div{
+        max-width: 50% !important;
     }
 
     if sidebar {
@@ -161,5 +191,25 @@
     }
 
 }
-
-
+@-moz-document regexp("^https?://(www\\.)?instagram\\.com/direct/t/[^/]+/?$") {
+    if hidechatreels{
+        div[role="none"]:has(svg[aria-label="Clip"]):not(div[role="group"]:has([aria-label^="Open the profile page"]))
+        {
+            height: 30px;
+            opacity: 0;
+            cursor: none;
+            pointer-events: none
+        }
+    }
+}
+@-moz-document regexp("^https?://(www\\.)?instagram\\.com/.*$"){
+    div[class="xw7yly9"]{
+        align-content: center;    
+    }
+    div[class="x1uvtmcs x4k7w5x x1h91t0o x1beo9mf xaigb6o x12ejxvf x3igimt xarpa2k xedcshv x1lytzrv x1t2pt76 x7ja8zs x1n2onr6 x1qrby5j x1jfb8zj"]{
+        border: 0
+    }
+    div[class="x1qjc9v5 x78zum5 x1q0g3np xl56j7k xh8yej3"] > div{
+        max-width: 50% !important;
+    }
+}
