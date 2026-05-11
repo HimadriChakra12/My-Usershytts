@@ -8,7 +8,7 @@
 
 @-moz-document url-prefix("https://www.instagram.com/direct/t/17843088840319857/") {
     /* Insert code here... */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x78zum5 x193iq5w"]:has(img){
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x78zum5 x193iq5w"]:has(img:not([alt="Sticker"])){
         height: 70px !important;
         filter: blur(10px)
     }
