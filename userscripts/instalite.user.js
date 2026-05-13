@@ -17,7 +17,7 @@
     hideStories: false,
     hideReels: false,
     disableAnimations: true,
-    reduceVideoPreload: true,
+    reduceVideoPreload: false,
     pauseBackgroundVideo: true,
     virtualizeFeed: true,
   };
@@ -111,17 +111,61 @@
     }
   }
 
-  function optimizeNode(rootNode) {
+function preloadGIF(gifUrl) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = gifUrl;
+
+        img.onload = () => {
+            resolve(img); // GIF fully loaded
+        };
+
+        img.onerror = reject;
+    });
+}
+
+function optimizeGIFNode(node) {
+    if (!(node instanceof Element)) return;
+
+    // Instagram often uses <img> with src or <video> for GIF-like content
+    const gifImages = node.querySelectorAll('img[src*=".gif"], img[src*="giphy.com"]');
+
+    gifImages.forEach(img => {
+        if (img.dataset.igLiteGifPreloaded) return; // skip already handled
+
+        img.dataset.igLiteGifPreloaded = '1';
+
+        const src = img.src;
+
+        preloadGIF(src)
+            .then(preloadedImg => {
+                // Swap the image src to force the browser to use cached version
+                img.src = preloadedImg.src;
+
+                // Free memory reference after image is loaded
+                setTimeout(() => {
+                    preloadedImg.src = '';
+                }, 1000); // keeps it in RAM briefly for smooth display
+            })
+            .catch(err => {
+                console.warn('GIF preload failed:', err);
+            });
+    });
+}
+
+// Add GIF optimization to your existing optimizeNode function
+function optimizeNode(rootNode) {
     if (!(rootNode instanceof Element)) return;
 
-    if (rootNode.tagName === 'VIDEO') {
-      optimizeVideo(rootNode);
-    }
+    if (rootNode.tagName === 'VIDEO') optimizeVideo(rootNode);
+    if (rootNode.tagName === 'IMG') optimizeGIFNode(rootNode);
 
     rootNode.querySelectorAll?.('video').forEach(optimizeVideo);
-
     rootNode.querySelectorAll?.('article').forEach(hideSponsoredPost);
-  }
+    rootNode.querySelectorAll?.('img').forEach(optimizeGIFNode);
+}
+
+
 
   const domObserver = new MutationObserver(mutationList => {
     for (const mutation of mutationList) {
