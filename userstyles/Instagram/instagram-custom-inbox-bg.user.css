@@ -3,67 +3,114 @@
 @namespace      github.com/HimadriChakra12/My-usershytts
 @author         Himadri Chakraborty
 @description    A theme which can add custom background for your Instagram Inbox. If you liked my theme then please give me a little review which will help me to create more awesome themes in the future And also check out some of my more creations.
-@version        2.0
+@version        3.0
 @license        Himadri Chakraborty
 
-@advanced text bg-custom "Wallpaper (Custom)" "https://example.com/image.png"
-@advanced color col-custom "Texts" "#ffffff"
-@advanced color col-2-custom "Border" "#202520"
+@preprocessor stylus
+
+@var checkbox pinbanner "Hide Pin banner" 1
+@var checkbox bishakha "Bishakha" 1
+@var checkbox riya "Riya" 1
+@var checkbox rupa "rupa" 1
+@var checkbox prionto "prionto" 1
+@var checkbox barshon "Barshon" 1
+@var checkbox hiya "Hiya" 1
+@var checkbox shreya "Shreya" 1
 
 ==/UserStyle== */
+@-moz-document url-prefix("https://www.instagram.com/") {
+    /* Nicknames */
+    :root {
+        --riya: "Smoochie"
+        --prionto: "@raincorerat"
+        --rupa: "Bou er Mommy"
+    }
+    /* Default nickname Remover */
+    span[title="Riya ๑ᵕ̈ ᵕ̈๑"],
+    span[title="Rupa Saha"],
+    span[title="প্রিয়ন্ত 🕷️"]{
+        display: none
+    }
+
+    /* Nicknaming */
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Riya ๑ᵕ̈ ᵕ̈๑"]):after{content: var(--riya);}
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Rupa Saha"]):after{content: var(--rupa);}
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="প্রিয়ন্ত 🕷️"]):after{content: var(--prionto);}
+}
 @-moz-document url-prefix("https://www.instagram.com/") {
     div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
         border: 0 !important;
         border-color: #000 !important;
     }
+    :root{
+        --bottom: column-reverse;
+        --top: column;
+    }
+    
+    /* search and catgory */
+    @media (min-width: 900px) {
+      .xgfcpv.xgfcpv {
+          min-height: 100%;
+          display: flex !important;
+          flex-direction: var(--top)  !important;
+      }
+    }
+    *{border: 0px !important}
+    if pinbanner{
+        div[class*="x1kmbdvd"]:has([aria-label*="Pinned"]){
+            display: none;
+        }
+    }
 }
 @-moz-document url-prefix("https://www.instagram.com/direct/t") {
-    
+
     .universal{display: none}
-    
-    /* textbar - back */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-    /* textbar */
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-    .xcrg951,
-    .xg8j3zb,
-    .x1eb86dx,
-    .x1eb86dx {
+
+    div[data-pagelet="IGDComposerForCannes"], 
+    div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+    div[data-pagelet="IGDInboxHeaderOffMsys"],
+    div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+    div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+    div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
         background: #0000 !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
         background-size: cover !important;
     }
+    
+    /* nickname placement fixing*/
+    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title]):after{
+        margin-bottom: 20px !important;
+    }
+
     .x1yvgwvq, .xso031l{
         border: 0
     }
-    .x12scifz {
-        color: /*[[col-custom]]*/;
-    }
+    
+    /* text chatbg [auther + ops]
+        div[role="none"] > div > div[role="presentation"]{
+            background: #ac174a !important;
+        } 
+    */
 
+    /* username */
+    div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
+            display: block;
+    }
+        
     /* reply bar */
-    div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
+    div[class="xw8ag78 x10e4vud x1v7wizp x150e7gq xa3vuyk"] , div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh x1m5k8mk x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
         background: #0000 !important;
     }
+    
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xyamay9 xv54qhq x1l90r2v xf7dkkf x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x1bs97v6 x1q0q8m5 xso031l xh8yej3"], div[class="x1qjc9v5 x1yvgwvq xjd31um x1ixjvfu xwt6s21 x1ua1ujl xksyday xshg46c xlej2ay x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x178xt8z x1lun4ml xso031l xpilrb4 x78zum5 xdt5ytf xw7yly9 x1ys307a x1yztbdb xyqm7xq"]{
         border: 0
     }
+    
     a.x1i10hfl.x1qjc9v5.xjbqb8w.xjqpnuy.xa49m3k.xqeqjp1.x2hbi6w.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xdl72j9.x2lah0s.xe8uvvx.x2lwn1j.xeuugli.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1lliihq.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xg6hnt2.x18wri0h.x1l895ks.xbbxn1n.xxbr6pl.x1y1aw1k.xwib8y2:hover {
         background-color: #ffffff20;
-    }
-
-    .x13zqm9e,
-    .x63ui4o,
-    .x1yvgwvq,
-    .xso031l,
-    .xy80clv,
-    .x1wzhzgj,
-    .xh1n2d4,
-    .xlauuyb {
-        border-color: /*[[col-2-custom]]*/
-        !important;
     }
 
     .x1k4qllp {
@@ -77,109 +124,524 @@
     ::-webkit-scrollbar,
     ::-webkit-scrollbar-corner,
     ::-webkit-scrollbar,
-    ::-webkit-scrollbar-corner {
-        display: none!important;
-    }
-
     ::-webkit-scrollbar-button,
-    ::-webkit-scrollbar-button {
-        display: none !important;
-    }
-
     ::-webkit-scrollbar-thumb,
-    ::-webkit-scrollbar-thumb {
-        display: none !important;
-    }
-
     ::-webkit-scrollbar-thumb:not(:active):hover,
-    ::-webkit-scrollbar-thumb:not(:active):hover {
-        display: none !important;
-    }
-
-    ::-webkit-scrollbar-thumb:active,
-    ::-webkit-scrollbar-thumb:hover:active,
     ::-webkit-scrollbar-thumb:active,
     ::-webkit-scrollbar-thumb:hover:active {
         display: none !important;
     }
+
+    /* chatlist margin for note align */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k xeuugli xwib8y2 x13jy36j x64bnmy x1y1aw1k"]{
+        margin-inline: 8px
+    }
+
+    /* chat pane border radius */
+    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1iyjqo2 x2lwn1j xeuugli x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 xcrg951 x6prxxf x6ikm8r x10wlt62 x1n2onr6 xh8yej3"]{
+        border-radius: 10px
+    }
+
 }
 
-/* template */
+@-moz-document url("https://www.instagram.com/direct/t/17846265992645472/") {
 
+    if bishakha{    
+        :root{
+            --chatbg:           linear-gradient(135deg, #5c0b27, #9c266a, #b11d30, #3a0a45) !important;
+            --flavour:          #000;
+            --friendtxtbg:      #fff;
+            --authertxtbg:      #262626;
+            --text:             #000; 
+            --autext:           #fff;  
+            --send:             #fff;
+        }
+        
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"],
+        svg[aria-label*="Reply"],
+        svg[aria-label*="See"],
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Cancel reply"]
+        {
+            filter: invert(0%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
+        }
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
+        }
+
+        /* username */
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
+        /* text bar elements */
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
+        div[class*="notranslate"], 
+        p[class="xat24cr xdj266r"],
+        div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
+            color: var(--flavour)!important;
+        }
+
+        /* seen */
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
+
+        /* emoji svg */
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
+            filter: invert(0%)
+        }
+    }
+}
+
+@-moz-document url("https://www.instagram.com/direct/t/17843088840319857/") {
+    if riya{    
+        :root{
+            --chatbg:           #a6516e;
+            --flavour:          #f8cad2;
+            --friendtxtbg:      #d51d57;
+            --authertxtbg:      #d51d57;
+            --text:             #ffffff;
+            --autext:           #f8cad2;
+            --send:             #fff;
+        }
+        
+    
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"],
+        svg[aria-label*="Reply"],
+        svg[aria-label*="See"],
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Cancel reply"]
+        {
+            filter: invert(0%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
+        }
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
+        }
+
+        /* username */
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
+        /* text bar elements */
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
+        div[class*="notranslate"], 
+        p[class="xat24cr xdj266r"],
+        div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
+            color: var(--flavour)!important;
+        }
+
+        /* seen */
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
+
+        /* emoji svg */
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
+            filter: invert(0%)
+        }
+    }
+}
 @-moz-document url("https://www.instagram.com/direct/t/17849539664607285/") {
-    
-    .barshon{display: flex}
-    
-    /* textbar - back */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl xt5xv9l x6wvzqs xpqajaz x78zum5 xdt5ytf x1c4vz4f xs83m0k"],
-    /* textbar */
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x1kukv79"],
-    div[class="html-div xexx8yu x18d9i69 x178xt8z x1lun4ml xso031l xpilrb4 xdt5ytf x1iyjqo2 xs83m0k x13qp9f6 x6ikm8r x10wlt62 x6s0dn4 xvbhtw8 x1ua1ujl xksyday xshg46c xlej2ay x78zum5 xdj266r x14z9mp xat24cr x1lziwak x1gg8mnh x1iwz3mf x11lfxj5"],
-    .xcrg951,
-    .x1eb86dx,
-    .x1eb86dx {
-        background: #88A34B !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-size: cover !important;
+
+    if barshon{
+        :root{
+            --chatbg:           #88A34B;
+            --flavour:          #fff;
+            --friendtxtbg:      #fff;
+            --authertxtbg:      #262626;
+            --text:             #000;
+            --send:             #fff;
+        }
+
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"],
+        svg[aria-label*="Reply"],
+        svg[aria-label*="See"],
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Audio call"],
+        svg[aria-label="Video call"],
+        svg[aria-label="Cancel reply"]
+        {
+            filter: invert(90%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
+        }
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
+        }
+
+        /* username */
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
+        /* text bar elements */
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
+        div[class*="notranslate"], 
+        p[class="xat24cr xdj266r"],
+        div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
+            color: var(--flavour)!important;
+        }
+
+        /* seen */
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
+
+        /* emoji svg */
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
+            filter: invert(0%)
+        }
     }
-    
-    /* nickname */
-    span[title="Barshon"]{
-        display: none
+}
+
+
+@-moz-document url("https://www.instagram.com/direct/t/17843648601085441/") {
+
+    if hiya{
+        :root{
+            --chatbg:           linear-gradient(135deg, #4e192b, #000);
+            --friendtxtbg:      #fff;
+            --authertxtbg:      #262626;
+            --text:             #000;
+            --send:             #fff;
+        }
+
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+
+        /* Instagram: Turn Send icon pink */
+        svg[aria-label="Send"] path {
+            fill: var(--send) !important;
+        }
     }
-    span[class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"]:has(span[title="Barshon"]):after{
-        content: "Barshon";
-        margin-bottom: 20px !important;
+}
+@-moz-document url("https://www.instagram.com/direct/t/1421105996287938/") {
+    if shreya{
+        :root{
+            --chatbg:           #006571;
+        }
+        
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
     }
-    
-    /* username */
-    div[class="html-div x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1xmf6yo x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
-        display: none
+}
+@-moz-document url("https://www.instagram.com/direct/t/17846226593822368/") {
+    if prionto{    
+        :root{
+            --chatbg:           #80ffcc;
+            --flavour:          #000;
+            --send:             #fff;
+            --friendtxtbg:      #fff;
+            --authertxtbg:      #262626;
+            --text:             #111;
+            --autext:           #fff;
+        }
+
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"],
+        svg[aria-label*="Reply"],
+        svg[aria-label*="See"],
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"], svg[aria-label="Audio call"],
+        svg[aria-label="Video call"],
+        svg[aria-label="Cancel reply"]
+        {
+            filter: invert(90%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
+        }
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
+        }
+
+        /* username */
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
+        /* text bar elements */
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
+        div[class*="notranslate"], 
+        div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
+            color: var(--flavour)!important;
+        }
+
+        /* seen */
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
+
     }
-    /* reply bar */
-    div[class="html-div x14z9mp xat24cr x1lziwak x9f619 x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh xvbhtw8 x5ur3kl x13fuv20 x178xt8z x1qughib x1xmf6yo xjkvuk6 xv54qhq xf7dkkf xyamay9"]{
-        background: #0000 !important;
+}
+
+
+@-moz-document url("https://www.instagram.com/direct/t/17846308089191980/") {
+    if rupa{
+        :root{
+            --chatbg:           #481a0a;
+            --flavour:          #bcbcbc;
+            --friendtxtbg:      #af5959;
+            --authertxtbg:      #340202;
+            --send:             #fff;
+        }
+        
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
+        div[data-pagelet="IGDComposerForCannes"], 
+        div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDInboxHeaderOffMsys"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+        div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: var(--chatbg) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            border: 0 !important;
+        }
+        
+        svg[aria-label="Choose an emoji"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])),
+        svg[aria-label*="React"],
+        svg[aria-label*="Reply"],
+        svg[aria-label*="See"],
+        svg[aria-label="Voice Clip"],
+        svg[aria-label="Add Photo or Video"],
+        svg[aria-label="Choose a GIF or sticker"],
+        svg[aria-label="Audio call"],
+        svg[aria-label="Video call"],
+        svg[aria-label="Cancel reply"]
+        {
+            filter: invert(0%) !important; 
+        }
+        
+        /* Instagram: Turn Send icon black */
+        svg[aria-label="Send"] path { fill: var(--send) !important; }
+        
+        p[class="xat24cr xdj266r"]{
+            color: var(--text) !important
+        }
+        
+        .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
+        div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+            color: var(--text) !important
+        }
+            
+        .x5slmwz{ background: var(--authertxtbg) !important;}
+        div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: var(--autext) !important
+        }
+
+        /* username */
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *,
+        /* text bar elements */
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
+        div[class*="notranslate"], 
+        p[class="xat24cr xdj266r"],
+        div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
+        span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
+            color: var(--flavour)!important;
+        }
+
+        /* seen */
+        div[class*="html-div"] > span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1fhwpqd xo1l8bm x1roi4f4 x1s3etm8 x676frb"]{ fill: var(--flavour) !important; }
+
+        /* emoji svg */
+        div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]:not(svg[class="x1lliihq x1n2onr6 x5n08af"]:has(path[d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"])){
+            filter: invert(0%)
+        }
     }
-    /* text bg */
-    div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
-    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
-        background: #fff;
+}
+
+
+@-moz-document domain("www.instagram.com") {
+    if riya{
+        div[aria-label^="Riya"]:has([aria-label^="Pinned"]) div[role="group"] div[role="none"] div[class^="html-div xdj266r x14z9mp xat24cr x1lziwak x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x5slmwz xpmdkuv xrmkrer x12z03op x9wyiwl x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x12lizq0 x1nrdd72 x1ybe9c6 xx487zo xd2w7dg xaymx6s"]{
+                background: #d51d57 !important;
+                border-radius: 0px !important;
+        }
+        
+        div[class*="x1x0la19"]:has(a[aria-label*="__riya._.aaa__"]),
+        div[aria-label^="Riya"]:has([aria-label^="Pinned"])  div[class*="x1kmbdvd"]:has([aria-label="Pinned message icon"]),
+        div[aria-label^="Riya"]:has([aria-label^="Pinned"])  div[class="x78zum5 xdt5ytf x1iyjqo2 x193iq5w x2lwn1j x1n2onr6"],
+        div[aria-label^="Riya"]:has([aria-label^="Pinned"])  div[class*="xyamay9"],
+        div[aria-label^="Riya"]:has([aria-label^="Pinned"])  div[class*="x1kukv79"],
+        div[aria-label^="Riya"]:has([aria-label^="Pinned"])  div[class*="x11lfxj5"],
+        div[aria-label^="Riya"] div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: #a6516e !important;
+            border: 0px !important;
+        }
+        div[aria-label="Riya ๑ᵕ̈ ᵕ̈๑"]:has([aria-label="Pinned"]) div[aria-label="Send"] { background:  #bf6363 !important; }
     }
-    
-    /* Instagram: Turn Send icon black */
-    svg[aria-label="Send"] path {
-        fill: black !important;
-    }
-    /* text */
-    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
-        color: #000;
-    }
-    
-    /* text bar elements */
-    span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
-    div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate"], 
-    div[class="xzsf02u x1a2a7pz x1n2onr6 x14wi4xw notranslate focus-visible"], 
-    p[class="xat24cr xdj266r"],
-    div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
-    span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
-        color: #000
-    }
-    
-    /* emoji svg */
-    div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > svg[class="x1lliihq x1n2onr6 x5n08af"]{
-        filter: invert(100%)
-    }
-   
-    /* seen */
-    span[dir="auto"]:contains("Seen") {
-        color: black !important;
-    }
-   
-    /* username */
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > * > *,
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xkj4a21 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f xs83m0k xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh xl56j7k"] > * > *{
-        color: #000
+    if barshon{
+        div[aria-label^="Barshon"]:has([aria-label^="Pinned"]) div[role="group"] div[role="none"] div[class^="html-div xdj266r x14z9mp xat24cr x1lziwak x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x5slmwz xpmdkuv xrmkrer x12z03op x9wyiwl x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x12lizq0 x1nrdd72 x1ybe9c6 xx487zo xd2w7dg xaymx6s"]{
+            background: #fff !important;
+            border-radius: 0px !important;
+        }
+        div[aria-label="Barshon"]:has([aria-label*="Pinned"]) div[role="group"] div[role="none"] div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"],
+        div[aria-label="Barshon"]:has([aria-label*="Pinned"]) div[role="group"] div[role="none"] div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+            color: #000 !important;
+        }
+        
+        div[class*="x1x0la19"]:has(a[aria-label*="snowy__knight"]),
+        div[aria-label^="Barshon"]:has([aria-label^="Pinned"])  div[class*="x1kmbdvd"]:has([aria-label="Pinned message icon"]),
+        div[aria-label^="Barshon"]:has([aria-label^="Pinned"])  div[class="x78zum5 xdt5ytf x1iyjqo2 x193iq5w x2lwn1j x1n2onr6"],
+        div[aria-label^="Barshon"]:has([aria-label^="Pinned"])  div[class*="xyamay9"],
+        div[aria-label^="Barshon"]:has([aria-label^="Pinned"])  div[class*="x1kukv79"],
+        div[aria-label^="Barshon"]:has([aria-label^="Pinned"])  div[class*="x11lfxj5"],
+        div[aria-label^="Barshon"] div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+            background: #88A34B !important;
+            border: 0px !important;
+        }
+        div[aria-label^="Barshon"]:has([aria-label^="Pinned"]) div[aria-label="Send"] { background:  #000 !important; }
     }
 }
