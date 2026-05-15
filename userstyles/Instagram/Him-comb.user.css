@@ -9,8 +9,8 @@
 @advanced text feed "Feed width (0-50%)" 50%
 ==/UserStyle== */
 
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
 @-moz-document domain('instagram.com') {
+    @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
 
     /* ============================================================
     SECTION 1: INSTAGRAM CORE DESIGN TOKENS — GRUVBOX DARK
@@ -607,13 +607,13 @@
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x14ctfv x13sv91t x6ikm8r x10wlt62 xerhiuh x1pn3fxy x10zy8in xm9bcq3 x1n2onr6 x1vjfegm x1k4qllp x1mzt3pk x88qbow x1jm4cbz x114wg8e xrrpcnn x14rx4xb x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x19livfd x1h2krnu x3p3xfz xet2kk3 xaymx6s x1lu5o8o x1ou5ly4 xofb2d2"]{
         background: var(--ig-text-on-color)
     }
+    *,
+    *::before,
+    *::after {
+        font-family: "JetBrains Mono" !important;
+    }
 }
 
-*,
-*::before,
-*::after {
-    font-family: "JetBrains Mono" !important;
-}
 @-moz-document domain("www.instagram.com"), url-prefix("www.instagram.com/stories") {
     /* Insert code here... */
     .xseo6mj {
