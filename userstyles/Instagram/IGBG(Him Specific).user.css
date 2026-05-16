@@ -201,15 +201,17 @@
             --authertxtbg:      #262626;
             --text:             #000; 
             --autext:           #fff;  
+            --ptext:            #fff;
             --send:             #fff;
         }
         
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -237,7 +239,7 @@
         svg[aria-label="Send"] path { fill: var(--send) !important; }
         
         p[class="xat24cr xdj266r"]{
-            color: var(--text) !important
+            color: var(--ptext) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -256,7 +258,6 @@
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
         div[class*="notranslate"], 
-        p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
@@ -281,16 +282,18 @@
             --authertxtbg:      #d51d57;
             --text:             #ffffff;
             --autext:           #f8cad2;
+            --ptext:            #fff;
             --send:             #fff;
         }
         
     
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -318,7 +321,7 @@
         svg[aria-label="Send"] path { fill: var(--send) !important; }
         
         p[class="xat24cr xdj266r"]{
-            color: var(--text) !important
+            color: var(--ptext) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -337,7 +340,6 @@
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
         div[class*="notranslate"], 
-        p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
@@ -364,12 +366,13 @@
             --send:             #fff;
         }
 
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -399,7 +402,7 @@
         svg[aria-label="Send"] path { fill: var(--send) !important; }
         
         p[class="xat24cr xdj266r"]{
-            color: var(--text) !important
+            color: var(--ptext) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -418,7 +421,6 @@
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
         div[class*="notranslate"], 
-        p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
@@ -446,11 +448,13 @@
             --send:             #fff;
         }
 
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -460,7 +464,6 @@
             background-size: cover !important;
             border: 0 !important;
         }
-        
         .x5slmwz{ background: var(--authertxtbg) !important;}
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
         div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
@@ -479,12 +482,13 @@
             --chatbg:           #006571;
         }
         
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -506,14 +510,16 @@
             --authertxtbg:      #262626;
             --text:             #111;
             --autext:           #fff;
+            --ptext:            #fff;
         }
 
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -543,7 +549,7 @@
         svg[aria-label="Send"] path { fill: var(--send) !important; }
         
         p[class="xat24cr xdj266r"]{
-            color: var(--text) !important
+            color: var(--ptext) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -584,12 +590,13 @@
             --send:             #fff;
         }
         
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -619,7 +626,7 @@
         svg[aria-label="Send"] path { fill: var(--send) !important; }
         
         p[class="xat24cr xdj266r"]{
-            color: var(--text) !important
+            color: var(--ptext) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -638,7 +645,6 @@
         /* text bar elements */
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > *,
         div[class*="notranslate"], 
-        p[class="xat24cr xdj266r"],
         div[class="x1qjc9v5 x9f619 x78zum5 xdl72j9 xdt5ytf x2lah0s x2lwn1j xeuugli x1n2onr6 x1ja2u2z xu06os2 x1ok221b"] > *, 
         span[class="x1lliihq x1plvlek xryxfnj x1n2onr6 xyejjpt x15dsfln x193iq5w xeuugli x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x10flsy6 x6prxxf x1fcty0u xzsf02u x1yc453h x4zkp8e x41vudc xq9mrsl"] > * > *  {
             color: var(--flavour)!important;
@@ -664,14 +670,17 @@
             --authertxtbg:      #262626;
             --text:             #111;
             --autext:           #fff;
+            --ptext:            #fff;
+            --ptext:            #fff;
         }
 
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -701,7 +710,7 @@
         svg[aria-label="Send"] path { fill: var(--send) !important; }
         
         p[class="xat24cr xdj266r"]{
-            color: var(--text) !important
+            color: var(--ptext) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
@@ -740,14 +749,17 @@
             --authertxtbg:      #262626;
             --text:             #111;
             --autext:           #fff;
+            --ptext:            #fff;
+            --ptext:            #fff;
         }
 
-        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
-        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"]{
+            background: #0000 !important;
+        }
+        /*Composer Consistancy, Reply Bar, header, textbarbg, textbarbg(active), pin, body*/
         div[data-pagelet="IGDInboxHeaderOffMsys"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
-        div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+        div[data-pagelet="IGDComposerForCannes"], 
         div[class*="html-div"]:has([aria-label="Pinned message icon"]),
         div[class="x78zum5 x1cqoux5 xdt5ytf"]{
             background: var(--chatbg) !important;
@@ -777,7 +789,7 @@
         svg[aria-label="Send"] path { fill: var(--send) !important; }
         
         p[class="xat24cr xdj266r"]{
-            color: var(--text) !important
+            color: var(--ptext) !important
         }
         
         .x88qbow{ background: var(--friendtxtbg) !important; --primary-text: var(--text)}
