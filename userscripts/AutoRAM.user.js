@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         AutoRAM Cleaner — Low Latency Mode
+// @name         AutoRAM Cleaner ☢ Nuclear Edition
 // @namespace    https://github.com/local/autoram
-// @version      1.4.0
-// @description  Safely frees unnecessary memory, clears stale caches, and prunes idle DOM bloat for a snappier browsing experience — without breaking sites.
+// @version      3.0.0
+// @description  Deep-cleans RAM, nukes stale Cache API entries, purges dead DOM, pauses off-screen animations, and auto-reloads idle tabs eating memory.
 // @author       You
 // @match        *://*/*
 // @grant        none
@@ -12,357 +12,482 @@
 (function () {
   'use strict';
 
-  // ─── CONFIG ─────────────────────────────────────────────────────────────────
-  const CONFIG = {
-    // How often (ms) the cleaner runs
-    intervalMs: 30_000,
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CONFIG
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const CFG = {
 
-    // How long an image/video must be off-screen before its src is lazily cleared (ms)
-    offscreenMediaTimeout: 60_000,
+    // ── Intervals ─────────────────────────────────────────────────────────────
+    cleanIntervalMs:      8_000,    // main clean pass every 8 seconds
+    idleCheckIntervalMs: 15_000,    // idle check every 15 seconds
+    cachePurgeIntervalMs:60_000,    // Cache API purge every 60 seconds
 
-    // Max blob: URLs to keep alive (oldest evicted first)
-    maxBlobUrls: 20,
+    // ── Idle Tab Auto-Reload ───────────────────────────────────────────────────
+    enableIdleReload:   true,
+    idleReloadAfterMs:  5 * 60_000, // reload after 5 min idle (background tab only)
+    idleReloadMinRamMB: 100,        // only reload if JS heap > this (MB)
+    reloadGraceMs:      4_000,      // countdown before reload (user can move mouse to cancel)
 
-    // Clear console after each clean pass (set false if you want to keep logs)
-    clearConsole: false,
+    // ── Cache API Purge ────────────────────────────────────────────────────────
+    enableCachePurge:   true,
+    // Cache names matching these patterns are KEPT (site-critical caches)
+    keepCachePatterns:  [/workbox/i, /precache/i, /runtime/i, /critical/i, /shell/i],
 
-    // Show a subtle HUD in the corner (set false to disable entirely)
-    showHUD: true,
+    // ── RAM Thresholds (MB) ────────────────────────────────────────────────────
+    ramWarnMB:          200,        // HUD turns orange
+    ramCritMB:          400,        // HUD turns red + deeper clean
 
-    // Sites where media-src clearing is risky — skip that step
-    skipMediaClearOn: [
-      'youtube.com', 'twitch.tv', 'netflix.com', 'hulu.com',
-      'disneyplus.com', 'primevideo.com', 'spotify.com', 'soundcloud.com',
-      'vimeo.com', 'dailymotion.com',
+    // ── Media / DOM ───────────────────────────────────────────────────────────
+    offscreenTimeoutMs: 10_000,     // clear off-screen media after 10s
+    maxBlobUrls:        5,
+    freezeAnims:        true,       // pause CSS animations on off-screen elements
+    pruneGhostNodes:    true,       // remove empty ghost nodes left by trackers
+
+    // ── Misc ──────────────────────────────────────────────────────────────────
+    clearConsole:       true,
+    showHUD:            true,
+
+    // Sites where aggressively clearing media src could break things
+    skipMediaOn: [
+      'youtube.com','twitch.tv','netflix.com','hulu.com','disneyplus.com',
+      'primevideo.com','spotify.com','soundcloud.com','vimeo.com','dailymotion.com',
     ],
 
-    // Sites to completely skip (e.g. web apps that need everything alive)
+    // Completely opt-out these hosts
     disabledOn: [],
   };
-  // ────────────────────────────────────────────────────────────────────────────
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  const host = location.hostname.replace(/^www\./, '');
-  if (CONFIG.disabledOn.some(d => host.includes(d))) return;
+  const host      = location.hostname.replace(/^www\./, '');
+  if (CFG.disabledOn.some(d => host.includes(d))) return;
+  const skipMedia = CFG.skipMediaOn.some(d => host.includes(d));
 
-  const skipMedia = CONFIG.skipMediaClearOn.some(d => host.includes(d));
+  // ── State ──────────────────────────────────────────────────────────────────
+  const blobReg     = [];
+  const offTimers   = new WeakMap();
+  const frozenAnims = new WeakSet();
+  const ghostSeen   = new WeakMap();
 
-  // ─── STATE ──────────────────────────────────────────────────────────────────
-  const blobRegistry = [];           // tracked blob URLs we created
-  const offscreenTimers = new WeakMap(); // element → timestamp it went off-screen
+  let passCount       = 0;
+  let lastActivity    = Date.now();
+  let reloadCountdown = null;
+  let hud, hudRamRow, hudStatus, hudBody;
 
-  let passCount = 0;
-  let totalFreedEstimate = 0; // rough KB estimate
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  const vph = () => window.innerHeight;
 
-  // ─── UTILITIES ──────────────────────────────────────────────────────────────
   function isOffscreen(el) {
     const r = el.getBoundingClientRect();
-    return r.bottom < -200 || r.top > window.innerHeight + 200;
+    return r.bottom < -100 || r.top > vph() + 100;
   }
 
-  function isInViewport(el) {
-    const r = el.getBoundingClientRect();
-    return r.top < window.innerHeight && r.bottom > 0;
+  function heapMB()      { return performance?.memory ? Math.round(performance.memory.usedJSHeapSize  / 1_048_576) : null; }
+  function heapTotalMB() { return performance?.memory ? Math.round(performance.memory.totalJSHeapSize / 1_048_576) : null; }
+
+  function ramColor(mb) {
+    return mb > CFG.ramCritMB ? '#ff4040' : mb > CFG.ramWarnMB ? '#ffaa22' : '#44ff88';
   }
 
-  function roughSizeOf(str) {
-    // rough byte estimate for a string
-    return Math.round((str?.length || 0) * 2 / 1024);
+  function bar10(used, total) {
+    const pct    = Math.min(100, Math.round(used / total * 100));
+    const filled = Math.round(pct / 10);
+    return { str: '█'.repeat(filled) + '░'.repeat(10 - filled), pct };
   }
 
-  // ─── CLEANERS ───────────────────────────────────────────────────────────────
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 1 — Revoke own blob URLs
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function revokeBlobs() {
+    if (blobReg.length <= CFG.maxBlobUrls) return 0;
+    return blobReg
+      .splice(0, blobReg.length - CFG.maxBlobUrls)
+      .reduce((n, u) => { try { URL.revokeObjectURL(u); return n + 1; } catch (_) { return n; } }, 0);
+  }
 
-  /**
-   * 1. Revoke orphaned blob: URLs
-   *    Only revokes blobs we ourselves created; never touches page-created blobs.
-   */
-  function revokeOwnBlobUrls() {
-    if (blobRegistry.length <= CONFIG.maxBlobUrls) return 0;
-    const toRevoke = blobRegistry.splice(0, blobRegistry.length - CONFIG.maxBlobUrls);
-    toRevoke.forEach(url => {
-      try { URL.revokeObjectURL(url); } catch (_) {}
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 2 — Lazy-clear off-screen media src
+  //              Restored automatically via IntersectionObserver
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const restoreIO = new IntersectionObserver(entries => {
+    entries.forEach(({ isIntersecting, target: el }) => {
+      if (!isIntersecting) return;
+      if (el.dataset.ramSrc) {
+        el.src = el.dataset.ramSrc;
+        delete el.dataset.ramSrc;
+        delete el.dataset.ramLazy;
+        offTimers.delete(el);
+      }
+      if (frozenAnims.has(el)) {
+        el.style.animationPlayState = el.dataset.ramAnim || '';
+        delete el.dataset.ramAnim;
+        frozenAnims.delete(el);
+      }
+      restoreIO.unobserve(el);
     });
-    return toRevoke.length;
-  }
+  }, { rootMargin: '350px' });
 
-  /**
-   * 2. Prune detached / invisible event listeners via a safe abort signal approach.
-   *    We can't actually remove other scripts' listeners, but we CAN remove
-   *    listeners on elements that are no longer in the DOM (disconnected clones, etc.)
-   *    This is handled by pruneDetachedNodes() below instead.
-   */
-
-  /**
-   * 3. Lazy-clear src of off-screen heavy media (images, videos, iframes)
-   *    that have been off-screen for > offscreenMediaTimeout.
-   *    We store the original src in a data attribute so the browser can restore it
-   *    when the element comes back into view (via IntersectionObserver).
-   */
-  function pruneOffscreenMedia() {
+  function clearOffscreenMedia() {
     if (skipMedia) return 0;
-    let freed = 0;
     const now = Date.now();
-
-    const candidates = document.querySelectorAll('img[src], video[src], video > source[src]');
-    candidates.forEach(el => {
-      if (!el.src && !el.dataset.lazyCleared) return;
-      if (el.dataset.lazyCleared) return; // already cleared
-
-      // Skip if it has special attributes indicating it's important
-      if (el.closest('[data-no-lazy], [data-keep-src]')) return;
-      // Skip tiny tracking pixels
-      if (el.naturalWidth <= 1 && el.naturalHeight <= 1) return;
-      // Skip if currently playing
+    let n = 0;
+    document.querySelectorAll('img[src],video[src],video>source[src]').forEach(el => {
+      if (el.dataset.ramLazy) return;
+      if (el.closest('[data-no-lazy],[data-keep-src]')) return;
+      if ((el.naturalWidth ?? 2) <= 1) return;
       if (el.tagName === 'VIDEO' && !el.paused) return;
+      if (!isOffscreen(el)) { offTimers.delete(el); return; }
 
-      if (isOffscreen(el)) {
-        if (!offscreenTimers.has(el)) {
-          offscreenTimers.set(el, now);
-        } else if (now - offscreenTimers.get(el) > CONFIG.offscreenMediaTimeout) {
-          const src = el.src || el.getAttribute('src');
-          if (src && !src.startsWith('data:')) {
-            freed += roughSizeOf(src);
-            el.dataset.lazyClearedSrc = src;
-            el.dataset.lazyCleared = '1';
-            el.removeAttribute('src');
-          }
-        }
-      } else {
-        offscreenTimers.delete(el);
-      }
+      const t = offTimers.get(el);
+      if (!t) { offTimers.set(el, now); return; }
+      if (now - t < CFG.offscreenTimeoutMs) return;
+
+      const src = el.src || el.getAttribute('src') || '';
+      if (!src || src.startsWith('data:')) return;
+
+      el.dataset.ramSrc  = src;
+      el.dataset.ramLazy = '1';
+      el.removeAttribute('src');
+      restoreIO.observe(el);
+      n++;
     });
-
-    return freed;
+    return n;
   }
 
-  /**
-   * 4. Restore lazy-cleared media as it approaches the viewport.
-   *    This runs via IntersectionObserver so it's free.
-   */
-  const restoreObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        if (el.dataset.lazyCleared && el.dataset.lazyClearedSrc) {
-          el.src = el.dataset.lazyClearedSrc;
-          delete el.dataset.lazyClearedSrc;
-          delete el.dataset.lazyCleared;
-          offscreenTimers.delete(el);
-        }
-      }
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 3 — Pause CSS animations on off-screen elements
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function freezeOffscreenAnimations() {
+    if (!CFG.freezeAnims) return 0;
+    let n = 0;
+    const sel = '[style*="animation"],[class*="anim"],[class*="spin"],[class*="pulse"],[class*="rotate"],[class*="blink"],[class*="fade"],[class*="loop"]';
+    document.querySelectorAll(sel).forEach(el => {
+      if (frozenAnims.has(el) || !isOffscreen(el)) return;
+      el.dataset.ramAnim            = el.style.animationPlayState || 'running';
+      el.style.animationPlayState   = 'paused';
+      frozenAnims.add(el);
+      restoreIO.observe(el);
+      n++;
     });
-  }, { rootMargin: '400px' });
+    return n;
+  }
 
-  // Observe newly added media with cleared srcs
-  const mutationObserver = new MutationObserver(muts => {
-    muts.forEach(m => {
-      m.addedNodes.forEach(node => {
-        if (node.nodeType !== 1) return;
-        if (node.dataset?.lazyCleared) restoreObserver.observe(node);
-        node.querySelectorAll?.('[data-lazy-cleared]').forEach(el => restoreObserver.observe(el));
-      });
-    });
-  });
-  mutationObserver.observe(document.documentElement, { childList: true, subtree: true });
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 4 — Nuke stale localStorage / sessionStorage
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const STALE_KEYS = [
+    /^tmp[-_]/i,   /[-_]tmp$/i,
+    /^temp[-_]/i,  /[-_]temp$/i,
+    /^cache[-_]/i, /[-_]cache$/i,
+    /^prefetch/i,  /^nonce[-_]/i,
+    /^debug[-_]/i, /^log[-_]/i,
+    /^perf[-_]/i,  /^beacon/i,
+    /^_ga/i,       /^_pk_/i,
+    /^utmz/i,      /^__utm/i,
+    /^amp-/i,
+  ];
 
-  /**
-   * 5. Drop stale sessionStorage / localStorage keys that are clearly temp
-   *    Only removes keys matching common temp patterns — never site data.
-   */
-  function cleanStaleStorage() {
-    const tempPatterns = [
-      /^tmp[-_]/i, /[-_]tmp$/i,
-      /^temp[-_]/i, /[-_]temp$/i,
-      /^cache[-_]/i,
-      /^prefetch[-_]/i,
-      /^nonce[-_]/i,
-      /^debug[-_]/i,
-    ];
-    let count = 0;
+  function cleanStorage() {
+    let n = 0;
+    const now = Date.now();
     [sessionStorage, localStorage].forEach(store => {
       try {
-        Object.keys(store).forEach(key => {
-          if (tempPatterns.some(p => p.test(key))) {
-            store.removeItem(key);
-            count++;
-          }
+        [...Object.keys(store)].forEach(key => {
+          if (STALE_KEYS.some(p => p.test(key))) { store.removeItem(key); n++; return; }
+          try {
+            const raw = store.getItem(key);
+            if (!raw || raw[0] !== '{') return;
+            const obj = JSON.parse(raw);
+            const exp = obj.expires ?? obj.expiry ?? obj.exp ?? obj.ttl;
+            if (typeof exp === 'number' && exp < now) { store.removeItem(key); n++; }
+          } catch (_) {}
         });
       } catch (_) {}
     });
-    return count;
+    return n;
   }
 
-  /**
-   * 6. Hint the GC if available (Chrome-only, no-op elsewhere)
-   */
-  function hintGC() {
-    try {
-      if (window.gc) window.gc();
-    } catch (_) {}
-  }
-
-  /**
-   * 7. Drop large off-screen hidden iframes that are not same-origin critical
-   *    (e.g. ad iframes, tracker iframes). We only unload ones that are:
-   *    - hidden (display:none or visibility:hidden or zero size)
-   *    - cross-origin
-   *    - NOT critical (no id/name that looks functional)
-   */
-  function unloadDeadIframes() {
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 5 — Blank hidden cross-origin iframes
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function blankDeadIframes() {
     if (skipMedia) return 0;
-    let count = 0;
-    document.querySelectorAll('iframe').forEach(f => {
+    let n = 0;
+    document.querySelectorAll('iframe:not([data-ram-blank])').forEach(f => {
       try {
-        const style = getComputedStyle(f);
-        const hidden = style.display === 'none'
-          || style.visibility === 'hidden'
+        const cs = getComputedStyle(f);
+        const hidden = cs.display === 'none'
+          || cs.visibility === 'hidden'
           || (f.offsetWidth === 0 && f.offsetHeight === 0);
         if (!hidden) return;
         const src = f.src || '';
         if (!src || src === 'about:blank') return;
-        // Skip same-origin iframes (might be app shells)
         if (src.startsWith(location.origin)) return;
-        // Skip iframes with meaningful id/name
-        const label = (f.id + f.name).toLowerCase();
-        if (/player|video|chat|login|auth|modal|embed/.test(label)) return;
-        if (f.dataset.ramCleaned) return;
-        f.dataset.ramCleaned = '1';
-        const original = f.src;
-        f.dataset.originalSrc = original;
+        const lbl = (f.id + f.name).toLowerCase();
+        if (/player|video|chat|login|auth|modal|embed|oauth/.test(lbl)) return;
+        f.dataset.ramBlank   = '1';
+        f.dataset.ramOrigSrc = src;
         f.src = 'about:blank';
-        count++;
+        n++;
       } catch (_) {}
     });
-    return count;
+    return n;
   }
 
-  /**
-   * 8. Clear console (optional, frees console log memory)
-   */
-  function maybeClearConsole() {
-    if (CONFIG.clearConsole) {
-      try { console.clear(); } catch (_) {}
-    }
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 6 — Remove empty ghost / sentinel nodes
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function pruneGhostNodes() {
+    if (!CFG.pruneGhostNodes) return 0;
+    let n = 0;
+    const now = Date.now();
+    document.querySelectorAll('span:empty,div:empty,p:empty').forEach(el => {
+      if (el.id || el.className || el.childNodes.length || !isOffscreen(el)) return;
+      const seen = ghostSeen.get(el);
+      if (!seen) { ghostSeen.set(el, now); return; }
+      if (now - seen > 90_000) { try { el.remove(); n++; } catch (_) {} }
+    });
+    return n;
   }
 
-  /**
-   * 9. Request an idle-time paint hint so the browser knows it can GC
-   */
-  function scheduleIdleHint() {
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 7 — ★ Cache API Purge
+  //  Deletes stale Cache API caches (service worker / PWA leftovers).
+  //  Keeps caches matching keepCachePatterns.
+  //  For kept caches, sweeps entries older than 24h by response Date header.
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  async function purgeCacheAPI() {
+    if (!CFG.enableCachePurge || !('caches' in window)) return 0;
+    let n = 0;
+    try {
+      const names = await caches.keys();
+      await Promise.all(names.map(async name => {
+        if (!CFG.keepCachePatterns.some(p => p.test(name))) {
+          await caches.delete(name); n++; return;
+        }
+        try {
+          const cache  = await caches.open(name);
+          const keys   = await cache.keys();
+          const cutoff = Date.now() - 86_400_000; // 24h
+          await Promise.all(keys.map(async req => {
+            try {
+              const res  = await cache.match(req);
+              if (!res) return;
+              const date = res.headers.get('date');
+              if (date && new Date(date).getTime() < cutoff) { await cache.delete(req); n++; }
+            } catch (_) {}
+          }));
+        } catch (_) {}
+      }));
+    } catch (_) {}
+    return n;
+  }
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 8 — ★ RAM Pressure Nuke
+  //  Fires every available browser knob to release memory pressure.
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function nukeRAM() {
+    // Explicit GC (Chrome --expose-gc / DevTools open)
+    try { if (window.gc) window.gc(); } catch (_) {}
+
+    // Idle-time GC + harmless layout flush to release pending style cache
     if (typeof requestIdleCallback !== 'undefined') {
       requestIdleCallback(() => {
-        hintGC();
-      }, { timeout: 5000 });
+        try { if (window.gc) window.gc(); } catch (_) {}
+        void document.documentElement.offsetHeight;
+      }, { timeout: 1500 });
     }
+
+    // Flush PerformanceEntry buffers (megabytes on heavy SPAs)
+    try {
+      performance.clearResourceTimings?.();
+      performance.clearMarks?.();
+      performance.clearMeasures?.();
+    } catch (_) {}
+
+    // Console buffer
+    if (CFG.clearConsole) { try { console.clear(); } catch (_) {} }
   }
 
-  // ─── MAIN PASS ──────────────────────────────────────────────────────────────
-  function runCleanPass() {
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  CLEANER 9 — ★ Idle Tab Auto-Reload
+  //  Reloads ONLY background tabs, ONLY when idle > idleReloadAfterMs
+  //  AND heap > idleReloadMinRamMB. Moving the mouse cancels it.
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function bumpActivity() { lastActivity = Date.now(); }
+
+  ['mousemove','keydown','mousedown','touchstart','scroll','click','wheel']
+    .forEach(e => window.addEventListener(e, bumpActivity, { passive: true }));
+
+  function checkIdleReload() {
+    if (!CFG.enableIdleReload || reloadCountdown) return;
+    if (document.visibilityState !== 'hidden') return; // background only
+
+    const idle = Date.now() - lastActivity;
+    if (idle < CFG.idleReloadAfterMs) return;
+
+    const mb = heapMB();
+    if (mb === null || mb < CFG.idleReloadMinRamMB) return;
+
+    const mins = Math.round(idle / 60_000);
+    setStatus(`♻ Idle ${mins}min · ${mb}MB → reloading in ${CFG.reloadGraceMs / 1000}s…`, 8000);
+
+    reloadCountdown = setTimeout(() => {
+      if (Date.now() - lastActivity < CFG.idleReloadAfterMs / 2) {
+        reloadCountdown = null;
+        setStatus('↩ Reload cancelled — user returned');
+        return;
+      }
+      location.reload();
+    }, CFG.reloadGraceMs);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && reloadCountdown) {
+      clearTimeout(reloadCountdown);
+      reloadCountdown = null;
+      setStatus('↩ Reload cancelled — tab focused');
+    }
+    if (document.visibilityState === 'visible') runPass();
+  });
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  MAIN PASSES
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function runPass() {
     passCount++;
-    let summary = [];
-
-    const blobs = revokeOwnBlobUrls();
-    if (blobs > 0) summary.push(`${blobs} blob URL(s) revoked`);
-
-    const mediaKb = pruneOffscreenMedia();
-    if (mediaKb > 0) {
-      totalFreedEstimate += mediaKb;
-      summary.push(`~${mediaKb} KB media lazied`);
-    }
-
-    const stale = cleanStaleStorage();
-    if (stale > 0) summary.push(`${stale} stale storage key(s)`);
-
-    const iframes = unloadDeadIframes();
-    if (iframes > 0) summary.push(`${iframes} dead iframe(s) blanked`);
-
-    maybeClearConsole();
-    scheduleIdleHint();
-
-    if (CONFIG.showHUD) updateHUD(summary);
-
-    // Silent log (won't spam, just one line)
-    if (summary.length > 0) {
-      console.debug(`[AutoRAM] Pass #${passCount}: ${summary.join(' | ')}`);
-    }
+    const log = [];
+    const b = revokeBlobs();                if (b) log.push(`${b} blob(s)`);
+    const m = clearOffscreenMedia();        if (m) log.push(`${m} media`);
+    const a = freezeOffscreenAnimations();  if (a) log.push(`${a} anim(s)`);
+    const s = cleanStorage();               if (s) log.push(`${s} stale keys`);
+    const f = blankDeadIframes();           if (f) log.push(`${f} iframe(s)`);
+    const g = pruneGhostNodes();            if (g) log.push(`${g} ghost(s)`);
+    nukeRAM();
+    const mb = heapMB();
+    if (mb && mb > CFG.ramCritMB) log.push(`⚠ ${mb}MB!`);
+    updateHUD(log);
   }
 
-  // ─── HUD ────────────────────────────────────────────────────────────────────
-  let hud, hudText;
+  async function runCachePurge() {
+    const n = await purgeCacheAPI();
+    if (n > 0) setStatus(`🗑 ${n} cache entr(ies) purged`);
+  }
 
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  HUD
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   function buildHUD() {
     hud = document.createElement('div');
-    hud.id = '__autoram_hud__';
     Object.assign(hud.style, {
-      position: 'fixed',
-      bottom: '10px',
-      right: '10px',
+      position: 'fixed', bottom: '12px', right: '12px',
       zIndex: '2147483647',
-      background: 'rgba(10,10,10,0.82)',
-      color: '#7fff7f',
-      fontFamily: 'monospace',
-      fontSize: '11px',
-      padding: '5px 9px',
-      borderRadius: '6px',
-      pointerEvents: 'none',
-      userSelect: 'none',
-      backdropFilter: 'blur(4px)',
-      transition: 'opacity 0.4s',
-      opacity: '0',
-      lineHeight: '1.5',
-      maxWidth: '260px',
+      background: 'rgba(6,8,14,0.93)',
+      fontFamily: '"Cascadia Code",Consolas,"Courier New",monospace',
+      fontSize: '11px', lineHeight: '1.65',
+      padding: '8px 12px', borderRadius: '9px',
+      pointerEvents: 'none', userSelect: 'none',
+      backdropFilter: 'blur(8px)',
+      border: '1px solid rgba(80,255,140,0.16)',
+      boxShadow: '0 4px 28px rgba(0,0,0,0.65)',
+      transition: 'opacity 0.5s', opacity: '0',
+      minWidth: '210px', maxWidth: '300px',
     });
 
-    const label = document.createElement('div');
-    label.textContent = '⚡ AutoRAM';
-    label.style.cssText = 'color:#aaffcc;font-weight:bold;margin-bottom:2px';
+    const title = Object.assign(document.createElement('div'), { textContent: '☢ AutoRAM Nuclear' });
+    Object.assign(title.style, {
+      color: '#55ffaa', fontWeight: 'bold', fontSize: '11.5px',
+      borderBottom: '1px solid rgba(80,255,140,0.18)',
+      paddingBottom: '3px', marginBottom: '4px',
+    });
 
-    hudText = document.createElement('div');
-    hudText.style.color = '#88ff88';
+    hudRamRow = document.createElement('div');
+    hudStatus  = document.createElement('div');
+    hudBody    = document.createElement('div');
+    hudStatus.style.cssText = 'color:#77ccaa;font-size:10.5px';
+    hudBody.style.cssText   = 'color:#446655;font-size:10px;margin-top:2px;word-break:break-word';
 
-    hud.appendChild(label);
-    hud.appendChild(hudText);
+    hud.append(title, hudRamRow, hudStatus, hudBody);
     document.documentElement.appendChild(hud);
   }
 
   let hudTimer;
-  function updateHUD(summary) {
+  function flashHUD(ms = 4000) {
     if (!hud) return;
-    hudText.textContent = summary.length > 0
-      ? summary.join('\n')
-      : 'idle ✓';
     hud.style.opacity = '1';
     clearTimeout(hudTimer);
-    hudTimer = setTimeout(() => { hud.style.opacity = '0'; }, 3500);
+    hudTimer = setTimeout(() => { if (hud) hud.style.opacity = '0'; }, ms);
   }
 
-  // ─── BOOT ───────────────────────────────────────────────────────────────────
-  function init() {
-    if (CONFIG.showHUD) {
-      buildHUD();
-      // Small boot message
-      updateHUD(['Loaded — watching memory']);
+  function setStatus(msg, ms = 5000) {
+    if (!CFG.showHUD || !hudStatus) return;
+    hudStatus.textContent = msg;
+    flashHUD(ms);
+  }
+
+  function updateHUD(lines) {
+    if (!CFG.showHUD || !hud) return;
+    const used  = heapMB();
+    const total = heapTotalMB();
+    if (used !== null && total) {
+      const { str, pct } = bar10(used, total);
+      const col = ramColor(used);
+      hudRamRow.innerHTML = '';
+      const b1 = Object.assign(document.createElement('span'), { textContent: str });
+      const b2 = Object.assign(document.createElement('span'), { textContent: ` ${used}/${total}MB (${pct}%)` });
+      b1.style.color = b2.style.color = col;
+      hudRamRow.append(b1, b2);
+    } else {
+      hudRamRow.textContent = '(heap API unavailable)';
+      hudRamRow.style.color = '#445';
     }
-
-    // First pass after 5s (let page settle)
-    setTimeout(runCleanPass, 5000);
-
-    // Recurring interval
-    setInterval(runCleanPass, CONFIG.intervalMs);
-
-    // Also run when tab becomes visible again (returning from background)
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') {
-        runCleanPass();
-      }
-    });
-
-    console.debug('[AutoRAM] Initialized. Interval:', CONFIG.intervalMs / 1000, 's');
+    const idleSec = Math.round((Date.now() - lastActivity) / 1000);
+    const idleStr = idleSec >= 60
+      ? `${Math.floor(idleSec/60)}m${String(idleSec%60).padStart(2,'0')}s`
+      : `${idleSec}s`;
+    hudStatus.textContent = `Pass #${passCount} · idle ${idleStr}`;
+    hudBody.textContent   = lines.length ? lines.join(' · ') : '✓ clean';
+    flashHUD(lines.length ? 5000 : 2000);
   }
 
-  if (document.readyState === 'complete') {
-    init();
-  } else {
-    window.addEventListener('load', init, { once: true });
+  // Watch for newly-added lazy-cleared nodes needing restore observation
+  new MutationObserver(muts => {
+    muts.forEach(m => m.addedNodes.forEach(n => {
+      if (n.nodeType !== 1) return;
+      if (n.dataset?.ramLazy) restoreIO.observe(n);
+      n.querySelectorAll?.('[data-ram-lazy]').forEach(el => restoreIO.observe(el));
+    }));
+  }).observe(document.documentElement, { childList: true, subtree: true });
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  BOOT
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  function init() {
+    if (CFG.showHUD) { buildHUD(); setStatus('☢ Nuclear mode active', 3000); }
+
+    setTimeout(runPass,       2_000);   // first clean pass
+    setTimeout(runCachePurge, 4_000);   // first cache purge
+
+    setInterval(runPass,         CFG.cleanIntervalMs);
+    setInterval(runCachePurge,   CFG.cachePurgeIntervalMs);
+    setInterval(checkIdleReload, CFG.idleCheckIntervalMs);
+
+    // After scroll settles
+    let sd;
+    window.addEventListener('scroll', () => {
+      clearTimeout(sd); sd = setTimeout(runPass, 1_200);
+    }, { passive: true });
+
+    // Browser memory pressure event (Chrome 89+)
+    if ('onmemorywarning' in window) {
+      window.addEventListener('memorywarning', () => {
+        setStatus('⚠ Memory pressure! Sweeping…', 6000);
+        runPass(); runCachePurge();
+      });
+    }
   }
+
+  if (document.readyState === 'complete') init();
+  else window.addEventListener('load', init, { once: true });
 
 })();
