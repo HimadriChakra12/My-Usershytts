@@ -9,3 +9,15 @@
 *, body, html, section, span, button, div {
     border-radius: 0px !important
 }
+
+@-moz-document url-prefix(https://www.instagram.com){
+    div:has(canvas) span:has(img){
+        border-radius: 100% !important;
+    }
+    div:has(canvas) img[alt*="highlight"]{
+        border-radius: 100% !important;
+    }
+    a:has(img[alt*="profile"]){
+        border-radius: 100% !important;
+    }
+}
