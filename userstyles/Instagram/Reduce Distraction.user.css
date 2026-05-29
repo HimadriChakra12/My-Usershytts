@@ -19,6 +19,7 @@
 @var checkbox notes                 "└⟶ Remove Notes" 1
 @var checkbox chataccountNameplate  "└⟶ Remove Chat Account Nameplate" 1
 @var checkbox hidechatreels         "└⟶ Hide recieved reels" 0
+@var checkbox noshorts              "└⟶ Hide recieved shorts" 0
 
 @var checkbox sidebar               "⦿ Sidebar" 1
 @var checkbox search                "└⟶ Hide Search" 0
@@ -187,10 +188,12 @@
     if hidechatreels{
         div[role="none"]:has(svg[aria-label="Clip"]):not(div[role="group"]:has([aria-label^="Open the profile page"]))
         {
-            height: 30px;
-            opacity: 0;
-            cursor: none;
-            pointer-events: none
+            display: none;
+        }
+    }
+    if noshorts{
+        div[role="none"]:has(a[href*="https://youtube.com/shorts/"]){
+            display: none;
         }
     }
 }
