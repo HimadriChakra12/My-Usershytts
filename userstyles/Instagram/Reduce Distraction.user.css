@@ -112,7 +112,7 @@
         }
 
         if explore {
-            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Explore"]),
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Explore"]):not(:has(line)),
             .xgzdhx4.x1oqrbt2.x1ugxg0y.x57odl9.x1e49onv.xlph30v.xmjrnx3.xhae0no.x19b80pe.xh8yej3.x1ykew4q.xvc5jky.x4n8cb0.x11t971q.xdj266r.x1iyjqo2.xdt5ytf.x78zum5,
             .xvbhtw8.xf7dkkf.xv54qhq.x11njtxf.x1n2onr6.x18d9i69.xexx8yu.x1h3rv7z.x1lziwak.xat24cr.x14z9mp.xdj266r.xk390pu.x2lah0s.xdt5ytf.x78zum5.x9f619.x1qjc9v5 {
                 display: none !important;
@@ -206,5 +206,6 @@
     }
     div[class="x1qjc9v5 x78zum5 x1q0g3np xl56j7k xh8yej3"] > div{
         max-width: 50% !important;
+        width: 438px !important;
     }
 }
