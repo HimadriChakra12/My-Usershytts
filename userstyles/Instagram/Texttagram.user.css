@@ -4,37 +4,79 @@
 @version        1.0.0
 @description    A new userstyle
 @author         Me
+@preproccessor  stylus
+@var checkbox insideborders "Borders" 1
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.instagram.com/") {
-    
+
     :root{
-            --border: 1px solid;
-            --inactiveborder: 1px solid #9a9a9aa6;
+        --border: 1px solid;
+        --inactiveborder: 1px solid #9a9a9aa6;
     }
-    /* chat pane border radius */ 
+
+    div[data-pagelet="IGDComposerForCannes"], 
+    div[class*="xw8ag78"],  div[class*="xw8ag78"] > div[class*="html-div"],
+    div[data-pagelet="IGDInboxHeaderOffMsys"],
+    div[data-pagelet="IGDComposerForCannes"] > div > div > div > div[class*="html-div"],
+    div[data-pagelet="IGDComposerForCannes"] > div > div > div > div > div > div > div > div[class*="html-div"],
+    div[class*="html-div"]:has([aria-label="Pinned message icon"]),
+    div[class="x78zum5 x1cqoux5 xdt5ytf"]{
+        background: #0000 !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+    }
+        .x1yvgwvq, .xso031l{
+            border: 0
+        }
+    /* border */ /*
+        div[data-pagelet="IGDComposerForCannes"], div[data-pagelet="IGDInboxHeaderOffMsys"]{
+            border: 1px solid;
+        }
+        .x88qbow, .x5slmwz{ 
+            border: .2px solid !important;
+        }
+    */ 
+    .x88qbow{ 
+        background: var(--friendtxtbg) !important;
+        --primary-text: var(--text);
+    }
+    div[class="x1f6kntn x1btupbp x1mzt3pk x5n08af"]{
+        color: var(--text) !important
+    }
+
+    .x5slmwz{ background: #0000 !important;}
+    div[class="html-div xexx8yu xyri2b x18d9i69 x1c1uobl x1gslohp x14z9mp x12nagc x1lziwak x1yc453h x126k92a xyk4ms5"], div[class="x1f6kntn x1btupbp x1mzt3pk x14ctfv"]{
+        color: var(--autext) !important
+    }
+
+    /* chat pane border */ 
     div[class="x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x193iq5w xeuugli x1r8uery x1iyjqo2 xs83m0k"]{
         transition: .5s ease-in-out;
         border: var(--inactiveborder) !important;
         margin: 5px !important;
+        border-radius: 2px
     }
     div[class="x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x193iq5w xeuugli x1r8uery x1iyjqo2 xs83m0k"]:hover{
         transition: .5s ease-in-out;
         border: var(--border) !important;
     }
-    
+
     /* chat list */
     div[aria-label="Thread list"]{
         transition: .5s ease-in-out;
         border: var(--inactiveborder) !important;
         margin: 5px !important;
         max-width: 403px !important;
+        border-radius: 2px
     }
     div[aria-label="Thread list"]:hover{
         transition: .5s ease-in-out;
         border: var(--border) !important;
     }
-    
+
     div[class="x1cy8zhl x9f619 x78zum5 xdt5ytf x1gvbg2u x1qughib"]{
         margin-top: 5px;
         margin-left: 5px;
@@ -42,7 +84,7 @@
         padding-bottom: 0px;
         width: 100px;
     }
-    
+
     /* inside of the notes */
     div[class="xgf5ljw x1wp8tw6 x78zum5 xdt5ytf x5yr21d x6ikm8r x10wlt62 x1n2onr6 xh8yej3 x12ol6y4 x180vkcf x1khw62d x709u02"]
     {
@@ -56,7 +98,7 @@
         border: 1px solid;
         border-radius: 0px;
     }
-    
+
     /* chatist height */
     div[class="x1n2onr6 xh8yej3"] > div[class="x13dflua x19991ni"] > div[class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x87ps6o x1lku1pv x1a2a7pz x4gyw5p xd3so5o x1l895ks x15mokao x1ga7v0g x16uus16 xbiv7yw x1lliihq xdj266r x14z9mp xat24cr x1lziwak xg6hnt2 x18wri0h"] > div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k xeuugli xwib8y2 x13jy36j x64bnmy x1y1aw1k"] > div[class="x9f619 x1ja2u2z x78zum5 x2lah0s x1n2onr6 x1qughib x6s0dn4 xozqiw3 x1q0g3np"]{
         height: 20px !important;
@@ -64,13 +106,13 @@
     div[class="x9f619 x1ja2u2z x78zum5 x2lah0s x1n2onr6 x1qughib x6s0dn4 xozqiw3 x1q0g3np"]{
         height: 20px !important;
     }
-    
+
     /* stabilizer */
     .xz9dl7a{padding: 8px }
-    
+
     /* searchbar space */
     .xod5an3{margin: 2px !important}
-    
+
     /* textbar - back */
     .xg8j3zb,
     .x1eb86dx,
@@ -81,7 +123,7 @@
         background-attachment: fixed !important;
         background-size: cover !important;
     }
-    
+
     div[class="x1i10hfl x1qjc9v5 xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x87ps6o x1lku1pv x1a2a7pz x4gyw5p xd3so5o x1l895ks x6nl9eh x1a5l9x9 x7vuprf x1mg3h75 x1lliihq xdj266r x14z9mp xat24cr x1lziwak x19g9edo xmoo3j9 x1e9wozp"]{
         background: #ebdbb2;
     }
@@ -96,15 +138,15 @@
     }
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k xeuugli x13jy36j x64bnmy x1y1aw1k xwib8y2"]:hover{
     }
-    
+
     /* primary | General | Requests ] */
     /* div[class="xvbhtw8 x1bs97v6 x1q0q8m5 xso031l x9f619 x78zum5"]{
-        border: 1px solid #fff
-    } */
-    
+    border: 1px solid #fff
+} */
+
     /* unread msg bubble */
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k xeuugli x13jy36j x64bnmy x1y1aw1k xwib8y2"]:hover span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]{  
-    /* or: .x5slmwz */
+        /* or: .x5slmwz */
         background: #ebdbb2;
     }
     div[class="x1i10hfl x1qjc9v5 xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x87ps6o x1lku1pv x1a2a7pz x4gyw5p xd3so5o x1l895ks x6nl9eh x1a5l9x9 x7vuprf x1mg3h75 x1lliihq xdj266r x14z9mp xat24cr x1lziwak x19g9edo xmoo3j9 x1e9wozp"] span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]{
@@ -113,7 +155,7 @@
     span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]{
         background: #ebdbb2;
     }
-    
+
     /* no dp */
     /*list*/ div[class="x9f619 x1n2onr6 x1ja2u2z xdt5ytf x2lah0s x193iq5w xeuugli x78zum5 xbmvrgn"], div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x16ye13r xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
         display: none
@@ -121,7 +163,7 @@
     /*chatpane*/ div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x16ye13r x5lhr3w xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
         display: none
     }
-    
+
     /* no msg count on the home popup */
     div[class="html-div xdj266r xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xbmvrgn x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
         display: none
@@ -142,23 +184,23 @@
     ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb { display: none !important; }
     ::-webkit-scrollbar-thumb:not(:active):hover, ::-webkit-scrollbar-thumb:not(:active):hover { display: none !important; }
     ::-webkit-scrollbar-thumb:active, ::-webkit-scrollbar-thumb:hover:active, ::-webkit-scrollbar-thumb:active, ::-webkit-scrollbar-thumb:hover:active { display: none !important; }
-    
+
     /* text chatbg */
     .x88qbow,
-        div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
-        .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
+    div[class="x1i10hfl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x3ct3a4 xdj266r x14z9mp x1lziwak x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x1ejq31n x18oe1m7 x1sy0etr xstzfhl x1ypdohk x78zum5 xl56j7k x1y1aw1k xf159sx xwib8y2 xmzvs34 x1epzrsm x4gyw5p x1jplu5e x1o7uuvo x14snt5h x7fd4wk x5slmwz x12ol6y4 x180vkcf x1khw62d x709u02 x90ne7k xu06os2 xvni27 x1spsku0"],
+    .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.x14ctfv.x13sv91t.x6ikm8r.x10wlt62.xerhiuh.x1pn3fxy.x10zy8in.xm9bcq3.x1n2onr6.x1vjfegm.x1k4qllp.x1mzt3pk.x5slmwz.xpmdkuv.xrmkrer.x12z03op.x9wyiwl.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x12lizq0.x1nrdd72.x1ybe9c6.xx487zo.xaymx6s{
         background: #0000 !important;
     }
     div[class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 xdj266r x14z9mp xat24cr x1lziwak x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1fmog5m xu25z0z x140muxe xo1y3bh x3nfvp2 x1q0g3np x87ps6o x1lku1pv x1a2a7pz x5yr21d"] > div[class="x6s0dn4 x78zum5 xdt5ytf x13a6bvl x1n2onr6 x13oubkp"] > div[class="x6s0dn4 x78zum5 xdt5ytf xh8yej3"]{
         opacity: 0;
         height: 3vh
-           
+
     }
     div[class="x1c4vz4f x2lah0s xhjk10j"]{
         height: 11vh;
         width: 95%;
     }
-    
+
     div[class="xsnw5ke x9f619 x78zum5 x13b9bq5 x193iq5w x1n2onr6 x2b8uid x13faqbe x3zg9eu xrw4ojt xg6frx5 xw872ko xhgbb2x x1s928wv x1j6awrg x12l2aii x1mbk4o x14vvt0a x1w3ol1v xxt2rmt xc7aqrk xgujvf1 x1y1aw1k xf159sx xwib8y2 xmzvs34 xdb1ctf x1cf5b39 x1bymyaz x18ebn6z xg4xgkf"]{
         border-radius: 0px;
         border: 0.5px solid #fff;
@@ -183,137 +225,135 @@
     div[class="x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s x193iq5w xeuugli x1iyjqo2"] div:nth-child(3){
         display: none
     }
-    
+
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x16ye13r x5lhr3w x78zum5 x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x7r02ix x6nl9eh x1a5l9x9 x7vuprf x1mg3h75 x1y0lptx x1wp8tw6 x1ve1609 xtpu1e1 x6ikm8r x10wlt62 xixxii4 x1vjfegm"]{
         border: 1px solid;
     }
     div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x3h4tne x145d82y xixxii4"]{
         border: 1px solid;
     }
-    div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x6s0dn4 x1oa3qoh x1nhvcw1"] > div{
-        display: none
-    }
+
 }
 @-moz-document domain("instagram.com") {
-  /* font size */
-  :root,
-  article {
-    --system-14-font-size: 15px;
-    --system-14-line-height: 1.3;
-  }
-
-  button {
-    --system-14-font-size: 14px;
-  }
-
-  article {
-    ._aacl._aaco._aacu._aacx._aad7._aade,
-    ._acan,
-    .x1f6kntn {
-      font-size: var(--system-14-font-size);
-      line-height: var(--system-14-line-height);
-      overflow-wrap: anywhere;
-    }
-  }
-
-  /* sidebar */
-  .x6bx242 {
-    display: none;
-  }
-
-  /* navbar */
-  ._aa4c {
-    --nav-narrow-width: 0px;
-    --nav-medium-width: 0px;
-    --nav-wide-width: 0px;
-  }
-
-  .x1o5hw5a.x1o5hw5a,
-  .xw2csxc {
-    --nav-narrow-width: 72px;
-    --nav-medium-width: 72px;
-  }
-
-  .xaeubzz.xaeubzz {
-    --nav-wide-width: 72px;
-  }
-
-  .x1o5hw5a.x1o5hw5a:hover {
-    --nav-medium-width: 244px;
-  }
-
-  .xaeubzz.xaeubzz:hover {
-    --nav-wide-width: 335px;
-  }
-
-  svg[aria-label="Instagram"] {
-    width: min(103px, 100%);
-  }
-
-  /* read more button & view all comments button */
-  article > div > div:nth-child(3) {
-    span.x1roi4f4:not([role="img"]) {
-      border: 1px solid #999;
-      border-radius: 2px;
-      text-align: center;
-      padding: 8px;
+    /* font size */
+    :root,
+    article {
+        --system-14-font-size: 15px;
+        --system-14-line-height: 1.3;
     }
 
-    .xryxfnj [role="button"] {
-      display: block !important;
-      margin-top: 12px;
+    button {
+        --system-14-font-size: 14px;
     }
 
-    .x9f619.x1xmf6yo,
-    [role="link"],
-    [role="link"] > span {
-      width: 100%;
-    }
-  }
-
-  /* main article */
-  @media screen and (min-width: 800px) {
-    .x17snn68.x17snn68 {
-      width: 100%;
-      /* Settings page */
-      .html-div > .xw2csxc:nth-child(1) {
-        padding-left: var(--nav-medium-width);
-      }
-    }
- 
-    main > .xl56j7k > div[style] {
-      min-width: 630px !important;
-      width: 67% !important;
-      max-width: 80% !important;
-    }
-
-    .xmnaoh6 + div > div {
-      width: 100% !important;
-    }
-
-    /* variant & home */
-    main > div > div > .xw7yly9 > div,
-    article > .xdt5ytf:not(.xtcbf50) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      > div {
-        box-sizing: border-box;
-      }
-
-      > div:nth-child(1) {
-        flex: 100%;
-      }
-
-      > div:nth-child(2) {
-        flex: 55%;
-      }
-
-      > div:nth-child(3) {
-        flex: 45%;
-        > div {
-          padding: 0 10px;
+    article {
+        ._aacl._aaco._aacu._aacx._aad7._aade,
+        ._acan,
+        .x1f6kntn {
+            font-size: var(--system-14-font-size);
+            line-height: var(--system-14-line-height);
+            overflow-wrap: anywhere;
         }
-      }
     }
-  }
+
+    /* sidebar */
+    .x6bx242 {
+        display: none;
+    }
+
+    /* navbar */
+    ._aa4c {
+        --nav-narrow-width: 0px;
+        --nav-medium-width: 0px;
+        --nav-wide-width: 0px;
+    }
+
+    .x1o5hw5a.x1o5hw5a,
+    .xw2csxc {
+        --nav-narrow-width: 72px;
+        --nav-medium-width: 72px;
+    }
+
+    .xaeubzz.xaeubzz {
+        --nav-wide-width: 72px;
+    }
+
+    .x1o5hw5a.x1o5hw5a:hover {
+        --nav-medium-width: 244px;
+    }
+
+    .xaeubzz.xaeubzz:hover {
+        --nav-wide-width: 335px;
+    }
+
+    svg[aria-label="Instagram"] {
+        width: min(103px, 100%);
+    }
+
+    /* read more button & view all comments button */
+    article > div > div:nth-child(3) {
+        span.x1roi4f4:not([role="img"]) {
+            border: 1px solid #999;
+            border-radius: 2px;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .xryxfnj [role="button"] {
+            display: block !important;
+            margin-top: 12px;
+        }
+
+        .x9f619.x1xmf6yo,
+        [role="link"],
+        [role="link"] > span {
+            width: 100%;
+        }
+    }
+
+    /* main article */
+    @media screen and (min-width: 800px) {
+        .x17snn68.x17snn68 {
+            width: 100%;
+            /* Settings page */
+            .html-div > .xw2csxc:nth-child(1) {
+                padding-left: var(--nav-medium-width);
+            }
+        }
+
+        main > .xl56j7k > div[style] {
+            min-width: 630px !important;
+            width: 67% !important;
+            max-width: 80% !important;
+        }
+
+        .xmnaoh6 + div > div {
+            width: 100% !important;
+        }
+
+        /* variant & home */
+        main > div > div > .xw7yly9 > div,
+        article > .xdt5ytf:not(.xtcbf50) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            > div {
+                box-sizing: border-box;
+            }
+
+            > div:nth-child(1) {
+                flex: 100%;
+            }
+
+            > div:nth-child(2) {
+                flex: 55%;
+            }
+
+            > div:nth-child(3) {
+                flex: 45%;
+                > div {
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
 }
