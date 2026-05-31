@@ -2,7 +2,7 @@
 @name           Reduce Distractions [YouTube]
 @description    Strips away distracting elements on YouTube — sidebar, Shorts, recommendations, and more
 @namespace      https://userstyles.world/
-@version        1.1.1
+@version        1.2.0
 @author         KryoBit (fixed & extended)
 @license        MIT
 
@@ -28,10 +28,11 @@
 @var checkbox hideMerch             "⦿ Hide Merch / Paid Promos"            1
 @var checkbox hideChatReplay        "⦿ Hide Live Chat / Chat Replay"        0
 @var checkbox hideComments          "⦿ Hide Comments Section"               0
+@var checkbox hidePosts          "⦿ Hide Posts"     0
 
 ==/UserStyle== */
 
-@-moz-document domain("www.youtube.com") {
+@-moz-document domain("www.youtube.com"), domain("m.youtube.com") {
     
     if comments{
         ytd-comments{
@@ -68,6 +69,9 @@
         if hideShortsTab {
             ytd-guide-entry-renderer a[title="Shorts"],
             ytd-mini-guide-entry-renderer a[title="Shorts"] {
+                display: none !important;
+            }
+            ytm-pivot-bar-item-renderer:has(div[class*="pivot-shorts"]){
                 display: none !important;
             }
         }
@@ -213,5 +217,11 @@
         max-height: 95vh;
     }
 
+    if hidePosts{
+        ytm-rich-section-renderer:has(ytm-backstage-post-thread-renderer){
+            display: none;
+        }
+    }
+    
 }
 
