@@ -9,6 +9,7 @@
 @preprocessor stylus
 
 @var checkbox pinbanner "Hide Pin banner" 1
+@var checkbox chatpaneonly "Chat pane only" 0
 @var checkbox bishakha "Bishakha" 1
 @var checkbox riya "Riya" 1
 @var checkbox rupa "Rupa" 1
@@ -111,6 +112,13 @@
 }
 @-moz-document url-prefix("https://www.instagram.com/direct/t") {
 
+    if chatpaneonly{
+        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xixxii4 x13vifvy x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x1dr59a3 xeq5yr9 x1n327nk"],
+        div[aria-label="Thread list"]
+        {
+            display: none
+        }
+    }
     .universal{display: none}
 
     div[data-pagelet="IGDComposerForCannes"], 
