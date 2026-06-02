@@ -4,7 +4,7 @@
 @description    Strips away distracting elements on Instagram
 @namespace      https://userstyles.world/user/Him
 @namespace      https://github.com/HimadriChakra12/My-Usershytts/edit/main/userstyles/Instagram/
-@version        1.3.5
+@version        1.3.7
 @author         Himadri
 @license        MIT
 
@@ -16,11 +16,14 @@
 @var checkbox supportsection        "└⟶ Hide suggested posts from user" 1
 
 @var checkbox suggestFollow         "⦿ Remove Follow Suggestions" 1
+@var checkbox navbar                "Collapesed Sidebar" 1
 @var checkbox chat                  "Chat Debloat" 1
 @var checkbox notes                 "└⟶ Remove Notes" 1
 @var checkbox chataccountNameplate  "└⟶ Remove Chat Account Nameplate" 1
 @var checkbox hidechatreels         "└⟶ Hide recieved reels" 0
 @var checkbox noshorts              "└⟶ Hide recieved shorts" 0
+@var checkbox tabs                  "└⟶ Hide Tabs(Primary, General, Requests)" 1
+@var checkbox search                "└⟶ Hide Searchbar" 1
 
 @var checkbox sidebar               "⦿ Sidebar" 1
 @var checkbox search                "└⟶ Hide Search" 0
@@ -30,8 +33,8 @@
 @var checkbox notifs                "└⟶ Hide Notifications" 0
 @var checkbox create                "└⟶ Hide Create" 1
 @var checkbox dashboard             "└⟶ Hide Dashboard" 1
-@var checkbox fromMeta              "Hide Also from Meta" 1
-@var checkbox settings              "└⟶ Hide Settings" 1
+@var checkbox fromMeta              "Hide Also from Meta" 0
+@var checkbox settings              "└⟶ Hide Settings" 0
 @var checkbox meta                  "└⟶ Hide Meta" 1
 
 ==/UserStyle== */
@@ -43,6 +46,11 @@
         }
     }
     
+    if navbar{
+        div[class="x1cy8zhl x9f619 x78zum5 xdt5ytf x1gvbg2u x1qughib"]{
+            width: 70px !important
+        }
+    }
     if chat{
         if notes{
             div[data-pagelet="IGDInboxThreadListScrollableAreaPagelet"] > div[class="x1c4vz4f x2lah0s xhjk10j x6ikm8r x10wlt62 xf7dkkf xv54qhq"]{
@@ -52,6 +60,16 @@
         if chataccountNameplate{
             div[class="x6s0dn4 x1bs97v6 x1q0q8m5 x9f619 xat24cr xh8yej3 x1qhh985 x14z7g9a xzbw6zd x78zum5 x1q0g3np x1qughib xsag5q8 x13jy36j x64bnmy xijc0j3"]{
                 display: none
+            }
+        }
+        if tabs{
+            div[class="xvbhtw8 x6usi7g x18b5jzi x1lun4ml x78zum5 xdt5ytf x1t2pt76 x1n2onr6 x13vifvy x1p0ryx0 x1p5gv8h xoa9owu xcoz2nd xgfcpv x1es02x0 xuphzoz xt5vzds x17quhge x1wggrwl x1u1lrf5"] > div:nth-child(2){
+                display: none;
+            }
+        }
+        if search{
+            div[class="xvbhtw8 x6usi7g x18b5jzi x1lun4ml x78zum5 xdt5ytf x1t2pt76 x1n2onr6 x13vifvy x1p0ryx0 x1p5gv8h xoa9owu xcoz2nd xgfcpv x1es02x0 xuphzoz xt5vzds x17quhge x1wggrwl x1u1lrf5"] > div:nth-child(3){
+                display: none !important;
             }
         }
     }
