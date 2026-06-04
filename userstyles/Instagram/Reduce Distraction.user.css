@@ -24,6 +24,7 @@
 @var checkbox noshorts              "└⟶ Hide recieved shorts" 0
 @var checkbox tabs                  "└⟶ Hide Tabs(Primary, General, Requests)" 1
 @var checkbox searchbar             "└⟶ Hide Searchbar" 1
+@var checkbox pinbanner             "└⟶ Hide Pin Banner" 1
 @var checkbox noinstagramuser       "└⟶ Hide 'Instagram User' accounts" 1
 
 @var checkbox sidebar               "⦿ Sidebar" 1
@@ -94,20 +95,22 @@
             }
         }
         if supportsection{
-            
+            div[class="x6s0dn4 x78zum5"]{
+                display: none;
+            }
         }
         else {
-            if supportsection{
+            if like{
                 div[class="x6s0dn4 x78zum5"] span[class="x1qfufaz"]:has([aria-label="Like"]){
                     display: none;
                 }
             }
-            if supportsection{
+            if comment{
                 div[class="x6s0dn4 x78zum5"] span:has([aria-label="Like"]){
                     display: none;
                 }
             }
-            if supportsection{
+            if share{
                 div[class="x6s0dn4 x78zum5"] div:has([aria-label="Share"]){
                     display: none;
                 }
@@ -221,6 +224,11 @@
     }
     if noshorts{
         div[role="none"]:has(a[href*="https://youtube.com/shorts/"]){
+            display: none;
+        }
+    }
+    if pinbanner{
+        div[class*="x1kmbdvd"]:has([aria-label*="Pinned"]){
             display: none;
         }
     }
