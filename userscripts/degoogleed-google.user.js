@@ -311,8 +311,7 @@
     ${REMOVE.join(',')} { display: none !important; }
 
     div[id="uOz6nd"],
-    div[id="aaLvqc"],
-    div[class="ULSxyf"] { display: none; }
+    div[id="aaLvqc"]{ display: none; }
 
     @media screen and (min-width: 1600px) {
       #tsf, .GG4mbd, #rcnt {
@@ -334,7 +333,6 @@
     }
 
     #rcnt { padding: 0 16px !important; }
-    #rhs  { opacity: .95; }
 
     .RNNXgb, .SDkEP, .A8SBwf {
       border-radius: 999px !important;
