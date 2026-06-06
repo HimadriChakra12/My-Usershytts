@@ -1,0 +1,23 @@
+/* ==UserStyle==
+@name           Lokkhi
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document url-prefix("https://app.shikho.com"), regexp("^https:\\/\\/app\\.shikho\\.com\\/student\\/my-courses\\/.*$") {
+    /* Insert code here... */
+    div[class="grid grid-cols-12 gap-4"]{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    div[class="col-span-full md:col-span-7"]{
+        width: 100%;
+    }
+    div[class="ContentDisplay_videoSection__4YQSH"],
+    .ContentDisplay_videoSection__4YQSH
+    {
+            width: 100% !important;
+    }
+}
