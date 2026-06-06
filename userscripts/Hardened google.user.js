@@ -259,32 +259,6 @@
 
     ${REMOVE.join(',')} { display: none !important; }
 
-    div[class="ULSxyf"]:has([jsname="xQjRM"]){
-        position: absolute;
-        width: 90%;
-        top: -35%;
-        left: -100%;
-        overflow-y: scroll;
-        z-index: 10000000000;
-        transition: 0.4s ease-in-out;
-    }
-
-    div[class="ULSxyf"]:has([jsname="xQjRM"]):hover{
-        background: #11111185;
-        backdrop-filter: blur(1000px);
-        padding: 20px;
-        z-index: 10000000000;
-        width: 305%;
-        transition: 0.4s ease-in-out;
-    }
-
-    div[class="ULSxyf"]:not(:has([jsname="xQjRM"])){
-        display: none;
-    }
-    div[jsslot=""]:has([data-attrid="DictionaryHeader"]){
-        display: none
-    }
-
     div[id="uOz6nd"],
     div[id="aaLvqc"]{ display: none; }
 
