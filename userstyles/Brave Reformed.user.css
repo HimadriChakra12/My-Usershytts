@@ -430,7 +430,12 @@ button#map-view {grid-column-start: 1; grid-column-end: -1;}
 
 #search-page {margin: auto var(--main-gap);}
 
-
+    div[class="sidebar-header svelte-1k81x2q"]{
+        background: var(--color-primitive-black);
+    }
+    div[class="sidebar-content svelte-wpyz3r"]{
+        background: var(--color-primitive-black);
+    }
 
 
 /* ==========> Header - Top part <========== */
