@@ -28,22 +28,20 @@ div[id="google-one-tap-anchor"]{
 @-moz-document url-prefix("https://open.spotify.com/playlist/5FafrkFZFxnYtDs1H7e7yz") {
     
     div[class="LUXUp8VNfbIoaJCl"]{
-        background-image: url(https://github.com/HimadriChakra12/.dotfiles/blob/master/i3/Wallpaper/Lock/Untitled.jpg?raw=true);
+        /*background-image: url(https://i.vgy.me/376vyZ.png);*/
         background-attachment: local;
-        background-size: cover;
+        background-size: 340%;
         background-blend-mode: color;
-        background-color: rgba(130, 13, 61, .64);
+        /* 1  background-color: #8c0048; */
+        /* 2  background-color: #ab274f; */
+         background-color: #8c0048;
         background-position-x: center;
-        backdrop-filter: blur(1000px);
-    }
-    div[class="m9t_KhZ6MI0XQj9b"] > div:nth-child(2){
-        backdrop-filter: blur(100px)
     }
     div[class="Emh6sVCoQHM3KQ4_ WrEaGRqx9J44u32H"]{
         background-image: url(https://i.vgy.me/376vyZ.png) !important;
         background-attachment: local;
         background-size: 350%;
-        background-position-y: 20%;
+        background-position-y: 23%;
         background-blend-mode: color;
         background-color: rgba(143, 12, 12, .72);
         background-position-x: center;
@@ -52,4 +50,3 @@ div[id="google-one-tap-anchor"]{
         height: 50vh !important;
     }
 }
-
