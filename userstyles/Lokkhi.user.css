@@ -24,3 +24,32 @@ div[id="google-one-tap-anchor"]{
             width: 100% !important;
     }
 }
+
+@-moz-document url-prefix("https://open.spotify.com/playlist/5FafrkFZFxnYtDs1H7e7yz") {
+    
+    div[class="LUXUp8VNfbIoaJCl"]{
+        background-image: url(https://github.com/HimadriChakra12/.dotfiles/blob/master/i3/Wallpaper/Lock/Untitled.jpg?raw=true);
+        background-attachment: local;
+        background-size: cover;
+        background-blend-mode: color;
+        background-color: rgba(130, 13, 61, .64);
+        background-position-x: center;
+        backdrop-filter: blur(1000px);
+    }
+    div[class="m9t_KhZ6MI0XQj9b"] > div:nth-child(2){
+        backdrop-filter: blur(100px)
+    }
+    div[class="Emh6sVCoQHM3KQ4_ WrEaGRqx9J44u32H"]{
+        background-image: url(https://i.vgy.me/376vyZ.png) !important;
+        background-attachment: local;
+        background-size: 350%;
+        background-position-y: 20%;
+        background-blend-mode: color;
+        background-color: rgba(143, 12, 12, .72);
+        background-position-x: center;
+    }
+    div[class="XToncn4_mYHzhKy7 q8mQFn7r8UYsKdHE _H2ZzS_Atuwx6wh9 tMFkXbMSXNUegQIu EYdwwRebZIgjbKy_ aIU4qABgiIgjAEyD NEK7GtRu3w0JbyBT YDy_mwD8Z1sCem4Q zoKSw5SN9xUA4OkM C3zqtOMpn6kyeSzu"]{
+        height: 50vh !important;
+    }
+}
+
