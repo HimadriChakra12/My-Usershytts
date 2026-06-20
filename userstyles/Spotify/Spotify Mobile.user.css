@@ -1,0 +1,40 @@
+/* ==UserStyle==
+@name           Spotify Mobile
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document url-prefix("https://open.spotify.com/playlist/"), url-prefix("https://open.spotify.com/album/") {
+    div[class="mHkehiGecQQxV5Vd"]{
+        position: absolute !important; 
+        scale: 27%;
+        right: 2% !important;
+        top: 60.5% !important;
+    }
+}
+@-moz-document url-prefix("https://open.spotify.com/playlist/5FafrkFZFxnYtDs1H7e7yz") {
+    /* Insert code here... */
+    div[class="VeKY4oPJjQ85fRnN"]{
+        background: #0000 !important;
+        background-image: url(https://i.vgy.me/376vyZ.png) !important;
+        background-size: 350% !important;
+        background-position-y: 23% !important;
+        background-position-x: center !important;
+        background-blend-mode: color !important;
+        background-color: rgba(143, 12, 12, .72) !important;
+    }
+    div[class="Ap789CyBAWEENSAQ"]{
+        height: 200px !important;
+    }
+    div[class="mHkehiGecQQxV5Vd"]{
+        position: absolute !important; 
+        scale: 27%;
+        right: 2% !important;
+        top: 60.5% !important;
+    }
+    a[href="/download"]{
+        display: none
+    }
+}
