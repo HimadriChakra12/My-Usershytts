@@ -1,11 +1,10 @@
 /* ==UserStyle==
 
-@name           Reduce Distractions [Instagram]
+@name           Reduce Distractions [Instagram] - Mobile Edition
 @description    Strips away distracting elements on Instagram
-@namespace      https://userstyles.world/user/Him
-@namespace      https://github.com/HimadriChakra12/My-Usershytts/edit/main/userstyles/Instagram/
-@version        1.3.9
-@author         Himadri
+@namespace      https://userstyles.world/user/KryoBit
+@version        1.2.5
+@author         KryoBit
 @license        MIT
 
 @preprocessor stylus
@@ -13,42 +12,56 @@
 @var checkbox posts                 "⦿ Reels / Posts" 1
 @var checkbox comments              "└⟶ Hide comments" 0
 @var checkbox suggestPosts          "└⟶ Hide suggested posts from user" 1
-@var checkbox supportsection        "-> Hide support section" 0
-@var checkbox like                  "└⟶ Hide Like" 0
-@var checkbox comment               "└⟶ Hide comment" 0
-@var checkbox share                 "└⟶ Hide share" 0
+@var checkbox supportsection        "└⟶ Hide suggested posts from user" 1
 
 @var checkbox suggestFollow         "⦿ Remove Follow Suggestions" 1
-@var checkbox navbar                "Collapesed Sidebar" 1
+
+@var checkbox inbox                 "Inbox Only" 0
+@var checkbox desk                  "Desk Mode" 0
 @var checkbox chat                  "Chat Debloat" 1
-@var checkbox textunread            "└⟶ Show Unread as text" 1
-@var checkbox nodp                  "└⟶ Remove dp on Chatlist" 1
 @var checkbox notes                 "└⟶ Remove Notes" 1
 @var checkbox chataccountNameplate  "└⟶ Remove Chat Account Nameplate" 1
 @var checkbox hidechatreels         "└⟶ Hide recieved reels" 0
-@var checkbox noshorts              "└⟶ Hide recieved shorts" 0
-@var checkbox tabs                  "└⟶ Hide Tabs(Primary, General, Requests)" 1
-@var checkbox searchbar             "└⟶ Hide Searchbar" 1
-@var checkbox pinbanner             "└⟶ Hide Pin Banner" 1
-@var checkbox noinstagramuser       "└⟶ Hide 'Instagram User' accounts" 1
 
 @var checkbox sidebar               "⦿ Sidebar" 1
 @var checkbox search                "└⟶ Hide Search" 0
-@var checkbox explore               "└⟶ Hide Explore" 1
+@var checkbox explore               "└⟶ Hide Explore" 0
 @var checkbox reels                 "└⟶ Hide Reels" 1
 @var checkbox messages              "└⟶ Hide Messages" 0
 @var checkbox notifs                "└⟶ Hide Notifications" 0
 @var checkbox create                "└⟶ Hide Create" 1
 @var checkbox dashboard             "└⟶ Hide Dashboard" 1
-@var checkbox profile               "└⟶ Hide Profile" 0
-@var checkbox fromMeta              "Hide Also from Meta" 0
-@var checkbox settings              "└⟶ Hide Settings" 0
+@var checkbox fromMeta              "Hide Also from Meta" 1
+@var checkbox settings              "└⟶ Hide Settings" 1
 @var checkbox meta                  "└⟶ Hide Meta" 1
-@var checkbox himadri               "Himadri Addition" 1
-@var checkbox images                "||>  Hide images" 0
-@var checkbox specialtextunread     "||>  Special Text Unread" 1
 
 ==/UserStyle== */
+@-moz-document url-prefix("https://www.instagram.com/direct/inobx") {
+    if inbox{
+        div[class="x78zum5"]:has([aria-label="New message"]),
+        div[class="x1n2onr6 xh8yej3"] div[class*="xbmvrgn"]:has(img[alt="user-profile-picture"]),
+        a[aria-label*="Open"] > div > div > div[class*="x1nhvcw1"]:has(img[alt="user-profile-picture"]),
+        div[class="x78zum5"]:has([aria-label="Back"]){
+            display: none
+        }
+    }
+    if desk{
+        .x1p5gv8h.x1p5gv8h{
+            max-width: 90px !important;
+            min-width: 140px !important;
+            transition: 1s ease-in-out !important;
+        }
+        .x1p5gv8h.x1p5gv8h:hover{
+            max-width: 400px !important;
+            min-width: 400px !important;
+            transition: 1s ease-in-out !important;
+        }
+        div[class="x6s0dn4 x1bs97v6 x1q0q8m5 x9f619 xat24cr xh8yej3 x1qhh985 x14z7g9a xzbw6zd x78zum5 x1q0g3np x1qughib xsag5q8 x13jy36j x64bnmy xijc0j3"]{
+            display: none
+        }
+    }
+}
+
 @-moz-document domain("www.instagram.com") {
 
     if suggestfollow{
@@ -56,23 +69,8 @@
             display: none;
         }
     }
-    if unread{
-        span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]{
-            Background: #d5d5d5
-        }
-    }
-        
-    if navbar{
-        div[class="x1cy8zhl x9f619 x78zum5 xdt5ytf x1gvbg2u x1qughib"]{
-            width: 70px !important
-        }
-    }
+    
     if chat{
-        if noinstagramuser{
-            div[class="x1n2onr6 xh8yej3"]:has(span[title="Instagram User"]){
-                display: none;
-            }
-        }
         if notes{
             div[data-pagelet="IGDInboxThreadListScrollableAreaPagelet"] > div[class="x1c4vz4f x2lah0s xhjk10j x6ikm8r x10wlt62 xf7dkkf xv54qhq"]{
                 display: none;
@@ -81,64 +79,6 @@
         if chataccountNameplate{
             div[class="x6s0dn4 x1bs97v6 x1q0q8m5 x9f619 xat24cr xh8yej3 x1qhh985 x14z7g9a xzbw6zd x78zum5 x1q0g3np x1qughib xsag5q8 x13jy36j x64bnmy xijc0j3"]{
                 display: none
-            }
-        }
-        if nodp{
-            div[class="x13dflua x19991ni"]:active:hover,
-            div[class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x87ps6o x1lku1pv x1a2a7pz x4gyw5p xd3so5o x1l895ks x6nl9eh x1a5l9x9 x7vuprf x1mg3h75 x1lliihq xdj266r x14z9mp xat24cr x1lziwak xg6hnt2 x18wri0h"]:hover{
-                    background: #958769;
-            }
-            div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"]:has(svg[aria-label="More options"]):after{
-                content: "[]";
-                scale: 70%;
-                color: wheat;
-            }
-            div[class="x9f619 x1n2onr6 x1ja2u2z xdt5ytf x2lah0s x193iq5w xeuugli x78zum5 xbmvrgn"], div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x16ye13r xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
-                display: none
-            }
-            div[class="html-div xdj266r x14z9mp xat24cr xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x13fj5qh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]:has(svg[aria-label="Pinned"]):after{
-                content: "p";
-                scale: 80%;
-            }
-            div[class="html-div xdj266r x14z9mp xat24cr xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x6s0dn4 x1oa3qoh x13a6bvl xtqikln x1diwwjn"]:has(svg[aria-label="Muted"]):after{
-                content: "M" !important;
-                scale: 80%;
-            }
-            div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > div:has(svg[aria-label="More options"]),
-            svg[aria-label="Pinned"],
-            svg[aria-label="Muted"],
-            svg[aria-label="Verified"]{
-                display: none;
-            }
-            div[class="x1n2onr6 xh8yej3"] > div[class="x13dflua x19991ni"] > div[class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x87ps6o x1lku1pv x1a2a7pz x4gyw5p xd3so5o x1l895ks x15mokao x1ga7v0g x16uus16 xbiv7yw x1lliihq xdj266r x14z9mp xat24cr x1lziwak xg6hnt2 x18wri0h"] > div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k xeuugli xwib8y2 x13jy36j x64bnmy x1y1aw1k"] > div[class="x9f619 x1ja2u2z x78zum5 x2lah0s x1n2onr6 x1qughib x6s0dn4 xozqiw3 x1q0g3np"]{
-                height: 20px !important;
-            }
-            div[class="x9f619 x1ja2u2z x78zum5 x2lah0s x1n2onr6 x1qughib x6s0dn4 xozqiw3 x1q0g3np"]{
-                height: 20px !important;
-            }
-            if textunread{
-                span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]:after{
-                    content: "U";
-                    scale: 80%;
-                    color: wheat;
-                    font-family: bold;
-                }
-                span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]{
-                    Background: #0000;
-                }
-                div[class="x9f619 x1ja2u2z xzpqnlu x1hyvwdk x14bfe9o xjm9jq1 x6ikm8r x10wlt62 x10l6tqk x1i1rx1s"]{
-                    display: none !important;
-                }
-            }
-        }
-        if tabs{
-            div[class="xvbhtw8 x6usi7g x18b5jzi x1lun4ml x78zum5 xdt5ytf x1t2pt76 x1n2onr6 x13vifvy x1p0ryx0 x1p5gv8h xoa9owu xcoz2nd xgfcpv x1es02x0 xuphzoz xt5vzds x17quhge x1wggrwl x1u1lrf5"] > div:nth-child(2){
-                display: none;
-            }
-        }
-        if searchbar{
-            div[class="xvbhtw8 x6usi7g x18b5jzi x1lun4ml x78zum5 xdt5ytf x1t2pt76 x1n2onr6 x13vifvy x1p0ryx0 x1p5gv8h xoa9owu xcoz2nd xgfcpv x1es02x0 xuphzoz xt5vzds x17quhge x1wggrwl x1u1lrf5"] > div:nth-child(3){
-                display: none !important;
             }
         }
     }
@@ -157,24 +97,20 @@
             }
         }
         if supportsection{
-            div[class="x6s0dn4 x78zum5"]{
-                display: none;
-            }
+            
         }
         else {
-            if like{
-                div[class="x6s0dn4 x78zum5"] span[class="x1qfufaz"]:has([aria-label="Like"]),
-                div[class="x6s0dn4 x78zum5"] span:nth-child(2){
+            if supportsection{
+                div[class="x6s0dn4 x78zum5"] span[class="x1qfufaz"]:has([aria-label="Like"]){
                     display: none;
                 }
             }
-            if comment{
-                div[class="x6s0dn4 x78zum5"] span:has([aria-label="Comment"]),
-                div[class="x6s0dn4 x78zum5"] span:nth-child(4){
+            if supportsection{
+                div[class="x6s0dn4 x78zum5"] span:has([aria-label="Like"]){
                     display: none;
                 }
             }
-            if share{
+            if supportsection{
                 div[class="x6s0dn4 x78zum5"] div:has([aria-label="Share"]){
                     display: none;
                 }
@@ -199,6 +135,14 @@
     if sidebar {
         if search {
             .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Search"]) {
+                display: none !important;
+            }
+        }
+
+        if explore {
+            .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Explore"]),
+            .xgzdhx4.x1oqrbt2.x1ugxg0y.x57odl9.x1e49onv.xlph30v.xmjrnx3.xhae0no.x19b80pe.xh8yej3.x1ykew4q.xvc5jky.x4n8cb0.x11t971q.xdj266r.x1iyjqo2.xdt5ytf.x78zum5,
+            .xvbhtw8.xf7dkkf.xv54qhq.x11njtxf.x1n2onr6.x18d9i69.xexx8yu.x1h3rv7z.x1lziwak.xat24cr.x14z9mp.xdj266r.xk390pu.x2lah0s.xdt5ytf.x78zum5.x9f619.x1qjc9v5 {
                 display: none !important;
             }
         }
@@ -234,12 +178,7 @@
             .xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(.x1lliihq.x1n2onr6.x5n08af[aria-label="Professional dashboard"]) {
                 display: none;
             }
-        }
-        if profile{
-            div[class="x1n2onr6"]:has([aria-describedby="_r_1b9_"]){
-                display: none
-            }
-        }
+    }
 
         if fromMeta {
             div[class="xl5mz7h xhuyl8g"]:has(span.x1qrby5j.x7ja8zs.x1t2pt76.x1lytzrv.xedcshv.xarpa2k.x3igimt.x12ejxvf.xaigb6o.x1beo9mf.xv2umb2.x1jfb8zj.x1h9r5lt.x1h91t0o.x4k7w5x.x1vvkbs.x16tdsg8.x1hl2dhg.x1c1uobl.x18d9i69.xyri2b.xexx8yu.x1lziwak.xat24cr.x14z9mp.xdj266r.html-span:nth-of-type(2)) {
@@ -277,20 +216,12 @@
     if hidechatreels{
         div[role="none"]:has(svg[aria-label="Clip"]):not(div[role="group"]:has([aria-label^="Open the profile page"]))
         {
-            display: none;
+            height: 30px;
+            opacity: 0;
+            cursor: none;
+            pointer-events: none
         }
     }
-    if noshorts{
-        div[role="none"]:has(a[href*="https://youtube.com/shorts/"]){
-            display: none;
-        }
-    }
-    if pinbanner{
-        div[class*="x1kmbdvd"]:has([aria-label*="Pinned"]){
-            display: none;
-        }
-    }
-    
 }
 @-moz-document regexp("^https?://(www\\.)?instagram\\.com/.*$"){
     div[class="xw7yly9"]{
@@ -300,21 +231,7 @@
         border: 0
     }
     div[class="x1qjc9v5 x78zum5 x1q0g3np xl56j7k xh8yej3"] > div{
-        max-width: 50% !important;
-        min-width: 438px !important;
-    }
-    div[class="_acc8 _abpk"]{
-        display: none
-    }
-    footer{
-        display: none !important;
-    }
-    if posts{
-        div{display: block}
-    } else{
-        div[class="x15mokao x1ga7v0g x16uus16 xbiv7yw x5o85r1 xeo4mu6 x1vz142a x18uqkz4 x1pv78wv xghhx3z"]{
-            display: none;
-            
-        }
+        max-width: 90% !important;
+        min-width: 90% !important;
     }
 }
