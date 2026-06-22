@@ -20,9 +20,8 @@
     div[class="-mt-4 text-token-text-tertiary relative w-full overflow-hidden text-center text-xs [view-transition-name:var(--vt-disclaimer)] md:px-[60px]"]{
         background: #282828
     }
-    div[class*="@w-sm/main"]{
-        background: #282828
-    }
+    header,
+    div[class*="@w-sm/main"],
     [id="stage-sidebar-tiny-bar"]{
         background: #282828;
     }
