@@ -21,6 +21,7 @@
 @var checkbox suggestFollow         "⦿ Remove Follow Suggestions" 1
 @var checkbox navbar                "Collapesed Sidebar" 1
 @var checkbox chat                  "Chat Debloat" 1
+@var checkbox textunread            "└⟶ Show Unread as text" 1
 @var checkbox nodp                  "└⟶ Remove dp on Chatlist" 1
 @var checkbox notes                 "└⟶ Remove Notes" 1
 @var checkbox chataccountNameplate  "└⟶ Remove Chat Account Nameplate" 1
@@ -43,8 +44,9 @@
 @var checkbox fromMeta              "Hide Also from Meta" 0
 @var checkbox settings              "└⟶ Hide Settings" 0
 @var checkbox meta                  "└⟶ Hide Meta" 1
-@var checkbox devadds               "Developer Additions" 1
+@var checkbox himadri               "Himadri Addition" 1
 @var checkbox images                "||>  Hide images" 0
+@var checkbox specialtextunread     "||>  Special Text Unread" 1
 
 ==/UserStyle== */
 @-moz-document domain("www.instagram.com") {
@@ -54,7 +56,12 @@
             display: none;
         }
     }
-    
+    if unread{
+        span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]{
+            Background: #d5d5d5
+        }
+    }
+        
     if navbar{
         div[class="x1cy8zhl x9f619 x78zum5 xdt5ytf x1gvbg2u x1qughib"]{
             width: 70px !important
@@ -77,8 +84,31 @@
             }
         }
         if nodp{
+            div[class="x13dflua x19991ni"]:active:hover,
+            div[class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x87ps6o x1lku1pv x1a2a7pz x4gyw5p xd3so5o x1l895ks x6nl9eh x1a5l9x9 x7vuprf x1mg3h75 x1lliihq xdj266r x14z9mp xat24cr x1lziwak xg6hnt2 x18wri0h"]:hover{
+                    background: #958769;
+            }
+            div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"]:has(svg[aria-label="More options"]):after{
+                content: "[]";
+                scale: 70%;
+                color: wheat;
+            }
             div[class="x9f619 x1n2onr6 x1ja2u2z xdt5ytf x2lah0s x193iq5w xeuugli x78zum5 xbmvrgn"], div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 x16ye13r xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]{
                 display: none
+            }
+            div[class="html-div xdj266r x14z9mp xat24cr xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x13fj5qh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]:has(svg[aria-label="Pinned"]):after{
+                content: "p";
+                scale: 80%;
+            }
+            div[class="html-div xdj266r x14z9mp xat24cr xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x6s0dn4 x1oa3qoh x13a6bvl xtqikln x1diwwjn"]:has(svg[aria-label="Muted"]):after{
+                content: "M" !important;
+                scale: 80%;
+            }
+            div[class="x6s0dn4 x78zum5 xdt5ytf xl56j7k"] > div:has(svg[aria-label="More options"]),
+            svg[aria-label="Pinned"],
+            svg[aria-label="Muted"],
+            svg[aria-label="Verified"]{
+                display: none;
             }
             div[class="x1n2onr6 xh8yej3"] > div[class="x13dflua x19991ni"] > div[class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xc5r6h4 xqeqjp1 x1phubyo x13fuv20 x18b5jzi x1q0q8m5 x1t7ytsu x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xdl72j9 x2lah0s x3ct3a4 x2lwn1j xeuugli xexx8yu xyri2b x18d9i69 x1c1uobl x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x87ps6o x1lku1pv x1a2a7pz x4gyw5p xd3so5o x1l895ks x15mokao x1ga7v0g x16uus16 xbiv7yw x1lliihq xdj266r x14z9mp xat24cr x1lziwak xg6hnt2 x18wri0h"] > div[class="html-div xdj266r x14z9mp xat24cr x1lziwak x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k xeuugli xwib8y2 x13jy36j x64bnmy x1y1aw1k"] > div[class="x9f619 x1ja2u2z x78zum5 x2lah0s x1n2onr6 x1qughib x6s0dn4 xozqiw3 x1q0g3np"]{
                 height: 20px !important;
@@ -86,7 +116,20 @@
             div[class="x9f619 x1ja2u2z x78zum5 x2lah0s x1n2onr6 x1qughib x6s0dn4 xozqiw3 x1q0g3np"]{
                 height: 20px !important;
             }
-    
+            if textunread{
+                span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]:after{
+                    content: "U";
+                    scale: 80%;
+                    color: wheat;
+                    font-family: bold;
+                }
+                span[class="x6s0dn4 x1iwo8zk x1033uif x179ill4 x1b60jn0 x9f619 x3nfvp2 xl56j7k x5slmwz xdk7pt x1xc55vz"]{
+                    Background: #0000;
+                }
+                div[class="x9f619 x1ja2u2z xzpqnlu x1hyvwdk x14bfe9o xjm9jq1 x6ikm8r x10wlt62 x10l6tqk x1i1rx1s"]{
+                    display: none !important;
+                }
+            }
         }
         if tabs{
             div[class="xvbhtw8 x6usi7g x18b5jzi x1lun4ml x78zum5 xdt5ytf x1t2pt76 x1n2onr6 x13vifvy x1p0ryx0 x1p5gv8h xoa9owu xcoz2nd xgfcpv x1es02x0 xuphzoz xt5vzds x17quhge x1wggrwl x1u1lrf5"] > div:nth-child(2){
@@ -272,14 +315,6 @@
         div[class="x15mokao x1ga7v0g x16uus16 xbiv7yw x5o85r1 xeo4mu6 x1vz142a x18uqkz4 x1pv78wv xghhx3z"]{
             display: none;
             
-        }
-    }
-}
-
-@-moz-document url-prefix("https://www.instagram.com/direct/t/17843088840319857/"), url-prefix("https://www.instagram.com/direct/t/17846226593822368/") {
-    if images{
-        div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x78zum5 x193iq5w"]:has(img){
-            display: none !important
         }
     }
 }
