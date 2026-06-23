@@ -8,6 +8,7 @@
 
 @-moz-document domain("chatgpt.com") {
     /* Insert code here... */
+    header > div:nth-child(2), 
     button[class="btn relative group-focus-within/dialog:focus-visible:[outline-width:1.5px] group-focus-within/dialog:focus-visible:[outline-offset:2.5px] group-focus-within/dialog:focus-visible:[outline-style:solid] group-focus-within/dialog:focus-visible:[outline-color:var(--text-primary)] btn-secondary screen-arch:hidden md:screen-arch:flex max-xs:hidden"]{
         display: none
     }
