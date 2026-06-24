@@ -8,7 +8,9 @@
 
 @preprocessor stylus
 
-@var checkbox comments              "⦿ Hide comments"                       1
+@var checkbox playerdebloat         "⦿ Player Debloat"                      1
+@var checkbox comments              "└⟶ Hide comments"                     1
+@var checkbox hideSecondary         "└⟶ Hide Right feed sidebar"           1
 
 @var checkbox hideHome              "⦿ Hide Home"                           0
 @var checkbox fixedHomerecommenation"└⟶ Fixed Recomandations"              1
@@ -28,18 +30,23 @@
 @var checkbox hideMerch             "⦿ Hide Merch / Paid Promos"            1
 @var checkbox hideChatReplay        "⦿ Hide Live Chat / Chat Replay"        0
 @var checkbox hideComments          "⦿ Hide Comments Section"               0
-@var checkbox hidePosts          "⦿ Hide Posts"     0
+@var checkbox hidePosts             "⦿ Hide Posts"                          0
 
 ==/UserStyle== */
 
 @-moz-document domain("www.youtube.com"), domain("m.youtube.com") {
-    
+   if playerdebloat{
     if comments{
         ytd-comments{
             display: none;
         }
     }
-
+    if hideSecondary{
+        div[id="secondary"]{
+            display: none;
+        }
+    }
+}
     if hideHome {
                  div[id="contents"][class="style-scope ytd-rich-grid-renderer"]{
          display: none !important
