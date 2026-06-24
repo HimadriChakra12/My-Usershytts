@@ -1,5 +1,5 @@
 /* ==UserStyle==
-@name           chatgpt.com
+@name           HimGPT
 @namespace      github.com/openstyles/stylus
 @version        1.0.0
 @description    A new userstyle
@@ -8,8 +8,14 @@
 
 @-moz-document domain("chatgpt.com") {
     /* Insert code here... */
+    [class="mt-auto text-token-text-tertiary relative w-full overflow-hidden text-center text-xs [view-transition-name:var(--vt-disclaimer)] md:px-[60px]"],
+    div[class="px-1 text-pretty whitespace-pre-wrap"],
     header > div:nth-child(2), 
-    button[class="btn relative group-focus-within/dialog:focus-visible:[outline-width:1.5px] group-focus-within/dialog:focus-visible:[outline-offset:2.5px] group-focus-within/dialog:focus-visible:[outline-style:solid] group-focus-within/dialog:focus-visible:[outline-color:var(--text-primary)] btn-secondary screen-arch:hidden md:screen-arch:flex max-xs:hidden"]{
+    body:has([class="btn relative group-focus-within/dialog:focus-visible:[outline-width:1.5px] group-focus-within/dialog:focus-visible:[outline-offset:2.5px] group-focus-within/dialog:focus-visible:[outline-style:solid] group-focus-within/dialog:focus-visible:[outline-color:var(--text-primary)] btn-secondary screen-arch:hidden md:screen-arch:flex max-xs:hidden"]) button[class*="btn-secondary"],
+    div[class="flex items-center gap-1 [grid-area:trailing]"]:has([aria-label="Start dictation"]),
+    div[data-testid="composer-speech-button-container"],
+    button[id="radix-_R_1kuvarlac579l35_"],
+    body:has([class="btn relative group-focus-within/dialog:focus-visible:[outline-width:1.5px] group-focus-within/dialog:focus-visible:[outline-offset:2.5px] group-focus-within/dialog:focus-visible:[outline-style:solid] group-focus-within/dialog:focus-visible:[outline-color:var(--text-primary)] btn-secondary screen-arch:hidden md:screen-arch:flex max-xs:hidden"]) div[id="stage-slideover-sidebar"]{
         display: none
     }
     button[class="btn relative group-focus-within/dialog:focus-visible:[outline-width:1.5px] group-focus-within/dialog:focus-visible:[outline-offset:2.5px] group-focus-within/dialog:focus-visible:[outline-style:solid] group-focus-within/dialog:focus-visible:[outline-color:var(--text-primary)] btn-primary"]{
@@ -17,33 +23,23 @@
         width: 40px;
         color: #fff0
     }
-    div[class="bg-(--composer-surface-primary) relative cursor-text overflow-clip bg-clip-padding px-2 py-[9px] contain-inline-size motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in-out group-not-data-expanded/composer:min-h-[52px] group-not-data-expanded/composer:py-[5px] grid grid-cols-[auto_1fr_auto] [grid-template-areas:'header_header_header'_'leading_primary_trailing'_'._footer_.'] group-data-expanded/composer:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] max-sm:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] shadow-short-composer"],
-    div[class="-mt-4 text-token-text-tertiary relative w-full overflow-hidden text-center text-xs [view-transition-name:var(--vt-disclaimer)] md:px-[60px]"]{
-        background: #282828
-    }
+    div[class*="relative"],
+    div[class="-mt-4 text-token-text-tertiary relative w-full overflow-hidden text-center text-xs [view-transition-name:var(--vt-disclaimer)] md:px-[60px]"],
     header,
     div[class*="@w-sm/main"],
     [id="stage-sidebar-tiny-bar"]{
         background: #282828;
     }
-    div[class="flex items-center gap-1 [grid-area:trailing]"]:has([aria-label="Start dictation"]),
-    div[data-testid="composer-speech-button-container"],
-    button[id="radix-_R_1kuvarlac579l35_"],
-    body:has([class="btn relative group-focus-within/dialog:focus-visible:[outline-width:1.5px] group-focus-within/dialog:focus-visible:[outline-offset:2.5px] group-focus-within/dialog:focus-visible:[outline-style:solid] group-focus-within/dialog:focus-visible:[outline-color:var(--text-primary)] btn-secondary screen-arch:hidden md:screen-arch:flex max-xs:hidden"]) div[id="stage-slideover-sidebar"]{
-        border: 0 !important;
-        display: none
-    }
     div[class="w-full"],
     div[class="bg-(--composer-surface-primary) relative cursor-text overflow-clip bg-clip-padding px-2 py-[9px] contain-inline-size motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in-out group-not-data-expanded/composer:min-h-[52px] group-not-data-expanded/composer:py-[5px] grid grid-cols-[auto_1fr_auto] [grid-template-areas:'header_header_header'_'leading_primary_trailing'_'._footer_.'] group-data-expanded/composer:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] max-sm:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] shadow-short-composer"]{
         border: 0 !important;
     }
-    [class="mt-auto text-token-text-tertiary relative w-full overflow-hidden text-center text-xs [view-transition-name:var(--vt-disclaimer)] md:px-[60px]"]{
-        display: none
-    }
     h1[class="text-heading-2 font-normal inline-flex items-baseline whitespace-pre-wrap min-h-10.5"]:after{
         content: "Stawph Gooning, Start Writing!"
     }
-    div[class="px-1 text-pretty whitespace-pre-wrap"]{
-        display: none
+    div[class^="user-message-bubble-color"],
+    div[id="code-block-viewer"],
+    pre div[class*="sticky"] > div{
+        background: #1d2021
     }
 }
