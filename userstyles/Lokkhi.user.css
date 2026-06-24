@@ -4,59 +4,7 @@
 @version        1.0.0
 @description    A new userstyle
 @author         Me
-==/UserStyle== */
-
-div[id="google-one-tap-anchor"]{
-    display: none
-}
-@-moz-document url-prefix("https://app.shikho.com"), regexp("^https:\\/\\/app\\.shikho\\.com\\/student\\/my-courses\\/.*$") {
-    /* Insert code here... */
-    div[class="grid grid-cols-12 gap-4"]{
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    div[class="col-span-full md:col-span-7"]{
-        width: 100%;
-    }
-    div[class="ContentDisplay_videoSection__4YQSH"],
-    .ContentDisplay_videoSection__4YQSH
-    {
-            width: 100% !important;
-    }
-}
-
-@-moz-document url-prefix("https://open.spotify.com/playlist/5FafrkFZFxnYtDs1H7e7yz") {
-    
-    div[class="LUXUp8VNfbIoaJCl"]{
-        /*background-image: url(https://i.vgy.me/376vyZ.png);*/
-        background-attachment: local;
-        background-size: 340%;
-        background-blend-mode: color;
-        /* 1  background-color: #8c0048; */
-        /* 2  background-color: #ab274f; */
-         background-color: #8c0048;
-        background-position-x: center;
-    }
-    div[class="Emh6sVCoQHM3KQ4_ WrEaGRqx9J44u32H"]{
-        background-image: url(https://i.vgy.me/376vyZ.png) !important;
-        background-attachment: local;
-        background-size: 350%;
-        background-position-y: 23%;
-        background-blend-mode: color;
-        background-color: rgba(143, 12, 12, .72);
-        background-position-x: center;
-    }
-    div[class="XToncn4_mYHzhKy7 q8mQFn7r8UYsKdHE _H2ZzS_Atuwx6wh9 tMFkXbMSXNUegQIu EYdwwRebZIgjbKy_ aIU4qABgiIgjAEyD NEK7GtRu3w0JbyBT YDy_mwD8Z1sCem4Q zoKSw5SN9xUA4OkM C3zqtOMpn6kyeSzu"]{
-        height: 50vh !important;
-    }
-}
-
-/* ==UserStyle==
-@name           Lokkhi
-@namespace      github.com/openstyles/stylus
-@version        1.0.0
-@description    A new userstyle
-@author         Me
+@var checkbox   discord "discord video preview" 1
 ==/UserStyle== */
 
 div[id="google-one-tap-anchor"]{
@@ -92,7 +40,7 @@ div[id="google-one-tap-anchor"]{
     }
     div[class="VeKY4oPJjQ85fRnN"],
     div[class="Emh6sVCoQHM3KQ4_ WrEaGRqx9J44u32H"]{
-        background-image: url(https://i.vgy.me/376vyZ.png) !important;
+        background-image: url(https://i.vgy.me/376vyZ.png) !important; 
         background-attachment: local;
         background-size: 350%;
         background-position-y: 23%;
@@ -101,7 +49,63 @@ div[id="google-one-tap-anchor"]{
         background-position-x: center;
     }
     div[class="XToncn4_mYHzhKy7 q8mQFn7r8UYsKdHE _H2ZzS_Atuwx6wh9 tMFkXbMSXNUegQIu EYdwwRebZIgjbKy_ aIU4qABgiIgjAEyD NEK7GtRu3w0JbyBT YDy_mwD8Z1sCem4Q zoKSw5SN9xUA4OkM C3zqtOMpn6kyeSzu"]{
-        height: 50vh !important;
+        height      : 30vh !important;
+        max-height  : 30vh !important;
+    }
+}
+
+@-moz-document url-prefix(https://open.spotify.com/playlist/07maNbdCVa7NT4XZeb1wYr) {
+    
+    div[class="LUXUp8VNfbIoaJCl"]{
+        /*background-image: url(https://i.vgy.me/376vyZ.png);*/
+        background-attachment: local;
+        background-size: 340%;
+        background-blend-mode: color;
+        /* 1  background-color: #8c0048; */
+        /* 2  background-color: #ab274f; */
+         background-color: #8c0048;
+        background-position-x: center;
+    }
+    div[class="VeKY4oPJjQ85fRnN"],
+    div[class="Emh6sVCoQHM3KQ4_ WrEaGRqx9J44u32H"]{
+        background-image: url(https://i.vgy.me/nsBhkC.jpg) !important;
+        background-attachment: local;
+        background-size: 350%;
+        background-position-y: 50%;
+        background-blend-mode: color;
+        background-color: rgba(83, 15, 117, .72);
+        background-position-x: center;
+    }
+    div[class="XToncn4_mYHzhKy7 q8mQFn7r8UYsKdHE _H2ZzS_Atuwx6wh9 tMFkXbMSXNUegQIu EYdwwRebZIgjbKy_ aIU4qABgiIgjAEyD NEK7GtRu3w0JbyBT YDy_mwD8Z1sCem4Q zoKSw5SN9xUA4OkM C3zqtOMpn6kyeSzu"]{
+        height      : 30vh !important;
+        max-height  : 30vh !important;
+    }
+}
+@-moz-document url-prefix(https://open.spotify.com/playlist/2r5K3wB5WyDX74XkCrx2Vj) {
+    
+    div[class="LUXUp8VNfbIoaJCl"]{
+        /*background-image: url(https://i.vgy.me/376vyZ.png);*/
+        background-attachment: local;
+        background-size: 340%;
+        background-blend-mode: color;
+        /* 1  background-color: #8c0048; */
+        /* 2  background-color: #ab274f; */
+         background-color: #8c0048;
+        background-position-x: center;
+    }
+    div[class="VeKY4oPJjQ85fRnN"],
+    div[class="Emh6sVCoQHM3KQ4_ WrEaGRqx9J44u32H"]{
+        background-image: url(https://i.vgy.me/SX2lLu.jpg) !important;
+        background-attachment: local;
+        background-size: 100%;
+        background-position-x: -50%;
+        background-position-y: 60%;
+        background-blend-mode: color;
+        background-color: rgba(54, 57, 0, .6);
+    }
+    div[class="XToncn4_mYHzhKy7 q8mQFn7r8UYsKdHE _H2ZzS_Atuwx6wh9 tMFkXbMSXNUegQIu EYdwwRebZIgjbKy_ aIU4qABgiIgjAEyD NEK7GtRu3w0JbyBT YDy_mwD8Z1sCem4Q zoKSw5SN9xUA4OkM C3zqtOMpn6kyeSzu"]{
+        height      : 30vh !important;
+        max-height  : 30vh !important;
     }
 }
 
@@ -111,5 +115,13 @@ div[id="google-one-tap-anchor"]{
     /* Insert code here... */
     div[class="watch-grid"]{
         display: block !important;
+    }
+}
+
+@-moz-document domain("discord.com") {
+    if discord{
+        div[class="pictureInPicture__6341f"]{
+            display: none
+        }
     }
 }
