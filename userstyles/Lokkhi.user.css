@@ -24,6 +24,9 @@ div[id="google-one-tap-anchor"]{
     {
             width: 100% !important;
     }
+    .rpv-toolbar__right .rpv-core__display--hidden.rpv-core__display--block-medium:nth-child(4){
+        display: block
+    }
 }
 
 @-moz-document url-prefix("https://open.spotify.com/playlist/5FafrkFZFxnYtDs1H7e7yz") {
