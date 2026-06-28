@@ -12,102 +12,103 @@
 // ==/UserScript==
 
 (() => {
-  'use strict';
+    'use strict';
 
-  /* ════════════════════════════════════════
-     SETTINGS
-     ════════════════════════════════════════ */
-  const LOW_RAM_MODE = true;
-  const DISABLE_IMAGES_ON_SCROLL = true;
-  const DISABLE_MUTATION_OBSERVER = false; // keep ON for safety
-  const ENABLE_COMPACT_MODE = true;
+    /* ════════════════════════════════════════
+    SETTINGS
+    ════════════════════════════════════════ */
+    const LOW_RAM_MODE = true;
+    const DISABLE_IMAGES_ON_SCROLL = true;
+    const DISABLE_MUTATION_OBSERVER = false; // keep ON for safety
+    const ENABLE_COMPACT_MODE = true;
 
-  /* ════════════════════════════════════════
-     REMOVE ONLY ACTUAL BLOAT
-     Keep:
-     - Wikipedia/wiki cards
-     - Image sidebar
-     - Knowledge panels
-     - Direct answers
-     ════════════════════════════════════════ */
+    /* ════════════════════════════════════════
+    REMOVE ONLY ACTUAL BLOAT
+    Keep:
+    - Wikipedia/wiki cards
+    - Image sidebar
+    - Knowledge panels
+    - Direct answers
+    ════════════════════════════════════════ */
 
-  const REMOVE = [
+    const REMOVE = [
 
-    'iframe[src*="youtube"]',
-    'iframe[src*="google.com/ads"]',
-    '[jscontroller*="M2ABbe"]',
-    '[jscontroller*="Vj6r2c"]',
-    '.m6B6Be', /* suggestions modules */
-    '.bzXtMb.M8OgIe.dRpWwb',
-    '#uOz6nd',
-    '#aaLvqc',
-
-
-    /* AI */
-    '[data-attrid="SGEOverview"]',
-    '[data-async-type="sgegenerative"]',
-
-    'sfc-overview',
-
-    /* ads */
-    '[aria-label="Ads"]',
-    '[data-text-ad]',
-    '.commercial-unit-desktop-top',
-    '.commercial-unit-mobile-top',
-    '.commercial-unit-mobile-bottom',
-    '#tvcap',
-    '#bottomads',
-
-    /* people also ask */
-    '.related-question-pair',
-    '[jscontroller="ge3PVe"]',
-
-    /* shopping spam */
-    '.pla-unit-container',
-
-    /* giant product/video carousels */
-    'g-scrolling-carousel',
-
-    /* twitter/x embeds */
-    '.eejeod',
-
-    /* footer junk */
-    '#foot',
-    '#footcnt',
-    '#fbar',
-    '#mfooter',
+        'iframe[src*="youtube"]',
+        'iframe[src*="google.com/ads"]',
+        '[jscontroller*="M2ABbe"]',
+        '[jscontroller*="Vj6r2c"]',
+        '.m6B6Be', /* suggestions modules */
+        '#uOz6nd',
+        '#aaLvqc',
 
 
-  ];
+        /* AI */
+        '[data-attrid="SGEOverview"]',
+        '[data-async-type="sgegenerative"]',
 
-  /* ════════════════════════════════════════
-     CSS
-     optimized
-     no blur
-     no animations
-     low repaint cost
-     ════════════════════════════════════════ */
+        'sfc-overview',
 
-  const style = document.createElement('style');
+        /* ads */
+        '[aria-label="Ads"]',
+        '[data-text-ad]',
+        '.commercial-unit-desktop-top',
+        '.commercial-unit-mobile-top',
+        '.commercial-unit-mobile-bottom',
+        '#tvcap',
+        '#bottomads',
 
-  style.textContent = `
-    :root {
-      --debloat-width: 760px;
-      --debloat-gap: 16px;
+        /* people also ask */
+        '.related-question-pair',
+        '[jscontroller="ge3PVe"]',
 
-      --border-light: rgba(0,0,0,.08);
-      --border-dark: rgba(255,255,255,.08);
+        /* shopping spam */
+        '.pla-unit-container',
 
-      --wiki-light: rgba(0,0,0,.03);
-      --wiki-dark: rgba(255,255,255,.03);
+        /* giant product/video carousels */
+        'g-scrolling-carousel',
+
+        /* twitter/x embeds */
+        '.eejeod',
+
+        /* footer junk */
+        '#foot',
+        '#footcnt',
+        '#fbar',
+        '#mfooter',
+
+
+    ];
+
+    /* ════════════════════════════════════════
+    CSS
+    optimized
+    no blur
+    no animations
+    low repaint cost
+    ════════════════════════════════════════ */
+
+    const style = document.createElement('style');
+
+    style.textContent = `
+        :root {
+        --debloat-width: 760px;
+        --debloat-gap: 16px;
+
+        --border-light: rgba(0,0,0,.08);
+        --border-dark: rgba(255,255,255,.08);
+
+        --wiki-light: rgba(0,0,0,.03);
+        --wiki-dark: rgba(255,255,255,.03);
     }
 
     ${REMOVE.join(',')} {
-      display: none !important;
+        display: none !important;
     }
-
-
-        @media screen and (min-width: 1600px) {
+    div[class="bzXtMb M8OgIe dRpWwb"]:has([class="D5ad8b"]),
+    div[class="ULSxyf"]:has([class="XNfAUb"]){
+        display:none;
+    }
+    @media screen and (min-width: 1600px) {
         #tsf,
         .GG4mbd,
         #rcnt
@@ -133,369 +134,370 @@
     #search,
     #rcnt,
     #center_col {
-      max-width: var(--debloat-width) !important;
-      margin: auto !important;
-      width: 100% !important;
-      float: none !important;
+        max-width: var(--debloat-width) !important;
+        margin: auto !important;
+        width: 100% !important;
+        float: none !important;
     }
 
     #rcnt {
-      padding: 0 16px !important;
+        padding: 0 16px !important;
     }
 
     /* keep sidebar/wiki functionality */
     #rhs {
-      opacity: .95;
+        opacity: .95;
     }
 
     /* searchbar */
     .RNNXgb,
     .SDkEP,
     .A8SBwf {
-      border-radius: 999px !important;
-      box-shadow: none !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
     }
 
     @media (prefers-color-scheme: dark) {
-      .RNNXgb,
-      .SDkEP,
-      .A8SBwf {
-        border: 1px solid rgba(255,255,255,.08) !important;
-      }
+        .RNNXgb,
+        .SDkEP,
+        .A8SBwf {
+            border: 1px solid rgba(255,255,255,.08) !important;
+        }
     }
 
     @media (prefers-color-scheme: light) {
-      .RNNXgb,
-      .SDkEP,
-      .A8SBwf {
-        border: 1px solid rgba(0,0,0,.08) !important;
-      }
+        .RNNXgb,
+        .SDkEP,
+        .A8SBwf {
+            border: 1px solid rgba(0,0,0,.08) !important;
+        }
     }
 
     /* results */
     .g,
     .tF2Cxc {
-      margin-bottom: var(--debloat-gap) !important;
-      padding-bottom: 14px !important;
+        margin-bottom: var(--debloat-gap) !important;
+        padding-bottom: 14px !important;
 
-      background: transparent !important;
-      box-shadow: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
     }
 
     @media (prefers-color-scheme: dark) {
-      .g:not(:last-child),
-      .tF2Cxc:not(:last-child) {
-        border-bottom: 1px solid var(--border-dark) !important;
-      }
+        .g:not(:last-child),
+        .tF2Cxc:not(:last-child) {
+            border-bottom: 1px solid var(--border-dark) !important;
+        }
     }
 
     @media (prefers-color-scheme: light) {
-      .g:not(:last-child),
-      .tF2Cxc:not(:last-child) {
-        border-bottom: 1px solid var(--border-light) !important;
-      }
+        .g:not(:last-child),
+        .tF2Cxc:not(:last-child) {
+            border-bottom: 1px solid var(--border-light) !important;
+        }
     }
 
     /* typography */
     h3,
     .LC20lb {
-      font-size: 1.05rem !important;
-      font-weight: 500 !important;
-      line-height: 1.35 !important;
+        font-size: 1.05rem !important;
+        font-weight: 500 !important;
+        line-height: 1.35 !important;
     }
 
     .VwiC3b,
     .s3v9rd,
     .st {
-      line-height: 1.55 !important;
-      opacity: .92;
+        line-height: 1.55 !important;
+        opacity: .92;
     }
 
     cite,
     .TbwUpd {
-      opacity: .72;
+        opacity: .72;
     }
 
     /* ════════════════════════════════════
-       WIKI / KNOWLEDGE PANEL ENHANCEMENT
-       this is the peak part
-       ════════════════════════════════════ */
+    WIKI / KNOWLEDGE PANEL ENHANCEMENT
+    this is the peak part
+    ════════════════════════════════════ */
 
     #rhs .kp-wholepage,
     #rhs .knowledge-panel,
     #rhs [data-attrid] {
-      border-radius: 14px !important;
-      padding: 10px !important;
+        border-radius: 14px !important;
+        padding: 10px !important;
     }
 
     @media (prefers-color-scheme: dark) {
-      #rhs .kp-wholepage,
-      #rhs .knowledge-panel,
-      #rhs [data-attrid] {
-        background: var(--wiki-dark) !important;
-        border: 1px solid rgba(255,255,255,.05) !important;
-      }
+        #rhs .kp-wholepage,
+        #rhs .knowledge-panel,
+        #rhs [data-attrid] {
+            background: var(--wiki-dark) !important;
+            border: 1px solid rgba(255,255,255,.05) !important;
+        }
     }
 
     @media (prefers-color-scheme: light) {
-      #rhs .kp-wholepage,
-      #rhs .knowledge-panel,
-      #rhs [data-attrid] {
-        background: var(--wiki-light) !important;
-        border: 1px solid rgba(0,0,0,.05) !important;
-      }
+        #rhs .kp-wholepage,
+        #rhs .knowledge-panel,
+        #rhs [data-attrid] {
+            background: var(--wiki-light) !important;
+            border: 1px solid rgba(0,0,0,.05) !important;
+        }
     }
 
     /* compact mode */
     body.debloat-compact .g,
     body.debloat-compact .tF2Cxc {
-      margin-bottom: 6px !important;
-      padding-bottom: 6px !important;
+        margin-bottom: 6px !important;
+        padding-bottom: 6px !important;
     }
 
     /* NO ANIMATIONS */
-*,
-*::before,
-*::after {
+    *,
+    *::before,
+    *::after {
 
 
-}
+    }
 
     /* low repaint cost */
     body {
-      text-rendering: optimizeSpeed;
-      -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeSpeed;
+        -webkit-font-smoothing: antialiased;
     }
 
     /* scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+        width: 8px;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: rgba(127,127,127,.25);
-      border-radius: 999px;
+        background: rgba(127,127,127,.25);
+        border-radius: 999px;
     }
-  `;
+`;
 
-  document.documentElement.appendChild(style);
+    document.documentElement.appendChild(style);
 
-  /* ════════════════════════════════════════
-     FAST PURGE
-     low overhead
-     ════════════════════════════════════════ */
+    /* ════════════════════════════════════════
+   FAST PURGE
+   low overhead
+   ════════════════════════════════════════ */
 
-const PURGE_CACHE = new WeakSet();
+    const PURGE_CACHE = new WeakSet();
 
-function purge() {
+    function purge() {
 
-  const nodes = document.querySelectorAll(REMOVE.join(','));
+        const nodes = document.querySelectorAll(REMOVE.join(','));
 
-  for (let i = 0; i < nodes.length; i++) {
-    const el = nodes[i];
-    if (!PURGE_CACHE.has(el)) {
-      PURGE_CACHE.add(el);
-      el.remove();
-    }
-  }
-
-}
-
-  document.addEventListener('DOMContentLoaded', purge);
-
-  let scheduled = false;
-
- if (LOW_RAM_MODE) {
-
-  setInterval(() => {
-    purge();
-  }, 2000);
-
-} else {
-
-  const observer = new MutationObserver(() => {
-    requestIdleCallback(purge, { timeout: 1000 });
-  });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-
-}
-  function memoryHintCleanup() {
-
-  try {
-    if (window.gc) window.gc(); // only works in some browsers
-  } catch {}
-
-  // force drop unused layout references
-  document.querySelectorAll('iframe, video').forEach(el => {
-    el.loading = 'lazy';
-  });
-
-}
-  setInterval(memoryHintCleanup, 15000);
-
-  if (DISABLE_IMAGES_ON_SCROLL) {
-
-  document.addEventListener('scroll', () => {
-    document.querySelectorAll('img').forEach(img => {
-      if (!img.dataset.src) {
-        img.loading = 'lazy';
-        img.decoding = 'async';
-      }
-    });
-  }, { passive: true });
-
-}
-
-  document.addEventListener('DOMContentLoaded', () => {
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-
-  });
-
-  /* ════════════════════════════════════════
-     URL CLEANER
-     lightweight
-     ════════════════════════════════════════ */
-
-  const TRACKING = [
-    'ved',
-    'ei',
-    'usg',
-    'source',
-    'sxsrf',
-    'oq',
-    'aqs',
-    'gs_lcp',
-    'gs_lp',
-    'uact',
-    'sca_esv',
-  ];
-
-  document.addEventListener('click', e => {
-
-    const a = e.target.closest('a[href]');
-
-    if (!a) return;
-
-    try {
-
-      const url = new URL(a.href);
-
-      TRACKING.forEach(p => {
-        url.searchParams.delete(p);
-      });
-
-      a.href = url.toString();
-
-    } catch {}
-
-  }, true);
-
-  /* ════════════════════════════════════════
-     BLOCK TELEMETRY
-     keep search/image/wiki functionality
-     ════════════════════════════════════════ */
-
-  const BLOCKED = [
-    'doubleclick',
-    'googlesyndication',
-    'pagead',
-    'adservice',
-    'google-analytics',
-    '/gen_204',
-  ];
-
-  function blocked(url) {
-    return BLOCKED.some(p => url.includes(p));
-  }
-
-  const originalFetch = window.fetch;
-
-  window.fetch = function(resource, init) {
-
-    const url =
-      typeof resource === 'string'
-        ? resource
-        : resource.url;
-
-    if (blocked(url)) {
-
-      return Promise.resolve(
-        new Response('{}', {
-          status: 204,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-      );
+        for (let i = 0; i < nodes.length; i++) {
+            const el = nodes[i];
+            if (!PURGE_CACHE.has(el)) {
+                PURGE_CACHE.add(el);
+                el.remove();
+            }
+        }
 
     }
 
-    return originalFetch.call(this, resource, init);
+    document.addEventListener('DOMContentLoaded', purge);
 
-  };
+    let scheduled = false;
 
-  const originalOpen = XMLHttpRequest.prototype.open;
+    if (LOW_RAM_MODE) {
 
-  XMLHttpRequest.prototype.open = function(method, url, ...args) {
+        setInterval(() => {
+            purge();
+        }, 2000);
 
-    if (blocked(url)) return;
+    } else {
 
-    return originalOpen.call(this, method, url, ...args);
+        const observer = new MutationObserver(() => {
+            requestIdleCallback(purge, { timeout: 1000 });
+        });
 
-  };
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
 
-  if (navigator.sendBeacon) {
-    navigator.sendBeacon = () => true;
-  }
+    }
+    function memoryHintCleanup() {
 
-  /* ════════════════════════════════════════
-     LOW RAM TWEAKS
-     ════════════════════════════════════════ */
+        try {
+            if (window.gc) window.gc(); // only works in some browsers
+        } catch {}
 
-  /* remove speculative loading */
-  document.querySelectorAll('script[type="speculationrules"]').forEach(el => {
-    el.remove();
-  });
+        // force drop unused layout references
+        document.querySelectorAll('iframe, video').forEach(el => {
+            el.loading = 'lazy';
+        });
 
-  /* remove ad prefetch */
-  document.querySelectorAll('link[rel="prefetch"], link[rel="preload"]').forEach(el => {
+    }
+    setInterval(memoryHintCleanup, 15000);
 
-    const href = el.href || '';
+    if (DISABLE_IMAGES_ON_SCROLL) {
 
-    if (
-      href.includes('googleads') ||
-      href.includes('doubleclick')
-    ) {
-      el.remove();
+        document.addEventListener('scroll', () => {
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.dataset.src) {
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                }
+            });
+        }, { passive: true });
+
     }
 
-  });
+    document.addEventListener('DOMContentLoaded', () => {
 
-  /* lighter idle callback */
-window.requestIdleCallback = (cb) => setTimeout(cb, 500);
-
-
-  /* compact mode */
-  if (ENABLE_COMPACT_MODE) {
-
-    document.addEventListener('keydown', e => {
-
-      if (e.altKey && e.key.toLowerCase() === 'z') {
-        document.body.classList.toggle('debloat-compact');
-      }
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
 
     });
 
-  }
+    /* ════════════════════════════════════════
+   URL CLEANER
+   lightweight
+   ════════════════════════════════════════ */
 
-  console.log('[Fast Elegant Debloat v5.1] ✓ Wiki panels preserved');
+    const TRACKING = [
+        'ved',
+        'ei',
+        'usg',
+        'source',
+        'sxsrf',
+        'oq',
+        'aqs',
+        'gs_lcp',
+        'gs_lp',
+        'uact',
+        'sca_esv',
+    ];
+
+    document.addEventListener('click', e => {
+
+        const a = e.target.closest('a[href]');
+
+        if (!a) return;
+
+        try {
+
+            const url = new URL(a.href);
+
+            TRACKING.forEach(p => {
+                url.searchParams.delete(p);
+            });
+
+            a.href = url.toString();
+
+        } catch {}
+
+    }, true);
+
+    /* ════════════════════════════════════════
+   BLOCK TELEMETRY
+   keep search/image/wiki functionality
+   ════════════════════════════════════════ */
+
+    const BLOCKED = [
+        'doubleclick',
+        'googlesyndication',
+        'pagead',
+        'adservice',
+        'google-analytics',
+        '/gen_204',
+    ];
+
+    function blocked(url) {
+        return BLOCKED.some(p => url.includes(p));
+    }
+
+    const originalFetch = window.fetch;
+
+    window.fetch = function(resource, init) {
+
+        const url =
+            typeof resource === 'string'
+            ? resource
+            : resource.url;
+
+        if (blocked(url)) {
+
+            return Promise.resolve(
+                new Response('{}', {
+                    status: 204,
+                    headers: {
+'Content-Type': 'application/json'
+                    }
+                })
+            );
+
+        }
+
+        return originalFetch.call(this, resource, init);
+
+    };
+
+    const originalOpen = XMLHttpRequest.prototype.open;
+
+    XMLHttpRequest.prototype.open = function(method, url, ...args) {
+
+        if (blocked(url)) return;
+
+        return originalOpen.call(this, method, url, ...args);
+
+    };
+
+    if (navigator.sendBeacon) {
+        navigator.sendBeacon = () => true;
+    }
+
+    /* ════════════════════════════════════════
+   LOW RAM TWEAKS
+   ════════════════════════════════════════ */
+
+    /* remove speculative loading */
+    document.querySelectorAll('script[type="speculationrules"]').forEach(el => {
+        el.remove();
+    });
+
+    /* remove ad prefetch */
+    document.querySelectorAll('link[rel="prefetch"], link[rel="preload"]').forEach(el => {
+
+        const href = el.href || '';
+
+        if (
+            href.includes('googleads') ||
+            href.includes('doubleclick')
+        ) {
+            el.remove();
+        }
+
+    });
+
+    /* lighter idle callback */
+    window.requestIdleCallback = (cb) => setTimeout(cb, 500);
+
+
+    /* compact mode */
+    if (ENABLE_COMPACT_MODE) {
+
+        document.addEventListener('keydown', e => {
+
+            if (e.altKey && e.key.toLowerCase() === 'z') {
+                document.body.classList.toggle('debloat-compact');
+            }
+
+        });
+
+    }
+
+    console.log('[Fast Elegant Debloat v5.1] ✓ Wiki panels preserved');
 
 })();
+
