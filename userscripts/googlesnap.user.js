@@ -38,12 +38,15 @@
     '[jscontroller*="M2ABbe"]',
     '[jscontroller*="Vj6r2c"]',
     '.m6B6Be', /* suggestions modules */
+    '.bzXtMb.M8OgIe.dRpWwb',
+    '#uOz6nd',
+    '#aaLvqc',
+
 
     /* AI */
     '[data-attrid="SGEOverview"]',
     '[data-async-type="sgegenerative"]',
 
-    '.dG2XIf',
     'sfc-overview',
 
     /* ads */
@@ -102,11 +105,8 @@
     ${REMOVE.join(',')} {
       display: none !important;
     }
-    div[id="uOz6nd"],
-    div[id="aaLvqc"],
-    div[class="ULSxyf"]{
-    display:none;
-    }
+
+
         @media screen and (min-width: 1600px) {
         #tsf,
         .GG4mbd,
