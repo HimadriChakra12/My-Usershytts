@@ -9,7 +9,8 @@
 @-moz-document domain("open.spotify.com") {
     
     .encore-dark-theme, .encore-dark-theme .encore-base-set {
-        --essential-bright-accent: #ffd1dc;
+        --essential-bright-accent: #fff;
+        --text-bright-accent: #99c689
     }
     
     [data-testid="upgrade-button"] {
