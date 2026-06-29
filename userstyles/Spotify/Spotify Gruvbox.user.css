@@ -141,5 +141,11 @@
         left: -15% !important;
         top: 20% !important;
     }
+    .encore-dark-theme .encore-inverted-light-set {
+        --background-base: #0000;
+        --background-highlight: #0000;
+        --background-press: #0000;
+        filter: invert(.85);
+    }
 }
 
