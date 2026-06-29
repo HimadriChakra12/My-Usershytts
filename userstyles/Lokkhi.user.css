@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Lokkhi
 @namespace      github.com/openstyles/stylus
-@version        1.0.0
+@version        2.0.0
 @description    A new userstyle
 @author         Me
 @var checkbox   discord "discord video preview" 1
@@ -178,4 +178,21 @@ div[id="google-one-tap-anchor"]{
             display: none
         }
     }
+
+@-moz-document domain("onushilonedu.com") {
+    /* Insert code here... */
+    div[class="elementor-element elementor-element-cb37f61 elementor-share-buttons--view-icon elementor-share-buttons--shape-rounded elementor-share-buttons--color-custom elementor-share-buttons--skin-gradient elementor-grid-0 elementor-widget elementor-widget-share-buttons"],
+    div[class="elementor-element elementor-element-690e33e elementor-widget elementor-widget-post-comments"],
+    div[class="elementor-element elementor-element-1448eb1 e-flex e-con-boxed e-con e-parent e-lazyloaded"],
+    div[class="elementor-element elementor-element-7b2ca16 elementor-widget elementor-widget-heading"],
+    div[class="elementor-element elementor-element-9497cca e-con-full sticky-left e-flex e-con e-child"],
+    header, footer,
+    div[class="elementor-element elementor-element-f5a704e e-flex e-con-boxed e-con e-parent e-lazyloaded"]
+    {
+        display: none
+    }
+    *{
+        color: #000 !important;
+    }
+}
 }
