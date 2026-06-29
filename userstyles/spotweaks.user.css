@@ -127,6 +127,11 @@
         height: 600px;
         border: #1d2021 10px solid;
         width: 450px;
+        border-radius: 0px !important;
+    }
+    div[class="zjCIcN96KsMfWwRo"],
+    div[class="vH8s0xuGZZAqkkUl"]{
+        min-width: 430px;
     }
     div[class="clOQWHFqnYAn76bm"]{
         background: #1d2021;
@@ -138,6 +143,7 @@
         display: none
     }
     [class="a_fKt7xvd8od_kEb"]{
+        border-radius: 0px !important;
         border: #1d2021 10px solid;
     }
     .o9Qm0k0LWsFYMDR9,
