@@ -119,7 +119,7 @@
     [data-testid="upgrade-button"]{
         display: none
     }
-    div[class="LtqMCWXd5Nkemkym"]{
+    /* div[class="LtqMCWXd5Nkemkym"]{
         position: absolute !important;
         bottom: 0px;
         right: 0%;
@@ -128,30 +128,32 @@
         border: #1d2021 10px solid;
         width: 450px;
         border-radius: 0px !important;
+    } */
+    div[class="LtqMCWXd5Nkemkym"]{
+        width: 0px;
+        opacity: 0;
+        transition: .5s ease-in-out;
     }
-    div[class="zjCIcN96KsMfWwRo"],
-    div[class="vH8s0xuGZZAqkkUl"]{
-        min-width: 430px;
-    }
-    div[class="clOQWHFqnYAn76bm"]{
-        background: #1d2021;
-    }
-    div[class="soVfmH1XK4QIons8"]{
-        background: #282828;
+    div[class="LtqMCWXd5Nkemkym"]:hover{
+        width: 400px;
+        opacity: 1;
     }
     
     div[id="context-menu"] [class="EnQEoJ0Iq3oE3Rq2"],
     button:has(path[d="M7.246 9V4h1.5v5zm0 3.025v-1.5h1.5v1.5z"]),
-    button:has(span[aria-describedby="tippy-155"]),
+    li:has(span[aria-describedby="tippy-155"]),
+    li:has(span[aria-describedby="tippy-422"]),
     
-    button[aria-label="Download"],
-    button[class="WeMORGvkBnszLgAA"],
+    /*shuffle*/ div[class="Hln1Dms3QOQ7pvLw"] > button:nth-child(3),
+    /*collab*/ div[class="Hln1Dms3QOQ7pvLw"] > button:nth-child(5),
+    /*mix*/ div[class="Hln1Dms3QOQ7pvLw"] > button:nth-child(6),
+    /*download*/ button[aria-label="Download"],
+    /*shorts*/ button[class="WeMORGvkBnszLgAA"],
     [class="qnaFIKUJ9oUIkN97 SC_eWQl28srvyLED"]{
         display: none
     }
     [class="a_fKt7xvd8od_kEb"]{
-        border-radius: 0px !important;
-        border: #1d2021 10px solid;
+        transition: 1s ease-in-out;
     }
     .o9Qm0k0LWsFYMDR9,
     .P4oGEJqsuuoGcFiA
