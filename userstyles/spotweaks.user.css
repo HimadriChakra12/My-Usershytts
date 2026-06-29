@@ -139,6 +139,13 @@
     div[class="soVfmH1XK4QIons8"]{
         background: #282828;
     }
+    
+    div[id="context-menu"] [class="EnQEoJ0Iq3oE3Rq2"],
+    button:has(path[d="M7.246 9V4h1.5v5zm0 3.025v-1.5h1.5v1.5z"]),
+    button:has(span[aria-describedby="tippy-155"]),
+    
+    button[aria-label="Download"],
+    button[class="WeMORGvkBnszLgAA"],
     [class="qnaFIKUJ9oUIkN97 SC_eWQl28srvyLED"]{
         display: none
     }
