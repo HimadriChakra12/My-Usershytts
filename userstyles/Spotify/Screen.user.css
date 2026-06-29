@@ -1,0 +1,167 @@
+/* ==UserStyle==
+@name           Spotscreen
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Him
+==/UserStyle== */
+
+@-moz-document url-prefix("https://open.spotify.com/") {
+    /* Insert code here... */
+    .ojrThQm1wxR2gZ6GntJB {
+        -webkit-margin-start: calc(min(var(--ylx-folder-depth, 0),5)*16px);
+        grid-template-rows: 48px!important;
+        margin-inline-start: calc(min(var(--ylx-folder-depth, 0),5)*16px);
+        height: 1px;
+    }
+    .ljvfQS {
+        grid-column: 1;
+        gap: 16px;
+        display: none
+    }
+    .LSrBzBljgLeDhcm3Soye {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        gap: 8px;
+        min-width: 0;
+        display: none
+    }
+    .qEiVyQ28VnOKb0LeijqL {
+        contain: content;
+        gap: unset;
+        column-gap: unset;
+        height: 41.5px;
+    }
+
+    .fkzPZy {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        align-items: flex-start;
+        font-size: 19px;
+        font-family: 
+    }
+    .ylr6LvLf5L8yLiqErDES{
+        display: none
+    }
+    .jgTSDy {
+        font-size: 0.875rem;
+        display: none;
+    }
+    .kzxKsG {
+        font-size: 0.875rem;
+        display: none;
+    }
+    .main-view-container__mh-footer-container {
+        background-color: var(--background-base);
+        padding-top: 40px;
+        display: none;
+    }
+    .T1xI1RTSFU7Wu94UuvE6 {
+        background-color: #0202023d;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        bottom: 0;
+        left: 0;
+        opacity: var(--top-bar-opacity,1);
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        -webkit-transition: background-color .25s,ease-out;
+        transition: background-color .25s,ease-out;
+        z-index: -1;
+        backdrop-filter: blur(10px);
+    }
+    .facDIsOQo9q7kiWc4jSg.coBkWVskipFo8KxLKief:before {
+        -webkit-backdrop-filter: blur(1px);
+        backdrop-filter: blur(1px);
+        bottom: 0;
+        content: "";
+        left: 8px;
+        position: absolute;
+        right: 8px;
+        top: 0;
+        background-color: #1010103b;
+    }
+    
+    div[class="a7gn1W5xEIEyxWUU"]{
+        display: none
+    }
+    div[id="global-nav-bar"]{
+        opacity: 0;
+        height: 0px;
+        pointer-events: none !important;
+    }
+    div[id="global-nav-bar"] *{
+        pointer-events: none !important;
+    }
+    div[id="global-nav-bar"]:focus-within,
+    div[id="global-nav-bar"]:hover{
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        height: 80px;
+    }
+    [id="search-dropdown"]{
+        display: none
+    }
+    div[id="global-nav-bar"]
+    div[class="AYUEkKOEqksuTXmh"]{
+        visibility: hidden;
+    }
+    [data-testid="friend-activity-button"],
+    [href="/download"],
+    [data-testid="upgrade-button"]{
+        display: none
+    }
+    /* div[class="LtqMCWXd5Nkemkym"]{
+        position: absolute !important;
+        bottom: 0px;
+        right: 0%;
+        z-index: 10000;
+        height: 600px;
+        border: #1d2021 10px solid;
+        width: 450px;
+        border-radius: 0px !important;
+    } */
+    div[class="LtqMCWXd5Nkemkym"]{
+        width: 0px;
+        opacity: 0;
+        transition: .5s ease-in-out;
+    }
+    div[class="LtqMCWXd5Nkemkym"]:hover{
+        width: 400px;
+        opacity: 1;
+    }
+    div[id="context-menu"] [class="EnQEoJ0Iq3oE3Rq2"],
+    button:has(path[d="M7.246 9V4h1.5v5zm0 3.025v-1.5h1.5v1.5z"]),
+    button:has(span[aria-describedby="tippy-155"]),
+    
+    button[aria-label="Download"],
+    button[class="WeMORGvkBnszLgAA"],
+    [class="qnaFIKUJ9oUIkN97 SC_eWQl28srvyLED"]{
+        display: none
+    }
+    [class="a_fKt7xvd8od_kEb"]{
+        transition: 1s ease-in-out;
+    }
+    .o9Qm0k0LWsFYMDR9,
+    .P4oGEJqsuuoGcFiA
+    {
+        color: wheat !important;
+    }
+    div[id="Desktop_LeftSidebar_Id"]
+    {
+        transition: .5s ease-in-out;
+        width: 0px;
+    }
+    div[id="Desktop_LeftSidebar_Id"]:hover
+    {
+        width: 400px;
+    }
+}
