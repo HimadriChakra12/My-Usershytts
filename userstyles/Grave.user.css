@@ -1,104 +1,145 @@
 /* ==UserStyle==
 @name           search.brave.com
 @namespace      github.com/openstyles/stylus
-@version        1.0.0
-@description    A new userstyle
+@version        1.1.0
+@description    Custom Brave Search Theme
 @author         Me
 ==/UserStyle== */
 
 @-moz-document regexp("^https?:\\/\\/search\\.brave\\.com\\/search\\?q=[^&]+(?:&.*)?") {
-    /* Insert code here... */
-    #search-page, #nav-tabs{
-        background: #222324
-    }
-    #site-header{
-        background: #32302f;
-    }
-    a[class="nav-logo btn btn-link svelte-13wgnj1"]{
-        display: none
-    }
-    div[id="nav-tabs"]{
-           display: none
-    }
-    div[class="header-content svelte-1jv8j14"] a[class="nav-logo btn btn-link svelte-1jv8j14"]{
-        display: none
-    }
-    /*logo change*/
-    a[class="nav-logo btn btn-link svelte-13wgnj1"]{
-        filter: 
+
+    :root {
+        /* Colors */
+        --bg-main: #212121;
+        --bg-page: #222324;
+        --bg-header: #32302f;
+        --bg-search: #222222;
+
+        /* Logo */
+        --logo-text: "BabyGirl";
+        --logo-short: "BBG";
+        --logo-color: #ffffff;
+
+        --logo-filter:
             sepia(0.9)
             saturate(7.5)
             hue-rotate(-15deg)
             brightness(0.9)
             contrast(1.2);
+
+        /* Sizes */
+        --logo-size-home: 44px;
+        --logo-size-search: 28px;
     }
-    a[class="nav-logo btn btn-link svelte-13wgnj1"] img[alt="Brave logo"]{
-        opacity: 0 /*if want the deafult back change this value to 1*/
+    /* Backgrounds */
+
+    #search-page,
+    #nav-tabs {
+        background: var(--bg-page);
     }
-    a[class="nav-logo btn btn-link svelte-13wgnj1"]::after {
-        content: "BBG";
+
+    #site-header {
+        background: var(--bg-header);
+    }
+
+    /* Hide Elements */
+
+    #nav-tabs,
+    a.nav-logo.btn.btn-link.svelte-13wgnj1,
+    .header-content.svelte-1jv8j14
+    a.nav-logo.btn.btn-link.svelte-1jv8j14 {
+        display: none;
+    }
+
+    /* Logo */
+
+    a.nav-logo.btn.btn-link.svelte-13wgnj1 {
+        filter: var(--logo-filter);
+        position: relative;
+    }
+
+    a.nav-logo.btn.btn-link.svelte-13wgnj1 img[alt="Brave logo"] {
+        opacity: 0;
+    }
+
+    a.nav-logo.btn.btn-link.svelte-13wgnj1::after {
+        content: var(--logo-short);
         position: absolute;
         top: 50%;
         left: 70%;
         transform: translate(-50%, -50%);
-        color: #ffffff; /* Or any color you prefer */
-        font-size: 28px; /* Adjust size as needed */
+
+        color: var(--logo-color);
+        font-size: var(--logo-size-search);
         font-weight: bold;
     }
-    
-    
 }
+
+
 @-moz-document domain("search.brave.com") {
-    /* Insert code here... */
-    main[class="svelte-1xzvc2r"]{
-        background: #212121
-    }
-    div[class="searchform-container svelte-17r9frn llm-enabled multiline"]{
-        background: #222222 !important;
-    }
-    div[class="download-cta svelte-1xzvc2r"]{
-        display: none !important;
-    }
-    button[id="submit-button"], button[id="submit-llm-button"], div[id="clear-query-divider"], div[class="example-searches noscrollbar noscript-hide svelte-1xzvc2r"]{
-        display: none !important;
-    }
-    a[id="logo"]{
-        filter: 
-            sepia(0.9)
-            saturate(7.5)
-            hue-rotate(-15deg)
-            brightness(0.9)
-            contrast(1.2);
-        
-    }
-    a[id="logo"]:hover{
-        text-decoration: none;
-    }
-    a[id="logo"] img[class="svelte-1qo6czq"]{
-        opacity: 0 /*if want the deafult back change this value to 1*/
-    }
-    a[id="logo"]::after {
-        content: "BabyGirl";
-        transform: translate(-30%, -50%);
-        color: #ffffff; /* Or any color you prefer */
-        font-size: 44px; /* Adjust size as needed */
-        font-weight: bold;
-    }
-    button[id="settings-button"]{
-        filter: sepia(88%) saturate(56%) hue-rotate(47deg) brightness(87%) contrast(88%);
-    }   
-    div[class="suggestions svelte-17r9frn"]{
-        height: 5% !important
-    }
-    body{
+
+    /* Layout */
+
+    body {
         overflow-x: hidden !important;
     }
-    footer{
+
+    main.svelte-1xzvc2r {
+        background: var(--bg-main);
+    }
+
+    .searchform-container.svelte-17r9frn.llm-enabled.multiline {
+        background: var(--bg-search) !important;
+    }
+
+    .suggestions.svelte-17r9frn {
+        height: 5% !important;
+    }
+
+    /* Hide Elements */
+
+    .download-cta.svelte-1xzvc2r,
+    #submit-button,
+    #submit-llm-button,
+    #clear-query-divider,
+    .example-searches.noscrollbar.noscript-hide.svelte-1xzvc2r,
+    footer {
         display: none !important;
     }
-    /*
-    a[id="logo"]{
-        display: none;
+
+    /* Logo */
+
+    #logo {
+        filter: var(--logo-filter);
+        position: relative;
     }
-    */
+
+    #logo:hover {
+        text-decoration: none;
+    }
+
+    #logo img.svelte-1qo6czq {
+        opacity: 0;
+    }
+
+    #logo::after {
+        content: var(--logo-text);
+
+        transform: translate(-30%, -50%);
+
+        color: var(--logo-color);
+        font-size: var(--logo-size-home);
+        font-weight: bold;
+    }
+
+    /* Settings */
+
+    #settings-button {
+        filter:
+            sepia(88%)
+            saturate(56%)
+            hue-rotate(47deg)
+            brightness(87%)
+            contrast(88%);
+    }
 }
