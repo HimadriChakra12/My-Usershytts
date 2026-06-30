@@ -32,7 +32,8 @@
         --logo-size-search: 28px;
     }
     /* Backgrounds */
-
+    div[class="searchform-container svelte-6keidl embed-logo"],
+    *{border:0!important;}
     #search-page,
     #nav-tabs {
         background: var(--bg-page);
@@ -44,6 +45,7 @@
 
     /* Hide Elements */
 
+    header,
     #nav-tabs,
     a.nav-logo.btn.btn-link.svelte-13wgnj1,
     .header-content.svelte-1jv8j14
@@ -137,6 +139,17 @@
         font-weight: bold;
     }
 
+    div[id="search-icon"]{
+        visibility: hidden !important
+    }
+    
+    div[class="header-content svelte-1i43yzn"],
+    div[class="searchform-container svelte-6keidl embed-logo"],
+    input[id="searchbox"],
+    form[id="searchform"]{
+        background: var(--bg-search) !important;
+        border: 0 !important
+    }
     /* Settings */
 
     #settings-button {
