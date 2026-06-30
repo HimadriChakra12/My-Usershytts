@@ -1,0 +1,192 @@
+/* ==UserStyle==
+@name         Spotify - OLED
+@namespace    github.com/openstyles/stylus
+@version      2.0.0
+@author       o7Moon
+@description  Clean, maintainable version
+==/UserStyle== */
+
+@-moz-document url-prefix("https://open.spotify.com") {
+
+    @font-face {
+        font-family: "Torus"; src: url("https://files.catbox.moe/88ntnj.otf");
+    }
+    *{
+        font-family: "Torus", sans-serif !important;
+    }
+    
+    :root {
+        --orange: #d65d0e;
+        --orange-light: #fe8019;
+        --green: #8ec07c;
+        --bg-primary: #000;
+        --bg-secondary: #000;
+        --bg-tertiary: #000;
+        --text: #fbf1c7;
+        --text-muted: #222222;
+        --accent: var(--green);
+        --radius: 16px;
+        --scrollbar-width: 5px;
+        --scrollbar-opacity: .5;
+        --player-scale: .5;
+        --home-scale: .6;
+    }
+    
+    div[class="VeKY4oPJjQ85fRnN"],
+    div[class="XToncn4_mYHzhKy7 C3zqtOMpn6kyeSzu"],
+    div[class="Emh6sVCoQHM3KQ4_ WrEaGRqx9J44u32H"]{
+        --background-base: var(--bg-primary) !important;
+        --background-base-min-contrast: var(--bg-primary) !important;
+    }
+    
+    div[class="WqX0xAKGPd8kxMke"]
+    {
+        --background-base-70: #0000 !important
+    }
+
+    .encore-dark-theme {
+        --background-base: var(--bg-tertiary);
+        --background-press: var(--bg-primary);
+        --background-elevated-press: var(--bg-primary);
+        --text-bright-accent: var(--accent);
+        --essential-bright-accent: var(--accent);
+    }
+
+    .encore-dark-theme .encore-bright-accent-set {
+        --background-base: var(--accent);
+        --background-highlight: var(--orange-light);
+        --background-press: var(--accent);
+    }
+    
+    div[id="main"] > div[data-testid="root"] {
+        --panel-gap: 10px !important;
+    }
+
+    .kvv2iSoxzbkifaMQ {
+        flex-direction: row;
+    }
+
+    .main-view-container__mh-footer-container, .us5p2PlqI8IJvxWYakKj, .rwdnt1SmeRC_lhLVfIzg { display: none; }
+    .s1ft0kHOwOh71ov_.aJd_JJ8ANaE5yQK6.f2AfA4jDLWwihiQO.lCbuKQ_HfL4yze5_ { scale: var(--player-scale); }
+
+    .fNnrSm2k2IonbI9c.contentSpacing {
+        position: absolute;
+        scale: var(--home-scale);
+        left: -15%;
+        top: 20%;
+    }
+
+    .fLfpvVIyW2MfNDjv.bM6iPT1nVYIQQgkn,
+    [class^="fNnuoINLkdAu3FPa"],
+    .BrE1JdiaGL4XscBh.JacI9L8XJSIjX3Gp.NUo3jiNfWtYtagMn,
+    .aa4xVYFIdqm4b40zcRXw,
+    .ZQftYELq0aOsg6tPbVbV,
+    .BdcvqBAid96FaHAmPYw_,
+    .LunqxlFIupJw_Dkx6mNx,
+    .VCH3TJP5s27cQwnxWKnA,
+    .PfgTAe4hVhuNFZRuuKQG {
+        background: var(--bg-primary) !important;
+    }
+
+    .qsMb9ukpITkNxgnm,
+    .iRGr6yO6lPcAKUoT,
+    .YdGOYWQYr6kqh7KU,
+    .qPaMr9Jzt0_Doy3C,
+    .wgtzoAN2iFV0pENAqJko.Y5DSUJKOG6sI99LanZGL,
+    .f9pLH3HRZQxdDLzNqKjE,
+    .POZtIm1wHFiwlxZY5i0a {
+        background: var(--bg-secondary) !important;
+    }
+
+    .LzVINwqiLdMt_bgS5psf,
+    .gHImFiUWOg93pvTefeAD,
+    .xYgjMpAjE5XT05aRIezb,
+    .CoLO4pdSl8LGWyVZA00t,
+    .qJOhHoRcFhHJpEQ2CwFT.koyeY6AgGRPmyPITi7yO,
+    .jtqtOeRP46XAlHWx4C0D.MPBLLykSgRJIlLSbQVgy {
+        background: var(--bg-tertiary) !important;
+    }
+
+    .HsbczDqu9qjcYr7EIdHR,
+    .T1xI1RTSFU7Wu94UuvE6,
+    .KAZD28usA1vPz5GVpm63.EHxL6K_6WWDlTCZP6x5w::after,
+    .TywOcKZEqNynWecCiATc:hover .epWhU7hHGktzlO_dop6z,
+    .DuvrswZugGajIFNXObAr .epWhU7hHGktzlO_dop6z {
+        background: var(--accent) !important;
+    }
+
+    .control-button-heart[aria-checked="true"],
+    .KAZD28usA1vPz5GVpm63.RK45o6dbvO1mb0wQtSwq,
+    .KVKoQ3u4JpKTvSSFtd6J.OF_3F0SQCsBtL1jSTlTA:hover,
+    .KVKoQ3u4JpKTvSSFtd6J.OF_3F0SQCsBtL1jSTlTA:focus,
+    .Vz6yjzttS0YlLcwrkoUR.tP0mccyU1WAa7I9PevC1 {
+        color: var(--accent) !important;
+    }
+
+    .n5XwsUqagSoVk8oMiw1x,
+    .jxXIarsEHgz2HoaVCVzA,
+    .uWvwXlS0Da1bWsRX6KOw {
+        filter: hue-rotate(246deg);
+    }
+
+    .EZFyDnuQnx5hw78phLqP,
+    .jEMA2gVoLgPQqAFrPhFw {
+        border-radius: var(--radius);
+    }
+
+    .tr8V5eHsUaIkOYVw7eSG {
+        --lyrics-color-background: var(--bg-tertiary);
+        --lyrics-color-passed: var(--text);
+        --lyrics-color-inactive: var(--text-muted);
+    }
+
+
+    .os-scrollbar-handle {
+        width: var(--scrollbar-width) !important;
+        border-radius: var(--scrollbar-width);
+        background: var(--accent);
+        opacity: var(--scrollbar-opacity);
+    }
+
+    .os-theme-spotify
+    > .os-scrollbar-vertical
+    > .os-scrollbar-track
+    > .os-scrollbar-handle {
+        background: var(--bg-primary);
+    }
+
+    .os-theme-spotify
+    > .os-scrollbar-horizontal
+    > .os-scrollbar-track
+    > .os-scrollbar-handle:hover,
+
+    .os-theme-spotify
+    > .os-scrollbar-vertical
+    > .os-scrollbar-track
+    > .os-scrollbar-handle:hover {
+        background: var(--text);
+    }
+
+
+    .GenericModal__overlay,
+    [aria-label="Advertisement"],
+    [aria-label^="Browse"],
+    [aria-label^="Desert"],
+    [aria-label="Featured Charts"],
+    [aria-label^="Popular"],
+    [aria-label^="Spotify original"],
+    [aria-label="State of music today"],
+    [aria-label="Trending songs"],
+    [aria-label="Recommended radio"] + * {
+
+        display: none;
+    }
+
+    .encore-dark-theme .encore-inverted-light-set {
+        --background-base: transparent;
+        --background-highlight: transparent;
+        --background-press: transparent;
+        filter: invert(.85);
+    }
+
+}
