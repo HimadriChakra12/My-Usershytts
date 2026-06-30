@@ -25,7 +25,13 @@
 }
 ==/UserStyle== */
 @-moz-document domain("reddit.com") {
-    [class="legal-links justify-self-end flex mx-md mb-md"]{
+    div[class="right-sidebar min-w-0 w-[316px] max-w-[316px] xs:min-h-screen-without-header flex-col justify-start hidden s:flex styled-scrollbars xs:sticky xs:top-[56px] xs:max-h-screen-without-header xs:overflow-y-auto xs:overflow-x-hidden"]{
+        display: none
+    }
+    div[id="mod-recruitment-banner"],
+    aside[class="flex flex-col py-md box-border mb-0 home-feed-right-rail"],
+    [id="right-rail-experience-root"],
+    div[class^="legal-links"]{
         display: none !important;
     }
     div[class="pe-lg flex gap-xs items-center justify-start"]{
@@ -313,5 +319,16 @@
     div aside recent-posts {
         display: none;
     }
-
+    div[id="right-sidebar-contents"]{
+        position: absolute;
+        width: 400px;
+        background: #282828 !important;
+        right: -300px;
+    }
+    div[id="right-sidebar-contents"]:hover{
+        position: absolute;
+        width: 400px;
+        background: #282828 !important;
+        right: 0px;
+    }
 }
