@@ -10,70 +10,81 @@
     /* Insert code here... */
     :root{
         --bg: #282828;
+        --bg1: #1d2021;
         --color: #fbf1c7
     }
-    body, .container__2637a, section[class="panels__5e434"], div[class="stack_dbd263"], div[class="title_c38106"], div[class="itemsContainer_ef3116"], div[class="tabBody__133bf"], div[class="nowPlayingColumn__133bf"], section, ul, div[class="searchBar_e6b769"], section[aria-labelledby="uid_61"], div[data-list-id="members-1290306216098267203"], div[class="content_d125d2"]>div, div[class="chat_f75fb0 threadSidebarOpen_f75fb0"]>div[class="container_f369db"], div[class="page__5e434"], div[role="list"], div[class="resizeHandle__01ae2"]{
-        background: var(--bg) !important;
-    }
-    a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, ul, var{
-        color: var(--color)
-        
-    }
-    .sidebar__5e434 div[class="content__5e434"]{
-        background: var(--bg);
-        
-    }
-    div[class*="chatGradient"]{
-        background: var(--bg) !important;
-    }
-        nav[aria-label="Private channels"], div[data-list-id*="private-channels"]{
-        background: var(--bg) !important;
-    }
     
-    div[data-justify="start"]{
-        background: var(--bg)
-    }
-    div[class="sidebar__5e434 theme-dark theme-darker images-dark"]:after, div[class="sidebar__5e434 theme-dark theme-darker images-dark"]:before, div[class="sidebarList__5e434 sidebarListRounded__5e434"]{
-        background: var(--bg);
-    }
-    div[class="page__5e434"]{
-        background: var(--bg);
-    }
-    div[class="chat_f75fb0"]{
-        background: var(--bg);
-        border-radius: 15px !important;
-    } 
-    div[class="title_c38106"], .bar_c38106{
-        background: var(--bg);
-        display: none
-    }
-    div[class="base__5e434"]{
-        background: var(--bg);
-    }
-    div[class="defaultColor__4bd52 lineClamp1__4bd52 text-sm/medium_cf4812"]{ 
-       align-items: flex-start 
-    }
-    div[class="title_edbb22"], div[class="unreadMentionsIndicatorBottom_ef3116 unreadMentionsFixedFooter_ef3116"]{
-        display: none
-    }
-    main[class="chatContent_f75fb0"], div[class="sidebarList__5e434 sidebarListRounded__5e434"], section[class="panels__5e434"], div[aria-label="Resize Sidebar"]{
-        background: var(--bg);
-    }
-    ul>div[style="height: 84px;"]{
-        display: none
-    }
-    div[id="channels"]{
-        background: var(--bg);
-    }
-    
+    *{border: 0 !important;}
+
+    div[class="children__9293f"]:after,
+    div[class*="tile_d6271c noVerticalMargin_d6271c"]:has(img[class="art__4ad81"]),
+    div[class="title_c38106"], .bar_c38106,
+    div[class="title_edbb22"], div[class="unreadMentionsIndicatorBottom_ef3116 unreadMentionsFixedFooter_ef3116"],
+    ul>div[style="height: 84px;"],
     div[class="container_f37cb1 hasBanner_f37cb1 bannerVisible_f37cb1"]>div[class="animatedContainer_f37cb1"]{
         display: none
     }
-    header[class="header_f37cb1"]{
-        background: var(--bg)
+
+    html,
+    body,
+    .container__2637a,
+    section[class="panels__5e434"],
+    div[class="stack_dbd263"],
+    div[class="title_c38106"],
+    div[class="itemsContainer_ef3116"],
+    div[class="tabBody__133bf"],
+    div[class="nowPlayingColumn__133bf"],
+    section[aria-label="Channel header"],
+    div[class="contentWrapper__08434"],
+    div[class="wrapper__14245 header_c656ac"],
+    div[class="wrapper__4e6ce categoryList_c0e32c"],
+    div[class="inner_c0bea0"] > div,
+    div[class="footerButton__272c7"],
+    ul,
+    div[class="searchBar_e6b769"],
+    section[aria-labelledby="uid_61"],
+    div[data-list-id="members-1290306216098267203"],
+    div[class="content_d125d2"]>div,
+    div[class="chat_f75fb0 threadSidebarOpen_f75fb0"]>div[class="container_f369db"],
+    div[class="page__5e434"],
+    div[role="list"],
+    div[class*="videoGrid_a21736"],
+    div[class="resizeHandle__01ae2"]
+    .sidebar__5e434 div[class="content__5e434"],
+    nav[aria-label="Private channels"], div[data-list-id*="private-channels"],
+    div[data-justify="start"],
+    div[class="sidebar__5e434 theme-dark theme-darker images-dark"]:after,
+    div[class="sidebar__5e434 theme-dark theme-darker images-dark"]:before,
+    div[class="sidebarList__5e434 sidebarListRounded__5e434"],
+    div[class="page__5e434"],
+    div[class="base__5e434"],
+    main[class="chatContent_f75fb0"],
+    div[class="sidebarList__5e434 sidebarListRounded__5e434"],
+    section[class="panels__5e434"],
+    div[aria-label="Resize Sidebar"],
+    header[class="header_f37cb1"],
+    div[id="channels"],
+    div[class="chat_f75fb0"],
+    div[class="title_c38106"], 
+    .bar_c38106,
+    div[class="card_f369db"]
+    {
+        background-color: var(--bg) !important;
     }
-    div[class="card_f369db"]{
-        background: var(--bg) !important;
+
+    div[class*="chatGradient"], div[class="gradientBottom_bfe55a gradientContainer_bfe55a"], div[class="gradientTop_bfe55a gradientContainer_bfe55a"], div[class="gradientBottom_bfe55a gradientContainer_bfe55a"]:hover, div[class="gradientTop_bfe55a gradientContainer_bfe55a"]:hover { opacity: 0 !important }
+
+    div[class="body_b32ca4"] > div:not([class="info_b32ca4"]) > div,
+    div[class="overlay_c0bea0 overlay__3b260"],
+    div[class="scrollableContainer__74017 themedBackground__74017"]
+    {
+        background: var(--bg1) !important;
     }
-    
+
+    a,abbr,acronym,address,applet,big,blockquote,body,caption,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,form,h1,h2,
+    h3,h4,h5,h6,html,iframe,img,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,strong,table,tbody,td,tfoot,th,thead,tr,tt,ul,var { color: var(--color)  }
+    div[class="chat_f75fb0"] { border-radius: 15px !important; } 
+    div[class="defaultColor__4bd52 lineClamp1__4bd52 text-sm/medium_cf4812"] { align-items: flex-start  }
+
+
 }
