@@ -1,0 +1,150 @@
+/* ==UserStyle==
+@name           search.brave.com
+@namespace      github.com/openstyles/stylus
+@version        1.1.0
+@description    Custom Brave Search Theme
+@author         Me
+==/UserStyle== */
+
+@-moz-document regexp("^https?:\\/\\/search\\.brave\\.com\\/search\\?q=[^&]+(?:&.*)?") {
+
+    :root {
+        /* Colors */
+        --bg-main: #212121;
+        --bg-page: #000;
+        --bg-header: #000;
+        --bg-search: #000;
+
+        /* Logo */
+        --logo-text: "BabyGirl";
+        --logo-short: "BBG";
+        --logo-color: #ffffff;
+
+        --logo-filter:
+            sepia(0.9)
+            saturate(7.5)
+            hue-rotate(-15deg)
+            brightness(0.9)
+            contrast(1.2);
+
+        /* Sizes */
+        --logo-size-home: 44px;
+        --logo-size-search: 28px;
+    }
+    /* Backgrounds */
+
+    #search-page,
+    #nav-tabs {
+        background: var(--bg-page);
+    }
+
+    #site-header {
+        background: var(--bg-header);
+    }
+
+    /* Hide Elements */
+
+    #nav-tabs,
+    a.nav-logo.btn.btn-link.svelte-13wgnj1,
+    .header-content.svelte-1jv8j14
+    a.nav-logo.btn.btn-link.svelte-1jv8j14 {
+        display: none;
+    }
+
+    /* Logo */
+
+    a.nav-logo.btn.btn-link.svelte-13wgnj1 {
+        filter: var(--logo-filter);
+        position: relative;
+    }
+
+    a.nav-logo.btn.btn-link.svelte-13wgnj1 img[alt="Brave logo"] {
+        opacity: 0;
+    }
+
+    a.nav-logo.btn.btn-link.svelte-13wgnj1::after {
+        content: var(--logo-short);
+        position: absolute;
+        top: 50%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+
+        color: var(--logo-color);
+        font-size: var(--logo-size-search);
+        font-weight: bold;
+    }
+}
+
+
+@-moz-document domain("search.brave.com") {
+
+    /* Layout */
+
+    body {
+        overflow-x: hidden !important;
+    }
+
+    main.svelte-1xzvc2r {
+        background: var(--bg-main);
+    }
+
+    .searchform-container.svelte-17r9frn.llm-enabled.multiline {
+        background: var(--bg-search) !important;
+    }
+
+    .suggestions.svelte-17r9frn {
+        height: 5% !important;
+    }
+
+    /* Hide Elements */
+
+    .download-cta.svelte-1xzvc2r,
+    #submit-button,
+    #submit-llm-button,
+    #clear-query-divider,
+    .example-searches.noscrollbar.noscript-hide.svelte-1xzvc2r,
+    footer {
+        display: none !important;
+    }
+
+    /* Logo */
+
+    #logo {
+        filter: var(--logo-filter);
+        position: relative;
+        display: none;
+    }
+
+    a[class="nav-logo btn btn-link svelte-1i43yzn"]
+    {
+        visibility: hidden;
+    }
+    #logo:hover {
+        text-decoration: none;
+    }
+
+    #logo img.svelte-1qo6czq {
+        opacity: 0;
+    }
+
+    #logo::after {
+        content: var(--logo-text);
+
+        transform: translate(-30%, -50%);
+
+        color: var(--logo-color);
+        font-size: var(--logo-size-home);
+        font-weight: bold;
+    }
+
+    /* Settings */
+
+    #settings-button {
+        filter:
+            sepia(88%)
+            saturate(56%)
+            hue-rotate(47deg)
+            brightness(87%)
+            contrast(88%);
+    }
+}
