@@ -155,8 +155,16 @@
         background: var(--text);
     }
 
+    body:has([data-testid="upgrade-button"])
+    button[aria-label*="Enable Smart Shuffle"]
+    {
+        opacity: .60;
+        filter: grayscale(1);
+        pointer-events: none
+    }
 
     .GenericModal__overlay,
+    [data-testid="upgrade-button"],
     [aria-label="Advertisement"],
     [aria-label^="Browse"],
     [aria-label^="Desert"],
