@@ -258,11 +258,13 @@ div[id="google-one-tap-anchor"]{
     [class="pictureInPicture__6341f"]{
         display: none
     }
+}
+
+@-moz-document url-prefix("https://discord.com/channels/@me/1467231888065167381"){
     [class="visualMediaItemContainer_f4758a"]:has(a[data-role="img"]){
         height: 12px !important;
     }
-}
-
+}    
 @-moz-document domain("onushilonedu.com") {
     /* Insert code here... */
     div[class="elementor-element elementor-element-cb37f61 elementor-share-buttons--view-icon elementor-share-buttons--shape-rounded elementor-share-buttons--color-custom elementor-share-buttons--skin-gradient elementor-grid-0 elementor-widget elementor-widget-share-buttons"],
