@@ -6,7 +6,7 @@
 @author         Me
 ==/UserStyle== */
 
-@-moz-document url-prefix("http://localhost:3000/") {
+@-moz-document url-prefix("http://localhost:3000/"), url-prefix("https://www.bentopdf.com") {
     /* Insert code here... */
     html, body{
         padding: 50px;
