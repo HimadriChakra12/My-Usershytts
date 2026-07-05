@@ -353,7 +353,8 @@
             &[aria-label*="See"],
             &[aria-label="Voice Clip"],
             &[aria-label="Add Photo or Video"],
-            &[aria-label="Choose a GIF or sticker"], svg[aria-label="Audio call"],
+            &[aria-label="Choose a GIF or sticker"], 
+            &[aria-label="Audio call"],
             &[aria-label="Video call"],
             &[aria-label="Conversation information"],
             &[aria-label="Cancel reply"]
