@@ -27,12 +27,12 @@
         display: none
     }
 
-    div[class*="container__"],
+    [class*="chatContent_"],
     [role="tree"],
     section[aria-labelledby*="uid_"],
     html,
     body,
-    .container__2637a,
+    [class*="container_"],
     section[class="panels__5e434"],
     div[class="stack_dbd263"],
     div[class="title_c38106"],
@@ -75,6 +75,12 @@
     div[class="card_f369db"]
     {
         background-color: var(--bg) !important;
+    }
+    
+    [class="resizeHandle__01ae2"]
+    {
+        border-radius: 10px;
+        background: #1d2021;
     }
 
     div[class*="chatGradient"], div[class="gradientBottom_bfe55a gradientContainer_bfe55a"], div[class="gradientTop_bfe55a gradientContainer_bfe55a"], div[class="gradientBottom_bfe55a gradientContainer_bfe55a"]:hover, div[class="gradientTop_bfe55a gradientContainer_bfe55a"]:hover { opacity: 0 !important }
