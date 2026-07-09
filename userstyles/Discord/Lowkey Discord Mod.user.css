@@ -1,0 +1,34 @@
+/* ==UserStyle==
+@name           Lowkey Discord.him
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+
+@-moz-document domain("discord.com") {
+    /* Insert code here... */
+    body:has([class*="videoFrame_"]){
+        & div[class*="sidebarList_"]
+        {
+            width: 10px;
+            opacity: 0;
+            transition: ease-in-out .5s;
+        }
+        & div[class*="sidebarList_"]:hover
+        {
+            width: 310px;
+            opacity: 1;
+        }
+    }
+        section[aria-label="User status and settings"]
+        {
+            position: absolute;
+            height: 54px;
+        }
+        section[aria-label="User status and settings"]:has([class="rtcConnectionStatusWrapper__06d62"]):hover
+        {
+
+            height: 150px;
+        } 
+}
