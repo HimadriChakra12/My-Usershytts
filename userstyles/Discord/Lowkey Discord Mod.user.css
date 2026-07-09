@@ -11,7 +11,7 @@
     body:has([class*="videoFrame_"]){
         & div[class*="sidebarList_"]
         {
-            width: 10px;
+            width: 0px;
             opacity: 0;
             transition: ease-in-out .5s;
         }
@@ -19,6 +19,12 @@
         {
             width: 310px;
             opacity: 1;
+            transition: ease-in-out .5s;
+        }
+        & section[aria-label="User status and settings"]
+        {
+            position: absolute;
+            height: 0px !important;
         }
     }
         section[aria-label="User status and settings"]
