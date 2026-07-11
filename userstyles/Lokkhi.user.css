@@ -29,12 +29,22 @@ div[id="google-one-tap-anchor"]{
     }
 }
 
+@-moz-document url-prefix(https://open.spotify.com) {
+    
+    .kinda{display: flex}
+    
+    :root{
+        --esaccent: #8ec07c;
+        --txtaccent: #709b60;
+    }
+}
 @-moz-document url-prefix("https://open.spotify.com/playlist/5FafrkFZFxnYtDs1H7e7yz") {
 
     .pair{display: flex}
 
     :root{
         --bg: #8c0048;
+        --bar: #8c0048;
         
         --b1 : url(https://i.vgy.me/kSSQ0R.jpg);
         --p1 : 70%;
@@ -63,6 +73,7 @@ div[id="google-one-tap-anchor"]{
     
     :root{
         --bg: #8c0048;
+        --bar: #8c0048;
         --bgimg: url(https://i.vgy.me/nsBhkC.jpg);
         --base: #c5364f;
         --highlight: red;
@@ -90,6 +101,7 @@ div[id="google-one-tap-anchor"]{
         --size: 100%;
         --esaccent: #fff;
         --txtaccent: #aaa;
+        --bar: #373737;
     }
 }
 
@@ -120,7 +132,7 @@ div[id="google-one-tap-anchor"]{
         --text-bright-accent: var(--txtaccent) !important;
     }
     
-    .Ltz8hFoxXpck1XAk.WhDogzQwSAwEfE7F{ background: #737373; }
+    .Ltz8hFoxXpck1XAk.WhDogzQwSAwEfE7F{ background: var(--bar); }
     .encore-dark-theme, .encore-dark-theme .encore-base-set { --essential-bright-accent: var(--esaccent); --text-bright-accent: var(--txtaccent); }
      .GzWlvg0xI8IJiSoY.u5wEtE_x69YxkLdv.TiaWL1ubrITBXdmD { background: var(--essential-bright-accent);
         .encore-internal-color-text-subdued, .encore-internal-color-text-base, .UudGCx16EmBkuFPllvss a, ._TH6YAXEzJtzSxhkGSqu a, .ET4SVjxyjH4WkA3kSo5G a, .qev2KFBSKCHkeXT4fDTl a, svg, .encore-text, .e-9541-text, .encore-text-body-small, .encore-text-body-small a {
