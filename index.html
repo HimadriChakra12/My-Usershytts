@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HIM Userstyles &amp; Userscripts</title>
+<style>
+/* reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0a0a0a;
+  --bg2:     #1a1a1a;
+  --bg3:     #2a2a2a;
+  --fg:      #e8e8e8;
+  --fg-dim:  #888;
+  --accent:  #e8e8e8;
+  --border:  #2e2e2e;
+  --radius:  4px;
+  --gap:     16px;
+  --font:    system-ui, sans-serif;
+  --mono:    "IosevkaCharonMono", ui-monospace, monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* layout */
+.page { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* topbar */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.topbar h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.tab-btn {
+  background: var(--bg3);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+.tab-btn:hover { background: var(--bg2); }
+
+/* sections */
+.pane { display: none; }
+.pane:target, .pane.active { display: block; }
+
+.section {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 36px 0 12px;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+.section::before {
+  content: "~/";
+  color: var(--fg-dim);
+  font-weight: 400;
+}
+.section.root::before { content: ""; }
+
+.sub {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg-dim);
+  margin: 20px 0 8px 2px;
+  letter-spacing: 0.02em;
+}
+.sub::before { content: "/"; margin-right: 3px; }
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--gap);
+  margin-bottom: 4px;
+}
+
+/* card */
+.card {
+  display: block;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px 40px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.88rem;
+  word-break: break-word;
+  transition: background 0.1s, border-color 0.1s;
+  min-height: 90px;
+}
+.card:hover {
+  background: var(--bg3);
+  border-color: #555;
+}
+
+/* fallback for no :target — show userstyles by default */
+.pane#userstyles { display: block; }
+.pane#userscripts:target ~ #userstyles,
+.pane#userscripts:target { display: block; }
+.pane#userscripts:target ~ #userstyles { display: none; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <h1 id="page-title">HIM Userstyles</h1>
+    <a class="tab-btn" href="#userscripts" id="tab-link">userscripts</a>
+  </div>
+
+  <div class="pane" id="userstyles">
+<h2 class="section root">~</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/BentoPDF.user.css" title="BentoPDF">BentoPDF</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Brave Reformed.user.css" title="Brave: Styled">Brave: Styled</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Chill.user.css" title="123chill.uk">123chill.uk</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/FB Gruv.user.css" title="FB Gruv">FB Gruv</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Github Center Nav.user.css" title="Gitmedium">Gitmedium</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Github Grid view.user.css" title="`Repositories Grid For GitHub">`Repositories Grid For GitHub</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Github Gruvbox Extended+.user.css" title="Github GruvBox Extended+">Github GruvBox Extended+</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Google Result Number.user.css" title="Google Result Number (Multi-service) FIXED 9/2022">Google Result Number (Multi-service) FIXED 9/2022</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Google Topbar Autohide.user.css" title="Google Topbar Autohide">Google Topbar Autohide</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/GourillaType.user.css" title="Hankeytype">Hankeytype</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Grave.user.css" title="search.brave.com">search.brave.com</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/IG Story border.user.css" title="Instagram Story Border">Instagram Story Border</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/IosevkaCharonMono.user.css" title="All Sites — Iosevka Charon Mono (Auto GitHub)">All Sites — Iosevka Charon Mono (Auto GitHub)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Lokkhi.user.css" title="Lokkhi">Lokkhi</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Messenger Dynamic Sidebar.user.css" title="Messenger Auto Minimize Sidebar/Chat List">Messenger Auto Minimize Sidebar/Chat List</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Messenger Gruvbox.user.css" title="Facebook-Messenger Gruvbox Theme">Facebook-Messenger Gruvbox Theme</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Modern Painfree Gmail.user.css" title="Modern Painfree Gmail">Modern Painfree Gmail</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Pinterest Gruvbox.user.css" title="Pinterest Black Squared">Pinterest Black Squared</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify.user.css" title="open.spotify.com">open.spotify.com</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Ultimate Facebook Toolkit.user.css" title="Ultimate Facebook Toolkit (Distractions and viewing)">Ultimate Facebook Toolkit (Distractions and viewing)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Universal Border-radius.user.css" title="Universal Border-radius">Universal Border-radius</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/chatgpt him styled.user.css" title="HimGPT">HimGPT</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/claude wide.user.css" title="claude.ai">claude.ai</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/ghtweaks.user.css" title="Ghtweaks">Ghtweaks</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/github toolkit.user.css" title="Github Tweakkit">Github Tweakkit</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/greasyfork.user.css" title="GreasyFork | Modernized ( Optional Dark Theme )">GreasyFork | Modernized ( Optional Dark Theme )</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/jetbrainsfont.user.css" title="All Sites — Jetbrains Mono">All Sites — Jetbrains Mono</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/oled Brave.user.css" title="search.brave.com">search.brave.com</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/shikho-dd.user.css" title="Shikho Material Downloader">Shikho Material Downloader</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/shikho.user.css" title="Shikho">Shikho</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/spotweaks.user.css" title="Spotweaks">Spotweaks</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/stevenuni.user.css" title="stevenuniverse.best fullvid">stevenuniverse.best fullvid</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/stvnuni.user.css" title="stevenuniverse.best">stevenuniverse.best</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/wiki-monobook.user.css" title="Wiki-monobook">Wiki-monobook</a></div>
+<h2 class="section">Black</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Black/Userstyles World.user.css" title="UserStyles.world Black">UserStyles.world Black</a></div>
+<h2 class="section">Catpuccin</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Catpuccin/Gmail.user.css" title="Modern Catpuccin Gmail">Modern Catpuccin Gmail</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Catpuccin/Userstyles World.user.css" title="UserStyles.world Catpuccin">UserStyles.world Catpuccin</a></div>
+<h2 class="section">Discord</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/Discord Gruvbox.user.css" title="Discord Gruv">Discord Gruv</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/Lowkey Discord Mod.user.css" title="Lowkey Discord.him">Lowkey Discord.him</a></div>
+<h3 class="sub">ThirdParty</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/horizontalserverlistdiscord.user.css" title="Horizontal Discord Server List">Horizontal Discord Server List</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/radialstatus.user.css" title="radialstatus.user">radialstatus.user</a></div>
+<h3 class="sub">ThirdParty / Alternate Vista</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Alternate Vista/Base.user.css" title="Alternate Vista">Alternate Vista</a></div>
+<h3 class="sub">ThirdParty / Material</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Material/Base.user.css" title="Material">Material</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Material/Material One line.user.css" title="Material">Material</a></div>
+<h3 class="sub">ThirdParty / Mica</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Mica/Base.user.css" title="Mica">Mica</a></div>
+<h3 class="sub">ThirdParty / Midnight</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Midnight/base.user.css" title="Midnight">Midnight</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Midnight/vencord.user.css" title="Midnight-Vencord">Midnight-Vencord</a></div>
+<h3 class="sub">ThirdParty / Moon Rabbit</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Moon Rabbit/Settings.user.css" title="Moon Rabbit">Moon Rabbit</a></div>
+<h3 class="sub">ThirdParty / Oldcord</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Base.user.css" title="OldCord">OldCord</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Folder Fixed.user.css" title="OldCord">OldCord</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Gruv.user.css" title="OldGrord">OldGrord</a></div>
+<h3 class="sub">ThirdParty / System24</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/System24/base.user.css" title="System24">System24</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/System24/vencord.user.css" title="System24-vencord">System24-vencord</a></div>
+<h2 class="section">Instagram</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Compliment to &quot;reelcontrols.user.js&quot;.user.css" title="Compliment to The REELCONTROLS.user.js">Compliment to The REELCONTROLS.user.js</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Dark Instagram (Gruvbox).user.css" title="Dark Instagram (Gruvbox)">Dark Instagram (Gruvbox)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/HIMADRI SPECIAL REDUCE DISTRACTIONS.user.css" title="HIMADRI SPECIAL REDUCE DISTRACTIONS">HIMADRI SPECIAL REDUCE DISTRACTIONS</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Him-comb.user.css" title="Him-Comb">Him-Comb</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/IGBG(Him Specific).user.css" title="Custom Inbox For Instagram (Him Specific)">Custom Inbox For Instagram (Him Specific)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/IGT Context Menu.user.css" title="Instagram &amp; Threads Context Menu for Photos">Instagram &amp; Threads Context Menu for Photos</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/InstaTUI.user.css" title="www.instagram.com">www.instagram.com</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Instagram De-Dopamine.user.css" title="Instagram De-Dopamine">Instagram De-Dopamine</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Instagram Visual Toolkit.user.css" title="Instgram Visual Toolkit">Instgram Visual Toolkit</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Instagram.user.css" title="The instarchanging 3">The instarchanging 3</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Laptop Layout for Instagram.user.css" title="Instagram - Layout For Laptop">Instagram - Layout For Laptop</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Larger Insta Feed.user.css" title="Larger feed (Photos and videos) By Riox by rioxrenato">Larger feed (Photos and videos) By Riox by rioxrenato</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Msg sidebar collapsed ig.user.css" title="Instagram Collapsed Sidebar">Instagram Collapsed Sidebar</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Reduce Distraction - Mobile Edition.user.css" title="Reduce Distractions [Instagram] - Mobile Edition">Reduce Distractions [Instagram] - Mobile Edition</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Reduce Distraction.user.css" title="Reduce Distractions [Instagram]">Reduce Distractions [Instagram]</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Saviour.user.css" title="Savior">Savior</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Texttagram.user.css" title="Texttagram">Texttagram</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/The Instachanging 2.user.css" title="The instarchanging 2">The instarchanging 2</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/Tweaks For Instagram.user.css" title="Minimal Tweaks For Instagram">Minimal Tweaks For Instagram</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/instagram-custom-inbox-bg.user.css" title="Custom Inbox For Instagram">Custom Inbox For Instagram</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/no sujoy.user.css" title="SujoyBlock">SujoyBlock</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Instagram/photo.user.css" title="Photo">Photo</a></div>
+<h2 class="section">Reddit</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Reddit/Gallery View.user.css" title="Reddit Gallery Feed">Reddit Gallery Feed</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Reddit/Minimal reddit.user.css" title="Minimal Reddit 3rd">Minimal Reddit 3rd</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Reddit/Reddit Tweaker.user.css" title="Reddit Tweaker">Reddit Tweaker</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Reddit/Reddit Tweaks.user.css" title="Reddit Tweaks">Reddit Tweaks</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Reddit/Reddit gruv.user.css" title="Reddit Minimal Dark">Reddit Minimal Dark</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Reddit/night.user.css" title="old reddit night clean">old reddit night clean</a></div>
+<h2 class="section">Spotify</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify/Screen.user.css" title="Spotscreen">Spotscreen</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify/Spotify Gruvbox.user.css" title="Spotify - Minimal Gruvbox Orange (Refactored)">Spotify - Minimal Gruvbox Orange (Refactored)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify/Spotify Kinda quircky.user.css" title="kinda quirky spotify">kinda quirky spotify</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify/Spotify Mobile.user.css" title="Spotify Mobile">Spotify Mobile</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify/Spotoled.user.css" title="Spotify - OLED">Spotify - OLED</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify/Userstyle alternative to spotifypersonalizedconsistantmusicaart.user.css" title="spotifypersonalizedconsistantmusicaart">spotifypersonalizedconsistantmusicaart</a></div>
+<h3 class="sub">ThirdParty / Text</h3>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Spotify/ThirdParty/Text/Text(Incomplete).user.css" title="open.spotify.com">open.spotify.com</a></div>
+<h2 class="section">Stylus</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Stylus/Gruv.user.css" title="Stylus Gruvbox Dark Hard">Stylus Gruvbox Dark Hard</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Stylus/indent.user.css" title="Indent Guides For Stylus Editor">Indent Guides For Stylus Editor</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Stylus/styluscollapsedsidebar.user.css" title="Collapsing sidebar - Stylus Editor">Collapsing sidebar - Stylus Editor</a></div>
+<h2 class="section">Youtube</h2>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/2016.user.css" title="YouTube Mobile 2016 Redux">YouTube Mobile 2016 Redux</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/Gruvbox Music.user.css" title="Gruvbox Music">Gruvbox Music</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/Gruvyt.user.css" title="Youtube - Gruvbox Dark hard">Youtube - Gruvbox Dark hard</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/Him+Bread.user.css" title="Him-bread+ytad tweak">Him-bread+ytad tweak</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/Reduce Distraction.user.css" title="Reduce Distractions [YouTube]">Reduce Distractions [YouTube]</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/Tui.user.css" title="YouTube TUI Theme">YouTube TUI Theme</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/YTAntiDistract.user.css" title="YouTube anti-distraction">YouTube anti-distraction</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Youtube/ytphiles.user.css" title="YouTube For Audiophiles">YouTube For Audiophiles</a></div>
+  </div>
+
+  <div class="pane" id="userscripts">
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/ACS.user.js" title="AparsClassroom Iframe SRC Extractor (Dark Mode, Short URLs)">AparsClassroom Iframe SRC Extractor (Dark Mode, Short URLs)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/AutoRAM.user.js" title="AutoRAM Cleaner ☢ Nuclear Edition">AutoRAM Cleaner ☢ Nuclear Edition</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Blindness effect.user.js" title="Blindness Effect">Blindness Effect</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Facebook Cleaner.user.js" title="Facebook Cleaner">Facebook Cleaner</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Fat Cursor.user.js" title="Fat Animated Caret">Fat Animated Caret</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Favicons.user.js" title="Multi Favicon Replacer">Multi Favicon Replacer</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Hardened Insta.user.js" title="Instagram — Hard Mode Privacy">Instagram — Hard Mode Privacy</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Hardened google.user.js" title="Google — Fast Elegant Debloat (Privacy Edition)">Google — Fast Elegant Debloat (Privacy Edition)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Hover Preview.user.js" title="Hover Preview Enhanced">Hover Preview Enhanced</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/IG Bubbles.user.js" title="Instagram Multiple Floating Chat Bubbles with Notifications">Instagram Multiple Floating Chat Bubbles with Notifications</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Instablock.user.js" title="Instagram Time Blocker">Instagram Time Blocker</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Mega Redirect.user.js" title="Mega Search Redirect">Mega Search Redirect</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Reddit post on sidebar.user.js" title="Reddit Sidebar Posts with Iframe">Reddit Sidebar Posts with Iframe</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/Sheild.user.js" title="Focus Shield">Focus Shield</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/basic vim motions.user.js" title="Vim Motions for Inputs">Vim Motions for Inputs</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/facebookcleaner.user.js" title="Facebook Cleaner">Facebook Cleaner</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/focus.user.js" title="Focus Guardian - Attention Span Manager">Focus Guardian - Attention Span Manager</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/focustocal.user.js" title="Calendar Focus Blocker">Calendar Focus Blocker</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/gitsnap.user.js" title="GitHub Turbo Mode">GitHub Turbo Mode</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/googlesnap.user.js" title="Google — Fast Elegant Debloat">Google — Fast Elegant Debloat</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/igfloatingimagecanvas.user.js" title="Instagram DM Floating Image Canvas (Final)">Instagram DM Floating Image Canvas (Final)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/igstickers.user.js" title="Instagram Sticker Sidebar with Toggle">Instagram Sticker Sidebar with Toggle</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/imagesidebar.user.js" title="Image Sidebar Asset Manager">Image Sidebar Asset Manager</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/instabox.user.js" title="Instagram Direct Instant Redirect">Instagram Direct Instant Redirect</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/instalite.user.js" title="Instagram Lite Stable">Instagram Lite Stable</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/megaredirect.user.js" title="Mega.nz Redirector">Mega.nz Redirector</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/reelcontrol.user.js" title="Instagram Reels Controls">Instagram Reels Controls</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/spotifyalbumsort.user.js" title="Spotify Album Grouping (Fixed + Collapse)">Spotify Album Grouping (Fixed + Collapse)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/spotifypersonalizedconsistantmusicaart.user.js" title="Spotify Custom Cover Art">Spotify Custom Cover Art</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/spotlite.user.js" title="Spotify Lite">Spotify Lite</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/stevennoadverse.user.js" title="Remove Adblock Popup (stevenuniverse.best)">Remove Adblock Popup (stevenuniverse.best)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/sujoyblock.user.js" title="Instagram Hard Remove sagnik_om_">Instagram Hard Remove sagnik_om_</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userscripts/videospeedcontrol.user.js" title="Universal Video Speed Controller (Fixed)">Universal Video Speed Controller (Fixed)</a></div>
+  </div>
+
+</div>
+
+<!-- minimal JS just for the toggle label — remove if you want pure CSS -->
+<script>
+(function(){
+  var link  = document.getElementById('tab-link');
+  var title = document.getElementById('page-title');
+  function sync(){
+    if(location.hash === '#userscripts'){
+      title.textContent = 'HIM Userscripts';
+      link.textContent  = 'userstyles';
+      link.href         = '#userstyles';
+    } else {
+      title.textContent = 'HIM Userstyles';
+      link.textContent  = 'userscripts';
+      link.href         = '#userscripts';
+    }
+  }
+  window.addEventListener('hashchange', sync);
+  sync();
+})();
+</script>
+</body>
+</html>
