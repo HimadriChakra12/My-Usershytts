@@ -59,7 +59,7 @@ body {
 
 /* sections */
 .pane { display: none; }
-.pane:target, .pane.active { display: block; }
+.pane.active { display: block; }
 
 .section {
   font-size: 1.1rem;
@@ -111,11 +111,7 @@ body {
   border-color: #555;
 }
 
-/* fallback for no :target — show userstyles by default */
-.pane#userstyles { display: block; }
-.pane#userscripts:target ~ #userstyles,
-.pane#userscripts:target { display: block; }
-.pane#userscripts:target ~ #userstyles { display: none; }
+
 </style>
 </head>
 <body>
@@ -148,7 +144,7 @@ body {
 <h3 class="sub">ThirdParty / Moon Rabbit</h3>
 <div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Moon Rabbit/Settings.user.css" title="Moon Rabbit">Moon Rabbit</a></div>
 <h3 class="sub">ThirdParty / Oldcord</h3>
-<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Base.user.css" title="OldCord">OldCord</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Folder Fixed.user.css" title="OldCord(Fixed)">OldCord(Fixed)</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Gruv.user.css" title="OldGrord">OldGrord</a></div>
+<div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Base.user.css" title="OldCord">OldCord</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Folder Fixed.user.css" title="OldCord">OldCord</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/Oldcord/Gruv.user.css" title="OldGrord">OldGrord</a></div>
 <h3 class="sub">ThirdParty / System24</h3>
 <div class="grid"><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/System24/base.user.css" title="System24">System24</a><a class="card" href="https://raw.githubusercontent.com/HimadriChakra12/My-Usershytts/main/userstyles/Discord/ThirdParty/System24/vencord.user.css" title="System24-vencord">System24-vencord</a></div>
 <h2 class="section">Instagram</h2>
@@ -176,16 +172,18 @@ body {
 (function(){
   var link  = document.getElementById('tab-link');
   var title = document.getElementById('page-title');
+  var panes = {
+    userstyles:  document.getElementById('userstyles'),
+    userscripts: document.getElementById('userscripts')
+  };
   function sync(){
-    if(location.hash === '#userscripts'){
-      title.textContent = 'HIM Userscripts';
-      link.textContent  = 'userstyles';
-      link.href         = '#userstyles';
-    } else {
-      title.textContent = 'HIM Userstyles';
-      link.textContent  = 'userscripts';
-      link.href         = '#userscripts';
-    }
+    var cur = location.hash === '#userscripts' ? 'userscripts' : 'userstyles';
+    var other = cur === 'userstyles' ? 'userscripts' : 'userstyles';
+    panes[cur].classList.add('active');
+    panes[other].classList.remove('active');
+    title.textContent = cur === 'userscripts' ? 'HIM Userscripts' : 'HIM Userstyles';
+    link.textContent  = other;
+    link.href         = '#' + other;
   }
   window.addEventListener('hashchange', sync);
   sync();

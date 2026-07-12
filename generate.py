@@ -171,7 +171,7 @@ body {{
 
 /* sections */
 .pane {{ display: none; }}
-.pane:target, .pane.active {{ display: block; }}
+.pane.active {{ display: block; }}
 
 .section {{
   font-size: 1.1rem;
@@ -223,11 +223,7 @@ body {{
   border-color: #555;
 }}
 
-/* fallback for no :target — show userstyles by default */
-.pane#userstyles {{ display: block; }}
-.pane#userscripts:target ~ #userstyles,
-.pane#userscripts:target {{ display: block; }}
-.pane#userscripts:target ~ #userstyles {{ display: none; }}
+
 </style>
 </head>
 <body>
@@ -253,16 +249,18 @@ body {{
 (function(){{
   var link  = document.getElementById('tab-link');
   var title = document.getElementById('page-title');
+  var panes = {{
+    userstyles:  document.getElementById('userstyles'),
+    userscripts: document.getElementById('userscripts')
+  }};
   function sync(){{
-    if(location.hash === '#userscripts'){{
-      title.textContent = 'HIM Userscripts';
-      link.textContent  = 'userstyles';
-      link.href         = '#userstyles';
-    }} else {{
-      title.textContent = 'HIM Userstyles';
-      link.textContent  = 'userscripts';
-      link.href         = '#userscripts';
-    }}
+    var cur = location.hash === '#userscripts' ? 'userscripts' : 'userstyles';
+    var other = cur === 'userstyles' ? 'userscripts' : 'userstyles';
+    panes[cur].classList.add('active');
+    panes[other].classList.remove('active');
+    title.textContent = cur === 'userscripts' ? 'HIM Userscripts' : 'HIM Userstyles';
+    link.textContent  = other;
+    link.href         = '#' + other;
   }}
   window.addEventListener('hashchange', sync);
   sync();
