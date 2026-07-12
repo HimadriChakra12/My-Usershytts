@@ -206,3 +206,23 @@ div[id="google-one-tap-anchor"]{
     }
 }
 
+@-moz-document url-prefix("https://123chill.uk") {
+    /* Insert code here... */
+    div[class="watch-grid"]{
+        display: block !important;
+    }
+}
+
+@-moz-document domain("stevenuniverse.best") {
+    /* Insert code here... */
+    .container1 {
+        padding: 20px;
+        width: 100%;
+        max-width: 85vw;
+        margin: 0 auto;
+        text-align: center;
+    }
+    div[class="fjjnjgwuj"]{
+        display: none
+    }
+}
