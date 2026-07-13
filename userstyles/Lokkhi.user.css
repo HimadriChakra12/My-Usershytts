@@ -226,3 +226,11 @@ div[id="google-one-tap-anchor"]{
         display: none
     }
 }
+
+@-moz-document domain("www.khanacademy.org") {
+    /* Insert code here... */
+    [id="donate-banner"]
+    {
+        display: none
+    }
+}
