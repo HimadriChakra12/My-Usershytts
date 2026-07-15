@@ -48,6 +48,11 @@
 @var checkbox settings              "└⟶ Hide Settings" 0
 @var checkbox meta                  "└⟶ Hide Meta" 1
 
+@var checkbox accenterdebloat       "Account Center" 0
+@var checkbox professionalacc       "Remove professional Account" 0
+@var checkbox professionaltools     "Remove Professtional Tools" 0
+@var checkbox adpay                 "Remove Ad Payment" 0
+
 ==/UserStyle== */
 @-moz-document domain("www.instagram.com") {
 
@@ -344,4 +349,33 @@
 
         }
     }
+}
+
+@-moz-document url-prefix("https://www.instagram.com/accounts/edit/") {
+    if accenterdebloat{
+        if forprofessionals{
+            if professionalacc{
+                div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]:has([href="/accounts/professional_account_settings/"]){
+                    display: none}
+                }
+        
+            if professionaltools{
+                div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]:has([href="/accounts/professional_account_tools/"]){
+                    display: none}
+                }
+        
+            if adpay{
+                div[class="html-div xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"]:has([href="/accounts/ad_payments/"]){
+                    display: none}
+                }
+            } else {
+                div[class="html-div xdj266r xat24cr xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x1mkwnke xmsj0wv"]:has([href="/accounts/professional_account_settings/"]){
+                        display: none;
+                    }
+            }
+        } else {
+                div[class="html-div xdj266r xat24cr xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 x1mkwnke xmsj0wv"]:has([href="/accounts/professional_account_settings/"]){
+                        display: none;
+                    }
+        }
 }
