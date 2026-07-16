@@ -5,32 +5,32 @@
 @description    A new userstyle
 @author         Me
 @preprocessor   stylus
-@var checkbox collapse "Collapse Sidebar while On Stream"   1
+@var checkbox collapseside "Collapse Sidebar while On Stream"   1
 @var checkbox hiddenstatus "Collapse the hidden status"   0
 ==/UserStyle== */
 
 @-moz-document domain("discord.com") {
     /* Insert code here... */
-if collapse{
-    body:has([class*="videoFrame_"]){
-        & div[class*="sidebarList_"]
-        {
-            width: 0px;
-            opacity: 0;
-            transition: ease-in-out .5s;
+    if collapseside{
+        body:has([class*="videoFrame_"]){
+            & div[class*="sidebarList_"]
+            {
+                width: 0px;
+                opacity: 0;
+                transition: ease-in-out .5s;
+            }
+            & div[class*="sidebarList_"]:hover
+            {
+                width: 310px;
+                opacity: 1;
+                transition: ease-in-out .5s;
+            }
+            & section[aria-label="User status and settings"]
+            {
+                display: none;
+            }
         }
-        & div[class*="sidebarList_"]:hover
-        {
-            width: 310px;
-            opacity: 1;
-            transition: ease-in-out .5s;
-        }
-        & section[aria-label="User status and settings"]
-        {
-            position: absolute;
-            height: 0px !important;
-        }
-    }}
+    }
     if hiddenstatus{
         section[aria-label="User status and settings"]
         {
@@ -41,5 +41,6 @@ if collapse{
         {
 
             height: 150px;
- }       } 
+        }       
+    } 
 }
