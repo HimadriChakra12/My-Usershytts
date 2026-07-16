@@ -72,7 +72,7 @@
     div[data-target="react-app.reactRoot"] > div {
         background-color: var(--bgColor-default) !important;
     }
-
+    
     body {
         --color-canvas-default: var(--gruv-bg0) !important;
         --color-canvas-inset: var(--gruv-bg0_h) !important;
@@ -208,7 +208,7 @@
         --color-prettylights-syntax-markup-heading: var(--gruv-blue-light) !important;
         --color-prettylights-syntax-markup-italic: var(--gruv-fg2) !important;
         --color-prettylights-syntax-markup-bold: var(--gruv-purple-light) !important;
-        /* Maybe I'll do the rest another day. */
+        --dashboard-bgColor: var(--gruv-bg0_h) !important
     }
 
     /* Syntax Highlighting (when editing, barely done anything here)*/
